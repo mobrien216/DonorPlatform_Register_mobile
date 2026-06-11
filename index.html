@@ -1,0 +1,3078 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+<meta name="theme-color" content="#164430" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<title>Cleveland Foundation — Discover Philanthropy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Source+Sans+3:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  /* ============================================================
+     Brand tokens (from TCF Style Guide)
+     ============================================================ */
+  :root {
+    --tcf-primary: #164430;
+    --tcf-secondary: #F3F1EF;
+    --tcf-orange: #EE7331;
+    --tcf-mid-green: #086C43;
+    --tcf-red: #CC1E4B;
+    --tcf-aqua: #19B9A9;
+    --tcf-blue: #1A8DA9;
+    --tcf-pink: #C0629A;
+    --tcf-gray: #F3F2F0;
+    --tcf-light-orange: #DBD5CA;
+
+    --bg: #FAF8F5;
+    --surface: #FFFFFF;
+    --surface-2: var(--tcf-gray);
+    --ink: #1B2520;
+    --ink-soft: #51605A;
+    --ink-faint: #8A968F;
+    --border: #E5E1DA;
+    --border-strong: #C8C2B6;
+
+    --font-head: 'Bricolage Grotesque', 'Paralucent Bold', Georgia, serif;
+    --font-body: 'Source Sans 3', 'Source Sans Pro', -apple-system, sans-serif;
+
+    --radius-sm: 8px;
+    --radius: 12px;
+    --radius-lg: 18px;
+
+    --shadow-sm: 0 1px 2px rgba(22,68,48,0.06);
+    --shadow: 0 4px 14px rgba(22,68,48,0.10);
+    --shadow-lg: 0 10px 40px rgba(22,68,48,0.18);
+
+    --topbar-h: 56px;
+    --bottomnav-h: 72px;
+    --safe-bottom: env(safe-area-inset-bottom, 0px);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+  html, body { height: 100%; overscroll-behavior-y: none; }
+  body {
+    font-family: var(--font-body);
+    background: var(--bg);
+    color: var(--ink);
+    font-size: 15px;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    padding-top: var(--topbar-h);
+    padding-bottom: calc(var(--bottomnav-h) + var(--safe-bottom));
+    min-height: 100vh;
+  }
+  h1,h2,h3,h4,h5 { font-family: var(--font-head); font-weight: 700; color: var(--tcf-primary); letter-spacing: -0.01em; }
+  h1 { font-size: 26px; line-height: 1.15; }
+  h2 { font-size: 20px; line-height: 1.2; }
+  h3 { font-size: 16px; line-height: 1.3; }
+  button { font-family: inherit; cursor: pointer; border: none; background: none; }
+  input, select, textarea { font-family: inherit; font-size: 16px; /* 16px prevents iOS zoom */ }
+  a { color: var(--tcf-mid-green); text-decoration: none; }
+
+  /* ============================================================
+     Top bar (fixed)
+     ============================================================ */
+  .topbar {
+    position: fixed; top: 0; left: 0; right: 0;
+    height: var(--topbar-h);
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    display: flex; align-items: center;
+    padding: 0 8px 0 4px;
+    z-index: 100;
+    padding-top: env(safe-area-inset-top, 0px);
+    height: calc(var(--topbar-h) + env(safe-area-inset-top, 0px));
+  }
+  .hamburger {
+    width: 44px; height: 44px;
+    display: flex; align-items: center; justify-content: center;
+    color: var(--tcf-primary);
+    flex-shrink: 0;
+  }
+  .topbar-brand {
+    display: flex; align-items: center; gap: 8px;
+    flex: 1;
+    overflow: hidden;
+  }
+  .topbar-brand .logo {
+    width: 30px; height: 30px;
+    background: var(--tcf-orange);
+    border-radius: 6px;
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--font-head);
+    color: var(--tcf-primary);
+    font-weight: 700; font-size: 15px;
+    flex-shrink: 0;
+  }
+  .topbar-brand .title {
+    font-family: var(--font-head);
+    font-weight: 700;
+    color: var(--tcf-primary);
+    font-size: 15px;
+    line-height: 1.1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .topbar-brand .title small {
+    display: block;
+    font-family: var(--font-body);
+    font-weight: 400;
+    font-size: 11px;
+    color: var(--ink-faint);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+  .topbar-actions { display: flex; align-items: center; gap: 2px; }
+  .icon-btn {
+    width: 42px; height: 42px;
+    display: inline-flex; align-items: center; justify-content: center;
+    color: var(--ink-soft);
+    position: relative;
+    border-radius: 50%;
+  }
+  .icon-btn:active { background: var(--surface-2); }
+  .icon-btn .dot {
+    position: absolute; top: 9px; right: 9px;
+    width: 8px; height: 8px;
+    background: var(--tcf-orange);
+    border-radius: 50%;
+    border: 2px solid var(--surface);
+  }
+  .icon-btn .cart-count {
+    position: absolute; top: 5px; right: 5px;
+    background: var(--tcf-orange);
+    color: #fff;
+    font-size: 10px;
+    font-weight: 700;
+    min-width: 16px; height: 16px;
+    padding: 0 4px;
+    border-radius: 999px;
+    display: flex; align-items: center; justify-content: center;
+    border: 2px solid var(--surface);
+  }
+
+  /* ============================================================
+     Bottom nav (fixed, 5 tiles)
+     ============================================================ */
+  .bottomnav {
+    position: fixed; bottom: 0; left: 0; right: 0;
+    background: var(--surface);
+    border-top: 1px solid var(--border);
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    height: var(--bottomnav-h);
+    padding-bottom: var(--safe-bottom);
+    z-index: 100;
+    box-shadow: 0 -2px 10px rgba(22,68,48,0.04);
+  }
+  .bnav-item {
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    gap: 4px;
+    color: var(--ink-faint);
+    font-size: 10.5px;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    position: relative;
+    padding: 8px 4px;
+    transition: color .15s;
+  }
+  .bnav-item .icon {
+    width: 22px; height: 22px;
+    stroke-width: 2;
+  }
+  .bnav-item.active { color: var(--tcf-primary); }
+  .bnav-item.active::before {
+    content: '';
+    position: absolute; top: 0;
+    width: 32px; height: 3px;
+    background: var(--tcf-orange);
+    border-radius: 0 0 3px 3px;
+  }
+  .bnav-item:active { background: var(--surface-2); }
+
+  /* ============================================================
+     Hamburger drawer (left)
+     ============================================================ */
+  .drawer-backdrop {
+    position: fixed; inset: 0;
+    background: rgba(22,68,48,0.55);
+    backdrop-filter: blur(3px);
+    opacity: 0; pointer-events: none;
+    transition: opacity .25s;
+    z-index: 199;
+  }
+  .drawer-backdrop.open { opacity: 1; pointer-events: auto; }
+  .drawer {
+    position: fixed;
+    top: 0; left: 0; bottom: 0;
+    width: 84%; max-width: 320px;
+    background: var(--tcf-primary);
+    color: #DCE5DF;
+    transform: translateX(-100%);
+    transition: transform .25s ease;
+    z-index: 200;
+    display: flex; flex-direction: column;
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  .drawer.open { transform: none; }
+  .drawer-head {
+    padding: 22px 22px 20px;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+  }
+  .drawer-brand {
+    display: flex; align-items: center; gap: 12px;
+    color: #fff;
+    font-family: var(--font-head);
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 1.1;
+  }
+  .drawer-brand .logo {
+    width: 36px; height: 36px;
+    background: var(--tcf-orange);
+    border-radius: 6px;
+    display: flex; align-items: center; justify-content: center;
+    color: var(--tcf-primary);
+    font-size: 18px;
+    flex-shrink: 0;
+  }
+  .drawer-brand small {
+    display: block;
+    font-family: var(--font-body);
+    font-weight: 400;
+    font-size: 11px;
+    color: #9DB3A6;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    margin-top: 2px;
+  }
+  .drawer-user {
+    margin-top: 18px;
+    display: flex; align-items: center; gap: 12px;
+  }
+  .drawer-user .avatar {
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    background: var(--tcf-aqua);
+    color: var(--tcf-primary);
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 700; font-size: 15px;
+  }
+  .drawer-user .name { color: #fff; font-weight: 600; font-size: 14px; font-family: var(--font-body); }
+  .drawer-user .role { color: #9DB3A6; font-size: 12px; }
+
+  .drawer-nav { flex: 1; overflow-y: auto; padding: 14px 12px; }
+  .drawer-label {
+    font-size: 10.5px; font-weight: 700;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    color: #7A9387;
+    padding: 14px 10px 8px;
+  }
+  .drawer-item {
+    display: flex; align-items: center; gap: 14px;
+    padding: 14px 12px;
+    color: #C8D6CE;
+    border-radius: 10px;
+    font-size: 15px; font-weight: 500;
+    width: 100%; text-align: left;
+    min-height: 48px;
+  }
+  .drawer-item:active { background: rgba(255,255,255,0.06); }
+  .drawer-item.active { background: rgba(238,115,49,0.18); color: #fff; }
+  .drawer-item .icon { width: 20px; height: 20px; flex-shrink: 0; opacity: 0.85; }
+  .drawer-item .count {
+    margin-left: auto;
+    background: var(--tcf-orange);
+    color: #fff;
+    font-size: 11px;
+    padding: 2px 8px;
+    border-radius: 10px;
+    font-weight: 700;
+  }
+
+  .drawer-foot {
+    padding: 16px 22px 22px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    font-size: 12px;
+    color: #7A9387;
+  }
+  .drawer-foot .signout {
+    color: #DCE5DF;
+    padding: 10px 0;
+    font-weight: 600;
+    display: block;
+  }
+
+  /* ============================================================
+     Page layout
+     ============================================================ */
+  .page {
+    padding: 18px 16px 30px;
+  }
+  .page-head {
+    margin-bottom: 18px;
+  }
+  .eyebrow {
+    font-size: 10.5px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--tcf-orange);
+    margin-bottom: 4px;
+  }
+  .lede {
+    color: var(--ink-soft);
+    margin-top: 6px;
+    font-size: 14px;
+  }
+
+  .view { display: none; }
+  .view.active { display: block; animation: fadeIn 0.2s ease; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }
+
+  /* ============================================================
+     Integration Pins
+     ============================================================ */
+  .ipin {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 3px 8px 3px 7px;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    border-radius: 999px;
+    border: 1px solid transparent;
+    white-space: nowrap;
+    vertical-align: middle;
+    -webkit-user-select: none;
+    user-select: none;
+  }
+  .ipin::before {
+    content: '';
+    width: 6px; height: 6px; border-radius: 50%;
+    background: currentColor;
+    box-shadow: 0 0 0 2px rgba(255,255,255,0.6);
+    flex-shrink: 0;
+  }
+  .ipin:active { transform: scale(0.97); }
+  .ipin-integration { background: #FDEDE2; color: var(--tcf-orange); border-color: #F8D6BD; }
+  .ipin-config      { background: #E0EAE5; color: var(--tcf-mid-green); border-color: #BFD3CA; }
+  .ipin-setup       { background: #DCEEF1; color: var(--tcf-blue); border-color: #B5DAE0; }
+  .ipin-security    { background: #FBE0E8; color: var(--tcf-red); border-color: #F2C2D0; }
+  .ipin-event       { background: #E7F6F4; color: #0E8378; border-color: #B5E2DC; }
+
+  body.pins-hidden .ipin { display: none !important; }
+
+  /* Pin toggle FAB - positioned above bottomnav */
+  .pin-toggle {
+    position: fixed;
+    bottom: calc(var(--bottomnav-h) + var(--safe-bottom) + 14px);
+    right: 14px;
+    background: var(--tcf-primary);
+    color: #fff;
+    padding: 9px 14px;
+    border-radius: 999px;
+    font-weight: 700;
+    font-size: 11px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    box-shadow: var(--shadow-lg);
+    z-index: 90;
+    display: inline-flex;
+    gap: 6px;
+    align-items: center;
+  }
+  .pin-toggle .swatch { display: flex; gap: 2px; }
+  .pin-toggle .swatch span { width: 6px; height: 6px; border-radius: 50%; }
+
+  /* ============================================================
+     Cards & components
+     ============================================================ */
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 18px;
+    margin-bottom: 14px;
+    box-shadow: var(--shadow-sm);
+  }
+  .card-head {
+    display: flex; align-items: flex-start; justify-content: space-between;
+    gap: 10px; margin-bottom: 14px;
+  }
+  .card-head h3 { margin: 0; }
+
+  /* Buttons */
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center;
+    gap: 8px;
+    padding: 13px 18px;
+    border-radius: 10px;
+    font-weight: 600; font-size: 15px;
+    min-height: 48px;
+  }
+  .btn-primary { background: var(--tcf-primary); color: #fff; }
+  .btn-primary:active { background: #0F3322; }
+  .btn-accent { background: var(--tcf-orange); color: #fff; }
+  .btn-accent:active { background: #D86426; }
+  .btn-ghost { background: var(--surface); color: var(--tcf-primary); border: 1px solid var(--border-strong); }
+  .btn-ghost:active { background: var(--surface-2); }
+  .btn-sm { padding: 9px 14px; font-size: 13px; min-height: 38px; }
+  .btn-block { width: 100%; }
+
+  /* Hero */
+  .hero {
+    background: linear-gradient(135deg, var(--tcf-primary) 0%, #0A2D1E 60%, var(--tcf-mid-green) 100%);
+    color: #fff;
+    border-radius: var(--radius-lg);
+    padding: 22px 20px;
+    margin-bottom: 14px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::after {
+    content: '';
+    position: absolute; right: -50px; bottom: -50px;
+    width: 180px; height: 180px;
+    background: radial-gradient(circle, var(--tcf-orange) 0%, transparent 70%);
+    opacity: 0.22;
+  }
+  .hero .eyebrow { color: var(--tcf-orange); margin-bottom: 8px; }
+  .hero h2 { color: #fff; font-size: 22px; margin-bottom: 8px; }
+  .hero p { color: #C8D6CE; font-size: 14px; margin-bottom: 16px; }
+  .hero-actions { display: flex; gap: 8px; flex-direction: column; }
+  .hero .btn-accent { background: var(--tcf-orange); }
+  .hero .btn-ghost { background: transparent; color: #fff; border-color: rgba(255,255,255,0.4); }
+
+  /* Stats */
+  .stat-label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--ink-faint);
+    font-weight: 700;
+  }
+  .stat-value {
+    font-family: var(--font-head);
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--tcf-primary);
+    margin: 4px 0 2px;
+    letter-spacing: -0.02em;
+  }
+  .stat-value.lg { font-size: 32px; }
+  .stat-delta { font-size: 13px; font-weight: 600; }
+  .stat-delta.up { color: var(--tcf-mid-green); }
+  .stat-delta.down { color: var(--tcf-red); }
+
+  /* Status badges */
+  .badge {
+    display: inline-flex; align-items: center;
+    padding: 3px 10px;
+    border-radius: 999px;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+  .badge-entered { background: #FDEDE2; color: var(--tcf-orange); }
+  .badge-approved { background: #DCEEF1; color: var(--tcf-blue); }
+  .badge-posted { background: #DCEEE3; color: var(--tcf-mid-green); }
+  .badge-pending { background: var(--tcf-light-orange); color: #7C6440; }
+
+  /* List rows (mobile pattern) */
+  .row-list { background: var(--surface); border-radius: var(--radius); border: 1px solid var(--border); overflow: hidden; }
+  .row {
+    display: flex; align-items: center; gap: 12px;
+    padding: 14px 16px;
+    border-bottom: 1px solid var(--border);
+    min-height: 64px;
+  }
+  .row:last-child { border-bottom: none; }
+  .row:active { background: var(--surface-2); }
+  .row .org-mark {
+    width: 40px; height: 40px;
+    border-radius: 10px;
+    background: var(--tcf-aqua);
+    color: var(--tcf-primary);
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 700; font-size: 14px;
+    flex-shrink: 0;
+  }
+  .org-mark.alt-0 { background: var(--tcf-aqua); color: var(--tcf-primary); }
+  .org-mark.alt-1 { background: var(--tcf-pink); color: #fff; }
+  .org-mark.alt-2 { background: var(--tcf-orange); color: #fff; }
+  .org-mark.alt-3 { background: var(--tcf-blue); color: #fff; }
+  .org-mark.alt-4 { background: var(--tcf-mid-green); color: #fff; }
+  .row .info { flex: 1; min-width: 0; }
+  .row .info .name { font-weight: 600; font-size: 15px; color: var(--ink); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .row .info .meta { font-size: 12.5px; color: var(--ink-faint); }
+  .row .end { text-align: right; flex-shrink: 0; }
+  .row .end .amount { font-weight: 700; color: var(--tcf-primary); font-size: 15px; }
+  .row .end .meta { font-size: 12px; color: var(--ink-faint); margin-top: 2px; }
+
+  /* Stories */
+  .story {
+    display: flex; gap: 12px;
+    padding: 14px 0; border-bottom: 1px solid var(--border);
+  }
+  .story:last-child { border-bottom: none; }
+  .story .thumb {
+    width: 76px; height: 76px;
+    border-radius: 10px; flex-shrink: 0;
+    background: linear-gradient(135deg, var(--tcf-aqua), var(--tcf-blue));
+  }
+  .story .thumb.t1 { background: linear-gradient(135deg, var(--tcf-orange), var(--tcf-red)); }
+  .story .thumb.t2 { background: linear-gradient(135deg, var(--tcf-mid-green), var(--tcf-primary)); }
+  .story .thumb.t3 { background: linear-gradient(135deg, var(--tcf-pink), var(--tcf-red)); }
+  .story h4 {
+    font-family: var(--font-head);
+    font-size: 15px; font-weight: 700;
+    color: var(--tcf-primary);
+    margin: 3px 0 4px;
+    line-height: 1.3;
+  }
+  .story .tag {
+    font-size: 10.5px; font-weight: 700;
+    color: var(--tcf-orange);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  .story .excerpt {
+    font-size: 13px;
+    color: var(--ink-soft);
+    line-height: 1.45;
+  }
+
+  /* Forms */
+  .form-row { margin-bottom: 16px; }
+  .form-row label {
+    display: block;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--tcf-primary);
+    margin-bottom: 6px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  .form-row input,
+  .form-row select,
+  .form-row textarea {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1px solid var(--border-strong);
+    border-radius: 10px;
+    background: var(--surface);
+    min-height: 48px;
+  }
+  .form-row textarea { min-height: 90px; resize: vertical; }
+  .form-row input:focus, .form-row select:focus, .form-row textarea:focus {
+    outline: none; border-color: var(--tcf-mid-green);
+    box-shadow: 0 0 0 3px rgba(8,108,67,0.12);
+  }
+  .help-text { font-size: 12px; color: var(--ink-faint); margin-top: 5px; }
+
+  /* Subtabs as horizontal scroll */
+  .subtabs {
+    display: flex; gap: 4px;
+    margin: 0 -16px 16px;
+    padding: 0 16px 4px;
+    overflow-x: auto;
+    border-bottom: 1px solid var(--border);
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .subtabs::-webkit-scrollbar { display: none; }
+  .subtab {
+    padding: 10px 14px;
+    font-size: 13.5px; font-weight: 600;
+    color: var(--ink-faint);
+    border-bottom: 2px solid transparent;
+    margin-bottom: -1px;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  .subtab.active { color: var(--tcf-primary); border-bottom-color: var(--tcf-orange); }
+
+  /* Perf chart */
+  .perf-chart { width: 100%; height: 200px; }
+  .perf-ranges {
+    display: grid; grid-template-columns: repeat(5, 1fr); gap: 4px;
+    margin-bottom: 14px;
+  }
+  .perf-ranges button {
+    padding: 8px 0;
+    font-size: 12px; font-weight: 600;
+    background: var(--surface-2);
+    color: var(--ink-soft);
+    border-radius: 8px;
+  }
+  .perf-ranges button.active {
+    background: var(--tcf-primary);
+    color: #fff;
+  }
+
+  /* Status pipeline (vertical for mobile) */
+  .status-pipeline { display: flex; flex-direction: column; gap: 8px; margin: 14px 0; }
+  .pipeline-step {
+    padding: 12px 14px;
+    border-radius: 10px;
+    color: #fff;
+  }
+  .pipeline-step .title { font-weight: 700; font-size: 14px; }
+  .pipeline-step .meta { font-size: 12px; opacity: 0.9; margin-top: 2px; }
+  .pipeline-step.entered { background: var(--tcf-orange); }
+  .pipeline-step.approved { background: var(--tcf-blue); }
+  .pipeline-step.posted { background: var(--tcf-mid-green); }
+
+  /* Cart drawer (slides from bottom on mobile) */
+  .cart-drawer {
+    position: fixed; bottom: 0; left: 0; right: 0;
+    background: var(--surface);
+    border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+    box-shadow: 0 -10px 40px rgba(22,68,48,0.20);
+    transform: translateY(100%);
+    transition: transform .3s ease;
+    z-index: 180;
+    display: flex; flex-direction: column;
+    max-height: 85vh;
+    padding-bottom: var(--safe-bottom);
+  }
+  .cart-drawer.open { transform: none; }
+  .cart-handle {
+    width: 40px; height: 4px;
+    background: var(--border-strong);
+    border-radius: 2px;
+    margin: 8px auto 0;
+  }
+  .cart-head {
+    padding: 14px 20px 16px;
+    border-bottom: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .cart-head h3 { margin: 0; }
+  .cart-head .sub { font-size: 12px; color: var(--ink-faint); margin-top: 2px; }
+  .cart-body { flex: 1; overflow-y: auto; padding: 8px 20px; -webkit-overflow-scrolling: touch; }
+  .cart-foot { padding: 16px 20px 20px; border-top: 1px solid var(--border); background: var(--surface-2); }
+  .cart-item {
+    display: flex; gap: 12px; align-items: center;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .cart-item:last-child { border-bottom: none; }
+  .cart-item .org-mark { width: 38px; height: 38px; border-radius: 8px; font-size: 12px; }
+  .cart-item .amount { font-weight: 700; color: var(--tcf-primary); font-size: 15px; }
+  .cart-empty { text-align: center; padding: 40px 20px; color: var(--ink-faint); }
+  .cart-total {
+    display: flex; justify-content: space-between;
+    font-size: 18px; font-weight: 700;
+    color: var(--tcf-primary);
+    margin-bottom: 14px;
+  }
+  .remove-btn { font-size: 12px; color: var(--tcf-red); padding: 4px 0; font-weight: 600; }
+
+  /* Modal (integration pin details) */
+  .modal-backdrop {
+    position: fixed; inset: 0;
+    background: rgba(22,68,48,0.65);
+    backdrop-filter: blur(4px);
+    display: none; align-items: flex-end;
+    z-index: 300;
+  }
+  .modal-backdrop.open { display: flex; }
+  .modal {
+    background: var(--surface);
+    border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+    width: 100%;
+    max-height: 88vh;
+    overflow-y: auto;
+    box-shadow: var(--shadow-lg);
+    border-top: 5px solid var(--tcf-orange);
+    animation: slideUp 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+    padding-bottom: var(--safe-bottom);
+  }
+  @keyframes slideUp { from { transform: translateY(100%); } to { transform: none; } }
+  .modal-handle {
+    width: 40px; height: 4px;
+    background: var(--border-strong);
+    border-radius: 2px;
+    margin: 10px auto 0;
+  }
+  .modal-head { padding: 14px 20px 16px; border-bottom: 1px solid var(--border); position: relative; }
+  .modal-head .kind {
+    font-size: 11px; font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--tcf-orange);
+  }
+  .modal-head h3 { margin-top: 4px; font-size: 20px; }
+  .modal-close {
+    position: absolute; top: 14px; right: 14px;
+    width: 32px; height: 32px;
+    background: var(--surface-2);
+    border-radius: 50%;
+    display: inline-flex; align-items: center; justify-content: center;
+    color: var(--ink-soft);
+    font-size: 18px;
+  }
+  .modal-body { padding: 16px 20px 24px; }
+  .modal-body p { margin-bottom: 10px; color: var(--ink-soft); font-size: 14px; line-height: 1.55; }
+  .modal-body .label {
+    font-size: 11px; font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--tcf-primary);
+    margin: 16px 0 6px;
+  }
+  .modal-body code, .modal-body .mono {
+    font-family: 'SF Mono', Menlo, monospace;
+    font-size: 12px;
+    background: var(--surface-2);
+    padding: 2px 6px;
+    border-radius: 4px;
+    color: var(--tcf-primary);
+    word-break: break-word;
+  }
+  .modal-body pre {
+    background: #0F2E22;
+    color: #C9E0D5;
+    padding: 12px;
+    border-radius: 8px;
+    font-family: 'SF Mono', Menlo, monospace;
+    font-size: 11px;
+    overflow-x: auto;
+    margin: 6px 0 14px;
+    line-height: 1.5;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* Toast */
+  .toast {
+    position: fixed;
+    bottom: calc(var(--bottomnav-h) + var(--safe-bottom) + 70px);
+    left: 16px; right: 16px;
+    background: var(--tcf-primary);
+    color: #fff;
+    padding: 14px 18px;
+    border-radius: 10px;
+    box-shadow: var(--shadow-lg);
+    opacity: 0; transform: translateY(20px);
+    transition: all .25s ease;
+    z-index: 250;
+    font-weight: 500;
+    font-size: 14px;
+    pointer-events: none;
+  }
+  .toast.show { opacity: 1; transform: none; }
+
+  /* PWA note */
+  .pwa-note {
+    background: linear-gradient(90deg, rgba(238,115,49,0.10), rgba(238,115,49,0.02));
+    border-left: 3px solid var(--tcf-orange);
+    padding: 12px 14px;
+    border-radius: 4px;
+    font-size: 12.5px;
+    color: var(--ink-soft);
+    margin-bottom: 16px;
+    line-height: 1.5;
+  }
+
+  /* Allocation donut */
+  .alloc-row {
+    display: flex; align-items: center; gap: 14px;
+    margin-top: 8px;
+  }
+  .alloc-legend { font-size: 13px; line-height: 1.9; flex: 1; }
+  .alloc-legend .dot {
+    display: inline-block;
+    width: 10px; height: 10px;
+    border-radius: 3px;
+    margin-right: 8px;
+    vertical-align: middle;
+  }
+
+  /* Fund summary card */
+  .fund-card {
+    background: linear-gradient(135deg, var(--tcf-primary), #0A2D1E);
+    color: #fff;
+    border-radius: var(--radius-lg);
+    padding: 20px;
+    margin-bottom: 14px;
+    position: relative;
+    overflow: hidden;
+  }
+  .fund-card::after {
+    content: '';
+    position: absolute; right: -40px; top: -40px;
+    width: 140px; height: 140px;
+    background: radial-gradient(circle, var(--tcf-aqua) 0%, transparent 70%);
+    opacity: 0.18;
+  }
+  .fund-card .label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: #9DB3A6; font-weight: 700; }
+  .fund-card .name { font-family: var(--font-head); font-size: 18px; font-weight: 700; margin: 4px 0 10px; }
+  .fund-card .balance { font-family: var(--font-head); font-size: 30px; font-weight: 700; letter-spacing: -0.02em; }
+  .fund-card .delta { font-size: 13px; color: var(--tcf-aqua); font-weight: 600; margin-top: 4px; }
+  .fund-card .meta { font-size: 12px; color: #9DB3A6; margin-top: 12px; line-height: 1.5; }
+
+  /* Architecture / inventory list */
+  .inv-row {
+    display: flex; align-items: center; gap: 12px;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .inv-row:last-child { border-bottom: none; }
+  .inv-row .name { font-weight: 600; flex: 1; font-size: 14px; }
+  .inv-row .name small { display: block; font-weight: 400; color: var(--ink-faint); font-size: 12px; margin-top: 2px; }
+
+  /* Section title */
+  .section-title {
+    font-family: var(--font-head);
+    font-size: 18px;
+    color: var(--tcf-primary);
+    margin: 22px 0 12px;
+  }
+</style>
+</head>
+<body>
+
+<!-- ============================================================
+     TOP BAR
+     ============================================================ -->
+<header class="topbar">
+  <button class="hamburger" onclick="toggleDrawer()" aria-label="Menu">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
+      <path d="M4 7h16M4 12h16M4 17h16"/>
+    </svg>
+  </button>
+  <div class="topbar-brand">
+    <div class="logo">cf</div>
+    <div class="title">
+      Cleveland Foundation
+      <small>Giving Portal</small>
+    </div>
+  </div>
+  <div class="topbar-actions">
+    <button class="icon-btn" onclick="showToast('2 new stories in your areas of interest')" aria-label="Notifications">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 8a6 6 0 1112 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 003.4 0"/></svg>
+      <span class="dot"></span>
+    </button>
+    <button class="icon-btn" onclick="navigate('openfund')" aria-label="Open a Fund" style="color: var(--tcf-orange);">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
+    </button>
+  </div>
+</header>
+
+<!-- ============================================================
+     HAMBURGER DRAWER
+     ============================================================ -->
+<div class="drawer-backdrop" id="drawerBackdrop" onclick="toggleDrawer()"></div>
+<aside class="drawer" id="drawer">
+  <div class="drawer-head">
+    <div class="drawer-brand">
+      <div class="logo">cf</div>
+      <div>
+        The Cleveland Foundation
+        <small>Giving Portal</small>
+      </div>
+    </div>
+    <div class="drawer-user">
+      <div class="avatar" style="background: var(--tcf-orange);">JS</div>
+      <div>
+        <div class="name">Jamie Sullivan</div>
+        <div class="role">Registered Member</div>
+      </div>
+    </div>
+  </div>
+
+  <nav class="drawer-nav">
+    <div class="drawer-label">Explore</div>
+    <button class="drawer-item active" data-view="home">
+      <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9,22 9,12 15,12 15,22"/></svg>
+      Home
+    </button>
+    <button class="drawer-item" data-view="impact">
+      <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a10 10 0 1 0 10 10"/><path d="M12 8v4l3 3"/></svg>
+      Stories &amp; Impact
+    </button>
+    <button class="drawer-item" data-view="calculator">
+      <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="10" x2="16" y2="10"/><line x1="8" y1="14" x2="12" y2="14"/></svg>
+      Impact Calculator
+    </button>
+    <button class="drawer-item" data-view="vision">
+      <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8l4 4-4 4-4-4 4-4z"/></svg>
+      Cleveland 2040
+    </button>
+
+    <div class="drawer-label">Your Journey</div>
+    <button class="drawer-item" data-view="openfund">
+      <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
+      Open a DAF
+    </button>
+    <button class="drawer-item" data-view="advisor">
+      <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.4 8.4 0 01-1 4 8.5 8.5 0 01-7.6 4.5 8.4 8.4 0 01-4-1L3 21l2-5a8.5 8.5 0 014-11.5 8.4 8.4 0 014-1 8.5 8.5 0 018 8z"/></svg>
+      Talk to an Advisor
+    </button>
+    <button class="drawer-item" data-view="settings">
+      <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 00.3 1.8l.1.1a2 2 0 11-2.8 2.8l-.1-.1a1.7 1.7 0 00-1.8-.3 1.7 1.7 0 00-1 1.5V21a2 2 0 11-4 0v-.1a1.7 1.7 0 00-1.1-1.5 1.7 1.7 0 00-1.8.3l-.1.1a2 2 0 11-2.8-2.8l.1-.1a1.7 1.7 0 00.3-1.8 1.7 1.7 0 00-1.5-1H3a2 2 0 110-4h.1a1.7 1.7 0 001.5-1.1"/></svg>
+      Account Settings
+    </button>
+  </nav>
+
+  <div class="drawer-foot">
+    <a class="signout" href="#" onclick="showToast('Signed out. See you soon!'); return false;">Sign out</a>
+    <span class="ipin ipin-setup" data-pin="idp">IdP Session</span>
+  </div>
+</aside>
+
+<!-- ============================================================
+     MAIN
+     ============================================================ -->
+<main>
+
+  <!-- =================== HOME =================== -->
+  <section class="view active" id="view-home">
+    <div class="page">
+      <div class="page-head">
+        <div class="eyebrow">Welcome, Jamie</div>
+        <h1>Make Cleveland stronger.</h1>
+        <p class="lede" style="font-size:14px;">Explore how your giving — through a Donor Advised Fund — can grow and multiply your impact in Greater Cleveland.</p>
+      </div>
+
+      <!-- Impact stats strip -->
+      <div class="card" style="padding: 16px 18px;">
+        <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 4px; text-align: center;">
+          <div>
+            <div class="stat-value" style="font-size:22px;">$3.1B</div>
+            <div class="stat-label" style="font-size:9.5px;">Granted since 1914</div>
+          </div>
+          <div style="border-left: 1px solid var(--border); border-right: 1px solid var(--border);">
+            <div class="stat-value" style="font-size:22px;">2,800+</div>
+            <div class="stat-label" style="font-size:9.5px;">Nonprofits supported</div>
+          </div>
+          <div>
+            <div class="stat-value" style="font-size:22px;">$220M</div>
+            <div class="stat-label" style="font-size:9.5px;">Granted last year</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Learning Tracks (first module) -->
+      <div class="card">
+        <div class="card-head">
+          <div>
+            <h3>Learning Tracks</h3>
+            <div style="font-size:11.5px; color: var(--ink-faint); margin-top: 2px;">Build your giving knowledge</div>
+          </div>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 10px;">
+
+          <div onclick="showToast('Opening: Community Engagement…')" style="background: var(--surface-2); border-radius: 12px; padding: 16px; cursor:pointer; display:flex; align-items:center; gap:14px; border:1px solid transparent; transition:border-color .15s;" onmouseenter="this.style.borderColor='var(--tcf-mid-green)'" onmouseleave="this.style.borderColor='transparent'">
+            <div style="width:44px; height:44px; border-radius:10px; background:linear-gradient(135deg,var(--tcf-mid-green),var(--tcf-aqua)); display:flex; align-items:center; justify-content:center; font-size:20px; flex-shrink:0;">🤝</div>
+            <div style="flex:1; min-width:0;">
+              <div style="font-weight:700; color:var(--tcf-primary); font-size:14px; margin-bottom:2px;">Community Engagement</div>
+              <div style="font-size:12px; color:var(--ink-faint);">How philanthropy shapes — and responds to — the communities it serves.</div>
+              <div style="font-size:11px; color:var(--ink-faint); margin-top:4px;">4 articles · ~18 min</div>
+            </div>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--ink-faint)" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+          </div>
+
+          <div onclick="showToast('Opening: Estate Planning…')" style="background: var(--surface-2); border-radius: 12px; padding: 16px; cursor:pointer; display:flex; align-items:center; gap:14px; border:1px solid transparent; transition:border-color .15s;" onmouseenter="this.style.borderColor='var(--tcf-orange)'" onmouseleave="this.style.borderColor='transparent'">
+            <div style="width:44px; height:44px; border-radius:10px; background:linear-gradient(135deg,#7c3200,var(--tcf-orange)); display:flex; align-items:center; justify-content:center; font-size:20px; flex-shrink:0;">📋</div>
+            <div style="flex:1; min-width:0;">
+              <div style="font-weight:700; color:var(--tcf-primary); font-size:14px; margin-bottom:2px;">Estate Planning</div>
+              <div style="font-size:12px; color:var(--ink-faint);">Leave a legacy that reflects your values — and makes financial sense.</div>
+              <div style="font-size:11px; color:var(--ink-faint); margin-top:4px;">5 articles · ~25 min</div>
+            </div>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--ink-faint)" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+          </div>
+
+          <div onclick="showToast('Opening: Endowments…')" style="background: var(--surface-2); border-radius: 12px; padding: 16px; cursor:pointer; display:flex; align-items:center; gap:14px; border:1px solid transparent; transition:border-color .15s;" onmouseenter="this.style.borderColor='var(--tcf-blue)'" onmouseleave="this.style.borderColor='transparent'">
+            <div style="width:44px; height:44px; border-radius:10px; background:linear-gradient(135deg,#0a3040,var(--tcf-blue)); display:flex; align-items:center; justify-content:center; font-size:20px; flex-shrink:0;">📈</div>
+            <div style="flex:1; min-width:0;">
+              <div style="font-weight:700; color:var(--tcf-primary); font-size:14px; margin-bottom:2px;">Endowments</div>
+              <div style="font-size:12px; color:var(--ink-faint);">How a permanent fund keeps giving — long after the original gift is made.</div>
+              <div style="font-size:11px; color:var(--ink-faint); margin-top:4px;">4 articles · ~20 min</div>
+            </div>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--ink-faint)" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+          </div>
+
+          <div onclick="showToast('Opening: Community Foundations…')" style="background: var(--surface-2); border-radius: 12px; padding: 16px; cursor:pointer; display:flex; align-items:center; gap:14px; border:1px solid transparent; transition:border-color .15s;" onmouseenter="this.style.borderColor='var(--tcf-pink)'" onmouseleave="this.style.borderColor='transparent'">
+            <div style="width:44px; height:44px; border-radius:10px; background:linear-gradient(135deg,#4a0a30,var(--tcf-pink)); display:flex; align-items:center; justify-content:center; font-size:20px; flex-shrink:0;">🏛️</div>
+            <div style="flex:1; min-width:0;">
+              <div style="font-weight:700; color:var(--tcf-primary); font-size:14px; margin-bottom:2px;">Community Foundations</div>
+              <div style="font-size:12px; color:var(--ink-faint);">What makes a community foundation different — and why it matters for your giving.</div>
+              <div style="font-size:11px; color:var(--ink-faint); margin-top:4px;">3 articles · ~12 min</div>
+            </div>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--ink-faint)" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- For You: Stories -->
+      <div class="card">
+        <div class="card-head">
+          <div>
+            <h3>For You</h3>
+            <div style="font-size:11.5px; color: var(--ink-faint); margin-top: 2px;">Curated Cleveland stories</div>
+          </div>
+          <button onclick="navigate('impact')" style="font-size:12px; font-weight:600; color:var(--tcf-mid-green); background:none; border:none; cursor:pointer;">See all →</button>
+        </div>
+        <div class="story" onclick="showToast('Opening story…')" style="cursor:pointer;">
+          <div class="thumb t1"></div>
+          <div>
+            <div class="tag">Arts &amp; Culture · 5 min</div>
+            <h4>How $50K Built a Free Music Program for 200 Kids</h4>
+            <div class="excerpt">Arts Mastery is reaching neighborhoods that haven't seen sustained arts funding in a generation.</div>
+          </div>
+        </div>
+        <div class="story" onclick="showToast('Opening story…')" style="cursor:pointer;">
+          <div class="thumb t2"></div>
+          <div>
+            <div class="tag">Economic Equity · 6 min</div>
+            <h4>Cleveland's Small Business Revival on the East Side</h4>
+            <div class="excerpt">Foundation grants helped 47 entrepreneurs launch or expand — generating 180 new local jobs.</div>
+          </div>
+        </div>
+        <div class="story" onclick="showToast('Opening story…')" style="cursor:pointer;">
+          <div class="thumb t3"></div>
+          <div>
+            <div class="tag">Community Health · 4 min</div>
+            <h4>Doula Network Expands to West Side</h4>
+            <div class="excerpt">Five new community-based doulas joined the program this spring — maternal outcomes are rising.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Impact Calculator teaser -->
+      <div class="card" style="background: linear-gradient(135deg, #0b1e14 0%, #164430 100%); border-color: rgba(25,185,169,0.3);">
+        <div style="color:#fff;">
+          <div class="eyebrow" style="color: var(--tcf-aqua);">Impact Calculator</div>
+          <h3 style="color:#fff; font-size:18px; margin-bottom:6px;">See your gift grow.</h3>
+          <p style="color: rgba(255,255,255,0.6); font-size:13px; margin-bottom:16px;">A $500 one-time gift, invested over 10 years at 6%, can fund over <span style="color:var(--tcf-aqua); font-weight:700;">1,400 meals</span> for Cleveland families.</p>
+          <button class="btn btn-block" onclick="navigate('calculator')" style="background:var(--tcf-aqua); color:var(--tcf-primary); font-weight:700;">Try the Calculator</button>
+        </div>
+      </div>
+
+      <!-- Vision 2040 teaser -->
+      <div class="card" style="background: linear-gradient(135deg, #0d0d1a 0%, #1a1a3a 100%); border-color: rgba(238,115,49,0.3);">
+        <div style="color:#fff;">
+          <div class="eyebrow" style="color: var(--tcf-orange);">Cleveland 2040</div>
+          <h3 style="color:#fff; font-size:18px; margin-bottom:6px;">What kind of city do you want to leave behind?</h3>
+          <p style="color: rgba(255,255,255,0.6); font-size:13px; margin-bottom:16px;">Explore six bold visions for Greater Cleveland's future — and discover your philanthropic profile.</p>
+          <button class="btn btn-block" onclick="navigate('vision')" style="background:var(--tcf-orange); color:#fff; font-weight:700;">Explore the Vision</button>
+        </div>
+      </div>
+
+      <!-- Your Giving Journey (CTA hero — bottom) -->
+      <div class="hero" style="margin-bottom:0;">
+        <div class="eyebrow">Your Giving Journey</div>
+        <h2>One fund. A lifetime of impact.</h2>
+        <p>A Donor Advised Fund at the Cleveland Foundation lets your gifts grow tax-free and reach every cause you care about — now and in the future.</p>
+        <div class="hero-actions">
+          <button class="btn btn-accent btn-block" onclick="navigate('openfund')">Open a Donor Advised Fund</button>
+          <button class="btn btn-ghost btn-block" onclick="navigate('advisor')">Talk to an Advisor</button>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- =================== IMPACT CALCULATOR =================== -->
+  <section class="view" id="view-calculator">
+    <div class="page">
+      <div class="page-head">
+        <div class="eyebrow">Your Gift, Magnified</div>
+        <h1>Impact Calculator</h1>
+        <p class="lede">See exactly how far your gift can go — and how investment growth multiplies your impact over time.</p>
+      </div>
+
+      <!-- Calculator panel -->
+      <div class="card" style="background:#0b1e14; border-color:rgba(25,185,169,0.2); padding:20px;">
+        <div style="color:#F3F1EF;">
+          <!-- Mode toggle -->
+          <div style="display:flex; gap:8px; margin-bottom:18px;">
+            <button id="calcModeOnetime" onclick="calcSetMode('onetime')" style="flex:1; padding:9px; border-radius:9px; font-family:inherit; font-size:13px; font-weight:700; cursor:pointer; border:1.5px solid rgba(255,255,255,.12); background:var(--tcf-mid-green); color:#fff;">One-Time Gift</button>
+            <button id="calcModeMonthly" onclick="calcSetMode('monthly')" style="flex:1; padding:9px; border-radius:9px; font-family:inherit; font-size:13px; font-weight:700; cursor:pointer; border:1.5px solid rgba(255,255,255,.12); background:transparent; color:rgba(255,255,255,.5);">Monthly Gift</button>
+          </div>
+
+          <!-- Impact Area -->
+          <div style="margin-bottom:18px;">
+            <div style="font-size:11px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:rgba(255,255,255,.45); margin-bottom:10px;">Impact Area</div>
+            <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:7px;" id="calcAreaGrid"></div>
+          </div>
+
+          <!-- Gift slider -->
+          <div style="margin-bottom:16px;">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+              <span style="font-size:13px; font-weight:600; color:rgba(255,255,255,.7);" id="calcGiftLabel">Gift Amount</span>
+              <span style="font-size:16px; font-weight:700; color:#19B9A9;" id="calcGiftDisplay">$500</span>
+            </div>
+            <input type="range" id="calcGiftSlider" min="25" max="10000" step="25" value="500" oninput="calcOnGift(this.value)" style="-webkit-appearance:none;appearance:none;width:100%;height:4px;border-radius:2px;background:rgba(255,255,255,.15);outline:none;cursor:pointer;">
+            <div style="display:flex; justify-content:space-between; font-size:10px; color:rgba(255,255,255,.3); margin-top:4px;"><span>$25</span><span>$10,000</span></div>
+          </div>
+
+          <!-- Years slider -->
+          <div style="margin-bottom:16px;">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+              <span style="font-size:13px; font-weight:600; color:rgba(255,255,255,.7);">Years of Growth</span>
+              <span style="font-size:16px; font-weight:700; color:#19B9A9;" id="calcYearsDisplay">10 years</span>
+            </div>
+            <input type="range" id="calcYearsSlider" min="1" max="25" step="1" value="10" oninput="calcOnYears(this.value)" style="-webkit-appearance:none;appearance:none;width:100%;height:4px;border-radius:2px;background:rgba(255,255,255,.15);outline:none;cursor:pointer;">
+            <div style="display:flex; justify-content:space-between; font-size:10px; color:rgba(255,255,255,.3); margin-top:4px;"><span>1 yr</span><span>25 yrs</span></div>
+          </div>
+
+          <!-- Rate slider -->
+          <div style="margin-bottom:6px;">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+              <span style="font-size:13px; font-weight:600; color:rgba(255,255,255,.7);">Annual Growth Rate</span>
+              <span style="font-size:16px; font-weight:700; color:#19B9A9;" id="calcRateDisplay">6%</span>
+            </div>
+            <input type="range" id="calcRateSlider" min="1" max="12" step="0.5" value="6" oninput="calcOnRate(this.value)" style="-webkit-appearance:none;appearance:none;width:100%;height:4px;border-radius:2px;background:rgba(255,255,255,.15);outline:none;cursor:pointer;">
+            <div style="display:flex; justify-content:space-between; font-size:10px; color:rgba(255,255,255,.3); margin-top:4px;"><span>1%</span><span>12%</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Results cards -->
+      <div id="calcResultCards" style="display:flex; flex-direction:column; gap:10px; margin-bottom:14px;"></div>
+
+      <!-- Chart -->
+      <div class="card" style="background:#0b1e14; border-color:rgba(25,185,169,0.2); padding:20px;">
+        <div style="font-size:13px; font-weight:700; color:rgba(255,255,255,.8); margin-bottom:14px;">Impact Growth Over Time</div>
+        <div style="position:relative; height:160px;">
+          <canvas id="mobileCalcChart" style="display:block; width:100%; height:160px;"></canvas>
+        </div>
+        <div style="display:flex; gap:16px; margin-top:10px;">
+          <div style="display:flex; align-items:center; gap:5px; font-size:11px; color:rgba(255,255,255,.45);"><div style="width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.3);flex-shrink:0;"></div>Simple total</div>
+          <div style="display:flex; align-items:center; gap:5px; font-size:11px; color:rgba(255,255,255,.45);"><div style="width:8px;height:8px;border-radius:50%;background:#19B9A9;flex-shrink:0;"></div>With investment growth</div>
+        </div>
+      </div>
+
+      <!-- Explanation -->
+      <div class="card" style="background:rgba(238,115,49,.06); border-color:rgba(238,115,49,.2);">
+        <p style="font-size:14px; color:var(--ink-soft); line-height:1.6;" id="calcExplanation"></p>
+      </div>
+
+      <button class="btn btn-accent btn-block" onclick="navigate('openfund')" style="margin-top: 4px;">Open a Fund to Make It Real →</button>
+    </div>
+  </section>
+
+  <!-- =================== VISION 2040 =================== -->
+  <section class="view" id="view-vision">
+    <div class="page" style="padding-top:12px;">
+      <div class="page-head">
+        <div class="eyebrow">Cleveland 2040</div>
+        <h1>Shape the Future</h1>
+        <p class="lede">Explore six bold visions for Cleveland's future. React to each one and discover your philanthropic identity.</p>
+      </div>
+
+      <!-- Card stage -->
+      <div style="position:relative; border-radius:20px; overflow:hidden; height:360px; margin-bottom:14px;" id="visionStage">
+        <div id="vCard" style="position:absolute; inset:0; border-radius:20px; overflow:hidden; transition:all .35s ease;">
+          <div id="vCardInner" style="height:100%; display:flex; flex-direction:column; padding:28px 24px; position:relative; overflow:hidden;"></div>
+        </div>
+      </div>
+
+      <!-- Nav -->
+      <div style="display:flex; align-items:center; justify-content:center; gap:12px; margin-bottom:12px;">
+        <button id="vPrevBtn" onclick="vGoCard(-1)" style="background:rgba(22,68,48,.08); border:1.5px solid var(--border); color:var(--ink-soft); width:40px; height:40px; border-radius:50%; font-size:18px; cursor:pointer; display:flex; align-items:center; justify-content:center;">‹</button>
+        <div id="vDotRow" style="display:flex; gap:6px;"></div>
+        <button id="vNextBtn" onclick="vGoCard(1)" style="background:rgba(22,68,48,.08); border:1.5px solid var(--border); color:var(--ink-soft); width:40px; height:40px; border-radius:50%; font-size:18px; cursor:pointer; display:flex; align-items:center; justify-content:center;">›</button>
+      </div>
+
+      <!-- Reflection -->
+      <div class="card" id="vReflection">
+        <div style="font-size:11px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--tcf-orange); margin-bottom:10px;">Your Take</div>
+        <div style="font-size:16px; font-weight:700; color:var(--tcf-primary); margin-bottom:14px; line-height:1.35;" id="vReflQ"></div>
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px;" id="vReflOpts"></div>
+        <button onclick="vSkip()" style="background:none; border:none; color:var(--ink-faint); font-family:inherit; font-size:13px; cursor:pointer; margin-top:10px; padding:4px;">Skip this one →</button>
+      </div>
+
+      <!-- Final reveal -->
+      <div class="card" id="vFinal" style="display:none; text-align:center;">
+        <div style="width:72px; height:72px; border-radius:50%; background:linear-gradient(135deg,var(--tcf-orange),var(--tcf-red)); margin:0 auto 16px; display:flex; align-items:center; justify-content:center; font-size:32px;">🌟</div>
+        <div style="font-size:11px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--tcf-orange); margin-bottom:6px;">Your Philanthropic Profile</div>
+        <h3 id="vBuilderType" style="font-size:22px; margin-bottom:8px;"></h3>
+        <p id="vBuilderDesc" style="color:var(--ink-soft); font-size:14px; line-height:1.55; margin-bottom:12px;"></p>
+        <div id="vBuilderVision" style="font-size:16px; font-weight:700; color:var(--tcf-orange); margin-bottom:20px;"></div>
+        <button class="btn btn-accent btn-block" onclick="navigate('openfund')">Channel Your Vision — Open a DAF</button>
+        <button class="btn btn-ghost btn-block" style="margin-top:8px;" onclick="vReset()">Start Over</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- =================== OPEN A DAF =================== -->
+  <section class="view" id="view-openfund">
+    <div class="page">
+      <div class="page-head">
+        <div class="eyebrow">Start Here</div>
+        <h1>Open a Donor Advised Fund</h1>
+        <p class="lede">Set up your fund in about 10 minutes. A philanthropic advisor will follow up within one business day.</p>
+      </div>
+
+      <div class="card" style="background: linear-gradient(135deg, var(--tcf-primary), #0A2D1E); color:#fff; border:none;">
+        <div style="font-size:12px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; color:#9DB3A6; margin-bottom:10px;">Why a DAF at The Cleveland Foundation?</div>
+        <div style="display:flex; flex-direction:column; gap:10px;">
+          <div style="display:flex; gap:12px; align-items:flex-start;">
+            <div style="width:28px; height:28px; border-radius:50%; background:var(--tcf-orange); display:flex; align-items:center; justify-content:center; font-size:13px; flex-shrink:0;">✓</div>
+            <div>
+              <div style="font-weight:700; font-size:14px;">Immediate tax deduction</div>
+              <div style="font-size:12.5px; color:#9DB3A6; margin-top:2px;">Deduct the full value in the year you contribute — even appreciated assets.</div>
+            </div>
+          </div>
+          <div style="display:flex; gap:12px; align-items:flex-start;">
+            <div style="width:28px; height:28px; border-radius:50%; background:var(--tcf-aqua); display:flex; align-items:center; justify-content:center; font-size:13px; flex-shrink:0; color: var(--tcf-primary);">✓</div>
+            <div>
+              <div style="font-weight:700; font-size:14px;">Your gift grows tax-free</div>
+              <div style="font-size:12.5px; color:#9DB3A6; margin-top:2px;">Invested and managed by TCF until you grant it out — at your pace.</div>
+            </div>
+          </div>
+          <div style="display:flex; gap:12px; align-items:flex-start;">
+            <div style="width:28px; height:28px; border-radius:50%; background:var(--tcf-mid-green); display:flex; align-items:center; justify-content:center; font-size:13px; flex-shrink:0;">✓</div>
+            <div>
+              <div style="font-weight:700; font-size:14px;">Grant to any cause, anytime</div>
+              <div style="font-size:12.5px; color:#9DB3A6; margin-top:2px;">Arts, education, health, environment — over 2.3M eligible nonprofits nationwide.</div>
+            </div>
+          </div>
+          <div style="display:flex; gap:12px; align-items:flex-start;">
+            <div style="width:28px; height:28px; border-radius:50%; background:var(--tcf-blue); display:flex; align-items:center; justify-content:center; font-size:13px; flex-shrink:0;">✓</div>
+            <div>
+              <div style="font-weight:700; font-size:14px;">Local expertise. Personal support.</div>
+              <div style="font-size:12.5px; color:#9DB3A6; margin-top:2px;">Access to TCF's philanthropic advisors and 110 years of community knowledge.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Process steps -->
+      <div class="card">
+        <h3 style="margin-bottom:14px;">How It Works</h3>
+        <div style="display:flex; flex-direction:column; gap:8px;">
+          <div style="padding:14px; background:var(--surface-2); border-radius:10px; font-size:13.5px; display:flex; gap:12px; align-items:flex-start;">
+            <div style="width:26px; height:26px; border-radius:50%; background:var(--tcf-orange); color:#fff; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:12px; flex-shrink:0;">1</div>
+            <div><strong>Name your fund</strong> — anything from "The [Family] Fund" to a legacy theme.</div>
+          </div>
+          <div style="padding:14px; background:var(--surface-2); border-radius:10px; font-size:13.5px; display:flex; gap:12px; align-items:flex-start;">
+            <div style="width:26px; height:26px; border-radius:50%; background:var(--tcf-orange); color:#fff; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:12px; flex-shrink:0;">2</div>
+            <div><strong>Make an initial contribution</strong> — cash, securities, or other assets ($10,000 minimum).</div>
+          </div>
+          <div style="padding:14px; background:var(--surface-2); border-radius:10px; font-size:13.5px; display:flex; gap:12px; align-items:flex-start;">
+            <div style="width:26px; height:26px; border-radius:50%; background:var(--tcf-orange); color:#fff; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:12px; flex-shrink:0;">3</div>
+            <div><strong>Your gift is invested</strong> — growing tax-free until you're ready to grant.</div>
+          </div>
+          <div style="padding:14px; background:var(--surface-2); border-radius:10px; font-size:13.5px; display:flex; gap:12px; align-items:flex-start;">
+            <div style="width:26px; height:26px; border-radius:50%; background:var(--tcf-mid-green); color:#fff; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:12px; flex-shrink:0;">4</div>
+            <div><strong>Recommend grants</strong> — anytime, to any eligible nonprofit you choose.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Expression of interest form -->
+      <div class="card">
+        <h3 style="margin-bottom:6px;">Express Your Interest</h3>
+        <p style="color:var(--ink-soft); font-size:13px; margin-bottom:16px;">Fill in your information and a TCF philanthropic advisor will reach out within one business day.</p>
+        <div class="form-row">
+          <label>Full Name</label>
+          <input type="text" placeholder="Your name"/>
+        </div>
+        <div class="form-row">
+          <label>Email</label>
+          <input type="email" placeholder="your@email.com"/>
+        </div>
+        <div class="form-row">
+          <label>Phone (optional)</label>
+          <input type="tel" placeholder="(216) 555-0000"/>
+        </div>
+        <div class="form-row">
+          <label>What matters most to you?</label>
+          <select>
+            <option>Education &amp; Youth</option>
+            <option>Arts &amp; Culture</option>
+            <option>Health &amp; Human Services</option>
+            <option>Economic Mobility</option>
+            <option>Environment</option>
+            <option>Community Development</option>
+            <option>Not sure yet — I'd like guidance</option>
+          </select>
+        </div>
+        <div class="form-row">
+          <label>Initial gift range (approx.)</label>
+          <select>
+            <option>$10,000 – $25,000</option>
+            <option>$25,000 – $100,000</option>
+            <option>$100,000 – $500,000</option>
+            <option>$500,000+</option>
+            <option>Planning from my estate or will</option>
+          </select>
+        </div>
+        <button class="btn btn-accent btn-block" onclick="showToast('Your interest has been submitted! Jordan will be in touch within 1 business day.')">Submit — We'll Be in Touch</button>
+        <p style="font-size:11px; color:var(--ink-faint); text-align:center; margin-top:10px;">This is an expression of interest, not a legal commitment. No payment is collected here.</p>
+      </div>
+
+      <!-- Legacy giving note -->
+      <div class="card" style="background:var(--surface-2); border-style:dashed;">
+        <div class="eyebrow">Thinking Longer-Term?</div>
+        <h3 style="margin-bottom:8px;">Legacy &amp; Estate Giving</h3>
+        <p style="color:var(--ink-soft); font-size:13.5px; margin-bottom:14px;">Some donors choose to leave Cleveland stronger through a bequest in their will or a beneficiary designation on a retirement account or life insurance policy. TCF can help you plan it.</p>
+        <button class="btn btn-ghost btn-block btn-sm" onclick="navigate('advisor')">Talk to Jordan About Legacy Giving</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- =================== MY FUNDS (kept for architecture completeness) =================== -->
+  <section class="view" id="view-funds">
+    <div class="page">
+      <div class="page-head">
+        <div class="eyebrow">My Funds</div>
+        <h1>Donor Advised Funds</h1>
+        <p class="lede">You advise 2 funds.</p>
+      </div>
+
+      <button class="btn btn-accent btn-block" style="margin-bottom: 18px;">+ Open New DAF</button>
+
+      <div class="fund-card" onclick="navigate('performance')">
+        <div class="label">Family DAF</div>
+        <div class="name">Mitchell Family Fund</div>
+        <div class="balance">$612,440</div>
+        <div class="delta">▲ 3.1% YTD</div>
+        <div class="meta">Established March 2018<br>Joint Advisors: Eleanor &amp; David Mitchell</div>
+      </div>
+
+      <div class="fund-card" style="background: linear-gradient(135deg, var(--tcf-mid-green), var(--tcf-primary));" onclick="navigate('performance')">
+        <div class="label">Individual DAF</div>
+        <div class="name">Eleanor's Education Initiative</div>
+        <div class="balance">$234,880</div>
+        <div class="delta">▲ 2.4% YTD</div>
+        <div class="meta">Established November 2021<br>Primary Advisor: Eleanor Mitchell</div>
+      </div>
+
+      <div class="card" style="margin-top: 18px;">
+        <h3 style="margin-bottom: 14px;">Open a New DAF</h3>
+        <p style="color: var(--ink-soft); font-size: 13.5px; margin-bottom: 14px;">A guided 5-step workflow. Triggers downstream workflows in Ren iPhi and Salesforce.</p>
+        <div style="display: flex; flex-direction: column; gap: 8px;">
+          <div style="padding:12px 14px; background:var(--surface-2); border-radius:10px; font-size:13px;">
+            <span style="font-weight:700; color: var(--tcf-orange);">1.</span> Fund details
+          </div>
+          <div style="padding:12px 14px; background:var(--surface-2); border-radius:10px; font-size:13px; display: flex; justify-content: space-between; align-items: center;">
+            <span><span style="font-weight:700; color: var(--tcf-orange);">2.</span> Advisors</span>
+            <span class="ipin ipin-integration" data-pin="salesforce-advisor">SF</span>
+          </div>
+          <div style="padding:12px 14px; background:var(--surface-2); border-radius:10px; font-size:13px;">
+            <span style="font-weight:700; color: var(--tcf-orange);">3.</span> Beneficiaries
+          </div>
+          <div style="padding:12px 14px; background:var(--surface-2); border-radius:10px; font-size:13px; display: flex; justify-content: space-between; align-items: center;">
+            <span><span style="font-weight:700; color: var(--tcf-orange);">4.</span> Legal acknowledgements</span>
+            <span class="ipin ipin-config" data-pin="legal-config">CMS</span>
+          </div>
+          <div style="padding:12px 14px; background:var(--surface-2); border-radius:10px; font-size:13px; display: flex; justify-content: space-between; align-items: center;">
+            <span><span style="font-weight:700; color: var(--tcf-orange);">5.</span> Initial gift</span>
+            <span class="ipin ipin-integration" data-pin="psp">PSP</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =================== CONTRIBUTIONS =================== -->
+  <section class="view" id="view-contributions">
+    <div class="page">
+      <div class="page-head">
+        <div class="eyebrow">Dollars In</div>
+        <h1>Contributions</h1>
+        <p class="lede">Make a gift, manage recurring, or update payment methods.</p>
+      </div>
+
+      <div class="subtabs">
+        <button class="subtab active" onclick="switchSubtab(this, 'contrib-one')">One-time</button>
+        <button class="subtab" onclick="switchSubtab(this, 'contrib-recurring')">Recurring</button>
+        <button class="subtab" onclick="switchSubtab(this, 'contrib-methods')">Methods</button>
+      </div>
+
+      <div class="card" id="contrib-one">
+        <h3 style="margin-bottom: 16px;">Make a Contribution <span class="ipin ipin-integration" data-pin="psp">PSP</span></h3>
+        <div class="form-row">
+          <label>Contribute to</label>
+          <select>
+            <option>Mitchell Family Fund — $612,440</option>
+            <option>Eleanor's Ed Initiative — $234,880</option>
+          </select>
+        </div>
+        <div class="form-row">
+          <label>Amount</label>
+          <input type="text" value="$1,000.00"/>
+          <div class="help-text">Minimum contribution: $250</div>
+        </div>
+        <div class="form-row">
+          <label>Payment Method</label>
+          <select>
+            <option>Chase Bank •••• 4471 (ACH)</option>
+            <option>Visa •••• 8821</option>
+            <option>+ Add new payment method</option>
+            <option>+ Link bank via PLAID (Phase 2)</option>
+          </select>
+        </div>
+        <button class="btn btn-accent btn-block" onclick="showToast('Contribution submitted. PSP webhook will confirm. Ren iPhi creates TransactionID.')">Contribute $1,000</button>
+        <div style="margin-top: 10px; text-align: center;">
+          <span class="ipin ipin-security" data-pin="step-up">Step-up Auth Required</span>
+        </div>
+        <div class="pwa-note" style="margin-top: 18px;">
+          Receipt email is automatic. PSP webhook → BFF → Ren iPhi mutation creates TransactionID with idempotency key.
+          <span class="ipin ipin-event" data-pin="contrib-event">Event flow</span>
+        </div>
+      </div>
+
+      <div class="card" id="contrib-recurring" style="display:none;">
+        <h3 style="margin-bottom:14px;">Recurring Contributions</h3>
+        <p style="color: var(--ink-soft); font-size: 13.5px; margin-bottom: 16px;">Schedule contributions on monthly, quarterly, or annual cadences. Manage from anywhere.</p>
+        <div class="row-list">
+          <div class="row">
+            <div class="org-mark alt-4">$</div>
+            <div class="info">
+              <div class="name">$500 / month</div>
+              <div class="meta">Mitchell Family Fund · Next: Jun 1</div>
+            </div>
+            <button class="btn btn-ghost btn-sm">Edit</button>
+          </div>
+          <div class="row">
+            <div class="org-mark alt-3">$</div>
+            <div class="info">
+              <div class="name">$2,000 / quarter</div>
+              <div class="meta">Education Initiative · Next: Jul 1</div>
+            </div>
+            <button class="btn btn-ghost btn-sm">Edit</button>
+          </div>
+        </div>
+        <button class="btn btn-primary btn-block" style="margin-top: 16px;">+ Add Recurring Gift</button>
+      </div>
+
+      <div class="card" id="contrib-methods" style="display:none;">
+        <h3 style="margin-bottom:14px;">Payment Methods <span class="ipin ipin-integration" data-pin="psp">PSP Vault</span></h3>
+        <div class="row-list">
+          <div class="row">
+            <div class="org-mark alt-4">B</div>
+            <div class="info">
+              <div class="name">Chase Bank ••••4471</div>
+              <div class="meta">ACH · Verified</div>
+            </div>
+            <span class="badge badge-posted">Default</span>
+          </div>
+          <div class="row">
+            <div class="org-mark alt-2">V</div>
+            <div class="info">
+              <div class="name">Visa ••••8821</div>
+              <div class="meta">Expires 09/27</div>
+            </div>
+            <button class="btn btn-ghost btn-sm">Edit</button>
+          </div>
+        </div>
+        <button class="btn btn-primary btn-block" style="margin-top: 16px;">+ Add Payment Method</button>
+        <div class="help-text" style="margin-top: 10px;">Cards never touch Foundation infrastructure. PSP hosts the form.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =================== GRANTS =================== -->
+  <section class="view" id="view-grants">
+    <div class="page">
+      <div class="page-head">
+        <div class="eyebrow">Dollars Out</div>
+        <h1>Grants</h1>
+        <p class="lede">Recommend grants to 501(c)(3) organizations. Add to your cart, submit as a batch.</p>
+      </div>
+
+      <button class="btn btn-accent btn-block" onclick="toggleCart()" style="margin-bottom: 16px;">View Cart (<span id="cartCountBtn">3</span>)</button>
+
+      <div class="subtabs">
+        <button class="subtab active" onclick="switchSubtab(this, 'grant-new')">Recommend</button>
+        <button class="subtab" onclick="switchSubtab(this, 'grant-history')">History</button>
+        <button class="subtab" onclick="switchSubtab(this, 'grant-favorites')">Favorites</button>
+      </div>
+
+      <div id="grant-new">
+        <div class="card">
+          <h3 style="margin-bottom: 6px;">Recommend a Grant</h3>
+          <p style="font-size: 12.5px; color: var(--ink-faint); margin-bottom: 16px;">Searches favorites → Foundation DB → Candid (2.3M nonprofits).</p>
+
+          <div class="form-row">
+            <label>Granting Fund</label>
+            <select><option>Mitchell Family Fund</option><option>Eleanor's Education Initiative</option></select>
+          </div>
+
+          <div class="form-row">
+            <label>Recipient <span class="ipin ipin-integration" data-pin="candid">Candid</span></label>
+            <input type="text" placeholder="Search by name, EIN, or city"/>
+          </div>
+
+          <div class="form-row">
+            <label>Amount</label>
+            <input type="text" value="$1,000.00"/>
+          </div>
+
+          <div style="font-family: var(--font-head); font-size: 14px; font-weight: 700; color: var(--tcf-primary); margin: 22px 0 10px; display: flex; justify-content: space-between; align-items: center;">
+            Grant Letter Info
+            <span class="ipin ipin-config" data-pin="picklist-config">Pick List</span>
+          </div>
+
+          <div class="form-row">
+            <label>Purpose</label>
+            <select>
+              <option>General Operating Support</option>
+              <option>Program-specific</option>
+              <option>Capital Campaign</option>
+              <option>Scholarship</option>
+            </select>
+          </div>
+
+          <div class="form-row">
+            <label>Recognition</label>
+            <select>
+              <option>Use my name</option>
+              <option>Anonymous</option>
+              <option>In honor of...</option>
+              <option>In memory of...</option>
+            </select>
+          </div>
+
+          <div class="form-row">
+            <label>Special Notes (optional)</label>
+            <textarea placeholder="e.g., 'For youth programming, summer 2026'"></textarea>
+          </div>
+
+          <button class="btn btn-primary btn-block" onclick="addToCart('Cleveland Public Library', 1000)">+ Add to Cart</button>
+        </div>
+
+        <div class="card">
+          <h3 style="margin-bottom: 12px;">Grant Workflow</h3>
+          <p style="font-size: 13px; color: var(--ink-soft); margin-bottom: 12px;">Every grant flows through three stages:</p>
+          <div class="status-pipeline">
+            <div class="pipeline-step entered">
+              <div class="title">1. Entered</div>
+              <div class="meta">Posted to Ren iPhi · TransactionID + DistributionID created</div>
+            </div>
+            <div class="pipeline-step approved">
+              <div class="title">2. Approved</div>
+              <div class="meta">Foundation back-office review complete</div>
+            </div>
+            <div class="pipeline-step posted">
+              <div class="title">3. Posted ✓</div>
+              <div class="meta">Funds disbursed · You're notified</div>
+            </div>
+          </div>
+          <div style="text-align: center; margin-top: 14px;">
+            <span class="ipin ipin-event" data-pin="grant-event">Event-driven status sync</span>
+          </div>
+        </div>
+      </div>
+
+      <div id="grant-history" style="display:none;">
+        <div class="card">
+          <div class="card-head">
+            <h3>Grant History</h3>
+            <span class="ipin ipin-integration" data-pin="ren-iphi-grants">Sync</span>
+          </div>
+          <div class="row-list" style="border:none;">
+            <div class="row" style="padding: 14px 0;">
+              <div class="org-mark">CO</div>
+              <div class="info">
+                <div class="name">Cleveland Orchestra</div>
+                <div class="meta">May 12 · Mitchell Family</div>
+                <div class="meta" style="font-family:'SF Mono',monospace; font-size:10.5px;">T-4429019 / D-880124</div>
+              </div>
+              <div class="end">
+                <div class="amount">$5,000</div>
+                <span class="badge badge-posted">Posted</span>
+              </div>
+            </div>
+            <div class="row" style="padding: 14px 0;">
+              <div class="org-mark alt-1">WD</div>
+              <div class="info">
+                <div class="name">WorkforceDev OH</div>
+                <div class="meta">May 8 · Education Init.</div>
+                <div class="meta" style="font-family:'SF Mono',monospace; font-size:10.5px;">T-4428991 / D-880108</div>
+              </div>
+              <div class="end">
+                <div class="amount">$2,500</div>
+                <span class="badge badge-approved">Approved</span>
+              </div>
+            </div>
+            <div class="row" style="padding: 14px 0;">
+              <div class="org-mark alt-2">FB</div>
+              <div class="info">
+                <div class="name">GC Food Bank</div>
+                <div class="meta">May 4 · Mitchell Family</div>
+                <div class="meta" style="font-family:'SF Mono',monospace; font-size:10.5px;">T-4428765 / D-880092</div>
+              </div>
+              <div class="end">
+                <div class="amount">$3,000</div>
+                <span class="badge badge-entered">Entered</span>
+              </div>
+            </div>
+            <div class="row" style="padding: 14px 0;">
+              <div class="org-mark alt-3">LC</div>
+              <div class="info">
+                <div class="name">Literary Cleveland</div>
+                <div class="meta">Apr 22 · Mitchell Family</div>
+                <div class="meta" style="font-family:'SF Mono',monospace; font-size:10.5px;">T-4427411 / D-879883</div>
+              </div>
+              <div class="end">
+                <div class="amount">$1,500</div>
+                <span class="badge badge-posted">Posted</span>
+              </div>
+            </div>
+            <div class="row" style="padding: 14px 0;">
+              <div class="org-mark alt-4">RA</div>
+              <div class="info">
+                <div class="name">Rainey Institute</div>
+                <div class="meta">Apr 15 · Education Init.</div>
+                <div class="meta" style="font-family:'SF Mono',monospace; font-size:10.5px;">T-4427228 / D-879811</div>
+              </div>
+              <div class="end">
+                <div class="amount">$2,000</div>
+                <span class="badge badge-posted">Posted</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="grant-favorites" style="display:none;">
+        <div class="card">
+          <div class="card-head">
+            <h3>Favorites</h3>
+            <span class="ipin ipin-config" data-pin="favorites-config">Portal DB</span>
+          </div>
+          <div class="row-list" style="border:none;">
+            <div class="row" style="padding: 14px 0;">
+              <div class="org-mark">CO</div>
+              <div class="info">
+                <div class="name">Cleveland Orchestra</div>
+                <div class="meta">EIN 34-0714595</div>
+              </div>
+              <button class="btn btn-ghost btn-sm" onclick="addToCart('Cleveland Orchestra')">+ Cart</button>
+            </div>
+            <div class="row" style="padding: 14px 0;">
+              <div class="org-mark alt-2">FB</div>
+              <div class="info">
+                <div class="name">GC Food Bank</div>
+                <div class="meta">EIN 34-1135448</div>
+              </div>
+              <button class="btn btn-ghost btn-sm" onclick="addToCart('Greater Cleveland Food Bank')">+ Cart</button>
+            </div>
+            <div class="row" style="padding: 14px 0;">
+              <div class="org-mark alt-3">LC</div>
+              <div class="info">
+                <div class="name">Literary Cleveland</div>
+                <div class="meta">EIN 47-2298870</div>
+              </div>
+              <button class="btn btn-ghost btn-sm" onclick="addToCart('Literary Cleveland')">+ Cart</button>
+            </div>
+            <div class="row" style="padding: 14px 0;">
+              <div class="org-mark alt-4">RA</div>
+              <div class="info">
+                <div class="name">Rainey Institute</div>
+                <div class="meta">EIN 34-1037529</div>
+              </div>
+              <button class="btn btn-ghost btn-sm" onclick="addToCart('Rainey Institute')">+ Cart</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =================== PERFORMANCE =================== -->
+  <section class="view" id="view-performance">
+    <div class="page">
+      <div class="page-head">
+        <div class="eyebrow">Investments</div>
+        <h1>Performance</h1>
+        <p class="lede">Track and trend account performance. Download statements.</p>
+      </div>
+
+      <div class="card">
+        <div class="card-head">
+          <div>
+            <h3>Mitchell Family Fund</h3>
+            <div style="font-size: 12px; color: var(--ink-faint); margin-top: 2px;">Total return, 12 months</div>
+          </div>
+          <span class="ipin ipin-integration" data-pin="ren-iphi-perf">Ren iPhi</span>
+        </div>
+
+        <div class="perf-ranges">
+          <button>1M</button>
+          <button>3M</button>
+          <button>YTD</button>
+          <button class="active">1Y</button>
+          <button>All</button>
+        </div>
+
+        <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 14px;">
+          <div>
+            <div class="stat-label">Balance</div>
+            <div class="stat-value" style="font-size:22px;">$612,440</div>
+          </div>
+          <div>
+            <div class="stat-label">12M Return</div>
+            <div class="stat-value" style="font-size:22px; color: var(--tcf-mid-green);">+8.4%</div>
+          </div>
+          <div>
+            <div class="stat-label">Contributions</div>
+            <div class="stat-value" style="font-size:18px;">$12,500</div>
+          </div>
+          <div>
+            <div class="stat-label">Grants Out</div>
+            <div class="stat-value" style="font-size:18px;">$42,500</div>
+          </div>
+        </div>
+
+        <svg class="perf-chart" viewBox="0 0 360 200" preserveAspectRatio="none">
+          <defs>
+            <linearGradient id="pgrad" x1="0" x2="0" y1="0" y2="1">
+              <stop offset="0%" stop-color="#086C43" stop-opacity="0.28"/>
+              <stop offset="100%" stop-color="#086C43" stop-opacity="0"/>
+            </linearGradient>
+          </defs>
+          <line x1="0" y1="40" x2="360" y2="40" stroke="#E5E1DA"/>
+          <line x1="0" y1="90" x2="360" y2="90" stroke="#E5E1DA"/>
+          <line x1="0" y1="140" x2="360" y2="140" stroke="#E5E1DA"/>
+          <line x1="0" y1="190" x2="360" y2="190" stroke="#E5E1DA"/>
+          <text x="4" y="36" font-size="10" fill="#8A968F">$650K</text>
+          <text x="4" y="86" font-size="10" fill="#8A968F">$600K</text>
+          <text x="4" y="136" font-size="10" fill="#8A968F">$550K</text>
+          <text x="4" y="186" font-size="10" fill="#8A968F">$500K</text>
+          <path d="M0,150 C40,145 60,135 100,120 C120,115 150,130 180,115 C200,105 220,90 260,75 C280,65 310,68 340,40 C355,28 360,30 360,28 L360,200 L0,200 Z" fill="url(#pgrad)"/>
+          <path d="M0,150 C40,145 60,135 100,120 C120,115 150,130 180,115 C200,105 220,90 260,75 C280,65 310,68 340,40 C355,28 360,30 360,28" fill="none" stroke="#086C43" stroke-width="2.5"/>
+          <text x="0" y="199" font-size="10" fill="#8A968F">Jun</text>
+          <text x="80" y="199" font-size="10" fill="#8A968F">Sep</text>
+          <text x="160" y="199" font-size="10" fill="#8A968F">Dec</text>
+          <text x="240" y="199" font-size="10" fill="#8A968F">Mar</text>
+          <text x="338" y="199" font-size="10" fill="#8A968F">May</text>
+        </svg>
+      </div>
+
+      <div class="card">
+        <div class="card-head">
+          <h3>Allocation</h3>
+          <span class="ipin ipin-integration" data-pin="ren-iphi-pool">Ren iPhi Pools</span>
+        </div>
+        <div class="alloc-row">
+          <svg width="120" height="120" viewBox="0 0 100 100" style="flex-shrink:0;">
+            <circle r="40" cx="50" cy="50" fill="none" stroke="#164430" stroke-width="20" stroke-dasharray="138 251"/>
+            <circle r="40" cx="50" cy="50" fill="none" stroke="#086C43" stroke-width="20" stroke-dasharray="63 251" stroke-dashoffset="-138"/>
+            <circle r="40" cx="50" cy="50" fill="none" stroke="#19B9A9" stroke-width="20" stroke-dasharray="38 251" stroke-dashoffset="-201"/>
+            <circle r="40" cx="50" cy="50" fill="none" stroke="#1A8DA9" stroke-width="20" stroke-dasharray="12 251" stroke-dashoffset="-239"/>
+          </svg>
+          <div class="alloc-legend">
+            <div><span class="dot" style="background:#164430;"></span>Growth · 55%</div>
+            <div><span class="dot" style="background:#086C43;"></span>Balanced · 25%</div>
+            <div><span class="dot" style="background:#19B9A9;"></span>Conservative · 15%</div>
+            <div><span class="dot" style="background:#1A8DA9;"></span>Cash · 5%</div>
+          </div>
+        </div>
+        <button class="btn btn-ghost btn-block btn-sm" style="margin-top: 14px;">Request Rebalancing <span class="ipin ipin-config" data-pin="rebalance-config" style="margin-left: 6px;">Phase 2</span></button>
+      </div>
+
+      <div class="card">
+        <div class="card-head">
+          <h3>Statements</h3>
+          <span class="ipin ipin-integration" data-pin="statements">Object Storage</span>
+        </div>
+        <div class="row-list" style="border:none;">
+          <div class="row" style="padding: 12px 0;">
+            <div class="info">
+              <div class="name">Q1 2026 Statement</div>
+              <div class="meta">Mar 31, 2026</div>
+            </div>
+            <button class="btn btn-ghost btn-sm">PDF</button>
+          </div>
+          <div class="row" style="padding: 12px 0;">
+            <div class="info">
+              <div class="name">Q4 2025 Statement</div>
+              <div class="meta">Dec 31, 2025</div>
+            </div>
+            <button class="btn btn-ghost btn-sm">PDF</button>
+          </div>
+          <div class="row" style="padding: 12px 0;">
+            <div class="info">
+              <div class="name">2025 Annual</div>
+              <div class="meta">Dec 31, 2025</div>
+            </div>
+            <button class="btn btn-ghost btn-sm">PDF</button>
+          </div>
+        </div>
+        <div class="help-text" style="margin-top: 10px;">Signed URLs with 5-min expiration.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =================== STORIES & IMPACT =================== -->
+  <section class="view" id="view-impact">
+    <div class="page">
+      <div class="page-head">
+        <div class="eyebrow">For You</div>
+        <h1>Stories &amp; Impact</h1>
+        <p class="lede">See how Cleveland Foundation grants are changing Greater Cleveland — and find the causes that call to you.</p>
+      </div>
+
+      <div class="card">
+        <div class="card-head">
+          <h3>Recent Stories</h3>
+          <span class="ipin ipin-integration" data-pin="cms">CMS</span>
+        </div>
+        <div class="story" onclick="showToast('Opening story…')" style="cursor:pointer;">
+          <div class="thumb t1"></div>
+          <div>
+            <div class="tag">Arts &amp; Culture · 5 min</div>
+            <h4>How $50K Built a Free Music Program for 200 Kids</h4>
+            <div class="excerpt">Arts Mastery is reaching neighborhoods that haven't seen sustained arts funding in a generation.</div>
+          </div>
+        </div>
+        <div class="story" onclick="showToast('Opening story…')" style="cursor:pointer;">
+          <div class="thumb t2"></div>
+          <div>
+            <div class="tag">Economic Equity · 6 min</div>
+            <h4>Cleveland's Small Business Revival on the East Side</h4>
+            <div class="excerpt">Foundation grants helped 47 entrepreneurs launch or expand — generating 180 new local jobs in 2025.</div>
+          </div>
+        </div>
+        <div class="story" onclick="showToast('Opening story…')" style="cursor:pointer;">
+          <div class="thumb t3"></div>
+          <div>
+            <div class="tag">Community Health · 4 min</div>
+            <h4>Doula Network Expands to West Side</h4>
+            <div class="excerpt">Five new community-based doulas joined the program this spring — maternal outcomes are rising.</div>
+          </div>
+        </div>
+        <div class="story" onclick="showToast('Opening story…')" style="cursor:pointer;">
+          <div class="thumb t1" style="background: linear-gradient(135deg, var(--tcf-blue), var(--tcf-aqua));"></div>
+          <div>
+            <div class="tag">Education · 7 min</div>
+            <h4>Closing the Third-Grade Reading Gap in Cleveland Schools</h4>
+            <div class="excerpt">A targeted literacy program is helping 3,200 students reach grade-level reading — ahead of schedule.</div>
+          </div>
+        </div>
+        <div class="story" onclick="showToast('Opening story…')" style="cursor:pointer;">
+          <div class="thumb t2" style="background: linear-gradient(135deg, #1a1020, #086C43);"></div>
+          <div>
+            <div class="tag">Environment · 5 min</div>
+            <h4>48 Acres of Urban Green Space Restored Along the Cuyahoga</h4>
+            <div class="excerpt">A coalition of funders — including TCF donors — transformed polluted land into community parkland.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-head">
+          <h3>Learning Tracks</h3>
+        </div>
+        <p style="font-size: 13px; color: var(--ink-soft); margin-bottom: 14px;">Explore the basics of philanthropy and what giving through a Donor Advised Fund can mean for your legacy.</p>
+        <div style="display: flex; flex-direction: column; gap: 10px;">
+          <div style="background: var(--surface-2); border-radius: 10px; padding: 14px; cursor:pointer;" onclick="showToast('Opening learning track…')">
+            <div style="font-weight: 700; color: var(--tcf-primary); font-size: 14px; margin-bottom: 4px;">What Is a Donor Advised Fund?</div>
+            <div style="font-size: 12px; color: var(--ink-faint);">4 articles · ~15 min</div>
+          </div>
+          <div style="background: var(--surface-2); border-radius: 10px; padding: 14px; cursor:pointer;" onclick="showToast('Opening learning track…')">
+            <div style="font-weight: 700; color: var(--tcf-primary); font-size: 14px; margin-bottom: 4px;">Estate Planning &amp; Legacy Giving 101</div>
+            <div style="font-size: 12px; color: var(--ink-faint);">5 articles · ~25 min</div>
+          </div>
+          <div style="background: var(--surface-2); border-radius: 10px; padding: 14px; cursor:pointer;" onclick="showToast('Opening learning track…')">
+            <div style="font-weight: 700; color: var(--tcf-primary); font-size: 14px; margin-bottom: 4px;">Tax-Smart Giving Strategies</div>
+            <div style="font-size: 12px; color: var(--ink-faint);">3 articles · ~12 min</div>
+          </div>
+          <div style="background: var(--surface-2); border-radius: 10px; padding: 14px; cursor:pointer;" onclick="showToast('Opening learning track…')">
+            <div style="font-weight: 700; color: var(--tcf-primary); font-size: 14px; margin-bottom: 4px;">Multi-Generational Giving</div>
+            <div style="font-size: 12px; color: var(--ink-faint);">7 articles · ~40 min</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CTA -->
+      <div class="card" style="border: 2px solid var(--tcf-orange); text-align:center;">
+        <div class="eyebrow">Ready to Act?</div>
+        <h3 style="margin-bottom:8px;">Turn inspiration into impact</h3>
+        <p style="color:var(--ink-soft); font-size:13.5px; margin-bottom:14px;">Open a Donor Advised Fund and start directing your giving to the stories that moved you.</p>
+        <button class="btn btn-accent btn-block" onclick="navigate('openfund')">Open a Donor Advised Fund</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- =================== ADVISOR =================== -->
+  <section class="view" id="view-advisor">
+    <div class="page">
+      <div class="page-head">
+        <div class="eyebrow">Free Consultation</div>
+        <h1>Talk to an Advisor</h1>
+      </div>
+
+      <div class="card" style="text-align: center;">
+        <div style="width: 80px; height: 80px; border-radius: 50%; background: var(--tcf-mid-green); color: #fff; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 26px; margin: 0 auto 14px;">JR</div>
+        <h3 style="font-size: 20px; margin-bottom: 4px;">Jordan Reyes</h3>
+        <div style="color: var(--ink-soft); font-size: 14px; margin-bottom: 4px;">Sr. Philanthropic Advisor</div>
+        <div style="color: var(--ink-faint); font-size: 13px; margin-bottom: 14px;">15 years with TCF</div>
+        <p style="color: var(--ink-soft); font-size: 13.5px; margin-bottom: 16px; text-align: left;">Jordan works with individuals and families who are beginning — or deepening — their relationship with philanthropy. Whether you're thinking about a Donor Advised Fund, a legacy gift, or simply giving more strategically, Jordan's conversations are exploratory, pressure-free, and completely confidential.</p>
+        <div style="display:flex; flex-direction: column; gap: 8px;">
+          <button class="btn btn-primary btn-block" onclick="showToast('Message sent! Jordan will reply within 1 business day.')">Send a Message</button>
+          <button class="btn btn-ghost btn-block" onclick="showToast('Opening calendar link…')">Schedule a Free Call</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3 style="margin-bottom:14px;">What to Expect</h3>
+        <div style="display:flex; flex-direction:column; gap:12px;">
+          <div style="display:flex; gap:12px; align-items:flex-start;">
+            <div style="width:32px; height:32px; border-radius:50%; background:rgba(238,115,49,.12); color:var(--tcf-orange); display:flex; align-items:center; justify-content:center; font-weight:700; font-size:14px; flex-shrink:0;">30</div>
+            <div>
+              <div style="font-weight:600; font-size:14px; color:var(--tcf-primary);">A 30-minute conversation</div>
+              <div style="font-size:13px; color:var(--ink-faint);">No paperwork. No pressure. Just an honest conversation about your giving goals.</div>
+            </div>
+          </div>
+          <div style="display:flex; gap:12px; align-items:flex-start;">
+            <div style="width:32px; height:32px; border-radius:50%; background:rgba(8,108,67,.1); color:var(--tcf-mid-green); display:flex; align-items:center; justify-content:center; font-weight:700; font-size:14px; flex-shrink:0;">🎯</div>
+            <div>
+              <div style="font-weight:600; font-size:14px; color:var(--tcf-primary);">Tailored to where you are</div>
+              <div style="font-size:13px; color:var(--ink-faint);">Exploring? Already decided? Just inherited something? There's no wrong starting point.</div>
+            </div>
+          </div>
+          <div style="display:flex; gap:12px; align-items:flex-start;">
+            <div style="width:32px; height:32px; border-radius:50%; background:rgba(26,141,169,.1); color:var(--tcf-blue); display:flex; align-items:center; justify-content:center; font-weight:700; font-size:14px; flex-shrink:0;">🔒</div>
+            <div>
+              <div style="font-weight:600; font-size:14px; color:var(--tcf-primary);">Completely confidential</div>
+              <div style="font-size:13px; color:var(--ink-faint);">Your financial information and intentions stay private.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3 style="margin-bottom: 14px;">Send a Message</h3>
+        <div class="form-row">
+          <label>Your Name</label>
+          <input type="text" placeholder="Jamie Sullivan"/>
+        </div>
+        <div class="form-row">
+          <label>Email</label>
+          <input type="email" placeholder="your@email.com"/>
+        </div>
+        <div class="form-row">
+          <label>What's on your mind?</label>
+          <textarea placeholder="e.g., 'I'm thinking about opening a fund. Not sure where to start.'" style="height:100px;"></textarea>
+        </div>
+        <button class="btn btn-primary btn-block" onclick="showToast('Message sent to Jordan! Expect a reply within 1 business day.')">Send to Jordan</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- =================== FAMILY =================== -->
+  <section class="view" id="view-family">
+    <div class="page">
+      <div class="page-head">
+        <div class="eyebrow">Multi-User Access</div>
+        <h1>Family Access</h1>
+        <p class="lede">Invite family or joint advisors with scoped permissions.</p>
+      </div>
+
+      <button class="btn btn-accent btn-block" style="margin-bottom: 16px;">+ Invite Someone</button>
+
+      <div class="card">
+        <div class="card-head">
+          <h3>People with Access</h3>
+          <span class="ipin ipin-security" data-pin="rbac">RBAC</span>
+        </div>
+        <div class="row-list" style="border: none;">
+          <div class="row" style="padding: 14px 0;">
+            <div class="org-mark">EM</div>
+            <div class="info">
+              <div class="name">Eleanor Mitchell <span style="color: var(--ink-faint); font-weight: 400;">(you)</span></div>
+              <div class="meta">MFA Enrolled</div>
+            </div>
+            <span class="badge badge-posted">Primary</span>
+          </div>
+          <div class="row" style="padding: 14px 0;">
+            <div class="org-mark alt-3">DM</div>
+            <div class="info">
+              <div class="name">David Mitchell</div>
+              <div class="meta">MFA Enrolled · Joint Advisor</div>
+            </div>
+            <button class="btn btn-ghost btn-sm">Manage</button>
+          </div>
+          <div class="row" style="padding: 14px 0;">
+            <div class="org-mark alt-1">SM</div>
+            <div class="info">
+              <div class="name">Sarah Mitchell-Chen</div>
+              <div class="meta">View &amp; Recommend</div>
+            </div>
+            <button class="btn btn-ghost btn-sm">Manage</button>
+          </div>
+          <div class="row" style="padding: 14px 0;">
+            <div class="org-mark alt-2">MM</div>
+            <div class="info">
+              <div class="name">Marcus Mitchell</div>
+              <div class="meta">Pending acceptance</div>
+            </div>
+            <span class="badge badge-pending">Sent</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3 style="margin-bottom: 14px;">Invitation Workflow</h3>
+        <ol style="padding-left: 20px; color: var(--ink-soft); font-size: 13.5px; line-height: 1.8;">
+          <li>Primary advisor invites with email, role, and capability level</li>
+          <li>Time-bound invite link emailed <span class="ipin ipin-integration" data-pin="email" style="margin-left: 4px;">Email</span></li>
+          <li>Invitee verifies identity, enrolls in MFA <span class="ipin ipin-security" data-pin="mfa" style="margin-left: 4px;">MFA</span></li>
+          <li>Scoped access granted, audit logged <span class="ipin ipin-config" data-pin="audit" style="margin-left: 4px;">Audit</span></li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <!-- =================== SETTINGS =================== -->
+  <section class="view" id="view-settings">
+    <div class="page">
+      <div class="page-head">
+        <div class="eyebrow">Account</div>
+        <h1>Settings &amp; Security</h1>
+      </div>
+
+      <div class="card">
+        <div class="card-head">
+          <h3>Profile</h3>
+          <span class="ipin ipin-integration" data-pin="salesforce-sync">SF Sync</span>
+        </div>
+        <div class="form-row">
+          <label>Full Name</label>
+          <input type="text" value="Eleanor Mitchell"/>
+        </div>
+        <div class="form-row">
+          <label>Email</label>
+          <input type="email" value="eleanor.m@example.com"/>
+          <div style="margin-top: 6px;"><span class="ipin ipin-security" data-pin="step-up">Step-up to change</span></div>
+        </div>
+        <div class="form-row">
+          <label>Phone</label>
+          <input type="tel" value="(216) 555-0142"/>
+        </div>
+        <div class="form-row">
+          <label>PartyID</label>
+          <input type="text" value="P-2849156" readonly style="background:var(--surface-2);"/>
+          <div class="help-text">Reconciliation key linking SF ↔ Ren iPhi.</div>
+          <div style="margin-top: 6px;"><span class="ipin ipin-config" data-pin="partyid">Reconciliation</span></div>
+        </div>
+        <button class="btn btn-primary btn-block" onclick="showToast('Profile updated. Syncing to Salesforce…')">Save</button>
+      </div>
+
+      <div class="card">
+        <h3 style="margin-bottom: 14px;">Security</h3>
+        <div style="padding: 12px 14px; background: var(--surface-2); border-radius: 10px; margin-bottom: 14px;">
+          <div style="font-weight: 700; color: var(--tcf-mid-green); font-size: 14px;">✓ Multi-Factor Auth Enabled</div>
+          <div style="font-size: 12.5px; color: var(--ink-faint); margin-top: 2px;">TOTP (Microsoft Authenticator)</div>
+        </div>
+        <div style="display:flex; gap:8px; margin-bottom: 18px;">
+          <button class="btn btn-ghost btn-sm" style="flex:1;">Add Method</button>
+          <button class="btn btn-ghost btn-sm" style="flex:1;">Recovery Codes</button>
+        </div>
+        <h4 style="font-family: var(--font-head); color: var(--tcf-primary); font-size: 14px; margin-bottom: 10px;">Recent Sign-Ins</h4>
+        <div style="font-size: 12.5px; line-height: 1.8; color: var(--ink-soft);">
+          <div>📍 May 28, 11:42 AM · Cleveland <span style="color:var(--tcf-mid-green); font-weight: 600;">(current)</span></div>
+          <div>📍 May 27, 8:15 PM · Cleveland</div>
+          <div>📍 May 26, 9:30 AM · Cleveland</div>
+        </div>
+        <div style="text-align: center; margin-top: 14px;">
+          <span class="ipin ipin-config" data-pin="audit">Audit Log</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-head">
+          <h3>Communication Preferences</h3>
+          <span class="ipin ipin-integration" data-pin="salesforce-sync">SF</span>
+        </div>
+        <div style="display:flex; flex-direction:column; gap: 14px;">
+          <label style="display:flex; align-items:center; gap:12px; font-size: 14px;">
+            <input type="checkbox" checked style="width: 18px; height: 18px;"/> Email when grant goes <b>Posted</b>
+          </label>
+          <label style="display:flex; align-items:center; gap:12px; font-size: 14px;">
+            <input type="checkbox" checked style="width: 18px; height: 18px;"/> Email contribution receipts
+          </label>
+          <label style="display:flex; align-items:center; gap:12px; font-size: 14px;">
+            <input type="checkbox" style="width: 18px; height: 18px;"/> Push notifications (PWA)
+          </label>
+          <label style="display:flex; align-items:center; gap:12px; font-size: 14px;">
+            <input type="checkbox" checked style="width: 18px; height: 18px;"/> Monthly stories
+          </label>
+        </div>
+        <div class="help-text" style="margin-top: 14px;">Syncs to Salesforce within 5 min.</div>
+      </div>
+
+      <div class="card">
+        <h3 style="margin-bottom: 14px;">Connected Accounts</h3>
+        <div class="row-list" style="border: none;">
+          <div class="row" style="padding: 12px 0;">
+            <div style="width:40px; height:40px; border-radius:10px; background:#0072CE; color:#fff; display:flex; align-items:center; justify-content:center; font-weight:700; flex-shrink: 0;">P</div>
+            <div class="info">
+              <div class="name">PLAID Bank Linking</div>
+              <div class="meta">Phase 2 — Coming Soon</div>
+            </div>
+            <span class="ipin ipin-integration" data-pin="plaid">PLAID</span>
+          </div>
+          <div class="row" style="padding: 12px 0;">
+            <div style="width:40px; height:40px; border-radius:10px; background:#5096F7; color:#fff; display:flex; align-items:center; justify-content:center; font-weight:700; flex-shrink: 0;">E</div>
+            <div class="info">
+              <div class="name">Envestnet / Orion</div>
+              <div class="meta">Phase 3 — Wealth Platform</div>
+            </div>
+            <span class="ipin ipin-integration" data-pin="wealth">Wealth</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =================== ARCHITECTURE =================== -->
+  <section class="view" id="view-architecture">
+    <div class="page">
+      <div class="page-head">
+        <div class="eyebrow">For Developers</div>
+        <h1>Architecture Map</h1>
+        <p class="lede">Six-layer cloud-native system. Tap any pin throughout the app to dig in.</p>
+      </div>
+
+      <div class="card">
+        <h3 style="margin-bottom: 12px;">Layered Architecture</h3>
+
+        <div style="font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-faint); margin: 14px 0 6px;">Edge Layer</div>
+        <div style="background: #F5EFE8; border-left: 4px solid var(--tcf-light-orange); padding: 10px 12px; border-radius: 6px; margin-bottom: 10px;">
+          <div style="font-family: var(--font-head); font-weight: 700; color: var(--tcf-primary); font-size: 14px;">CDN + WAF + Bot Mgmt</div>
+          <div style="font-size: 12px; color: var(--ink-faint);">TLS, DDoS, OWASP CRS, GraphQL rules</div>
+        </div>
+
+        <div style="font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-faint); margin: 14px 0 6px;">Presentation (PWA)</div>
+        <div style="background: #E0EAE5; border-left: 4px solid #BFD3CA; padding: 10px 12px; border-radius: 6px; margin-bottom: 10px;">
+          <div style="font-family: var(--font-head); font-weight: 700; color: var(--tcf-primary); font-size: 14px;">React + Next.js + Service Worker</div>
+          <div style="font-size: 12px; color: var(--ink-faint);">Mobile-first, offline shell, push</div>
+        </div>
+
+        <div style="font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-faint); margin: 14px 0 6px;">Backend-for-Frontend</div>
+        <div style="background: #FDEDE2; border-left: 4px solid #F8D6BD; padding: 10px 12px; border-radius: 6px; margin-bottom: 10px;">
+          <div style="font-family: var(--font-head); font-weight: 700; color: var(--tcf-primary); font-size: 14px;">Node.js GraphQL Server</div>
+          <div style="font-size: 12px; color: var(--ink-faint);">Donor-curated schema, authz, DataLoader</div>
+        </div>
+
+        <div style="font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-faint); margin: 14px 0 6px;">Integrations</div>
+        <div style="background: #DCEEF1; border-left: 4px solid #B5DAE0; padding: 10px 12px; border-radius: 6px; margin-bottom: 10px;">
+          <div style="font-family: var(--font-head); font-weight: 700; color: var(--tcf-primary); font-size: 14px;">Ren iPhi · Salesforce · Candid · PSP</div>
+          <div style="font-size: 12px; color: var(--ink-faint);">Circuit breakers · Idempotent writes</div>
+        </div>
+
+        <div style="font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-faint); margin: 14px 0 6px;">Workflow &amp; Eventing</div>
+        <div style="background: #E7F6F4; border-left: 4px solid #B5E2DC; padding: 10px 12px; border-radius: 6px; margin-bottom: 10px;">
+          <div style="font-family: var(--font-head); font-weight: 700; color: var(--tcf-primary); font-size: 14px;">Event Bus · Durable Workflow · Notifier</div>
+          <div style="font-size: 12px; color: var(--ink-faint);">Grant batch, settlement, sync</div>
+        </div>
+
+        <div style="font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-faint); margin: 14px 0 6px;">Data &amp; Cache</div>
+        <div style="background: #FBE0E8; border-left: 4px solid #F2C2D0; padding: 10px 12px; border-radius: 6px;">
+          <div style="font-family: var(--font-head); font-weight: 700; color: var(--tcf-primary); font-size: 14px;">Redis · Postgres · Object · CMS</div>
+          <div style="font-size: 12px; color: var(--ink-faint);">Sessions, intents, statements, content</div>
+        </div>
+      </div>
+
+      <div class="section-title">Integration &amp; Config Inventory</div>
+
+      <div class="card">
+        <div class="inv-row">
+          <span class="ipin ipin-integration">Integration</span>
+          <div class="name">Ren iPhi (ERP)<small>Balances, grants, T-ID/D-ID</small></div>
+        </div>
+        <div class="inv-row">
+          <span class="ipin ipin-integration">Integration</span>
+          <div class="name">Salesforce (CRM)<small>Advisor, prefs, profile sync</small></div>
+        </div>
+        <div class="inv-row">
+          <span class="ipin ipin-integration">Integration</span>
+          <div class="name">Candid<small>501(c)(3) directory</small></div>
+        </div>
+        <div class="inv-row">
+          <span class="ipin ipin-integration">Integration</span>
+          <div class="name">PSP (Hosted)<small>Card / ACH · No PAN on infra</small></div>
+        </div>
+        <div class="inv-row">
+          <span class="ipin ipin-setup">Setup</span>
+          <div class="name">Identity Provider<small>Entra External ID + MFA</small></div>
+        </div>
+        <div class="inv-row">
+          <span class="ipin ipin-integration">Integration</span>
+          <div class="name">Headless CMS<small>Stories, learning, legal</small></div>
+        </div>
+        <div class="inv-row">
+          <span class="ipin ipin-integration">Integration</span>
+          <div class="name">Email/SMS<small>Receipts, Posted, invites</small></div>
+        </div>
+        <div class="inv-row">
+          <span class="ipin ipin-integration">Integration</span>
+          <div class="name">PLAID (Phase 2)<small>Bank linking, round-ups</small></div>
+        </div>
+        <div class="inv-row">
+          <span class="ipin ipin-config">Config</span>
+          <div class="name">Grant Letter Pick List<small>Admin-managed, versioned</small></div>
+        </div>
+        <div class="inv-row">
+          <span class="ipin ipin-config">Config</span>
+          <div class="name">Home Widget Contract<small>IDs, sizes, default order</small></div>
+        </div>
+        <div class="inv-row">
+          <span class="ipin ipin-config">Config</span>
+          <div class="name">Audit Log<small>7-yr retention · Immutable</small></div>
+        </div>
+        <div class="inv-row">
+          <span class="ipin ipin-security">Security</span>
+          <div class="name">MFA Policy<small>TOTP primary · Step-up rules</small></div>
+        </div>
+        <div class="inv-row">
+          <span class="ipin ipin-security">Security</span>
+          <div class="name">RBAC<small>6 roles · Fund-scoped</small></div>
+        </div>
+        <div class="inv-row">
+          <span class="ipin ipin-event">Event</span>
+          <div class="name">GrantBatchSubmitted<small>Cart → workflow → Ren iPhi</small></div>
+        </div>
+        <div class="inv-row">
+          <span class="ipin ipin-event">Event</span>
+          <div class="name">GrantPosted<small>Webhook → notification</small></div>
+        </div>
+        <div class="inv-row">
+          <span class="ipin ipin-event">Event</span>
+          <div class="name">ContributionSettled<small>PSP webhook → T-ID</small></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ============================================================
+     BOTTOM NAV (5 tiles, static)
+     ============================================================ -->
+<nav class="bottomnav">
+  <button class="bnav-item active" data-view="home">
+    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12l9-9 9 9M5 10v10h14V10"/></svg>
+    Home
+  </button>
+  <button class="bnav-item" data-view="impact">
+    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-4.5-7-10a7 7 0 0114 0c0 5.5-7 10-7 10z"/><circle cx="12" cy="11" r="2"/></svg>
+    Stories
+  </button>
+  <button class="bnav-item" data-view="calculator">
+    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="10" x2="16" y2="10"/><line x1="8" y1="14" x2="12" y2="14"/></svg>
+    Calculator
+  </button>
+  <button class="bnav-item" data-view="vision">
+    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 010 20"/></svg>
+    2040
+  </button>
+  <button class="bnav-item" data-view="openfund">
+    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
+    Open DAF
+  </button>
+</nav>
+
+<!-- ============================================================
+     CART DRAWER (bottom sheet)
+     ============================================================ -->
+<div class="cart-drawer" id="cartDrawer">
+  <div class="cart-handle"></div>
+  <div class="cart-head">
+    <div>
+      <h3>Grant Cart</h3>
+      <div class="sub">One batch · One receipt</div>
+    </div>
+    <button class="icon-btn" onclick="toggleCart()" aria-label="Close">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6l-12 12"/></svg>
+    </button>
+  </div>
+  <div class="cart-body" id="cartBody"></div>
+  <div class="cart-foot">
+    <div class="cart-total"><span>Total</span><span id="cartTotal">$8,500</span></div>
+    <button class="btn btn-accent btn-block" onclick="submitCart()">Submit Cart</button>
+    <div style="margin-top: 10px; font-size: 11px; color: var(--ink-faint); text-align: center;">
+      Fires <span class="ipin ipin-event" data-pin="grant-event">GrantBatchSubmitted</span> · Creates T-ID + D-ID per grant
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================
+     PIN TOGGLE & MODAL
+     ============================================================ -->
+<button class="pin-toggle" id="pinToggle" onclick="togglePins()">
+  <div class="swatch">
+    <span style="background:#EE7331;"></span>
+    <span style="background:#086C43;"></span>
+    <span style="background:#1A8DA9;"></span>
+    <span style="background:#CC1E4B;"></span>
+  </div>
+  Pins ON
+</button>
+
+<div class="modal-backdrop" id="modal" onclick="if(event.target===this) closeModal()">
+  <div class="modal">
+    <div class="modal-handle"></div>
+    <div class="modal-head">
+      <div class="kind" id="modalKind">Integration</div>
+      <h3 id="modalTitle">Title</h3>
+      <button class="modal-close" onclick="closeModal()" aria-label="Close">✕</button>
+    </div>
+    <div class="modal-body" id="modalBody"></div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+/* ============================================================
+   Integration / Config / Setup details (same as desktop)
+   ============================================================ */
+const PIN_DETAILS = {
+  'idp': {
+    kind: 'Setup',
+    title: 'Identity Provider (IdP)',
+    body: `<p>Authentication is delegated to a dedicated Identity Provider, separate from Ren iPhi and Salesforce.</p>
+      <div class="label">Working Assumption</div>
+      <p>Microsoft Entra External ID, aligned with Foundation's Microsoft ecosystem. Auth0 is a viable alternative.</p>
+      <div class="label">Protocols</div>
+      <p>OIDC with PKCE for the PWA. SAML available where needed.</p>
+      <div class="label">Setup Required</div>
+      <p>Provision tenant; configure password &amp; lockout policies; enroll MFA methods; design step-up policies; build self-service registration, password reset, and account recovery flows.</p>
+      <pre>// OIDC client config
+client_id: portal-pwa
+scope: openid profile email offline_access
+response_type: code
+code_challenge_method: S256
+mfa_required: true</pre>`
+  },
+  'ren-iphi-balance': {
+    kind: 'Integration',
+    title: 'Ren iPhi — Balance &amp; Performance',
+    body: `<p>Ren iPhi is the system of record for all fund financial data. The BFF reads via GraphQL and caches aggressively.</p>
+      <div class="label">Operation</div>
+      <p><code>query fundBalance($partyId: ID!, $fundId: ID!)</code></p>
+      <div class="label">Caching</div>
+      <p>Short TTL for balances (≤5 min). Long TTL for reference data (≥1 hour). Invalidate on <code>ContributionSettled</code> or <code>GrantPosted</code>.</p>
+      <div class="label">Resilience</div>
+      <p>Circuit breaker; on sustained failure, the portal degrades to last-known balance with an "as of" timestamp.</p>`
+  },
+  'ren-iphi-grants': {
+    kind: 'Integration',
+    title: 'Ren iPhi — Grant Status Sync',
+    body: `<p>The portal mirrors grant records from Ren iPhi through Entered → Approved → Posted.</p>
+      <div class="label">Webhook (preferred)</div>
+      <p>Ren iPhi pushes status-change events. If unavailable, fall back to a 5-min poll.</p>
+      <div class="label">Events</div>
+      <p>Transitions emit <code>GrantEntered</code>, <code>GrantApproved</code>, <code>GrantPosted</code> events consumed by the notification service.</p>`
+  },
+  'ren-iphi-perf': {
+    kind: 'Integration',
+    title: 'Ren iPhi — Performance Trending',
+    body: `<p>Historical performance time series for each fund.</p>
+      <div class="label">Operation</div>
+      <p><code>query performanceHistory($fundId: ID!, $range: DateRange!)</code></p>
+      <div class="label">Caching</div>
+      <p>Historical data caches for 6 hours; only the most recent data point invalidates frequently.</p>`
+  },
+  'ren-iphi-pool': {
+    kind: 'Integration',
+    title: 'Ren iPhi — Investment Pools',
+    body: `<p>Pool definitions and per-fund allocations.</p>
+      <div class="label">Phase 1</div>
+      <p>Read-only display of current allocation.</p>
+      <div class="label">Phase 2</div>
+      <p>Per-gift pool selection (FR-C-07) and rebalance requests (FR-I-03 — internal workflow, not direct trading).</p>`
+  },
+  'salesforce-advisor': {
+    kind: 'Integration',
+    title: 'Salesforce — Advisor Info',
+    body: `<p>Salesforce holds advisor assignments and relationship history.</p>
+      <div class="label">Query</div>
+      <p><code>SELECT Advisor__c, Advisor.Name FROM Contact WHERE PartyID__c = :partyId</code></p>
+      <div class="label">Activities</div>
+      <p>"Send Message" and "Schedule Call" create Salesforce Activities.</p>`
+  },
+  'salesforce-sync': {
+    kind: 'Integration',
+    title: 'Salesforce — Bidirectional Sync',
+    body: `<p>Profile and preferences sync between portal and CRM.</p>
+      <div class="label">Pattern</div>
+      <p>Portal → SF via event bus (<code>ProfileUpdated</code>). SF → Portal via Platform Events / CDC.</p>
+      <div class="label">Conflict Resolution</div>
+      <p>Profile fields owned by Salesforce. Fund fields owned by Ren iPhi.</p>
+      <div class="label">SLA</div>
+      <p>Changes reflect within 5 minutes (FR-P-04).</p>`
+  },
+  'candid': {
+    kind: 'Integration',
+    title: 'Candid — 501(c)(3) Universe',
+    body: `<p>Candid is the source of truth for the U.S. 501(c)(3) directory (~2.3M orgs).</p>
+      <div class="label">Search Order</div>
+      <p>1. Favorites → 2. Foundation database → 3. Candid universe</p>
+      <div class="label">Open Question</div>
+      <p>Confirm API tier and rate limits during procurement — affects search experience &amp; cost.</p>`
+  },
+  'psp': {
+    kind: 'Integration',
+    title: 'Payment Service Provider',
+    body: `<p>All card/ACH processing by a PCI-DSS Level 1 PSP. Foundation infrastructure never touches PAN.</p>
+      <div class="label">Pattern</div>
+      <p>PSP-hosted iframe fields. PSP returns tokenized references the portal stores.</p>
+      <div class="label">Confirmation</div>
+      <p>PSP webhook → BFF. Signature verified, idempotency key enforced.</p>
+      <div class="label">PCI Scope</div>
+      <p>SAQ-A or SAQ-A-EP. Any deviation requires CISO sign-off.</p>`
+  },
+  'plaid': {
+    kind: 'Integration',
+    title: 'PLAID (Phase 2)',
+    body: `<p>Bank linking for direct funding, integrated view, and transaction round-ups.</p>
+      <div class="label">Risk</div>
+      <p>Legal review of PLAID consumer-data privacy posture required before Phase 2 commit.</p>`
+  },
+  'wealth': {
+    kind: 'Integration',
+    title: 'Envestnet / Orion (Phase 3)',
+    body: `<p>Aggregation with major wealth-management platforms.</p>
+      <div class="label">Phase</div>
+      <p>Out of scope for initial release; architecture accommodates as additive module.</p>`
+  },
+  'cms': {
+    kind: 'Integration',
+    title: 'Headless CMS',
+    body: `<p>Manages stories, news, learning tracks, legal documents.</p>
+      <div class="label">Candidates</div>
+      <p>Contentful, Sanity, or Strapi.</p>
+      <div class="label">Targeting</div>
+      <p>Items tagged with Impact Agenda attributes (Arts &amp; Culture, Workforce Dev, etc.) and Account Type filters. BFF personalizes per profile.</p>
+      <div class="label">Cache</div>
+      <p>Webhook-driven cache warming on publish.</p>`
+  },
+  'email': {
+    kind: 'Integration',
+    title: 'Transactional Email / SMS',
+    body: `<p>Sends contribution receipts, batch grant receipts, Posted notifications, family invitations, tax letters.</p>
+      <div class="label">Critical Templates</div>
+      <p>Batch grant receipt (one per cart submission), Posted notification, family-access invite link.</p>`
+  },
+  'statements': {
+    kind: 'Integration',
+    title: 'Statement PDF Delivery',
+    body: `<p>Statements generated by Ren iPhi, stored in object storage.</p>
+      <div class="label">Delivery</div>
+      <p>BFF returns a signed URL with 5-min expiration. PWA downloads directly — no PDF proxying.</p>
+      <div class="label">Encryption</div>
+      <p>At rest with customer-managed keys (CMK).</p>`
+  },
+  'home-layout': {
+    kind: 'Config',
+    title: 'Customizable Home — Widget Contract',
+    body: `<p>Per FR-E-04, donors reorder and hide home modules. Requires a stable widget contract.</p>
+      <div class="label">Contract</div>
+      <p>Each widget declares: ID, name, default size, required vs. optional, data source, rendering component.</p>
+      <pre>{ "widgets": [
+    { "id": "hero", "visible": true, "order": 1 },
+    { "id": "balance", "visible": true, "order": 2 },
+    ...
+]}</pre>`
+  },
+  'picklist-config': {
+    kind: 'Config',
+    title: 'Grant Letter Pick List',
+    body: `<p>FR-G-02 — Configurable, structured pick list maintained by Foundation admins.</p>
+      <div class="label">Fields</div>
+      <p>Purpose, Recognition, Restrictions/Notes. Additional fields added by admins without engineering deploys.</p>
+      <div class="label">Versioning</div>
+      <p>Versioned. Historic grants retain the version active at submission time.</p>`
+  },
+  'favorites-config': {
+    kind: 'Config',
+    title: 'Favorites &amp; Recent Grants',
+    body: `<p>Portal-owned state (not Ren iPhi).</p>
+      <div class="label">Storage</div>
+      <p>Postgres <code>Favorite</code> table keyed on (user_id, recipient_external_id, recipient_source).</p>
+      <div class="label">Sources</div>
+      <p>Foundation database or Candid. The portal carries source for consistent re-lookups.</p>`
+  },
+  'pwa-setup': {
+    kind: 'Setup',
+    title: 'PWA — Manifest, SW &amp; Push',
+    body: `<p>The PWA satisfies FR §7.1 — mobile-first, installable, offline, push-enabled.</p>
+      <div class="label">Manifest</div>
+      <p><code>/manifest.webmanifest</code> declares name, icons, theme color, display mode (standalone).</p>
+      <div class="label">Service Worker</div>
+      <p>Workbox-based. Stale-while-revalidate for shell, cache-first for static, network-first for live data.</p>
+      <div class="label">Offline</div>
+      <p>Read-only access to last-loaded balances, recent grants, and learning content. Cart persists offline.</p>
+      <div class="label">Constraint</div>
+      <p>iOS Safari push has limitations. Must degrade gracefully to email.</p>`
+  },
+  'rebalance-config': {
+    kind: 'Config',
+    title: 'Rebalance Request (Phase 2)',
+    body: `<p>FR-I-03 — Phase 2.</p>
+      <p>Rebalance is a <strong>request</strong>, not direct trading. Triggers an internal workflow creating a Ren iPhi task for investment ops.</p>
+      <div class="label">Event</div>
+      <p><code>RebalanceRequested</code> → workflow → Ren iPhi mutation → donor sees status.</p>`
+  },
+  'partyid': {
+    kind: 'Setup',
+    title: 'PartyID — Reconciliation Key',
+    body: `<p>PartyID ties Salesforce contacts to Ren iPhi donor records.</p>
+      <div class="label">Risk (§12)</div>
+      <p>SF ↔ Ren iPhi PartyID reconciliation gaps are a known data-integrity risk. Pre-launch reconciliation project required.</p>
+      <div class="label">Public Registrants</div>
+      <p>Users without a DAF are provisioned in Salesforce only. PartyID applies once a DAF is opened.</p>`
+  },
+  'mfa': {
+    kind: 'Security',
+    title: 'Multi-Factor Authentication',
+    body: `<p>MFA is mandatory for all donor accounts (FR-P-01).</p>
+      <div class="label">Primary</div>
+      <p>TOTP via authenticator app or push.</p>
+      <div class="label">Fallback</div>
+      <p>SMS — only with risk-based step-up. Not default.</p>
+      <div class="label">Step-Up Triggers</div>
+      <p>Large contributions, cart submissions above threshold, payment changes, email changes, invitations.</p>`
+  },
+  'step-up': {
+    kind: 'Security',
+    title: 'Step-Up Authentication',
+    body: `<p>High-value operations require fresh MFA regardless of session age.</p>
+      <div class="label">Triggered By</div>
+      <p>Contributions or cart submissions above configurable threshold, payment method changes, email change, family invitation.</p>
+      <div class="label">UX</div>
+      <p>Modal interrupt with MFA prompt. On success, original operation completes. On cancel, aborted with no partial state.</p>`
+  },
+  'rbac': {
+    kind: 'Security',
+    title: 'Role-Based Access Control',
+    body: `<p>Per FR-P-06 and §8.3, multi-user access is a first-class concern.</p>
+      <div class="label">Roles</div>
+      <p>Primary Advisor · Joint Advisor · Successor/Family Invitee · Public Registrant · Philanthropic Advisor (staff) · Administrator</p>
+      <div class="label">Invitee Capability</div>
+      <p>View-only · View-and-recommend · Full advisory</p>
+      <div class="label">Enforcement</div>
+      <p>Every BFF resolver scoped at the fund level. <code>UserFundRole</code> tracks the grant.</p>`
+  },
+  'audit': {
+    kind: 'Config',
+    title: 'Audit Log',
+    body: `<p>Every user action logged: timestamp, actor (and impersonator, if staff), IP, user-agent, fund context, outcome.</p>
+      <div class="label">Retention</div>
+      <p>Seven years (§6.5).</p>
+      <div class="label">Surface</div>
+      <p>Donor sees recent sign-ins and activity. Foundation ops has full query access. Staff impersonations are surfaced to the donor.</p>`
+  },
+  'legal-config': {
+    kind: 'Config',
+    title: 'Legal Acknowledgements',
+    body: `<p>New-DAF workflow requires acknowledgement of fund terms, governance, tax implications.</p>
+      <div class="label">Storage</div>
+      <p>Versioned legal docs in CMS. Acknowledged version, timestamp, IP captured in audit log.</p>`
+  },
+  'learning-config': {
+    kind: 'Config',
+    title: 'Learning &amp; Engagement (Phase 2)',
+    body: `<p>FR-E-05, FR-E-06, FR-E-07.</p>
+      <p>Self-paced learning tracks, voting challenges, vision cards, quizzes, contests, social sharing, talent marketplace, and gamification (12 badges) authored in CMS and surfaced based on profile.</p>
+      <div class="label">Open Question (§12)</div>
+      <p>Gamification appropriateness for charitable giving requires donor advisory group user research before build.</p>`
+  },
+  'contrib-event': {
+    kind: 'Event',
+    title: 'Contribution Event Flow',
+    body: `<p>A contribution flows through several systems and several states.</p>
+      <pre>1. Donor submits → BFF persists ContributionIntent
+2. PSP collects payment (hosted fields)
+3. PSP webhook → BFF (signature verified)
+4. BFF emits ContributionInitiated
+5. Workflow engine calls Ren iPhi mutation
+6. Ren iPhi returns TransactionID → intent updated
+7. BFF emits ContributionSettled
+8. Email service sends receipt</pre>
+      <div class="label">Idempotency</div>
+      <p>Key carried end-to-end. Retries never produce duplicates.</p>`
+  },
+  'grant-event': {
+    kind: 'Event',
+    title: 'Grant Cart Submission Flow',
+    body: `<p>The most consequential donor-initiated workflow (§5.2.1).</p>
+      <pre>1. Donor adds grants to cart (portal-side only)
+2. Donor reviews and submits
+3. BFF persists CartSubmission intent with
+   idempotency key
+4. BFF emits GrantBatchSubmitted
+5. Workflow engine, per grant:
+   a. Resolves recipient (DB or Candid)
+   b. Ren iPhi mutation → TransactionID
+   c. Ren iPhi mutation → DistributionID
+   d. Updates intent, status=Entered
+6. When ALL grants persisted, notifier sends
+   ONE consolidated receipt email
+7. Foundation back-office reviews:
+   Entered → Approved → Posted (webhook or poll)
+8. On Posted, notifier fires donor's
+   Posted notification per preferences</pre>`
+  }
+};
+
+/* ============================================================
+   Impact Calculator (mobile-embedded)
+   ============================================================ */
+var CALC_AREAS=[
+  {id:'education',icon:'📚',name:'Education',unitLabel:'Learning Hours',unitCost:12,color:'#1A8DA9',programDesc:'after-school programs'},
+  {id:'food',icon:'🍽️',name:'Food',unitLabel:'Meals',unitCost:0.50,color:'#EE7331',programDesc:'food security programs'},
+  {id:'housing',icon:'🏠',name:'Housing',unitLabel:'Shelter Nights',unitCost:28,color:'#086C43',programDesc:'housing stability'},
+  {id:'arts',icon:'🎨',name:'Arts',unitLabel:'Residencies',unitCost:800,color:'#C0629A',programDesc:'arts programs'},
+  {id:'health',icon:'❤️',name:'Health',unitLabel:'Patient Visits',unitCost:45,color:'#CC1E4B',programDesc:'community health'},
+  {id:'environment',icon:'🌿',name:'Environment',unitLabel:'Acres',unitCost:1200,color:'#19B9A9',programDesc:'conservation'}
+];
+var calcState={areaId:'food',mode:'onetime',gift:500,years:10,rate:6};
+
+function calcFvLump(pv,r,y){if(r===0||y===0)return pv;var rm=r/100/12,n=y*12;return pv*Math.pow(1+rm,n);}
+function calcFvAnnuity(m,r,y){if(r===0)return m*y*12;var rm=r/100/12,n=y*12;return m*((Math.pow(1+rm,n)-1)/rm);}
+function calcFmt$(n){return new Intl.NumberFormat('en-US',{style:'currency',currency:'USD',minimumFractionDigits:0}).format(n);}
+function calcFmtN(n){if(n>=1e6)return(n/1e6).toFixed(1)+'M';if(n>=1000)return(n/1000).toFixed(1)+'K';return Math.round(n).toLocaleString();}
+
+function calcRender(){
+  var area=CALC_AREAS.find(function(a){return a.id===calcState.areaId;});
+  // Area grid
+  var gh='';
+  CALC_AREAS.forEach(function(a){
+    gh+='<button onclick="calcSelectArea(\''+a.id+'\')" style="background:'+(a.id===calcState.areaId?'rgba(25,185,169,.12)':'rgba(255,255,255,.04)')+'; border:1.5px solid '+(a.id===calcState.areaId?'#19B9A9':'rgba(255,255,255,.1)')+'; border-radius:10px; padding:10px 6px; cursor:pointer; text-align:center; font-family:inherit;">';
+    gh+='<div style="font-size:20px; margin-bottom:3px;">'+a.icon+'</div>';
+    gh+='<div style="font-size:11px; font-weight:700; color:'+(a.id===calcState.areaId?a.color:'rgba(255,255,255,.7)')+'; line-height:1.2;">'+a.name+'</div>';
+    gh+='</button>';
+  });
+  document.getElementById('calcAreaGrid').innerHTML=gh;
+  // Compute
+  var g=calcState.gift,y=calcState.years,r=calcState.rate,c=area.unitCost;
+  var simple,invested;
+  if(calcState.mode==='onetime'){
+    simple=g; invested=calcFvLump(g,r,y);
+  } else {
+    simple=g*y*12; invested=calcFvAnnuity(g,r,y);
+  }
+  var simpleUnits=Math.floor(simple/c), investedUnits=Math.floor(invested/c);
+  // Result cards
+  var rc='';
+  var cards=[
+    {label:calcState.mode==='onetime'?'Gift Today':'Total Contributed',amount:simple,units:simpleUnits,best:false},
+    {label:'With '+y+'-Year Growth',amount:invested,units:investedUnits,best:true}
+  ];
+  cards.forEach(function(card){
+    rc+='<div style="background:'+(card.best?'rgba(25,185,169,.08)':'var(--surface)')+'; border:1px solid '+(card.best?'rgba(25,185,169,.35)':'var(--border)')+'; border-radius:14px; padding:16px; display:flex; gap:14px; align-items:center;">';
+    rc+='<div style="flex:1;"><div style="font-size:10.5px; font-weight:700; text-transform:uppercase; letter-spacing:.08em; color:var(--ink-faint); margin-bottom:4px;">'+card.label+'</div>';
+    rc+='<div style="font-family:var(--font-head); font-size:22px; font-weight:700; color:var(--tcf-primary);">'+calcFmt$(card.amount)+'</div></div>';
+    rc+='<div style="text-align:center;"><div style="font-family:var(--font-head); font-size:28px; font-weight:700; color:'+area.color+';">'+calcFmtN(card.units)+'</div>';
+    rc+='<div style="font-size:11px; color:var(--ink-faint); line-height:1.3;">'+area.unitLabel+'</div></div></div>';
+  });
+  document.getElementById('calcResultCards').innerHTML=rc;
+  // Explanation
+  var diff=invested-simple; var pct=simple>0?Math.round((diff/simple)*100):0;
+  document.getElementById('calcExplanation').innerHTML='Over <strong>'+y+' years</strong>, your '+(calcState.mode==='onetime'?calcFmt$(g)+' one-time gift':calcFmt$(g)+'/mo gift')+' grows from <strong>'+calcFmt$(simple)+'</strong> to <strong style="color:var(--tcf-mid-green);">'+calcFmt$(invested)+'</strong> when invested — a <strong>+'+pct+'%</strong> increase, funding an additional <strong>'+calcFmtN(Math.max(0,investedUnits-simpleUnits))+' '+area.unitLabel.toLowerCase()+'</strong> in Cleveland\'s <strong>'+area.programDesc+'</strong>.';
+  // Chart
+  calcDrawChart(area.color);
+}
+
+function calcDrawChart(color){
+  var canvas=document.getElementById('mobileCalcChart');
+  if(!canvas) return;
+  var wrap=canvas.parentElement;
+  canvas.width=wrap.offsetWidth||340; canvas.height=160;
+  var ctx=canvas.getContext('2d');
+  ctx.clearRect(0,0,canvas.width,160);
+  var g=calcState.gift,y=calcState.years,r=calcState.rate;
+  var pts=[];
+  for(var i=0;i<=y;i++){
+    var ni=calcState.mode==='onetime'?g:g*i*12;
+    var inv=calcState.mode==='onetime'?calcFvLump(g,r,i):( i===0?0:calcFvAnnuity(g,r,i));
+    pts.push({n:ni,v:inv});
+  }
+  var maxV=pts[pts.length-1].v||1;
+  var W=canvas.width,H=160,pl=8,pr=8,pt=8,pb=22;
+  var cw=W-pl-pr,ch=H-pt-pb;
+  function xp(i){return pl+(i/(pts.length-1))*cw;}
+  function yp(v){return pt+ch-(v/maxV)*ch;}
+  // dashed flat
+  ctx.strokeStyle='rgba(255,255,255,.2)'; ctx.lineWidth=1.5; ctx.setLineDash([3,3]);
+  ctx.beginPath();
+  pts.forEach(function(p,i){i===0?ctx.moveTo(xp(i),yp(p.n)):ctx.lineTo(xp(i),yp(p.n));});
+  ctx.stroke(); ctx.setLineDash([]);
+  // fill
+  var grad=ctx.createLinearGradient(0,pt,0,pt+ch);
+  grad.addColorStop(0,color+'55'); grad.addColorStop(1,color+'00');
+  ctx.fillStyle=grad;
+  ctx.beginPath(); ctx.moveTo(xp(0),yp(0));
+  pts.forEach(function(p,i){ctx.lineTo(xp(i),yp(p.v));});
+  ctx.lineTo(xp(pts.length-1),yp(0)); ctx.closePath(); ctx.fill();
+  // line
+  ctx.strokeStyle=color; ctx.lineWidth=2; ctx.beginPath();
+  pts.forEach(function(p,i){i===0?ctx.moveTo(xp(i),yp(p.v)):ctx.lineTo(xp(i),yp(p.v));});
+  ctx.stroke();
+  // end dot
+  var lp=pts[pts.length-1];
+  ctx.fillStyle=color; ctx.beginPath(); ctx.arc(xp(pts.length-1),yp(lp.v),5,0,6.28); ctx.fill();
+  // x labels
+  ctx.fillStyle='rgba(255,255,255,.3)'; ctx.font='9px sans-serif'; ctx.textAlign='center';
+  [0,Math.floor(y/2),y].forEach(function(i){ctx.fillText('Yr'+i,xp(i),H-6);});
+}
+
+function calcSelectArea(id){calcState.areaId=id;calcRender();}
+function calcSetMode(mode){
+  calcState.mode=mode;
+  document.getElementById('calcModeOnetime').style.background=mode==='onetime'?'var(--tcf-mid-green)':'transparent';
+  document.getElementById('calcModeOnetime').style.color=mode==='onetime'?'#fff':'rgba(255,255,255,.5)';
+  document.getElementById('calcModeMonthly').style.background=mode==='monthly'?'var(--tcf-mid-green)':'transparent';
+  document.getElementById('calcModeMonthly').style.color=mode==='monthly'?'#fff':'rgba(255,255,255,.5)';
+  document.getElementById('calcGiftLabel').textContent=mode==='monthly'?'Monthly Gift':'Gift Amount';
+  var s=document.getElementById('calcGiftSlider');
+  if(mode==='monthly'){s.max=1000;if(calcState.gift>1000){calcState.gift=100;s.value=100;}}
+  else{s.max=10000;}
+  document.getElementById('calcGiftDisplay').textContent=mode==='monthly'?'$'+calcState.gift+'/mo':'$'+calcState.gift.toLocaleString();
+  calcRender();
+}
+function calcOnGift(v){
+  calcState.gift=parseInt(v);
+  document.getElementById('calcGiftDisplay').textContent=calcState.mode==='monthly'?'$'+v+'/mo':'$'+parseInt(v).toLocaleString();
+  calcRender();
+}
+function calcOnYears(v){
+  calcState.years=parseInt(v);
+  document.getElementById('calcYearsDisplay').textContent=v+' year'+(parseInt(v)>1?'s':'');
+  calcRender();
+}
+function calcOnRate(v){
+  calcState.rate=parseFloat(v);
+  document.getElementById('calcRateDisplay').textContent=v+'%';
+  calcRender();
+}
+
+/* ============================================================
+   Vision 2040 (mobile-embedded)
+   ============================================================ */
+var V_CARDS=[
+  {bg:'linear-gradient(135deg,#0d1a1a 0%,#086C43 100%)',deco:'🏗️',scenario:'Economic Vision',headline:'"Cleveland becomes a top-5 U.S. city for economic mobility by 2040."',body:'Cleveland sits at a crossroads. With bold investment in workforce development, entrepreneurship, and equitable hiring, it could become a national model for economic revival — not just recovery.',tags:['Jobs','Equity','Workforce'],q:'What most drives economic mobility?',opts:['Job training programs','Entrepreneurship support','Equitable hiring practices','Affordable housing'],type:'pragmatist'},
+  {bg:'linear-gradient(135deg,#1A0A10 0%,#CC1E4B 100%)',deco:'🎓',scenario:'Education Vision',headline:'"Every Cleveland child reads at grade level by 2040."',body:'Third-grade reading predicts high school graduation, college attendance, and lifetime earnings. Closing this gap is the single highest-leverage investment Cleveland can make in its own future.',tags:['Literacy','Schools','Equity'],q:'What most improves educational outcomes?',opts:['Early childhood programs','Teacher support & pay','After-school resources','Family engagement'],type:'builder'},
+  {bg:'linear-gradient(135deg,#0A0A1A 0%,#19B9A9 100%)',deco:'💧',scenario:'Environment Vision',headline:'"Lake Erie becomes North America\'s most protected Great Lake by 2040."',body:'Cleveland sits at the center of 21% of the world\'s fresh surface water. A bold conservation agenda could define Cleveland\'s global brand while protecting one of Earth\'s most precious resources.',tags:['Lake Erie','Conservation','Water'],q:'How should Cleveland lead on water?',opts:['Stronger regulation','More restoration funding','Public education','Regional partnerships'],type:'steward'},
+  {bg:'linear-gradient(135deg,#1A1020 0%,#086C43 100%)',deco:'🎨',scenario:'Culture Vision',headline:'"Cleveland becomes a top-10 global arts destination by 2040."',body:'The Cleveland Orchestra. The Rock & Roll Hall of Fame. World-class museums. Cleveland has extraordinary cultural assets — the opportunity is to make them accessible to all, not just some.',tags:['Arts','Culture','Tourism'],q:'What unlocks Cleveland\'s cultural potential?',opts:['More public investment','Better marketing','Arts in neighborhoods','Building artist livability'],type:'connector'},
+  {bg:'linear-gradient(135deg,#1A0A10 0%,#EE7331 100%)',deco:'🌆',scenario:'Population Vision',headline:'"Cleveland grows to 500,000 residents by 2040."',body:'For the first time in decades, Cleveland\'s population decline has leveled off. Bold investment in housing, quality of life, and economic opportunity could reverse a 70-year trend.',tags:['Population','Housing','Growth'],q:'What brings people to — and keeps them in — Cleveland?',opts:['Affordable housing','Career opportunities','Neighborhood safety','Culture & lifestyle'],type:'builder'},
+  {bg:'linear-gradient(135deg,#0A180A 0%,#164430 100%)',deco:'❤️',scenario:'Health Vision',headline:'"Cleveland eliminates its maternal mortality gap by 2040."',body:'Black mothers in Cuyahoga County die at rates 3–4x higher than white mothers. Targeted investment in doula networks, prenatal care, and health equity can close this gap within a generation.',tags:['Health','Equity','Maternal Care'],q:'What most closes health gaps?',opts:['Community health workers','Equitable care access','Preventive programs','Research & data'],type:'connector'}
+];
+var vBuilderProfiles={
+  pragmatist:{name:'The Pragmatist',desc:'You focus on what works — evidence-based, action-oriented, and results-driven. You want to see Cleveland win through execution, not just vision.',vision:'"The best plan is the one that gets done."'},
+  connector:{name:'The Connector',desc:'You believe Cleveland\'s strength is in its people. You focus on relationships, equity, and making sure every resident has a stake in the city\'s success.',vision:'"A rising tide lifts every boat — but only if everyone\'s in the water."'},
+  builder:{name:'The City Builder',desc:'You think long-term. Great cities are built over generations through consistent investment in place, systems, and neighborhoods.',vision:'"Build the city you want your grandchildren to inherit."'},
+  steward:{name:'The Steward',desc:'You believe Cleveland\'s greatest asset is its natural and cultural inheritance — and the foundation\'s job is to protect and amplify what already exists.',vision:'"We didn\'t inherit this city — we borrowed it from the future."'}
+};
+var vCurrent=0, vResponses=[], vTally={};
+
+function vBuildDots(){
+  var row=document.getElementById('vDotRow');
+  if(!row) return;
+  row.innerHTML=V_CARDS.map(function(_,i){
+    return '<div onclick="vJump('+i+')" style="width:'+(i===vCurrent?'20px':'7px')+'; height:7px; border-radius:4px; background:'+(i===vCurrent?'var(--tcf-orange)':'var(--border-strong)')+'; cursor:pointer; transition:all .3s;"></div>';
+  }).join('');
+}
+
+function vRenderCard(){
+  var card=V_CARDS[vCurrent];
+  var el=document.getElementById('vCard');
+  var inner=document.getElementById('vCardInner');
+  if(!el||!inner) return;
+  el.style.background=card.bg;
+  inner.innerHTML='<div style="font-size:10px; font-weight:700; letter-spacing:.15em; text-transform:uppercase; color:rgba(255,255,255,.5); margin-bottom:auto;">Vision '+(vCurrent+1)+' of '+V_CARDS.length+'</div>'+
+    '<div style="font-size:11px; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:rgba(255,255,255,.7); margin-bottom:12px;">'+card.scenario+'</div>'+
+    '<div style="font-size:clamp(17px,4vw,24px); font-weight:700; line-height:1.2; margin-bottom:12px; letter-spacing:-.01em;">'+card.headline+'</div>'+
+    '<div style="font-size:14px; line-height:1.6; color:rgba(255,255,255,.72);">'+card.body+'</div>'+
+    '<div style="display:flex; flex-wrap:wrap; gap:6px; margin-top:16px;">'+card.tags.map(function(t){return'<span style="font-size:11px; padding:4px 12px; border-radius:20px; background:rgba(255,255,255,.1); color:rgba(255,255,255,.6); font-weight:600;">'+t+'</span>';}).join('')+'</div>'+
+    '<div style="position:absolute; right:-20px; bottom:-20px; font-size:100px; opacity:.06;">'+card.deco+'</div>';
+  // prev/next btns
+  var prev=document.getElementById('vPrevBtn'), next=document.getElementById('vNextBtn');
+  if(prev) prev.disabled=vCurrent===0;
+  if(next) next.disabled=vCurrent===V_CARDS.length-1;
+  // Reflection
+  var refl=document.getElementById('vReflection');
+  if(refl){
+    refl.style.display='block';
+    document.getElementById('vReflQ').textContent=card.q;
+    var opts=document.getElementById('vReflOpts');
+    opts.innerHTML=card.opts.map(function(o,i){
+      return '<button onclick="vPickReflection('+i+',\''+card.type+'\')" style="background:var(--surface-2); border:1.5px solid var(--border); border-radius:10px; padding:12px; cursor:pointer; text-align:left; color:var(--ink); font-family:inherit; font-size:13.5px; font-weight:600; line-height:1.3; transition:all .15s;" id="vOpt'+i+'">'+o+'</button>';
+    }).join('');
+  }
+  // Final
+  var fin=document.getElementById('vFinal');
+  if(fin) fin.style.display='none';
+  // Dots
+  vBuildDots();
+}
+
+function vPickReflection(idx,type){
+  document.querySelectorAll('[id^="vOpt"]').forEach(function(b,i){
+    b.style.background=i===idx?'rgba(238,115,49,.15)':'var(--surface-2)';
+    b.style.borderColor=i===idx?'var(--tcf-orange)':'var(--border)';
+    b.style.color=i===idx?'var(--tcf-orange)':'var(--ink)';
+  });
+  vResponses.push({card:vCurrent,choice:idx,type:type});
+  vTally[type]=(vTally[type]||0)+1;
+  setTimeout(function(){
+    if(vCurrent<V_CARDS.length-1){vGoCard(1);}else{vShowFinal();}
+  },600);
+}
+
+function vSkip(){
+  if(vCurrent<V_CARDS.length-1){vGoCard(1);}else{vShowFinal();}
+}
+
+function vGoCard(dir){
+  var next=vCurrent+dir;
+  if(next<0||next>=V_CARDS.length) return;
+  vCurrent=next;
+  vRenderCard();
+  window.scrollTo({top:document.getElementById('view-vision').offsetTop,behavior:'smooth'});
+}
+
+function vJump(idx){vCurrent=idx;vRenderCard();}
+
+function vShowFinal(){
+  var refl=document.getElementById('vReflection');
+  if(refl) refl.style.display='none';
+  var fin=document.getElementById('vFinal');
+  if(!fin) return;
+  fin.style.display='block';
+  var top=Object.entries(vTally).sort(function(a,b){return b[1]-a[1];})[0];
+  var profileKey=top?top[0]:'builder';
+  var profile=vBuilderProfiles[profileKey];
+  document.getElementById('vBuilderType').textContent=profile.name;
+  document.getElementById('vBuilderDesc').textContent=profile.desc;
+  document.getElementById('vBuilderVision').textContent=profile.vision;
+}
+
+function vReset(){
+  vCurrent=0;vResponses=[];vTally={};
+  vRenderCard();
+  var fin=document.getElementById('vFinal');
+  if(fin) fin.style.display='none';
+}
+
+// Initialize vision on first render
+document.addEventListener('DOMContentLoaded', function(){
+  calcRender();
+  vRenderCard();
+  window.addEventListener('resize', function(){
+    if(!document.getElementById('mobileCalcChart')) return;
+    calcDrawChart((CALC_AREAS.find(function(a){return a.id===calcState.areaId;})||CALC_AREAS[0]).color);
+  });
+});
+
+
+function navigate(view, closeDrawerAfter = true) {
+  document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
+  const target = document.getElementById('view-' + view);
+  if (target) target.classList.add('active');
+
+  // Update bottom nav (only highlights for the 5 primary tiles)
+  document.querySelectorAll('.bnav-item').forEach(n => n.classList.remove('active'));
+  const bnav = document.querySelector(`.bnav-item[data-view="${view}"]`);
+  if (bnav) bnav.classList.add('active');
+
+  // Update drawer nav
+  document.querySelectorAll('.drawer-item').forEach(n => n.classList.remove('active'));
+  const dnav = document.querySelector(`.drawer-item[data-view="${view}"]`);
+  if (dnav) dnav.classList.add('active');
+
+  // Initialize embedded modules when first visited
+  if (view === 'calculator') { setTimeout(function(){ calcRender(); }, 50); }
+  if (view === 'vision') { setTimeout(function(){ vRenderCard(); }, 50); }
+
+  if (view === 'cart') { toggleCart(); }
+  if (closeDrawerAfter) closeDrawer();
+  window.scrollTo({ top: 0, behavior: 'instant' });
+}
+document.querySelectorAll('.bnav-item').forEach(n => {
+  n.addEventListener('click', () => navigate(n.dataset.view, false));
+});
+document.querySelectorAll('.drawer-item').forEach(n => {
+  n.addEventListener('click', () => navigate(n.dataset.view));
+});
+
+/* ============================================================
+   Drawer
+   ============================================================ */
+function toggleDrawer() {
+  document.getElementById('drawer').classList.toggle('open');
+  document.getElementById('drawerBackdrop').classList.toggle('open');
+}
+function closeDrawer() {
+  document.getElementById('drawer').classList.remove('open');
+  document.getElementById('drawerBackdrop').classList.remove('open');
+}
+
+/* ============================================================
+   Subtabs
+   ============================================================ */
+function switchSubtab(tab, contentId) {
+  const tabsParent = tab.parentElement;
+  tabsParent.querySelectorAll('.subtab').forEach(t => t.classList.remove('active'));
+  tab.classList.add('active');
+
+  const viewEl = tab.closest('.view');
+  // Hide all subtab content sections (those with id starting with the prefix from this tab group)
+  const prefix = contentId.split('-')[0];
+  viewEl.querySelectorAll(`[id^="${prefix}-"]`).forEach(el => { el.style.display = 'none'; });
+  const target = document.getElementById(contentId);
+  if (target) target.style.display = '';
+}
+
+/* ============================================================
+   Cart
+   ============================================================ */
+let cart = [
+  { name: 'Cleveland Orchestra', amount: 5000, purpose: 'General Operating' },
+  { name: 'Greater Cleveland Food Bank', amount: 2500, purpose: 'General Operating' },
+  { name: 'Literary Cleveland', amount: 1000, purpose: 'Youth Programming' }
+];
+
+function renderCart() {
+  const body = document.getElementById('cartBody');
+  if (cart.length === 0) {
+    body.innerHTML = '<div class="cart-empty">Your grant cart is empty.<br>Recommend a grant to add one.</div>';
+  } else {
+    body.innerHTML = cart.map((item, i) => `
+      <div class="cart-item">
+        <div class="org-mark alt-${i % 4}">${item.name.split(' ').map(w => w[0]).slice(0,2).join('').toUpperCase()}</div>
+        <div style="flex:1; min-width:0;">
+          <div style="font-weight: 600; font-size: 14px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">${item.name}</div>
+          <div style="font-size: 12px; color: var(--ink-faint);">${item.purpose}</div>
+          <button class="remove-btn" onclick="removeCart(${i})">Remove</button>
+        </div>
+        <div class="amount">$${item.amount.toLocaleString()}</div>
+      </div>
+    `).join('');
+  }
+  const total = cart.reduce((s, x) => s + x.amount, 0);
+  document.getElementById('cartTotal').textContent = '$' + total.toLocaleString();
+  const cnt = cart.length;
+  ['cartCountTop','cartCountDrawer','cartCountBtn'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.textContent = cnt;
+  });
+  // Hide cart count badge when empty
+  const top = document.getElementById('cartCountTop');
+  if (top) top.style.display = cnt === 0 ? 'none' : '';
+}
+function toggleCart() {
+  document.getElementById('cartDrawer').classList.toggle('open');
+}
+function addToCart(name, amount = 1000) {
+  cart.push({ name, amount, purpose: 'General Operating' });
+  renderCart();
+  showToast(`Added "${name}" (${cart.length} in cart)`);
+}
+function removeCart(i) { cart.splice(i, 1); renderCart(); }
+function submitCart() {
+  if (cart.length === 0) return;
+  const n = cart.length;
+  showToast(`Cart submitted. ${n} grants queued — one batch receipt email coming.`, 5000);
+  cart = []; renderCart(); toggleCart();
+}
+renderCart();
+
+/* ============================================================
+   Pin modal
+   ============================================================ */
+document.body.addEventListener('click', (e) => {
+  const pin = e.target.closest('.ipin');
+  if (!pin) return;
+  e.preventDefault(); e.stopPropagation();
+  const id = pin.dataset.pin;
+  const info = PIN_DETAILS[id];
+  if (!info) return;
+  document.getElementById('modalKind').textContent = info.kind.toUpperCase();
+  document.getElementById('modalKind').style.color =
+    info.kind === 'Integration' ? 'var(--tcf-orange)' :
+    info.kind === 'Config'      ? 'var(--tcf-mid-green)' :
+    info.kind === 'Setup'       ? 'var(--tcf-blue)' :
+    info.kind === 'Security'    ? 'var(--tcf-red)' :
+    info.kind === 'Event'       ? '#0E8378' :
+    'var(--tcf-primary)';
+  document.getElementById('modalTitle').innerHTML = info.title;
+  document.getElementById('modalBody').innerHTML = info.body;
+  document.getElementById('modal').classList.add('open');
+});
+function closeModal() { document.getElementById('modal').classList.remove('open'); }
+document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal(); });
+
+/* ============================================================
+   Toggle pins
+   ============================================================ */
+function togglePins() {
+  document.body.classList.toggle('pins-hidden');
+  const on = !document.body.classList.contains('pins-hidden');
+  document.getElementById('pinToggle').innerHTML = `
+    <div class="swatch">
+      <span style="background:#EE7331;"></span>
+      <span style="background:#086C43;"></span>
+      <span style="background:#1A8DA9;"></span>
+      <span style="background:#CC1E4B;"></span>
+    </div>
+    Pins ${on ? 'ON' : 'OFF'}
+  `;
+}
+
+/* ============================================================
+   Toast
+   ============================================================ */
+let toastTimer;
+function showToast(msg, dur = 3000) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => t.classList.remove('show'), dur);
+}
+
+/* ============================================================
+   Swipe-down to close cart drawer (touch UX)
+   ============================================================ */
+(function() {
+  const drawer = document.getElementById('cartDrawer');
+  let startY = 0, currentY = 0, dragging = false;
+  drawer.addEventListener('touchstart', (e) => {
+    if (e.target.closest('.cart-body')) return; // allow scrolling content
+    startY = e.touches[0].clientY;
+    dragging = true;
+  }, { passive: true });
+  drawer.addEventListener('touchmove', (e) => {
+    if (!dragging) return;
+    currentY = e.touches[0].clientY;
+    const dy = Math.max(0, currentY - startY);
+    drawer.style.transform = `translateY(${dy}px)`;
+  }, { passive: true });
+  drawer.addEventListener('touchend', () => {
+    if (!dragging) return;
+    dragging = false;
+    const dy = currentY - startY;
+    drawer.style.transform = '';
+    if (dy > 100) toggleCart();
+  });
+})();
+</script>
+
+</body>
+</html>
