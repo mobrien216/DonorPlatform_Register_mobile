@@ -894,33 +894,33 @@
 
   <nav class="drawer-nav">
     <div class="drawer-label">Explore</div>
-    <button class="drawer-item active" data-view="home">
+    <button class="drawer-item active" data-view="home" onclick="navigate('home')">
       <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9,22 9,12 15,12 15,22"/></svg>
       Home
     </button>
-    <button class="drawer-item" data-view="impact">
+    <button class="drawer-item" data-view="impact" onclick="navigate('impact')">
       <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a10 10 0 1 0 10 10"/><path d="M12 8v4l3 3"/></svg>
       Stories &amp; Impact
     </button>
-    <button class="drawer-item" data-view="calculator">
-      <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="10" x2="16" y2="10"/><line x1="8" y1="14" x2="12" y2="14"/></svg>
-      Impact Calculator
+    <button class="drawer-item" data-view="learning" onclick="navigate('learning')">
+      <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>
+      Learning Tracks
     </button>
-    <button class="drawer-item" data-view="vision">
+    <button class="drawer-item" data-view="vision" onclick="navigate('vision')">
       <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8l4 4-4 4-4-4 4-4z"/></svg>
       Cleveland 2040
     </button>
 
     <div class="drawer-label">Your Journey</div>
-    <button class="drawer-item" data-view="openfund">
+    <button class="drawer-item" data-view="openfund" onclick="navigate('openfund')">
       <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
       Open a DAF
     </button>
-    <button class="drawer-item" data-view="advisor">
+    <button class="drawer-item" data-view="advisor" onclick="navigate('advisor')">
       <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.4 8.4 0 01-1 4 8.5 8.5 0 01-7.6 4.5 8.4 8.4 0 01-4-1L3 21l2-5a8.5 8.5 0 014-11.5 8.4 8.4 0 014-1 8.5 8.5 0 018 8z"/></svg>
       Talk to an Advisor
     </button>
-    <button class="drawer-item" data-view="settings">
+    <button class="drawer-item" data-view="settings" onclick="navigate('settings')">
       <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 00.3 1.8l.1.1a2 2 0 11-2.8 2.8l-.1-.1a1.7 1.7 0 00-1.8-.3 1.7 1.7 0 00-1 1.5V21a2 2 0 11-4 0v-.1a1.7 1.7 0 00-1.1-1.5 1.7 1.7 0 00-1.8.3l-.1.1a2 2 0 11-2.8-2.8l.1-.1a1.7 1.7 0 00.3-1.8 1.7 1.7 0 00-1.5-1H3a2 2 0 110-4h.1a1.7 1.7 0 001.5-1.1"/></svg>
       Account Settings
     </button>
@@ -958,60 +958,68 @@
             <div class="stat-label" style="font-size:9.5px;">Nonprofits supported</div>
           </div>
           <div>
-            <div class="stat-value" style="font-size:22px;">$220M</div>
+            <div class="stat-value" style="font-size:22px;">$160M</div>
             <div class="stat-label" style="font-size:9.5px;">Granted last year</div>
           </div>
         </div>
       </div>
 
       <!-- Learning Tracks (first module) -->
-      <div class="card">
-        <div class="card-head">
+      <div class="card" style="background: var(--tcf-primary); border-color: rgba(255,255,255,0.08);">
+        <div class="card-head" style="margin-bottom: 16px;">
           <div>
-            <h3>Learning Tracks</h3>
-            <div style="font-size:11.5px; color: var(--ink-faint); margin-top: 2px;">Build your giving knowledge</div>
+            <h3 style="color:#fff;">Learning Tracks</h3>
+            <div style="font-size:11.5px; color: rgba(255,255,255,0.45); margin-top: 2px;">Build your giving knowledge</div>
           </div>
         </div>
         <div style="display: flex; flex-direction: column; gap: 10px;">
 
-          <div onclick="showToast('Opening: Community Engagement…')" style="background: var(--surface-2); border-radius: 12px; padding: 16px; cursor:pointer; display:flex; align-items:center; gap:14px; border:1px solid transparent; transition:border-color .15s;" onmouseenter="this.style.borderColor='var(--tcf-mid-green)'" onmouseleave="this.style.borderColor='transparent'">
-            <div style="width:44px; height:44px; border-radius:10px; background:linear-gradient(135deg,var(--tcf-mid-green),var(--tcf-aqua)); display:flex; align-items:center; justify-content:center; font-size:20px; flex-shrink:0;">🤝</div>
-            <div style="flex:1; min-width:0;">
-              <div style="font-weight:700; color:var(--tcf-primary); font-size:14px; margin-bottom:2px;">Community Engagement</div>
-              <div style="font-size:12px; color:var(--ink-faint);">How philanthropy shapes — and responds to — the communities it serves.</div>
-              <div style="font-size:11px; color:var(--ink-faint); margin-top:4px;">4 articles · ~18 min</div>
+          <div onclick="openLearningTrack('engagement')" style="background: rgba(255,255,255,0.07); border-radius: 12px; padding: 15px 16px; cursor:pointer; display:flex; align-items:center; gap:14px; border:1px solid rgba(255,255,255,0.1); transition:background .15s;" onmouseenter="this.style.background='rgba(255,255,255,0.12)'" onmouseleave="this.style.background='rgba(255,255,255,0.07)'">
+            <div style="width:42px; height:42px; border-radius:10px; background:var(--tcf-mid-green); display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
             </div>
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--ink-faint)" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+            <div style="flex:1; min-width:0;">
+              <div style="font-weight:700; color:#fff; font-size:14px; margin-bottom:2px;">Community Engagement</div>
+              <div style="font-size:12px; color:rgba(255,255,255,0.5); line-height:1.4;">How philanthropy shapes — and responds to — the communities it serves.</div>
+              <div style="font-size:11px; color:rgba(255,255,255,0.35); margin-top:4px;">4 articles · ~18 min</div>
+            </div>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg>
           </div>
 
-          <div onclick="showToast('Opening: Estate Planning…')" style="background: var(--surface-2); border-radius: 12px; padding: 16px; cursor:pointer; display:flex; align-items:center; gap:14px; border:1px solid transparent; transition:border-color .15s;" onmouseenter="this.style.borderColor='var(--tcf-orange)'" onmouseleave="this.style.borderColor='transparent'">
-            <div style="width:44px; height:44px; border-radius:10px; background:linear-gradient(135deg,#7c3200,var(--tcf-orange)); display:flex; align-items:center; justify-content:center; font-size:20px; flex-shrink:0;">📋</div>
-            <div style="flex:1; min-width:0;">
-              <div style="font-weight:700; color:var(--tcf-primary); font-size:14px; margin-bottom:2px;">Estate Planning</div>
-              <div style="font-size:12px; color:var(--ink-faint);">Leave a legacy that reflects your values — and makes financial sense.</div>
-              <div style="font-size:11px; color:var(--ink-faint); margin-top:4px;">5 articles · ~25 min</div>
+          <div onclick="openLearningTrack('estate')" style="background: rgba(255,255,255,0.07); border-radius: 12px; padding: 15px 16px; cursor:pointer; display:flex; align-items:center; gap:14px; border:1px solid rgba(255,255,255,0.1); transition:background .15s;" onmouseenter="this.style.background='rgba(255,255,255,0.12)'" onmouseleave="this.style.background='rgba(255,255,255,0.07)'">
+            <div style="width:42px; height:42px; border-radius:10px; background:var(--tcf-orange); display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14,2 14,8 20,8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10,9 9,9 8,9"/></svg>
             </div>
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--ink-faint)" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+            <div style="flex:1; min-width:0;">
+              <div style="font-weight:700; color:#fff; font-size:14px; margin-bottom:2px;">Estate Planning</div>
+              <div style="font-size:12px; color:rgba(255,255,255,0.5); line-height:1.4;">Leave a legacy that reflects your values — and makes financial sense.</div>
+              <div style="font-size:11px; color:rgba(255,255,255,0.35); margin-top:4px;">5 articles · ~25 min</div>
+            </div>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg>
           </div>
 
-          <div onclick="showToast('Opening: Endowments…')" style="background: var(--surface-2); border-radius: 12px; padding: 16px; cursor:pointer; display:flex; align-items:center; gap:14px; border:1px solid transparent; transition:border-color .15s;" onmouseenter="this.style.borderColor='var(--tcf-blue)'" onmouseleave="this.style.borderColor='transparent'">
-            <div style="width:44px; height:44px; border-radius:10px; background:linear-gradient(135deg,#0a3040,var(--tcf-blue)); display:flex; align-items:center; justify-content:center; font-size:20px; flex-shrink:0;">📈</div>
-            <div style="flex:1; min-width:0;">
-              <div style="font-weight:700; color:var(--tcf-primary); font-size:14px; margin-bottom:2px;">Endowments</div>
-              <div style="font-size:12px; color:var(--ink-faint);">How a permanent fund keeps giving — long after the original gift is made.</div>
-              <div style="font-size:11px; color:var(--ink-faint); margin-top:4px;">4 articles · ~20 min</div>
+          <div onclick="openLearningTrack('endowments')" style="background: rgba(255,255,255,0.07); border-radius: 12px; padding: 15px 16px; cursor:pointer; display:flex; align-items:center; gap:14px; border:1px solid rgba(255,255,255,0.1); transition:background .15s;" onmouseenter="this.style.background='rgba(255,255,255,0.12)'" onmouseleave="this.style.background='rgba(255,255,255,0.07)'">
+            <div style="width:42px; height:42px; border-radius:10px; background:var(--tcf-blue); display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22,12 18,12 15,21 9,3 6,12 2,12"/></svg>
             </div>
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--ink-faint)" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+            <div style="flex:1; min-width:0;">
+              <div style="font-weight:700; color:#fff; font-size:14px; margin-bottom:2px;">Endowments</div>
+              <div style="font-size:12px; color:rgba(255,255,255,0.5); line-height:1.4;">How a permanent fund keeps giving — long after the original gift is made.</div>
+              <div style="font-size:11px; color:rgba(255,255,255,0.35); margin-top:4px;">4 articles · ~20 min</div>
+            </div>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg>
           </div>
 
-          <div onclick="showToast('Opening: Community Foundations…')" style="background: var(--surface-2); border-radius: 12px; padding: 16px; cursor:pointer; display:flex; align-items:center; gap:14px; border:1px solid transparent; transition:border-color .15s;" onmouseenter="this.style.borderColor='var(--tcf-pink)'" onmouseleave="this.style.borderColor='transparent'">
-            <div style="width:44px; height:44px; border-radius:10px; background:linear-gradient(135deg,#4a0a30,var(--tcf-pink)); display:flex; align-items:center; justify-content:center; font-size:20px; flex-shrink:0;">🏛️</div>
-            <div style="flex:1; min-width:0;">
-              <div style="font-weight:700; color:var(--tcf-primary); font-size:14px; margin-bottom:2px;">Community Foundations</div>
-              <div style="font-size:12px; color:var(--ink-faint);">What makes a community foundation different — and why it matters for your giving.</div>
-              <div style="font-size:11px; color:var(--ink-faint); margin-top:4px;">3 articles · ~12 min</div>
+          <div onclick="openLearningTrack('foundations')" style="background: rgba(255,255,255,0.07); border-radius: 12px; padding: 15px 16px; cursor:pointer; display:flex; align-items:center; gap:14px; border:1px solid rgba(255,255,255,0.1); transition:background .15s;" onmouseenter="this.style.background='rgba(255,255,255,0.12)'" onmouseleave="this.style.background='rgba(255,255,255,0.07)'">
+            <div style="width:42px; height:42px; border-radius:10px; background:var(--tcf-aqua); display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="22" x2="21" y2="22"/><line x1="6" y1="18" x2="6" y2="11"/><line x1="10" y1="18" x2="10" y2="11"/><line x1="14" y1="18" x2="14" y2="11"/><line x1="18" y1="18" x2="18" y2="11"/><polygon points="12,2 20,7 4,7"/></svg>
             </div>
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--ink-faint)" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+            <div style="flex:1; min-width:0;">
+              <div style="font-weight:700; color:#fff; font-size:14px; margin-bottom:2px;">Community Foundations</div>
+              <div style="font-size:12px; color:rgba(255,255,255,0.5); line-height:1.4;">What makes a community foundation different — and why it matters for your giving.</div>
+              <div style="font-size:11px; color:rgba(255,255,255,0.35); margin-top:4px;">3 articles · ~12 min</div>
+            </div>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg>
           </div>
 
         </div>
@@ -1080,6 +1088,132 @@
         <div class="hero-actions">
           <button class="btn btn-accent btn-block" onclick="navigate('openfund')">Open a Donor Advised Fund</button>
           <button class="btn btn-ghost btn-block" onclick="navigate('advisor')">Talk to an Advisor</button>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- =================== LEARNING TRACKS =================== -->
+  <section class="view" id="view-learning">
+    <div class="page">
+
+      <!-- Track index (shown when no track selected) -->
+      <div id="lt-index">
+        <div class="page-head">
+          <div class="eyebrow">Grow Your Knowledge</div>
+          <h1>Learning Tracks</h1>
+          <p class="lede">Choose a topic to explore courses, articles, and insights — all written to help you give more thoughtfully.</p>
+        </div>
+
+        <div class="card" style="background: var(--tcf-primary); border-color: rgba(255,255,255,0.08);">
+          <div style="display: flex; flex-direction: column; gap: 10px;">
+
+            <div onclick="openLearningTrack('engagement')" style="background: rgba(255,255,255,0.07); border-radius: 12px; padding: 15px 16px; cursor:pointer; display:flex; align-items:center; gap:14px; border:1px solid rgba(255,255,255,0.1); transition:background .15s;" onmouseenter="this.style.background='rgba(255,255,255,0.12)'" onmouseleave="this.style.background='rgba(255,255,255,0.07)'">
+              <div style="width:42px; height:42px; border-radius:10px; background:var(--tcf-mid-green); display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+              </div>
+              <div style="flex:1; min-width:0;">
+                <div style="font-weight:700; color:#fff; font-size:14px; margin-bottom:2px;">Community Engagement</div>
+                <div style="font-size:12px; color:rgba(255,255,255,0.5);">3 courses · ~18 min total</div>
+              </div>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg>
+            </div>
+
+            <div onclick="openLearningTrack('estate')" style="background: rgba(255,255,255,0.07); border-radius: 12px; padding: 15px 16px; cursor:pointer; display:flex; align-items:center; gap:14px; border:1px solid rgba(255,255,255,0.1); transition:background .15s;" onmouseenter="this.style.background='rgba(255,255,255,0.12)'" onmouseleave="this.style.background='rgba(255,255,255,0.07)'">
+              <div style="width:42px; height:42px; border-radius:10px; background:var(--tcf-orange); display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14,2 14,8 20,8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+              </div>
+              <div style="flex:1; min-width:0;">
+                <div style="font-weight:700; color:#fff; font-size:14px; margin-bottom:2px;">Estate Planning</div>
+                <div style="font-size:12px; color:rgba(255,255,255,0.5);">3 courses · ~25 min total</div>
+              </div>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg>
+            </div>
+
+            <div onclick="openLearningTrack('endowments')" style="background: rgba(255,255,255,0.07); border-radius: 12px; padding: 15px 16px; cursor:pointer; display:flex; align-items:center; gap:14px; border:1px solid rgba(255,255,255,0.1); transition:background .15s;" onmouseenter="this.style.background='rgba(255,255,255,0.12)'" onmouseleave="this.style.background='rgba(255,255,255,0.07)'">
+              <div style="width:42px; height:42px; border-radius:10px; background:var(--tcf-blue); display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22,12 18,12 15,21 9,3 6,12 2,12"/></svg>
+              </div>
+              <div style="flex:1; min-width:0;">
+                <div style="font-weight:700; color:#fff; font-size:14px; margin-bottom:2px;">Endowments</div>
+                <div style="font-size:12px; color:rgba(255,255,255,0.5);">4 courses · ~20 min total</div>
+              </div>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg>
+            </div>
+
+            <div onclick="openLearningTrack('foundations')" style="background: rgba(255,255,255,0.07); border-radius: 12px; padding: 15px 16px; cursor:pointer; display:flex; align-items:center; gap:14px; border:1px solid rgba(255,255,255,0.1); transition:background .15s;" onmouseenter="this.style.background='rgba(255,255,255,0.12)'" onmouseleave="this.style.background='rgba(255,255,255,0.07)'">
+              <div style="width:42px; height:42px; border-radius:10px; background:var(--tcf-aqua); display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="22" x2="21" y2="22"/><line x1="6" y1="18" x2="6" y2="11"/><line x1="10" y1="18" x2="10" y2="11"/><line x1="14" y1="18" x2="14" y2="11"/><line x1="18" y1="18" x2="18" y2="11"/><polygon points="12,2 20,7 4,7"/></svg>
+              </div>
+              <div style="flex:1; min-width:0;">
+                <div style="font-weight:700; color:#fff; font-size:14px; margin-bottom:2px;">Community Foundations</div>
+                <div style="font-size:12px; color:rgba(255,255,255,0.5);">4 courses · ~12 min total</div>
+              </div>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- Track detail (shown when a track is selected) -->
+      <div id="lt-detail" style="display:none;">
+        <!-- Back button + track header -->
+        <div style="display:flex; align-items:center; gap:10px; margin-bottom:18px;">
+          <button onclick="closeLearningTrack()" style="width:36px; height:36px; border-radius:50%; background:var(--surface-2); border:none; cursor:pointer; display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--ink-soft)" stroke-width="2.5"><path d="M15 18l-6-6 6-6"/></svg>
+          </button>
+          <div>
+            <div class="eyebrow" id="lt-eyebrow" style="margin-bottom:0;">Track</div>
+            <h2 id="lt-title" style="font-size:20px; line-height:1.2;"></h2>
+          </div>
+        </div>
+
+        <!-- Track intro card -->
+        <div class="card" id="lt-intro-card">
+          <p id="lt-description" style="color:var(--ink-soft); font-size:14px; line-height:1.6; margin-bottom:14px;"></p>
+          <div style="display:flex; gap:16px;">
+            <div style="text-align:center;">
+              <div id="lt-course-count" style="font-family:var(--font-head); font-size:22px; font-weight:700; color:var(--tcf-primary);"></div>
+              <div class="stat-label" style="font-size:10px;">Courses</div>
+            </div>
+            <div style="text-align:center;">
+              <div id="lt-time" style="font-family:var(--font-head); font-size:22px; font-weight:700; color:var(--tcf-primary);"></div>
+              <div class="stat-label" style="font-size:10px;">Minutes</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Course list -->
+        <div id="lt-courses"></div>
+
+        <!-- CTA -->
+        <div class="card" style="border: 2px solid var(--tcf-orange); text-align:center; margin-top:4px;">
+          <div class="eyebrow">Ready for the Next Step?</div>
+          <h3 style="margin-bottom:8px;">Talk to an Advisor</h3>
+          <p style="color:var(--ink-soft); font-size:13px; margin-bottom:14px;">Have questions about what you've learned? A TCF philanthropic advisor is here to help — free and no obligation.</p>
+          <button class="btn btn-accent btn-block" onclick="navigate('advisor')">Schedule a Free Conversation</button>
+        </div>
+      </div>
+
+      <!-- Course reader (shown when a course is open) -->
+      <div id="lt-reader" style="display:none;">
+        <div style="display:flex; align-items:center; gap:10px; margin-bottom:18px;">
+          <button onclick="closeCourse()" style="width:36px; height:36px; border-radius:50%; background:var(--surface-2); border:none; cursor:pointer; display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--ink-soft)" stroke-width="2.5"><path d="M15 18l-6-6 6-6"/></svg>
+          </button>
+          <div id="lt-reader-track-label" class="eyebrow" style="margin-bottom:0;"></div>
+        </div>
+        <div class="card">
+          <div id="lt-reader-tag" class="tag" style="margin-bottom:10px;"></div>
+          <h2 id="lt-reader-title" style="font-size:20px; margin-bottom:12px;"></h2>
+          <div id="lt-reader-body" style="color:var(--ink-soft); font-size:14px; line-height:1.7;"></div>
+        </div>
+        <div class="card" style="background:var(--tcf-primary); border:none; text-align:center;">
+          <p style="color:rgba(255,255,255,0.7); font-size:13px; margin-bottom:14px;">Want to go deeper on this topic?</p>
+          <button class="btn btn-accent btn-block" onclick="navigate('advisor')">Talk to a Philanthropic Advisor</button>
+          <button class="btn btn-ghost btn-block" style="margin-top:8px; color:#fff; border-color:rgba(255,255,255,0.3);" onclick="closeCourse()">← Back to Track</button>
         </div>
       </div>
 
@@ -2263,23 +2397,23 @@
      BOTTOM NAV (5 tiles, static)
      ============================================================ -->
 <nav class="bottomnav">
-  <button class="bnav-item active" data-view="home">
+  <button class="bnav-item active" data-view="home" onclick="navigate('home',false)">
     <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12l9-9 9 9M5 10v10h14V10"/></svg>
     Home
   </button>
-  <button class="bnav-item" data-view="impact">
+  <button class="bnav-item" data-view="impact" onclick="navigate('impact',false)">
     <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-4.5-7-10a7 7 0 0114 0c0 5.5-7 10-7 10z"/><circle cx="12" cy="11" r="2"/></svg>
     Stories
   </button>
-  <button class="bnav-item" data-view="calculator">
-    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="10" x2="16" y2="10"/><line x1="8" y1="14" x2="12" y2="14"/></svg>
-    Calculator
+  <button class="bnav-item" data-view="learning" onclick="navigate('learning',false)">
+    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>
+    Learn
   </button>
-  <button class="bnav-item" data-view="vision">
+  <button class="bnav-item" data-view="vision" onclick="navigate('vision',false)">
     <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 010 20"/></svg>
     2040
   </button>
-  <button class="bnav-item" data-view="openfund">
+  <button class="bnav-item" data-view="openfund" onclick="navigate('openfund',false)">
     <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
     Open DAF
   </button>
@@ -2631,8 +2765,267 @@ mfa_required: true</pre>`
 };
 
 /* ============================================================
-   Impact Calculator (mobile-embedded)
+   Learning Tracks
    ============================================================ */
+const LEARNING_TRACKS = {
+  engagement: {
+    title: 'Community Engagement',
+    eyebrow: 'Community Engagement',
+    color: 'var(--tcf-mid-green)',
+    description: 'Philanthropy isn\'t just about writing checks — it\'s about building relationships with the communities you care about. This track explores how effective donors listen, learn, and partner with the people closest to the issues they want to solve.',
+    totalMinutes: '~18',
+    courses: [
+      {
+        title: 'What Does It Mean to Give Locally?',
+        tag: 'Community Engagement · 5 min',
+        body: `<p style="margin-bottom:14px;">Giving locally is different from giving to national organizations. When you give through a community foundation like The Cleveland Foundation, your dollars stay close — funding programs designed by and for Cleveland residents.</p>
+<p style="margin-bottom:14px;">Local philanthropy builds on existing community relationships. It means supporting organizations that have earned the trust of the neighborhoods they serve over decades, not just the ones with the best marketing.</p>
+<p style="margin-bottom:14px;">It also means accountability. You can visit the programs you fund. You can meet the people your gifts support. That proximity changes the way donors think about impact — and often deepens their commitment over time.</p>
+<p>The Cleveland Foundation has been a steward of local giving since 1914 — longer than any other community foundation in the world. That history means a depth of community knowledge that's impossible to replicate.</p>`
+      },
+      {
+        title: 'Listening Before Giving: The Donor\'s Role in Community',
+        tag: 'Community Engagement · 7 min',
+        body: `<p style="margin-bottom:14px;">The most effective philanthropists share a habit: they listen before they give. That means engaging with community members, nonprofit leaders, and program staff not as recipients of charity, but as experts in their own lives.</p>
+<p style="margin-bottom:14px;">This is harder than it sounds. It requires setting aside assumptions about what communities "need" and replacing them with genuine curiosity. It means being willing to fund things that don't fit neatly into a donor's priorities — because the community has identified them as essential.</p>
+<p style="margin-bottom:14px;">Trust-based philanthropy is one framework that puts this principle into practice. It emphasizes multi-year general operating support, minimal reporting requirements, and honest two-way communication between donors and grantees.</p>
+<p>The Cleveland Foundation facilitates connections between donors and the nonprofits doing this work — helping you engage as a partner, not just a check-writer.</p>`
+      },
+      {
+        title: 'Measuring What Matters: Impact Beyond Numbers',
+        tag: 'Community Engagement · 6 min',
+        body: `<p style="margin-bottom:14px;">How do you know if your giving is working? The instinct is to count things — meals served, students tutored, families housed. Numbers matter, but they can also mislead. A program that serves 10,000 people poorly may be less valuable than one that transforms 200 lives completely.</p>
+<p style="margin-bottom:14px;">Effective impact measurement asks not just "how many?" but "how much change?" It looks at outcomes over time, not just outputs in a given year. And it incorporates the perspective of the people the program is meant to serve — not just the people running it.</p>
+<p style="margin-bottom:14px;">Community foundations like TCF invest deeply in evaluation capacity, helping donors understand not just what their dollars funded, but whether it worked — and what the evidence says about how to do better next time.</p>
+<p>Asking hard questions about impact is an act of respect for the community, not a vote of no confidence in nonprofits.</p>`
+      }
+    ]
+  },
+
+  estate: {
+    title: 'Estate Planning',
+    eyebrow: 'Estate Planning',
+    color: 'var(--tcf-orange)',
+    description: 'A gift in your will or estate plan can be the most powerful philanthropic act of your lifetime — often larger than everything you gave while living. This track walks through the essentials of legacy giving and how to make it meaningful.',
+    totalMinutes: '~25',
+    courses: [
+      {
+        title: 'The Basics of a Charitable Bequest',
+        tag: 'Estate Planning · 8 min',
+        body: `<p style="margin-bottom:14px;">A charitable bequest is a gift you make through your will or living trust. It's one of the simplest ways to leave a lasting philanthropic legacy — and it costs you nothing during your lifetime.</p>
+<p style="margin-bottom:14px;">Bequests can take many forms. A specific bequest names a dollar amount or particular asset ("I give $50,000 to the Cleveland Foundation"). A residual bequest leaves a percentage of what remains after other gifts and expenses. A contingent bequest only takes effect if other conditions aren't met.</p>
+<p style="margin-bottom:14px;">The key advantage: a bequest lets you give more than you might feel comfortable giving during your lifetime, because you're giving from the assets you've accumulated over a lifetime — not from current income.</p>
+<p>The Cleveland Foundation can work with you and your estate attorney to structure a bequest that reflects your values and creates exactly the kind of impact you intend.</p>`
+      },
+      {
+        title: 'Giving Appreciated Assets: Stocks, Property & More',
+        tag: 'Estate Planning · 9 min',
+        body: `<p style="margin-bottom:14px;">One of the most tax-efficient philanthropic strategies is donating appreciated assets — stocks, real estate, or other investments that have grown in value since you acquired them.</p>
+<p style="margin-bottom:14px;">Here's why it works: if you sell an appreciated asset and donate the proceeds, you pay capital gains tax on the growth first. But if you donate the asset directly to a Donor Advised Fund or community foundation, the organization sells it — and no capital gains tax is owed. The full value goes to work philanthropically.</p>
+<p style="margin-bottom:14px;">For a donor with $100,000 in appreciated stock (original cost: $20,000), the difference can easily be $10,000–$15,000 in avoided tax — funds that can be directed to causes instead of the IRS.</p>
+<p>This strategy works during your lifetime and through your estate. Your financial advisor and a TCF philanthropic advisor can model the difference for your specific situation.</p>`
+      },
+      {
+        title: 'Writing a Legacy Statement: Why Your Values Matter',
+        tag: 'Estate Planning · 8 min',
+        body: `<p style="margin-bottom:14px;">The financial mechanics of estate giving are important — but the most enduring legacy gifts are grounded in a clear statement of values. A legacy statement is a written expression of why you give, what you hope your philanthropy achieves, and what you want future generations to understand about your intentions.</p>
+<p style="margin-bottom:14px;">Legacy statements aren't legal documents. They're personal ones. They're written for family members, for the organizations you support, and — perhaps most importantly — for yourself. The act of writing one forces clarity about what you truly value.</p>
+<p style="margin-bottom:14px;">Some donors write a single paragraph. Others write several pages covering the causes they care about, the experiences that shaped their giving, and the specific impact they hope their estate gifts will enable.</p>
+<p>The Cleveland Foundation can guide you through the process of creating a legacy statement that aligns with your giving plan — and ensure it's honored long after you're gone.</p>`
+      }
+    ]
+  },
+
+  endowments: {
+    title: 'Endowments',
+    eyebrow: 'Endowments',
+    color: 'var(--tcf-blue)',
+    description: 'An endowment is a gift that keeps giving — permanently. The principal is invested and protected, while the earnings fund programs and causes in perpetuity. This track explains how endowments work and why they\'re one of the most powerful tools in philanthropy.',
+    totalMinutes: '~20',
+    courses: [
+      {
+        title: 'What Is an Endowment, Exactly?',
+        tag: 'Endowments · 5 min',
+        body: `<p style="margin-bottom:14px;">An endowment is a pool of invested assets whose principal is never spent. Instead, a portion of the investment earnings — typically 4–5% per year — is distributed to fund programs, scholarships, or operations. The rest is reinvested to protect the fund against inflation and preserve its value for future generations.</p>
+<p style="margin-bottom:14px;">Think of it like a river fed by a spring. The spring (your original gift) never runs dry. The river (annual distributions) keeps flowing forever, providing consistent support to the causes you care about long after you're gone.</p>
+<p style="margin-bottom:14px;">Endowments provide stability that annual fundraising can't. A nonprofit with endowment support can plan long-term, take on larger programs, and weather economic downturns without cutting essential services.</p>
+<p>The Cleveland Foundation manages over $3 billion in endowed assets on behalf of thousands of individual donors — one of the largest endowments in the country dedicated to a single community.</p>`
+      },
+      {
+        title: 'How Endowment Earnings Are Calculated',
+        tag: 'Endowments · 5 min',
+        body: `<p style="margin-bottom:14px;">Most endowments use a "spending policy" — a formula that determines how much can be distributed each year. A common approach is the 5% rule: each year, approximately 5% of the endowment's average market value (typically averaged over the previous 12 quarters) is available for distribution.</p>
+<p style="margin-bottom:14px;">This smoothing formula protects both the principal and the programs it funds. In a strong market year, not all the gains are distributed — the extra is reinvested to offset weaker years. The result is a predictable, consistent stream of support even when markets are volatile.</p>
+<p style="margin-bottom:14px;">If you establish a $100,000 endowment, you might expect roughly $4,000–$5,000 in annual distributions. Over 20 years, that's $80,000–$100,000 in grants — plus the principal remains intact for the next generation of donors.</p>
+<p>The Cleveland Foundation's investment committee oversees a diversified portfolio with a long track record of returns that preserve and grow endowed gifts over time.</p>`
+      },
+      {
+        title: 'Named Endowments: Creating a Living Legacy',
+        tag: 'Endowments · 5 min',
+        body: `<p style="margin-bottom:14px;">A named endowment is one of the most personal forms of philanthropy. It allows you to attach your name — or the name of a loved one — to a permanent fund that supports a cause you care about, forever.</p>
+<p style="margin-bottom:14px;">Named endowments can be established at the Cleveland Foundation with a minimum gift. They can be broadly designated ("The Sullivan Family Fund for Cleveland Youth") or narrowly focused ("The Dr. Maria Santos Endowment for Maternal Health Research").</p>
+<p style="margin-bottom:14px;">Named funds are often used to honor a life well-lived. Families establish them in memory of a parent, spouse, or child. Alumni establish them to honor a mentor. Business owners establish them to ensure their company's community commitment continues after they sell or retire.</p>
+<p>Once established, a named endowment is listed in Cleveland Foundation annual reports and materials — a permanent record of your commitment to this community.</p>`
+      },
+      {
+        title: 'Building an Endowment Over Time',
+        tag: 'Endowments · 5 min',
+        body: `<p style="margin-bottom:14px;">You don't have to give a large lump sum to create a meaningful endowment. Many donors build their funds incrementally — making annual contributions that accumulate alongside investment growth until the fund reaches a size capable of generating impactful annual distributions.</p>
+<p style="margin-bottom:14px;">A Donor Advised Fund at the Cleveland Foundation can serve as a bridge: make contributions to your DAF when it's tax-advantageous, then transfer funds to an endowment when you're ready. This "funding over time" approach gives you flexibility without sacrificing the permanence of an endowed legacy.</p>
+<p style="margin-bottom:14px;">Some donors also build their endowment through a combination of lifetime gifts and a bequest. The lifetime gifts establish the fund and begin generating distributions immediately; the bequest significantly increases the principal upon passing.</p>
+<p>Cleveland Foundation philanthropic advisors can model different funding timelines and show you exactly how your endowment would grow and distribute under various scenarios.</p>`
+      }
+    ]
+  },
+
+  foundations: {
+    title: 'Community Foundations',
+    eyebrow: 'Community Foundations',
+    color: 'var(--tcf-aqua)',
+    description: 'Community foundations are unique philanthropic institutions — neither purely private nor purely public. This track explains what makes them different, how they work, and why giving through one may be the most strategic philanthropic decision you can make.',
+    totalMinutes: '~12',
+    courses: [
+      {
+        title: 'What Is a Community Foundation?',
+        tag: 'Community Foundations · 3 min',
+        body: `<p style="margin-bottom:14px;">A community foundation is a publicly supported charitable organization that serves a specific geographic region. It pools charitable gifts from many donors, manages them as endowed or advised funds, and distributes grants to nonprofits working in that community.</p>
+<p style="margin-bottom:14px;">Unlike a private foundation — which is typically created and controlled by a single family or corporation — a community foundation is broadly governed and accountable to the public. This structure gives it unique advantages: tax benefits for donors, credibility with grantees, and deep community knowledge built over decades.</p>
+<p style="margin-bottom:14px;">The Cleveland Foundation, established in 1914, was the world's first community foundation. Today there are over 900 across the United States, collectively managing more than $100 billion in assets and distributing billions in grants each year.</p>
+<p>Community foundations are not middlemen. They are active partners in community change — convening stakeholders, conducting research, and taking on issues too complex for any single donor or nonprofit to solve alone.</p>`
+      },
+      {
+        title: 'Community Foundations vs. Private Foundations',
+        tag: 'Community Foundations · 4 min',
+        body: `<p style="margin-bottom:14px;">Donors who want to establish a structured giving vehicle often compare community foundations and private foundations. Both have real advantages — but they serve different needs.</p>
+<p style="margin-bottom:14px;">A <strong style="color:var(--tcf-primary);">private foundation</strong> gives you maximum control. You set the strategy, hire staff, select grantees, and manage investments yourself. The trade-off: significant startup costs, ongoing administrative burden, an annual payout requirement of 5%, and more complex tax rules. Private foundations typically make sense for donors giving $5 million or more.</p>
+<p style="margin-bottom:14px;">A <strong style="color:var(--tcf-primary);">community foundation Donor Advised Fund</strong> trades some control for simplicity, expertise, and efficiency. TCF handles investments, compliance, grantee vetting, and reporting. You focus on the giving. The tax deduction is more favorable (up to 60% of AGI for cash gifts, vs. 30% for private foundations), and you can start with as little as $10,000.</p>
+<p>For most donors — including many who are quite wealthy — a DAF at a community foundation is the more practical and often more impactful choice.</p>`
+      },
+      {
+        title: 'The Cleveland Foundation\'s Role in Greater Cleveland',
+        tag: 'Community Foundations · 3 min',
+        body: `<p style="margin-bottom:14px;">The Cleveland Foundation is more than a grant-making institution. Over 110 years, it has become one of the most trusted civic institutions in Greater Cleveland — a convener, a researcher, a risk-taker, and a long-term investor in the region's future.</p>
+<p style="margin-bottom:14px;">TCF has played a catalytic role in some of Greater Cleveland's most significant transformations: the revitalization of University Circle, the development of the Health-Tech Corridor, workforce development initiatives that have connected thousands of residents to careers, and arts and culture investments that have made Cleveland a national model for philanthropic support of the creative sector.</p>
+<p style="margin-bottom:14px;">When you give through the Cleveland Foundation, you're not just directing grants to individual nonprofits. You're connecting to a network of philanthropists, civic leaders, and community organizations working together on problems that no single donor could solve alone.</p>
+<p>That community intelligence — 110 years of it — is available to every donor who partners with TCF, regardless of fund size.</p>`
+      },
+      {
+        title: 'How Community Foundations Invest for the Long Term',
+        tag: 'Community Foundations · 2 min',
+        body: `<p style="margin-bottom:14px;">One of the most underappreciated advantages of giving through a community foundation is access to institutional-quality investment management. TCF manages its endowment through a diversified portfolio overseen by a professional investment committee and advised by top-tier investment consultants.</p>
+<p style="margin-bottom:14px;">This matters because investment performance directly affects how much can be distributed to causes each year. A fund managed with institutional discipline — diversified across asset classes, with disciplined rebalancing and low fees — will generate significantly more distributable income over 20 or 30 years than the same assets in a typical brokerage account.</p>
+<p style="margin-bottom:14px;">Donors at the Cleveland Foundation benefit from this institutional scale even at modest fund sizes. A $25,000 Donor Advised Fund at TCF is invested in the same portfolio as a $25 million endowment — earning the same risk-adjusted returns and paying a fraction of what an individual investor would pay in fees.</p>
+<p>Over a multi-decade time horizon, that difference in investment performance can meaningfully increase the total philanthropic impact of your giving.</p>`
+      }
+    ]
+  }
+};
+
+let currentTrackId = null;
+let currentCourseIndex = null;
+let _ltPending = false;  // signals navigate() that openLearningTrack prepared the panels
+
+function openLearningTrack(trackId) {
+  const track = LEARNING_TRACKS[trackId];
+  if (!track) return;
+
+  currentTrackId = trackId;
+  currentCourseIndex = null;
+
+  // ── Prepare all DOM state BEFORE activating the view ──────────────
+  // Panel visibility
+  document.getElementById('lt-index').style.display  = 'none';
+  document.getElementById('lt-detail').style.display = 'block';
+  document.getElementById('lt-reader').style.display = 'none';
+
+  // Header
+  document.getElementById('lt-eyebrow').textContent     = track.eyebrow;
+  document.getElementById('lt-title').textContent       = track.title;
+  document.getElementById('lt-description').textContent = track.description;
+  document.getElementById('lt-course-count').textContent = track.courses.length;
+  document.getElementById('lt-time').textContent        = track.totalMinutes;
+
+  // Accent border on intro card
+  document.getElementById('lt-intro-card').style.borderLeft = '4px solid ' + track.color;
+
+  // Build course list — use data-course-index to avoid inline quote collisions
+  const container = document.getElementById('lt-courses');
+  container.innerHTML = track.courses.map(function(course, i) {
+    return [
+      '<div class="lt-course-card" data-course-index="' + i + '"',
+      ' style="background:var(--surface); border:1px solid var(--border);',
+      ' border-radius:var(--radius); padding:16px 18px; margin-bottom:12px;',
+      ' cursor:pointer; display:flex; gap:14px; align-items:flex-start;',
+      ' box-shadow:var(--shadow-sm);">',
+      '<div style="width:36px; height:36px; border-radius:8px;',
+      ' background:' + track.color + '; display:flex; align-items:center;',
+      ' justify-content:center; flex-shrink:0; font-family:var(--font-head);',
+      ' font-weight:700; color:#fff; font-size:14px;">' + (i + 1) + '</div>',
+      '<div style="flex:1; min-width:0;">',
+      '<div style="font-weight:700; color:var(--tcf-primary); font-size:15px;',
+      ' margin-bottom:4px; line-height:1.3;">' + course.title + '</div>',
+      '<div style="font-size:12px; color:var(--ink-faint);">' + course.tag + '</div>',
+      '</div>',
+      '<svg width="14" height="14" viewBox="0 0 24 24" fill="none"',
+      ' stroke="var(--ink-faint)" stroke-width="2.5"',
+      ' style="flex-shrink:0; margin-top:4px;">',
+      '<path d="M9 18l6-6-6-6"/></svg>',
+      '</div>'
+    ].join('');
+  }).join('');
+
+  // Attach click listeners imperatively — no inline onclick needed
+  container.querySelectorAll('.lt-course-card').forEach(function(card) {
+    card.addEventListener('click', function() {
+      openCourse(parseInt(card.dataset.courseIndex, 10));
+    });
+    card.addEventListener('mouseenter', function() {
+      card.style.borderColor = track.color;
+    });
+    card.addEventListener('mouseleave', function() {
+      card.style.borderColor = 'var(--border)';
+    });
+  });
+
+  // ── Now activate the view (it renders in the correct state) ───────
+  _ltPending = true;
+  navigate('learning');
+}
+
+function closeLearningTrack() {
+  currentTrackId = null;
+  document.getElementById('lt-index').style.display  = 'block';
+  document.getElementById('lt-detail').style.display = 'none';
+  document.getElementById('lt-reader').style.display = 'none';
+  window.scrollTo({ top: 0, behavior: 'instant' });
+}
+
+function openCourse(index) {
+  const track = LEARNING_TRACKS[currentTrackId];
+  if (!track) return;
+  const course = track.courses[index];
+  if (!course) return;
+  currentCourseIndex = index;
+
+  document.getElementById('lt-detail').style.display = 'none';
+  document.getElementById('lt-reader').style.display = 'block';
+
+  document.getElementById('lt-reader-track-label').textContent = track.title;
+  document.getElementById('lt-reader-tag').textContent         = course.tag;
+  document.getElementById('lt-reader-title').textContent       = course.title;
+  document.getElementById('lt-reader-body').innerHTML          = course.body;
+
+  window.scrollTo({ top: 0, behavior: 'instant' });
+}
+
+function closeCourse() {
+  document.getElementById('lt-reader').style.display = 'none';
+  document.getElementById('lt-detail').style.display = 'block';
+  window.scrollTo({ top: 0, behavior: 'instant' });
+}
+
+
+
 var CALC_AREAS=[
   {id:'education',icon:'📚',name:'Education',unitLabel:'Learning Hours',unitCost:12,color:'#1A8DA9',programDesc:'after-school programs'},
   {id:'food',icon:'🍽️',name:'Food',unitLabel:'Meals',unitCost:0.50,color:'#EE7331',programDesc:'food security programs'},
@@ -2870,45 +3263,72 @@ function vReset(){
   if(fin) fin.style.display='none';
 }
 
-// Initialize vision on first render
-document.addEventListener('DOMContentLoaded', function(){
-  calcRender();
-  vRenderCard();
-  window.addEventListener('resize', function(){
-    if(!document.getElementById('mobileCalcChart')) return;
-    calcDrawChart((CALC_AREAS.find(function(a){return a.id===calcState.areaId;})||CALC_AREAS[0]).color);
-  });
-});
 
 
-function navigate(view, closeDrawerAfter = true) {
-  document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
-  const target = document.getElementById('view-' + view);
+
+// Track which modules have been initialised at least once
+const _inited = {};
+
+function navigate(view, closeDrawerAfter) {
+  if (closeDrawerAfter === undefined) closeDrawerAfter = true;
+
+  document.querySelectorAll('.view').forEach(function(v) { v.classList.remove('active'); });
+  var target = document.getElementById('view-' + view);
   if (target) target.classList.add('active');
 
-  // Update bottom nav (only highlights for the 5 primary tiles)
-  document.querySelectorAll('.bnav-item').forEach(n => n.classList.remove('active'));
-  const bnav = document.querySelector(`.bnav-item[data-view="${view}"]`);
+  // Bottom nav highlight
+  document.querySelectorAll('.bnav-item').forEach(function(n) { n.classList.remove('active'); });
+  var bnav = document.querySelector('.bnav-item[data-view="' + view + '"]');
   if (bnav) bnav.classList.add('active');
 
-  // Update drawer nav
-  document.querySelectorAll('.drawer-item').forEach(n => n.classList.remove('active'));
-  const dnav = document.querySelector(`.drawer-item[data-view="${view}"]`);
+  // Drawer nav highlight
+  document.querySelectorAll('.drawer-item').forEach(function(n) { n.classList.remove('active'); });
+  var dnav = document.querySelector('.drawer-item[data-view="' + view + '"]');
   if (dnav) dnav.classList.add('active');
 
-  // Initialize embedded modules when first visited
-  if (view === 'calculator') { setTimeout(function(){ calcRender(); }, 50); }
-  if (view === 'vision') { setTimeout(function(){ vRenderCard(); }, 50); }
+  // Lazy-init embedded modules on first visit
+  if (view === 'calculator' && !_inited.calculator) {
+    _inited.calculator = true;
+    setTimeout(calcRender, 50);
+  }
+  if (view === 'vision' && !_inited.vision) {
+    _inited.vision = true;
+    setTimeout(vRenderCard, 50);
+  }
+  // Re-draw calculator chart whenever revisited (canvas sizing can change)
+  if (view === 'calculator' && _inited.calculator) {
+    setTimeout(calcRender, 50);
+  }
+  // When navigating directly to learning (not via openLearningTrack), show the index
+  if (view === 'learning') {
+    var idx = document.getElementById('lt-index');
+    var det = document.getElementById('lt-detail');
+    var rdr = document.getElementById('lt-reader');
+    // Only reset to index if openLearningTrack hasn't already set the panels
+    // We detect this by checking if we were NOT called from openLearningTrack
+    // The _ltPending flag is set by openLearningTrack before calling navigate()
+    if (!_ltPending) {
+      if (idx) idx.style.display  = 'block';
+      if (det) det.style.display  = 'none';
+      if (rdr) rdr.style.display  = 'none';
+    }
+    _ltPending = false;
+  }
 
   if (view === 'cart') { toggleCart(); }
   if (closeDrawerAfter) closeDrawer();
   window.scrollTo({ top: 0, behavior: 'instant' });
 }
-document.querySelectorAll('.bnav-item').forEach(n => {
-  n.addEventListener('click', () => navigate(n.dataset.view, false));
-});
-document.querySelectorAll('.drawer-item').forEach(n => {
-  n.addEventListener('click', () => navigate(n.dataset.view));
+
+// Nav is wired via onclick attributes on each button directly.
+
+// Resize: redraw calculator chart if it's the active view
+window.addEventListener('resize', function() {
+  var calcView = document.getElementById('view-calculator');
+  if (calcView && calcView.classList.contains('active')) {
+    var activeArea = CALC_AREAS.find(function(a) { return a.id === calcState.areaId; }) || CALC_AREAS[0];
+    calcDrawChart(activeArea.color);
+  }
 });
 
 /* ============================================================
