@@ -346,7 +346,9 @@ body.pins-hidden .ipin{display:none!important;}
 .pending-banner .pb-stat .lbl{font-size:11px;opacity:.7;margin-top:2px;}
 
 /* ============================================================
-   IMPACT MAP (merged sub-app, scoped under #view-impactmap)
+   IMPACT MAP (merged sub-app, scoped under #view-impactmap,
+   all component classes prefixed with "im-" to avoid any
+   collision with the portal's own generic class names)
    ============================================================ */
 #view-impactmap{
     --green:#164430; --green-2:#0f331f; --cream:#F3F1EF; --orange:#EE7331;
@@ -355,18 +357,18 @@ body.pins-hidden .ipin{display:none!important;}
     --shadow: 0 10px 30px -12px rgba(22,68,48,0.35);
     --radius: 18px;
     --sidebar-w: 280px;
-  }#view-impactmap{background:var(--cream); color:var(--ink); font-family:'Source Sans 3', -apple-system, BlinkMacSystemFont, sans-serif; -webkit-font-smoothing:antialiased; overflow-x:hidden;}#view-impactmap h1, #view-impactmap h2, #view-impactmap h3, #view-impactmap .display{font-family:'Poppins', sans-serif; font-weight:800; letter-spacing:-0.01em; margin:0;}#view-impactmap a{color:inherit;}#view-impactmap button{font-family:inherit;}#view-impactmap .eyebrow{font-family:'Poppins', sans-serif; font-weight:700; font-size:12px; letter-spacing:0.14em; text-transform:uppercase; opacity:0.85;}#view-impactmap .wrap{max-width:1280px; margin:0 auto; padding:0 20px;}#view-impactmap /* ---------- HERO ---------- */
-  .hero{position:relative; background:radial-gradient(circle at 85% -10%, #1c5a3c 0%, var(--green) 45%, var(--green-2) 100%); color:var(--cream); padding:30px 0 38px; overflow:hidden;}#view-impactmap .hero .wrap{position:relative; z-index:2;}#view-impactmap .dotfield{position:absolute; inset:0; z-index:1; opacity:0.55; pointer-events:none;}#view-impactmap .dotfield span{position:absolute; border-radius:3px; animation: float 7s ease-in-out infinite;}
-  @keyframes imFloat{ 0%,100%{transform:translateY(0)} 50%{transform:translateY(-6px)} }#view-impactmap .brandmark{display:flex; align-items:center; gap:10px; margin-bottom:20px;}#view-impactmap .brandmark .word{font-family:'Poppins',sans-serif; font-weight:700; font-size:15px; letter-spacing:0.02em;}#view-impactmap .brandmark .word b{font-weight:800;}#view-impactmap .hero h1{font-size:clamp(26px, 3.6vw, 40px); line-height:1.1; max-width:20ch; margin-top:8px;}#view-impactmap .hero p.lede{font-size:15.5px; line-height:1.55; max-width:540px; margin-top:14px; color:#DCE9E1;}#view-impactmap .stat-row{display:flex; gap:26px; margin-top:22px; flex-wrap:wrap;}#view-impactmap .stat{min-width:90px;}#view-impactmap .stat .num{font-family:'Poppins',sans-serif; font-weight:800; font-size:24px; color:#fff;}#view-impactmap .stat .lab{font-size:11.5px; color:#B9CFC2; margin-top:2px;}#view-impactmap /* ---------- APP SHELL ---------- */
-  .app-shell{display:flex; align-items:flex-start; position:relative;}#view-impactmap .sidebar-toggle{
+  }#view-impactmap{background:var(--cream); color:var(--ink); font-family:'Source Sans 3', -apple-system, BlinkMacSystemFont, sans-serif; -webkit-font-smoothing:antialiased; overflow-x:hidden;}#view-impactmap h1, #view-impactmap h2, #view-impactmap h3, #view-impactmap .im-display{font-family:'Poppins', sans-serif; font-weight:800; letter-spacing:-0.01em; margin:0;}#view-impactmap a{color:inherit;}#view-impactmap button{font-family:inherit;}#view-impactmap .im-eyebrow{font-family:'Poppins', sans-serif; font-weight:700; font-size:12px; letter-spacing:0.14em; text-transform:uppercase; opacity:0.85;}#view-impactmap .im-wrap{max-width:1280px; margin:0 auto; padding:0 20px;}#view-impactmap /* ---------- HERO ---------- */
+  .im-hero{position:relative; background:radial-gradient(circle at 85% -10%, #1c5a3c 0%, var(--green) 45%, var(--green-2) 100%); color:var(--cream); padding:30px 0 38px; overflow:hidden;}#view-impactmap .im-hero .im-wrap{position:relative; z-index:2;}#view-impactmap .im-dotfield{position:absolute; inset:0; z-index:1; opacity:0.55; pointer-events:none;}#view-impactmap .im-dotfield span{position:absolute; border-radius:3px; animation: float 7s ease-in-out infinite;}
+  @keyframes imFloat{ 0%,100%{transform:translateY(0)} 50%{transform:translateY(-6px)} }#view-impactmap .im-brandmark{display:flex; align-items:center; gap:10px; margin-bottom:20px;}#view-impactmap .im-brandmark .im-word{font-family:'Poppins',sans-serif; font-weight:700; font-size:15px; letter-spacing:0.02em;}#view-impactmap .im-brandmark .im-word b{font-weight:800;}#view-impactmap .im-hero h1{font-size:clamp(26px, 3.6vw, 40px); line-height:1.1; max-width:20ch; margin-top:8px;}#view-impactmap .im-hero p.im-lede{font-size:15.5px; line-height:1.55; max-width:540px; margin-top:14px; color:#DCE9E1;}#view-impactmap .im-stat-row{display:flex; gap:26px; margin-top:22px; flex-wrap:wrap;}#view-impactmap .im-stat{min-width:90px;}#view-impactmap .im-stat .im-num{font-family:'Poppins',sans-serif; font-weight:800; font-size:24px; color:#fff;}#view-impactmap .im-stat .im-lab{font-size:11.5px; color:#B9CFC2; margin-top:2px;}#view-impactmap /* ---------- APP SHELL ---------- */
+  .im-app-shell{display:flex; align-items:flex-start; position:relative;}#view-impactmap .im-sidebar-toggle{
     display:flex; align-items:center; gap:8px;
     position:sticky; top:10px; z-index:50;
     margin:14px 0 0 20px;
     background:var(--green); color:#fff; border:none; padding:11px 16px; border-radius:100px;
     font-weight:700; font-size:13.5px; cursor:pointer; box-shadow:var(--shadow);
   }
-  @media(min-width:960px){#view-impactmap .sidebar-toggle{display:none;} }#view-impactmap .sidebar-backdrop{position:fixed; inset:0; background:rgba(15,30,22,0.45); z-index:2040; opacity:0; pointer-events:none; transition:opacity .25s ease;}#view-impactmap .sidebar-backdrop.show{opacity:1; pointer-events:auto;}
-  @media(min-width:960px){#view-impactmap .sidebar-backdrop{display:none;} }#view-impactmap .sidebar{
+  @media(min-width:960px){#view-impactmap .im-sidebar-toggle{display:none;} }#view-impactmap .im-sidebar-backdrop{position:fixed; inset:0; background:rgba(15,30,22,0.45); z-index:2040; opacity:0; pointer-events:none; transition:opacity .25s ease;}#view-impactmap .im-sidebar-backdrop.im-show{opacity:1; pointer-events:auto;}
+  @media(min-width:960px){#view-impactmap .im-sidebar-backdrop{display:none;} }#view-impactmap .im-sidebar{
     background:#fff;
     width:min(84vw, 320px);
     flex:0 0 auto;
@@ -375,50 +377,50 @@ body.pins-hidden .ipin{display:none!important;}
     box-shadow:20px 0 50px rgba(0,0,0,0.2);
     overflow-y:auto;
     padding-bottom:30px;
-  }#view-impactmap .sidebar.open{transform:translateX(0);}
-  @media(min-width:960px){#view-impactmap .sidebar{
+  }#view-impactmap .im-sidebar.im-open{transform:translateX(0);}
+  @media(min-width:960px){#view-impactmap .im-sidebar{
       position:sticky; top:0; height:100vh; transform:none; box-shadow:none;
       border-right:1px solid rgba(22,68,48,0.1); width:var(--sidebar-w); flex:0 0 var(--sidebar-w);
-    }#view-impactmap .sidebar-backdrop{display:none !important;}
-  }#view-impactmap .sidebar-head{display:flex; align-items:center; justify-content:space-between; padding:20px 20px 10px;}#view-impactmap .sidebar-head h2{font-size:17px; color:var(--green);}#view-impactmap .sidebar-close{width:32px; height:32px; border-radius:50%; border:none; background:#f1ece4; font-size:17px; cursor:pointer; color:var(--green);}
-  @media(min-width:960px){#view-impactmap .sidebar-close{display:none;} }#view-impactmap .filter-section{padding:14px 20px; border-bottom:1px solid #f1ece4;}#view-impactmap .filter-label{font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; color:var(--green); opacity:0.75; margin-bottom:10px;}#view-impactmap .pillar-list{display:flex; flex-direction:column; gap:6px;}#view-impactmap .pillar-opt{
+    }#view-impactmap .im-sidebar-backdrop{display:none !important;}
+  }#view-impactmap .im-sidebar-head{display:flex; align-items:center; justify-content:space-between; padding:20px 20px 10px;}#view-impactmap .im-sidebar-head h2{font-size:17px; color:var(--green);}#view-impactmap .im-sidebar-close{width:32px; height:32px; border-radius:50%; border:none; background:#f1ece4; font-size:17px; cursor:pointer; color:var(--green);}
+  @media(min-width:960px){#view-impactmap .im-sidebar-close{display:none;} }#view-impactmap .im-filter-section{padding:14px 20px; border-bottom:1px solid #f1ece4;}#view-impactmap .im-filter-label{font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; color:var(--green); opacity:0.75; margin-bottom:10px;}#view-impactmap .im-pillar-list{display:flex; flex-direction:column; gap:6px;}#view-impactmap .im-pillar-opt{
     display:flex; align-items:center; gap:10px; padding:9px 12px; border-radius:10px;
-    border:1.5px solid transparent; cursor:pointer; font-size:13.5px; font-weight:600; transition:all .15s ease;
-  }#view-impactmap .pillar-opt:hover{background:#faf7f2;}#view-impactmap .pillar-opt .dot{width:10px;height:10px;border-radius:50%; flex:0 0 auto;}#view-impactmap .pillar-opt .cnt{margin-left:auto; font-size:12px; color:var(--gray); font-weight:600;}#view-impactmap .pillar-opt.active{background:var(--pillar-color); color:#fff; border-color:var(--pillar-color);}#view-impactmap .pillar-opt.active .cnt{color:rgba(255,255,255,0.85);}#view-impactmap .pillar-opt.active .dot{background:#fff !important;}#view-impactmap .pillar-opt.all{font-weight:700;}#view-impactmap select#neighSelect{
+    border:1.5px solid transparent; border-left:4px solid var(--pillar-color, transparent); cursor:pointer; font-size:13.5px; font-weight:600; transition:all .15s ease;
+  }#view-impactmap .im-pillar-opt:hover{background:#faf7f2;}#view-impactmap .im-pillar-opt .im-dot{width:10px;height:10px;border-radius:50%; flex:0 0 auto;}#view-impactmap .im-pillar-opt .im-cnt{margin-left:auto; font-size:12px; color:var(--gray); font-weight:600;}#view-impactmap .im-pillar-opt.im-active{background:var(--pillar-color); color:#fff; border-color:var(--pillar-color);}#view-impactmap .im-pillar-opt.im-active .im-cnt{color:rgba(255,255,255,0.85);}#view-impactmap .im-pillar-opt.im-active .im-dot{background:#fff !important;}#view-impactmap .im-pillar-opt.im-all{font-weight:700;}#view-impactmap select#neighSelect{
     width:100%; padding:10px 12px; border-radius:10px; border:1.5px solid rgba(22,68,48,0.18);
     background:#fff; font-size:13.5px; font-weight:600; color:var(--ink);
-  }#view-impactmap .locbtn{
+  }#view-impactmap .im-locbtn{
     display:flex; align-items:center; justify-content:center; gap:6px; width:100%; margin-top:10px;
     padding:10px 14px; border-radius:10px; border:1.5px solid rgba(22,68,48,0.18);
     background:#fff; font-size:13.5px; font-weight:600; cursor:pointer; color:var(--green);
-  }#view-impactmap .locbtn:hover{background:var(--green); color:#fff; border-color:var(--green);}#view-impactmap .clearbtn{
+  }#view-impactmap .im-locbtn:hover{background:var(--green); color:#fff; border-color:var(--green);}#view-impactmap .im-clearbtn{
     width:100%; margin-top:12px; font-size:13px; font-weight:700; color:var(--red); background:none;
     border:1.5px dashed rgba(204,30,75,0.35); border-radius:10px; cursor:pointer; padding:9px; display:none;
-  }#view-impactmap .clearbtn.show{display:block;}#view-impactmap .legend-mini{display:flex; flex-wrap:wrap; gap:8px 12px; padding:12px 20px 4px;}#view-impactmap .legend-item{display:flex; align-items:center; gap:6px; font-size:11.5px; color:var(--green); opacity:0.85;}#view-impactmap .legend-item .dot{width:8px;height:8px;border-radius:50%;}#view-impactmap /* ---------- CONTENT ---------- */
-  .content{flex:1; min-width:0;}#view-impactmap .toolbar{display:flex; align-items:center; justify-content:space-between; padding:16px 20px 0;}#view-impactmap .resultcount{font-size:12.5px; color:var(--gray); font-weight:600;}#view-impactmap .content-wrap{padding:14px 20px 10px; max-width:none;}#view-impactmap .grid{display:grid; grid-template-columns:1fr; gap:22px;}
-  @media(min-width:1180px){#view-impactmap .grid{grid-template-columns: 1.5fr 1fr; align-items:start;} }#view-impactmap .panel{background:#fff; border-radius:var(--radius); box-shadow:var(--shadow); overflow:hidden;}#view-impactmap .map-panel{position:relative;}#view-impactmap .map-head{display:flex; justify-content:space-between; align-items:center; padding:16px 18px;}#view-impactmap .map-head h2{font-size:15px; color:var(--green);}#view-impactmap #leafletMap{width:100%; height:560px; background:#dbe7e2;}#view-impactmap .leaflet-popup, #view-impactmap .leaflet-control-attribution{font-family:'Source Sans 3', sans-serif; font-size:11px;}#view-impactmap .cluster-dot{border-radius:50%; border:2px solid #fff; box-shadow:0 1px 4px rgba(0,0,0,0.35);}#view-impactmap .geostatus{
+  }#view-impactmap .im-clearbtn.im-show{display:block;}#view-impactmap /* ---------- CONTENT ---------- */
+  .im-content{flex:1; min-width:0;}#view-impactmap .im-toolbar{display:flex; align-items:center; justify-content:space-between; padding:16px 20px 0;}#view-impactmap .im-resultcount{font-size:12.5px; color:var(--gray); font-weight:600;}#view-impactmap .im-content-wrap{padding:14px 20px 10px; max-width:none;}#view-impactmap .im-grid{display:grid; grid-template-columns:1fr; gap:22px;}
+  @media(min-width:1180px){#view-impactmap .im-grid{grid-template-columns: 1.5fr 1fr; align-items:start;} }#view-impactmap .im-panel{background:#fff; border-radius:var(--radius); box-shadow:var(--shadow); overflow:hidden;}#view-impactmap .im-map-panel{position:relative;}#view-impactmap .im-map-head{display:flex; justify-content:space-between; align-items:center; padding:16px 18px;}#view-impactmap .im-map-head h2{font-size:15px; color:var(--green);}#view-impactmap #leafletMap{width:100%; height:560px; background:#dbe7e2;}#view-impactmap .leaflet-popup, #view-impactmap .leaflet-control-attribution{font-family:'Source Sans 3', sans-serif; font-size:11px;}#view-impactmap .im-cluster-dot{border-radius:50%; border:2px solid #fff; box-shadow:0 1px 4px rgba(0,0,0,0.35);}#view-impactmap .im-geostatus{
     position:absolute; bottom:14px; left:14px; z-index:5; background:rgba(255,255,255,0.95);
     padding:7px 12px; border-radius:100px; font-size:11.5px; color:var(--green); font-weight:600;
     box-shadow:var(--shadow); display:none; align-items:center; gap:7px;
-  }#view-impactmap .geostatus.show{display:flex;}#view-impactmap .spinner{width:11px;height:11px;border-radius:50%; border:2px solid rgba(22,68,48,0.25); border-top-color:var(--green); animation:spin 0.8s linear infinite;}
+  }#view-impactmap .im-geostatus.im-show{display:flex;}#view-impactmap .im-spinner{width:11px;height:11px;border-radius:50%; border:2px solid rgba(22,68,48,0.25); border-top-color:var(--green); animation:spin 0.8s linear infinite;}
   @keyframes imSpin{to{transform:rotate(360deg);}}#view-impactmap /* ---------- LIST ---------- */
-  .list-panel{max-height:640px; overflow-y:auto;}#view-impactmap .list-head{padding:16px 18px 10px; border-bottom:1px solid #eee4da; position:sticky; top:0; background:#fff; z-index:2;}#view-impactmap .list-head h2{font-size:15px; color:var(--green);}#view-impactmap .cardlist{padding:6px 10px 14px;}#view-impactmap .card{display:flex; gap:12px; align-items:flex-start; padding:12px 10px; border-radius:12px; cursor:pointer; transition:background .12s ease; border-bottom:1px solid #f1ece4;}#view-impactmap .card:hover, #view-impactmap .card.hovered{background:#faf7f2;}#view-impactmap .card .swatch{width:11px;height:11px;border-radius:50%; margin-top:5px; flex:0 0 auto;}#view-impactmap .card .body{flex:1; min-width:0;}#view-impactmap .card .org{font-weight:700; font-size:14.5px; color:var(--ink); line-height:1.3;}#view-impactmap .card .grant{font-size:12.8px; color:var(--gray); margin-top:2px; line-height:1.35;}#view-impactmap .card .meta{font-size:11.5px; color:var(--green); opacity:0.8; margin-top:5px; font-weight:600;}#view-impactmap .card .chev{color:#cfc7ba; font-size:18px; margin-left:auto; flex:0 0 auto;}#view-impactmap .noresults{padding:40px 20px; text-align:center; color:var(--gray); font-size:14px;}#view-impactmap /* ---------- REGIONAL STRIP ---------- */
-  .regional{margin-top:22px;}#view-impactmap .regional h3{font-size:13px; color:var(--green); opacity:0.8; margin-bottom:10px; font-family:'Source Sans 3'; font-weight:700;}#view-impactmap .regional-scroll{display:flex; gap:10px; overflow-x:auto; padding-bottom:6px;}#view-impactmap .rcard{flex:0 0 auto; width:220px; background:#fff; border-radius:14px; padding:12px 14px; box-shadow:var(--shadow); cursor:pointer; border-left:4px solid var(--gray);}#view-impactmap .rcard .org{font-weight:700; font-size:13.5px; color:var(--ink);}#view-impactmap .rcard .grant{font-size:11.8px; color:var(--gray); margin-top:3px;}#view-impactmap .rcard .city{font-size:11px; color:var(--green); margin-top:6px; font-weight:600;}#view-impactmap /* ---------- FOOTER ---------- */
-  footer{padding:34px 0 60px; text-align:center;}#view-impactmap footer .fineprint{font-size:12px; color:var(--gray); max-width:560px; margin:0 auto 14px; line-height:1.5;}#view-impactmap .stafflink{font-size:12.5px; color:var(--green); text-decoration:underline; cursor:pointer; font-weight:600; background:none; border:none;}#view-impactmap /* ---------- DRAWER (right side) ---------- */
-  .backdrop{position:fixed; inset:0; background:rgba(15,30,22,0.45); z-index:2050; opacity:0; pointer-events:none; transition:opacity .25s ease;}#view-impactmap .backdrop.show{opacity:1; pointer-events:auto;}#view-impactmap .drawer{
+  .im-list-panel{max-height:640px; overflow-y:auto;}#view-impactmap .im-list-head{padding:16px 18px 10px; border-bottom:1px solid #eee4da; position:sticky; top:0; background:#fff; z-index:2;}#view-impactmap .im-list-head h2{font-size:15px; color:var(--green);}#view-impactmap .im-cardlist{padding:6px 10px 14px;}#view-impactmap .im-card{display:flex; gap:12px; align-items:flex-start; padding:12px 10px; border-radius:12px; cursor:pointer; transition:background .12s ease; border-bottom:1px solid #f1ece4;}#view-impactmap .im-card:hover, #view-impactmap .im-card.im-hovered{background:#faf7f2;}#view-impactmap .im-card .im-swatch{width:11px;height:11px;border-radius:50%; margin-top:5px; flex:0 0 auto;}#view-impactmap .im-card .im-body{flex:1; min-width:0;}#view-impactmap .im-card .im-org{font-weight:700; font-size:14.5px; color:var(--ink); line-height:1.3;}#view-impactmap .im-card .im-grant{font-size:12.8px; color:var(--gray); margin-top:2px; line-height:1.35;}#view-impactmap .im-card .im-meta{font-size:11.5px; color:var(--green); opacity:0.8; margin-top:5px; font-weight:600;}#view-impactmap .im-card .im-chev{color:#cfc7ba; font-size:18px; margin-left:auto; flex:0 0 auto;}#view-impactmap .im-noresults{padding:40px 20px; text-align:center; color:var(--gray); font-size:14px;}#view-impactmap /* ---------- REGIONAL STRIP ---------- */
+  .im-regional{margin-top:22px;}#view-impactmap .im-regional h3{font-size:13px; color:var(--green); opacity:0.8; margin-bottom:10px; font-family:'Source Sans 3'; font-weight:700;}#view-impactmap .im-regional-scroll{display:flex; gap:10px; overflow-x:auto; padding-bottom:6px;}#view-impactmap .im-rcard{flex:0 0 auto; width:220px; background:#fff; border-radius:14px; padding:12px 14px; box-shadow:var(--shadow); cursor:pointer; border-left:4px solid var(--gray);}#view-impactmap .im-rcard .im-org{font-weight:700; font-size:13.5px; color:var(--ink);}#view-impactmap .im-rcard .im-grant{font-size:11.8px; color:var(--gray); margin-top:3px;}#view-impactmap .im-rcard .im-city{font-size:11px; color:var(--green); margin-top:6px; font-weight:600;}#view-impactmap /* ---------- FOOTER ---------- */
+  footer{padding:34px 0 60px; text-align:center;}#view-impactmap footer .im-fineprint{font-size:12px; color:var(--gray); max-width:560px; margin:0 auto 14px; line-height:1.5;}#view-impactmap .im-stafflink{font-size:12.5px; color:var(--green); text-decoration:underline; cursor:pointer; font-weight:600; background:none; border:none;}#view-impactmap /* ---------- DRAWER (right side) ---------- */
+  .im-backdrop{position:fixed; inset:0; background:rgba(15,30,22,0.45); z-index:2050; opacity:0; pointer-events:none; transition:opacity .25s ease;}#view-impactmap .im-backdrop.im-show{opacity:1; pointer-events:auto;}#view-impactmap .im-drawer{
     position:fixed; top:0; right:0; height:100%; width:min(430px, 94vw);
     background:var(--cream); z-index:2051; box-shadow:-20px 0 50px rgba(0,0,0,0.25);
     transform:translateX(100%); transition:transform .3s cubic-bezier(.2,.8,.2,1);
     overflow-y:auto;
-  }#view-impactmap .drawer.open{transform:translateX(0);}#view-impactmap .drawer-top{background:var(--drawer-color, var(--green)); color:#fff; padding:22px 22px 26px; position:relative;}#view-impactmap .drawer-close{position:absolute; top:16px; right:16px; width:34px; height:34px; border-radius:50%; background:rgba(255,255,255,0.18); border:none; color:#fff; font-size:18px; cursor:pointer; display:flex; align-items:center; justify-content:center;}#view-impactmap .drawer-close:hover{background:rgba(255,255,255,0.3);}#view-impactmap .drawer-tag{display:inline-flex; align-items:center; gap:6px; background:rgba(255,255,255,0.2); padding:5px 11px; border-radius:100px; font-size:11.5px; font-weight:700; text-transform:uppercase; letter-spacing:0.04em; margin-bottom:12px; margin-top:6px;}#view-impactmap .drawer-org{font-family:'Poppins',sans-serif; font-weight:800; font-size:21px; line-height:1.2;}#view-impactmap .drawer-grant{font-size:14px; margin-top:8px; opacity:0.92; line-height:1.4;}#view-impactmap .drawer-body{padding:22px;}#view-impactmap .drawer-row{display:flex; gap:10px; font-size:13.5px; color:var(--ink); margin-bottom:10px; align-items:flex-start;}#view-impactmap .drawer-row .k{color:var(--gray); min-width:82px; font-weight:600;}#view-impactmap .orglink{display:inline-flex; align-items:center; gap:6px; margin-top:6px; font-weight:700; font-size:13.5px; color:var(--green); text-decoration:none; border-bottom:1.5px solid var(--green);}#view-impactmap .give-block{margin-top:20px; padding:18px; border-radius:14px; background:#fff; box-shadow:var(--shadow);}#view-impactmap .give-note{font-size:12.5px; color:var(--gray); line-height:1.55; margin-bottom:14px;}#view-impactmap .give-note b{color:var(--ink);}#view-impactmap .cta{display:block; width:100%; text-align:center; padding:13px 16px; border-radius:100px; font-weight:700; font-size:14.5px; text-decoration:none; margin-bottom:10px; border:none; cursor:pointer;}#view-impactmap .cta.primary{background:var(--drawer-color, var(--green)); color:#fff;}#view-impactmap .cta.secondary{background:transparent; color:var(--green); border:1.5px solid rgba(22,68,48,0.25);}#view-impactmap .disclaimer{font-size:11.5px; color:var(--gray); text-align:center; margin-top:14px; line-height:1.5; padding:0 6px;}#view-impactmap /* ---------- PREFERENCE BANNER ---------- */
-  .prefbar{
+  }#view-impactmap .im-drawer.im-open{transform:translateX(0);}#view-impactmap .im-drawer-top{background:var(--drawer-color, var(--green)); color:#fff; padding:22px 22px 26px; position:relative;}#view-impactmap .im-drawer-close{position:absolute; top:16px; right:16px; width:34px; height:34px; border-radius:50%; background:rgba(255,255,255,0.18); border:none; color:#fff; font-size:18px; cursor:pointer; display:flex; align-items:center; justify-content:center;}#view-impactmap .im-drawer-close:hover{background:rgba(255,255,255,0.3);}#view-impactmap .im-drawer-tag{display:inline-flex; align-items:center; gap:6px; background:rgba(255,255,255,0.2); padding:5px 11px; border-radius:100px; font-size:11.5px; font-weight:700; text-transform:uppercase; letter-spacing:0.04em; margin-bottom:12px; margin-top:6px;}#view-impactmap .im-drawer-org{font-family:'Poppins',sans-serif; font-weight:800; font-size:21px; line-height:1.2;}#view-impactmap .im-drawer-grant{font-size:14px; margin-top:8px; opacity:0.92; line-height:1.4;}#view-impactmap .im-drawer-body{padding:22px;}#view-impactmap .im-drawer-row{display:flex; gap:10px; font-size:13.5px; color:var(--ink); margin-bottom:10px; align-items:flex-start;}#view-impactmap .im-drawer-row .im-k{color:var(--gray); min-width:82px; font-weight:600;}#view-impactmap .im-orglink{display:inline-flex; align-items:center; gap:6px; margin-top:6px; font-weight:700; font-size:13.5px; color:var(--green); text-decoration:none; border-bottom:1.5px solid var(--green);}#view-impactmap .im-give-block{margin-top:20px; padding:18px; border-radius:14px; background:#fff; box-shadow:var(--shadow);}#view-impactmap .im-give-note{font-size:12.5px; color:var(--gray); line-height:1.55; margin-bottom:14px;}#view-impactmap .im-give-note b{color:var(--ink);}#view-impactmap .im-cta{display:block; width:100%; text-align:center; padding:13px 16px; border-radius:100px; font-weight:700; font-size:14.5px; text-decoration:none; margin-bottom:10px; border:none; cursor:pointer;}#view-impactmap .im-cta.im-primary{background:var(--drawer-color, var(--green)); color:#fff;}#view-impactmap .im-cta.im-secondary{background:transparent; color:var(--green); border:1.5px solid rgba(22,68,48,0.25);}#view-impactmap .im-disclaimer{font-size:11.5px; color:var(--gray); text-align:center; margin-top:14px; line-height:1.5; padding:0 6px;}#view-impactmap /* ---------- PREFERENCE BANNER ---------- */
+  .im-prefbar{
     position:fixed; left:16px; right:16px; bottom:16px; z-index:2055; background:var(--green); color:#fff;
     border-radius:16px; padding:16px 18px; box-shadow:0 12px 30px rgba(0,0,0,0.3); display:flex;
     align-items:center; gap:14px; transform:translateY(130%); transition:transform .35s cubic-bezier(.2,.8,.2,1);
     max-width:640px; margin:0 auto;
-  }#view-impactmap .prefbar.show{transform:translateY(0);}#view-impactmap .prefbar .txt{flex:1; font-size:13.5px; line-height:1.4;}#view-impactmap .prefbar .txt b{color:#fff;}#view-impactmap .prefbar .actions{display:flex; gap:8px; flex:0 0 auto;}#view-impactmap .prefbar button.go{background:#fff; color:var(--green); border:none; padding:9px 14px; border-radius:100px; font-weight:700; font-size:12.5px; cursor:pointer;}#view-impactmap .prefbar button.x{background:none; border:none; color:#fff; opacity:0.7; font-size:18px; cursor:pointer;}
-  @media(max-width:640px){#view-impactmap .prefbar{flex-wrap:wrap;}#view-impactmap .prefbar .actions{width:100%;}#view-impactmap .prefbar button.go{flex:1;} }#view-impactmap /* ---------- STAFF MODAL ---------- */
-  .modal-backdrop{position:fixed; inset:0; background:rgba(15,30,22,0.55); z-index:2060; display:none; align-items:center; justify-content:center; padding:20px;}#view-impactmap .modal-backdrop.show{display:flex;}#view-impactmap .modal{background:#fff; border-radius:18px; padding:26px; max-width:420px; width:100%; max-height:80vh; overflow-y:auto;}#view-impactmap .modal h3{color:var(--green); font-size:17px; margin-bottom:4px;}#view-impactmap .modal .sub{font-size:12.5px; color:var(--gray); margin-bottom:18px;}#view-impactmap .barrow{margin-bottom:12px;}#view-impactmap .barrow .lab{display:flex; justify-content:space-between; font-size:12.5px; font-weight:600; color:var(--ink); margin-bottom:4px;}#view-impactmap .bartrack{height:8px; background:#f1ece4; border-radius:6px; overflow:hidden;}#view-impactmap .barfill{height:100%; border-radius:6px;}#view-impactmap .modal-close{margin-top:16px; width:100%; padding:11px; border-radius:100px; border:1.5px solid rgba(22,68,48,0.2); background:none; font-weight:700; color:var(--green); cursor:pointer;}#view-impactmap .sr-only{position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0,0,0,0);}
+  }#view-impactmap .im-prefbar.im-show{transform:translateY(0);}#view-impactmap .im-prefbar .im-txt{flex:1; font-size:13.5px; line-height:1.4;}#view-impactmap .im-prefbar .im-txt b{color:#fff;}#view-impactmap .im-prefbar .im-actions{display:flex; gap:8px; flex:0 0 auto;}#view-impactmap .im-prefbar button.im-go{background:#fff; color:var(--green); border:none; padding:9px 14px; border-radius:100px; font-weight:700; font-size:12.5px; cursor:pointer;}#view-impactmap .im-prefbar button.im-x{background:none; border:none; color:#fff; opacity:0.7; font-size:18px; cursor:pointer;}
+  @media(max-width:640px){#view-impactmap .im-prefbar{flex-wrap:wrap;}#view-impactmap .im-prefbar .im-actions{width:100%;}#view-impactmap .im-prefbar button.im-go{flex:1;} }#view-impactmap /* ---------- STAFF MODAL ---------- */
+  .im-modal-backdrop{position:fixed; inset:0; background:rgba(15,30,22,0.55); z-index:2060; display:none; align-items:center; justify-content:center; padding:20px;}#view-impactmap .im-modal-backdrop.im-show{display:flex;}#view-impactmap .im-modal{background:#fff; border-radius:18px; padding:26px; max-width:420px; width:100%; max-height:80vh; overflow-y:auto;}#view-impactmap .im-modal h3{color:var(--green); font-size:17px; margin-bottom:4px;}#view-impactmap .im-modal .im-sub{font-size:12.5px; color:var(--gray); margin-bottom:18px;}#view-impactmap .im-barrow{margin-bottom:12px;}#view-impactmap .im-barrow .im-lab{display:flex; justify-content:space-between; font-size:12.5px; font-weight:600; color:var(--ink); margin-bottom:4px;}#view-impactmap .im-bartrack{height:8px; background:#f1ece4; border-radius:6px; overflow:hidden;}#view-impactmap .im-barfill{height:100%; border-radius:6px;}#view-impactmap .im-modal-close{margin-top:16px; width:100%; padding:11px; border-radius:100px; border:1.5px solid rgba(22,68,48,0.2); background:none; font-weight:700; color:var(--green); cursor:pointer;}#view-impactmap .im-sr-only{position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0,0,0,0);}
   @media (prefers-reduced-motion: reduce){#view-impactmap *{animation:none !important; transition:none !important;} }
 
 </style>
@@ -1292,107 +1294,105 @@ body.pins-hidden .ipin{display:none!important;}
 <!-- =================== ADVISOR =================== -->
 <!-- =================== IMPACT MAP (merged sub-app) =================== -->
 <section class="view" id="view-impactmap">
-<div class="hero">
-  <div class="dotfield" id="dotfield"></div>
-  <div class="wrap">
-    <div class="brandmark">
+<div class="im-hero">
+  <div class="im-dotfield" id="dotfield"></div>
+  <div class="im-wrap">
+    <div class="im-brandmark">
       <svg width="20" height="20" viewBox="0 0 20 20"><circle cx="10" cy="10" r="9" fill="none" stroke="#fff" stroke-width="1.6"/><path d="M10 3 v14 M3 10 h14" stroke="#fff" stroke-width="1.6"/></svg>
-      <span class="word">CLEVELAND <b>FOUNDATION</b></span>
+      <span class="im-word">CLEVELAND <b>FOUNDATION</b></span>
     </div>
-    <div class="eyebrow" style="color:#8FD9BE;">2025 Community Impact Map</div>
+    <div class="im-eyebrow" style="color:#8FD9BE;">2025 Community Impact Map</div>
     <h1>Every pin is a place where Cleveland got a little stronger this year.</h1>
-    <p class="lede">Explore the grants The Cleveland Foundation made across Northeast Ohio in 2025. Filter by what you care about or where you live — then help fund more of it.</p>
-    <div class="stat-row">
-      <div class="stat"><div class="num">244</div><div class="lab">Grants on the map</div></div>
-      <div class="stat"><div class="num">65</div><div class="lab">Neighborhoods reached</div></div>
-      <div class="stat"><div class="num">8</div><div class="lab">Areas of focus</div></div>
+    <p class="im-lede">Explore the grants The Cleveland Foundation made across Northeast Ohio in 2025. Filter by what you care about or where you live — then help fund more of it.</p>
+    <div class="im-stat-row">
+      <div class="im-stat"><div class="im-num">244</div><div class="im-lab">Grants on the map</div></div>
+      <div class="im-stat"><div class="im-num">65</div><div class="im-lab">Neighborhoods reached</div></div>
+      <div class="im-stat"><div class="im-num">8</div><div class="im-lab">Areas of focus</div></div>
     </div>
   </div>
 </div>
 
-<div class="app-shell">
+<div class="im-app-shell">
 
-  <div class="sidebar-backdrop" id="sidebarBackdrop"></div>
-  <aside class="sidebar" id="sidebar">
-    <div class="sidebar-head">
+  <div class="im-sidebar-backdrop" id="sidebarBackdrop"></div>
+  <aside class="im-sidebar" id="sidebar">
+    <div class="im-sidebar-head">
       <h2>Filter the map</h2>
-      <button class="sidebar-close" id="sidebarClose" aria-label="Close filters">×</button>
+      <button class="im-sidebar-close" id="sidebarClose" aria-label="Close filters">×</button>
     </div>
 
-    <div class="filter-section">
-      <div class="filter-label">What do you care about? <span style="text-transform:none; font-weight:600; opacity:0.7;">(pick any number)</span></div>
-      <div class="pillar-list" id="pillarList"></div>
+    <div class="im-filter-section">
+      <div class="im-filter-label">What do you care about? <span style="text-transform:none; font-weight:600; opacity:0.7;">(pick any number)</span></div>
+      <div class="im-pillar-list" id="pillarList"></div>
     </div>
 
-    <div class="filter-section">
-      <div class="filter-label">Where do you live?</div>
+    <div class="im-filter-section">
+      <div class="im-filter-label">Where do you live?</div>
       <select id="neighSelect"></select>
-      <button class="locbtn" id="locBtn">
+      <button class="im-locbtn" id="locBtn">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v4M12 18v4M2 12h4M18 12h4"/><circle cx="12" cy="12" r="5"/></svg>
         Use my location
       </button>
-      <button class="clearbtn" id="clearBtn">Clear all filters</button>
+      <button class="im-clearbtn" id="clearBtn">Clear all filters</button>
     </div>
-
-    <div class="legend-mini" id="legendMini"></div>
   </aside>
 
-  <div class="content">
-    <button class="sidebar-toggle" id="sidebarToggle">
+  <div class="im-content">
+    <button class="im-sidebar-toggle" id="sidebarToggle">
       <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="18" x2="20" y2="18"/></svg>
       Filters
     </button>
-    <div class="toolbar">
+    <div class="im-toolbar">
       <div></div>
-      <div class="resultcount" id="resultCount"></div>
+      <div class="im-resultcount" id="resultCount"></div>
     </div>
 
-    <div class="wrap content-wrap">
-      <div class="grid">
-        <div class="panel map-panel">
-          <div class="map-head"><h2>The map</h2></div>
+    <div class="im-wrap im-content-wrap">
+      <div class="im-grid">
+        <div class="im-panel im-map-panel">
+          <div class="im-map-head"><h2>The map</h2></div>
           <div id="leafletMap"></div>
-          <div class="geostatus" id="geoStatus"><span class="spinner"></span><span id="geoStatusText">Fine-tuning pin locations…</span></div>
+          <div class="im-geostatus" id="geoStatus"><span class="im-spinner"></span><span id="geoStatusText">Fine-tuning pin locations…</span></div>
         </div>
 
-        <div class="panel list-panel">
-          <div class="list-head"><h2>The grants</h2></div>
-          <div class="cardlist" id="cardlist"></div>
+        <div class="im-panel im-list-panel">
+          <div class="im-list-head"><h2>The grants</h2></div>
+          <div class="im-cardlist" id="cardlist"></div>
         </div>
       </div>
 
-      <div class="regional">
+      <div class="im-regional">
         <h3>Also creating impact across Ohio (13 statewide &amp; regional partners)</h3>
-        <div class="regional-scroll" id="regionalScroll"></div>
+        <div class="im-regional-scroll" id="regionalScroll"></div>
       </div>
     </div>
 
     <footer>
-      <div class="wrap">
-        <p class="fineprint">Pins are placed using each grantee's address; a small number may be approximate when an exact match isn't available. Gifts made from this page support The Cleveland Foundation's grantmaking in these focus areas — they are not donations to the individual organizations shown.</p>
-        <button class="stafflink" id="staffLink">View community interest so far →</button>
+      <div class="im-wrap">
+        <p class="im-fineprint">Pins are placed using each grantee's address; a small number may be approximate when an exact match isn't available. Gifts made from this page support The Cleveland Foundation's grantmaking in these focus areas — they are not donations to the individual organizations shown.</p>
+        <button class="im-stafflink" id="staffLink">View community interest so far →</button>
       </div>
     </footer>
   </div>
 </div>
 
-<div class="backdrop" id="imBackdrop"></div>
-<div class="drawer" id="imDrawer" role="dialog" aria-modal="true" aria-label="Grant details"></div>
+<div class="im-backdrop" id="imBackdrop"></div>
+<div class="im-drawer" id="imDrawer" role="dialog" aria-modal="true" aria-label="Grant details"></div>
 
-<div class="prefbar" id="prefbar">
-  <div class="txt" id="prefText"></div>
-  <div class="actions">
-    <button class="go" id="prefGive">Give</button>
-    <button class="x" id="prefClose" aria-label="Dismiss">×</button>
+<div class="im-prefbar" id="prefbar">
+  <div class="im-txt" id="prefText"></div>
+  <div class="im-actions">
+    <button class="im-go" id="prefGive">Give</button>
+    <button class="im-x" id="prefClose" aria-label="Dismiss">×</button>
   </div>
 </div>
 
-<div class="modal-backdrop" id="staffModal">
-  <div class="modal">
+<div class="im-modal-backdrop" id="staffModal">
+  <div class="im-modal">
     <h3>Community interest so far</h3>
-    <div class="sub">An anonymous, running tally of what visitors to this map have explored most. No personal data is collected.</div>
+    <div class="im-sub">An anonymous, running tally of what visitors to this map have explored most. No personal data is collected.</div>
     <div id="staffBars"></div>
-    <button class="modal-close" id="staffClose">Close</button>
+    <button class="im-modal-close" id="staffClose">Close</button>
   </div>
 </div>
 
@@ -1611,9 +1611,9 @@ function maybeShowPrefBar(){
   const bar = document.getElementById('prefbar');
   bar.style.background = p.color;
   document.getElementById('prefGive').onclick = ()=>{ window.open(p.give,'_blank'); };
-  setTimeout(()=> bar.classList.add('show'), 400);
+  setTimeout(()=> bar.classList.add('im-show'), 400);
 }
-document.getElementById('prefClose').onclick = ()=> document.getElementById('prefbar').classList.remove('show');
+document.getElementById('prefClose').onclick = ()=> document.getElementById('prefbar').classList.remove('im-show');
 
 /* ---------------- helpers ---------------- */
 function escHtml(s){ return (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
@@ -1667,7 +1667,7 @@ function initMap(){
 }
 function dotIcon(color){
   return L.divIcon({
-    html:`<div class="cluster-dot" style="width:16px;height:16px;background:${color};"></div>`,
+    html:`<div class="im-cluster-dot" style="width:16px;height:16px;background:${color};"></div>`,
     className:'', iconSize:[16,16], iconAnchor:[8,8]
   });
 }
@@ -1704,7 +1704,7 @@ async function refineGeocoding(){
 
   const statusEl = document.getElementById('geoStatus');
   const statusText = document.getElementById('geoStatusText');
-  statusEl.classList.add('show');
+  statusEl.classList.add('im-show');
 
   let i=0;
   for(const g of toResolve){
@@ -1729,7 +1729,7 @@ async function refineGeocoding(){
     await new Promise(r=>setTimeout(r, 1100));
   }
   storeSet('impact-map-geocode-cache-v1', cache, true);
-  statusEl.classList.remove('show');
+  statusEl.classList.remove('im-show');
   refreshMapMarkers();
 }
 
@@ -1744,17 +1744,17 @@ function buildPillarList(){
   const wrap = document.getElementById('pillarList');
   wrap.innerHTML='';
   const all = document.createElement('div');
-  all.className='pillar-opt all active';
-  all.innerHTML = `<span class="dot" style="background:#164430"></span>All areas<span class="cnt">${core.length}</span>`;
+  all.className='im-pillar-opt im-all im-active';
+  all.innerHTML = `<span class="im-dot" style="background:#164430"></span>All areas<span class="im-cnt">${core.length}</span>`;
   all.onclick = ()=>{ state.pillars.clear(); render(); };
   wrap.appendChild(all);
   PILLARS.forEach(p=>{
     const opt = document.createElement('div');
-    opt.className='pillar-opt';
+    opt.className='im-pillar-opt';
     opt.setAttribute('role','checkbox');
     opt.setAttribute('aria-checked','false');
     opt.style.setProperty('--pillar-color', p.color);
-    opt.innerHTML = `<span class="dot" style="background:${p.color}"></span>${escHtml(p.name)}<span class="cnt">${counts[p.name]||0}</span>`;
+    opt.innerHTML = `<span class="im-dot" style="background:${p.color}"></span>${escHtml(p.name)}<span class="im-cnt">${counts[p.name]||0}</span>`;
     opt.onclick = ()=>{
       if(state.pillars.has(p.name)) state.pillars.delete(p.name);
       else state.pillars.add(p.name);
@@ -1792,8 +1792,8 @@ document.getElementById('clearBtn').onclick = ()=>{
 };
 
 /* ---------------- sidebar open/close (mobile) ---------------- */
-function openSidebar(){ document.getElementById('sidebar').classList.add('open'); document.getElementById('sidebarBackdrop').classList.add('show'); }
-function closeSidebar(){ document.getElementById('sidebar').classList.remove('open'); document.getElementById('sidebarBackdrop').classList.remove('show'); }
+function openSidebar(){ document.getElementById('sidebar').classList.add('im-open'); document.getElementById('sidebarBackdrop').classList.add('im-show'); }
+function closeSidebar(){ document.getElementById('sidebar').classList.remove('im-open'); document.getElementById('sidebarBackdrop').classList.remove('im-show'); }
 document.getElementById('sidebarToggle').onclick = openSidebar;
 document.getElementById('sidebarClose').onclick = closeSidebar;
 document.getElementById('sidebarBackdrop').onclick = closeSidebar;
@@ -1807,27 +1807,27 @@ function filteredCore(){
   });
 }
 function highlightCard(id, on){
-  const el = document.querySelector(`.card[data-id="${id}"]`);
-  if(el) el.classList.toggle('hovered', on);
+  const el = document.querySelector(`.im-card[data-id="${id}"]`);
+  if(el) el.classList.toggle('im-hovered', on);
 }
 function renderList(list){
   const wrap = document.getElementById('cardlist');
   if(list.length===0){
-    wrap.innerHTML = `<div class="noresults">No grants match this combination. Try clearing a filter.</div>`;
+    wrap.innerHTML = `<div class="im-noresults">No grants match this combination. Try clearing a filter.</div>`;
     return;
   }
   wrap.innerHTML = list.map(g=>`
-    <div class="card" data-id="${g.id}" tabindex="0">
-      <span class="swatch" style="background:${g.color}"></span>
-      <div class="body">
-        <div class="org">${escHtml(g.org)}</div>
-        <div class="grant">${escHtml(g.grantName)}</div>
-        <div class="meta">${escHtml(g.pillar)} · ${escHtml(g.neighborhood)}</div>
+    <div class="im-card" data-id="${g.id}" tabindex="0">
+      <span class="im-swatch" style="background:${g.color}"></span>
+      <div class="im-body">
+        <div class="im-org">${escHtml(g.org)}</div>
+        <div class="im-grant">${escHtml(g.grantName)}</div>
+        <div class="im-meta">${escHtml(g.pillar)} · ${escHtml(g.neighborhood)}</div>
       </div>
-      <div class="chev">›</div>
+      <div class="im-chev">›</div>
     </div>
   `).join('');
-  wrap.querySelectorAll('.card').forEach(el=>{
+  wrap.querySelectorAll('.im-card').forEach(el=>{
     const g = list.find(x=>String(x.id)===el.dataset.id);
     el.addEventListener('click', ()=>openDrawer(g));
     el.addEventListener('keydown', e=>{ if(e.key==='Enter') openDrawer(g); });
@@ -1835,19 +1835,16 @@ function renderList(list){
     el.addEventListener('mouseleave', ()=> highlightCard(g.id,false));
   });
 }
-function renderLegend(){
-  document.getElementById('legendMini').innerHTML = PILLARS.map(p=>`<div class="legend-item"><span class="dot" style="background:${p.color}"></span>${escHtml(p.name)}</div>`).join('');
-}
 function renderRegional(){
   const el = document.getElementById('regionalScroll');
   el.innerHTML = regional.map(g=>`
-    <div class="rcard" data-id="${g.id}" style="border-left-color:${g.color}">
-      <div class="org">${escHtml(g.org)}</div>
-      <div class="grant">${escHtml(g.grantName)}</div>
-      <div class="city">${escHtml(g.address.split(', ')[1]||'')}, OH</div>
+    <div class="im-rcard" data-id="${g.id}" style="border-left-color:${g.color}">
+      <div class="im-org">${escHtml(g.org)}</div>
+      <div class="im-grant">${escHtml(g.grantName)}</div>
+      <div class="im-city">${escHtml(g.address.split(', ')[1]||'')}, OH</div>
     </div>
   `).join('');
-  el.querySelectorAll('.rcard').forEach(card=>{
+  el.querySelectorAll('.im-rcard').forEach(card=>{
     const g = regional.find(x=>String(x.id)===card.dataset.id);
     card.addEventListener('click', ()=>openDrawer(g));
   });
@@ -1857,14 +1854,14 @@ function render(){
   renderList(list);
   refreshMapMarkers();
   document.getElementById('resultCount').textContent = `${list.length} of ${core.length} grants`;
-  document.querySelectorAll('#pillarList .pillar-opt').forEach((opt,i)=>{
-    if(i===0){ opt.classList.toggle('active', state.pillars.size===0); return; }
+  document.querySelectorAll('#pillarList .im-pillar-opt').forEach((opt,i)=>{
+    if(i===0){ opt.classList.toggle('im-active', state.pillars.size===0); return; }
     const p = PILLARS[i-1];
     const isActive = state.pillars.has(p.name);
-    opt.classList.toggle('active', isActive);
+    opt.classList.toggle('im-active', isActive);
     opt.setAttribute('aria-checked', String(isActive));
   });
-  document.getElementById('clearBtn').classList.toggle('show', !!(state.pillars.size>0 || state.neighborhood));
+  document.getElementById('clearBtn').classList.toggle('im-show', !!(state.pillars.size>0 || state.neighborhood));
 }
 
 /* ---------------- drawer (right side) ---------------- */
@@ -1875,32 +1872,32 @@ function openDrawer(g){
   const drawer = document.getElementById('imDrawer');
   drawer.style.setProperty('--drawer-color', p.color);
   drawer.innerHTML = `
-    <div class="drawer-top" style="background:${p.color}">
-      <button class="drawer-close" id="drawerCloseBtn" aria-label="Close">×</button>
-      <div class="drawer-tag">${escHtml(g.pillar)}</div>
-      <div class="drawer-org">${escHtml(g.org)}</div>
-      <div class="drawer-grant">${escHtml(g.grantName)}</div>
+    <div class="im-drawer-top" style="background:${p.color}">
+      <button class="im-drawer-close" id="drawerCloseBtn" aria-label="Close">×</button>
+      <div class="im-drawer-tag">${escHtml(g.pillar)}</div>
+      <div class="im-drawer-org">${escHtml(g.org)}</div>
+      <div class="im-drawer-grant">${escHtml(g.grantName)}</div>
     </div>
-    <div class="drawer-body">
-      <div class="drawer-row"><span class="k">Neighborhood</span><span>${escHtml(g.neighborhood)}</span></div>
-      <div class="drawer-row"><span class="k">Focus area</span><span>${escHtml(g.category)}</span></div>
-      <div class="drawer-row"><span class="k">Time horizon</span><span>${escHtml(g.focus)}</span></div>
-      ${g.orgUrl ? `<a class="orglink" href="${escAttr(g.orgUrl)}" target="_blank" rel="noopener">Visit ${escHtml(g.org)} ↗</a>` : ''}
-      <div class="give-block">
-        <div class="give-note"><b>${escHtml(p.name)}:</b> ${escHtml(p.blurb)}</div>
-        <div class="give-note">This grant is one example of that work. A gift here goes to <b>The Cleveland Foundation</b> to fund more organizations doing similar work across Cleveland — it is not a donation to ${escHtml(g.org)} directly.</div>
-        <a class="cta primary" style="background:${p.color}" href="${p.give}" target="_blank" rel="noopener">Give to ${escHtml(p.name)}</a>
-        <a class="cta secondary" href="https://www.clevelandfoundation.org/newsletter-sign-up" target="_blank" rel="noopener">Stay connected on ${escHtml(p.name)}</a>
+    <div class="im-drawer-body">
+      <div class="im-drawer-row"><span class="im-k">Neighborhood</span><span>${escHtml(g.neighborhood)}</span></div>
+      <div class="im-drawer-row"><span class="im-k">Focus area</span><span>${escHtml(g.category)}</span></div>
+      <div class="im-drawer-row"><span class="im-k">Time horizon</span><span>${escHtml(g.focus)}</span></div>
+      ${g.orgUrl ? `<a class="im-orglink" href="${escAttr(g.orgUrl)}" target="_blank" rel="noopener">Visit ${escHtml(g.org)} ↗</a>` : ''}
+      <div class="im-give-block">
+        <div class="im-give-note"><b>${escHtml(p.name)}:</b> ${escHtml(p.blurb)}</div>
+        <div class="im-give-note">This grant is one example of that work. A gift here goes to <b>The Cleveland Foundation</b> to fund more organizations doing similar work across Cleveland — it is not a donation to ${escHtml(g.org)} directly.</div>
+        <a class="im-cta im-primary" style="background:${p.color}" href="${p.give}" target="_blank" rel="noopener">Give to ${escHtml(p.name)}</a>
+        <a class="im-cta im-secondary" href="https://www.clevelandfoundation.org/newsletter-sign-up" target="_blank" rel="noopener">Stay connected on ${escHtml(p.name)}</a>
       </div>
     </div>
   `;
   document.getElementById('drawerCloseBtn').onclick = closeDrawer;
-  drawer.classList.add('open');
-  document.getElementById('imBackdrop').classList.add('show');
+  drawer.classList.add('im-open');
+  document.getElementById('imBackdrop').classList.add('im-show');
 }
 function closeDrawer(){
-  document.getElementById('imDrawer').classList.remove('open');
-  document.getElementById('imBackdrop').classList.remove('show');
+  document.getElementById('imDrawer').classList.remove('im-open');
+  document.getElementById('imBackdrop').classList.remove('im-show');
 }
 document.getElementById('imBackdrop').onclick = closeDrawer;
 
@@ -1912,19 +1909,19 @@ document.getElementById('staffLink').onclick = async ()=>{
   const max = Math.max(1, ...entries.map(e=>e.val));
   const total = entries.reduce((a,b)=>a+b.val,0);
   if(total===0){
-    bars.innerHTML = `<div class="noresults" style="padding:20px 0;">No visitor activity yet — check back after the map has had some traffic.</div>`;
+    bars.innerHTML = `<div class="im-noresults" style="padding:20px 0;">No visitor activity yet — check back after the map has had some traffic.</div>`;
   } else {
     entries.sort((a,b)=>b.val-a.val);
     bars.innerHTML = entries.map(e=>`
-      <div class="barrow">
-        <div class="lab"><span>${escHtml(e.name)}</span><span>${e.val}</span></div>
-        <div class="bartrack"><div class="barfill" style="width:${(e.val/max*100)}%; background:${e.color}"></div></div>
+      <div class="im-barrow">
+        <div class="im-lab"><span>${escHtml(e.name)}</span><span>${e.val}</span></div>
+        <div class="im-bartrack"><div class="im-barfill" style="width:${(e.val/max*100)}%; background:${e.color}"></div></div>
       </div>
     `).join('');
   }
-  document.getElementById('staffModal').classList.add('show');
+  document.getElementById('staffModal').classList.add('im-show');
 };
-document.getElementById('staffClose').onclick = ()=> document.getElementById('staffModal').classList.remove('show');
+document.getElementById('staffClose').onclick = ()=> document.getElementById('staffModal').classList.remove('im-show');
 
 /* ---------------- hero decoration ---------------- */
 (function decorateHero(){
@@ -1946,7 +1943,6 @@ document.getElementById('staffClose').onclick = ()=> document.getElementById('st
 async function init(){
   buildPillarList();
   buildNeighSelect();
-  renderLegend();
   renderRegional();
   await loadInterests();
   initMap();
