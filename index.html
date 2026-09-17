@@ -1767,7 +1767,7 @@ body.hero-view:not(.scrolled) .tb-cta .garden-mini-dots span.done{background:var
           <button class="btn btn-accent" onclick="navigate('contributions',false)">Give today</button>
           <button class="btn btn-onhero" onclick="navigate('garden',false)">Grow your city together</button>
         </div>
-        <div class="h-tag">Every gift counts · However you want to give</div>
+        <div class="h-tag">Every gift counts · It takes all of us</div>
       </div>
     </div>
   </div>
@@ -1985,20 +1985,20 @@ body.hero-view:not(.scrolled) .tb-cta .garden-mini-dots span.done{background:var
       <svg class="p-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 17L17 7M8 7h9v9"/></svg>
     </button>
 
-    <button class="panel" onclick="navigate('advisor')">
-      <div class="t-icon" style="background:linear-gradient(140deg,#4A0A30,var(--p-neigh));"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div>
-      <svg class="p-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 17L17 7M8 7h9v9"/></svg>
-      <div class="p-label">Talk to an Advisor</div>
-      <div class="p-sub">Philanthropic guidance from TCF's team.</div>
-      <div class="p-count">No obligation</div>
-    </button>
-
     <button class="panel" onclick="showLegacyModal()">
       <div class="t-icon" style="background:linear-gradient(140deg,var(--p-region),var(--aqua));"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
       <svg class="p-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 17L17 7M8 7h9v9"/></svg>
       <div class="p-label">Plan Your Legacy</div>
-      <div class="p-sub">Estate gifts, life insurance, and IRA distributions.</div>
+      <div class="p-sub">Learn more about estate gifts, life insurance, and IRA distributions with guidance from a TCF team member.</div>
       <div class="p-count">Beyond your lifetime</div>
+    </button>
+
+    <button class="panel" onclick="openGardenBadges()">
+      <div class="t-icon" style="background:linear-gradient(140deg,var(--moss),var(--aqua));"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M12 22V12"/><path d="M12 12C12 7 8 6 5 6c0 4 2 7 7 7z"/><path d="M12 12c0-5 4-6 7-6 0 4-2 7-7 7z"/></svg></div>
+      <svg class="p-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 17L17 7M8 7h9v9"/></svg>
+      <div class="p-label">Grow Your Garden</div>
+      <div class="p-sub">Collect all six Land Florals as you show up for the city.</div>
+      <div class="p-count">Land Florals Challenge</div>
     </button>
 
     <button class="panel" onclick="navigate('contributions')">
@@ -5093,6 +5093,16 @@ if (introEl){
     if (e.target === introEl && e.animationName === 'introLift') finishIntro();
   });
   playIntro();
+}
+
+/* ---------- Grow Your Garden tile → straight to the badge grid ---------- */
+function openGardenBadges(){
+  navigate('garden', false);
+  setTimeout(function(){
+    var grid = document.getElementById('gardenBadgeGrid');
+    if (!grid) return;
+    grid.scrollIntoView({ behavior: REDUCE ? 'auto' : 'smooth', block:'start' });
+  }, 120);
 }
 
 /* ---------- boot ---------- */
