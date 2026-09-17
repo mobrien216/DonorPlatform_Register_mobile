@@ -147,6 +147,12 @@ body.pins-hidden .ipin{display:none!important;}
 .tile-map{background:var(--tcf-pink);color:#fff;}
 .tile-map .tile-icon{background:rgba(255,255,255,.2);}
 .tile-map .tile-glow{background:#fff;}
+.tile-legends{background:linear-gradient(135deg,var(--tcf-orange),#8A3A12);color:#fff;}
+.tile-legends .tile-icon{background:rgba(255,255,255,.2);}
+.tile-legends .tile-glow{background:#fff;}
+.tile-history{background:linear-gradient(135deg,#7A3520,#3F1B0F);color:#fff;}
+.tile-history .tile-icon{background:rgba(255,255,255,.2);}
+.tile-history .tile-glow{background:#fff;}
 
 /* Account balance tile (post-DAF) */
 .tile-balance{background:linear-gradient(135deg,#164430,#0A2D1E);color:#fff;}
@@ -423,6 +429,118 @@ body.pins-hidden .ipin{display:none!important;}
   .im-modal-backdrop{position:fixed; inset:0; background:rgba(15,30,22,0.55); z-index:2060; display:none; align-items:center; justify-content:center; padding:20px;}#view-impactmap .im-modal-backdrop.im-show{display:flex;}#view-impactmap .im-modal{background:#fff; border-radius:18px; padding:26px; max-width:420px; width:100%; max-height:80vh; overflow-y:auto;}#view-impactmap .im-modal h3{color:var(--green); font-size:17px; margin-bottom:4px;}#view-impactmap .im-modal .im-sub{font-size:12.5px; color:var(--gray); margin-bottom:18px;}#view-impactmap .im-barrow{margin-bottom:12px;}#view-impactmap .im-barrow .im-lab{display:flex; justify-content:space-between; font-size:12.5px; font-weight:600; color:var(--ink); margin-bottom:4px;}#view-impactmap .im-bartrack{height:8px; background:#f1ece4; border-radius:6px; overflow:hidden;}#view-impactmap .im-barfill{height:100%; border-radius:6px;}#view-impactmap .im-modal-close{margin-top:16px; width:100%; padding:11px; border-radius:100px; border:1.5px solid rgba(22,68,48,0.2); background:none; font-weight:700; color:var(--green); cursor:pointer;}#view-impactmap .im-sr-only{position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0,0,0,0);}
   @media (prefers-reduced-motion: reduce){#view-impactmap *{animation:none !important; transition:none !important;} }
 
+/* ============================================================
+   YOUR CLEVELAND GARDEN — Land Florals badge system
+   ============================================================ */
+.garden-new-tag{background:var(--tcf-orange);color:#fff;font-size:9px;font-weight:800;letter-spacing:.05em;padding:2px 7px;border-radius:20px;margin-left:4px;vertical-align:middle;}
+.garden-mini-dots{display:flex;gap:4px;margin-top:6px;}
+.garden-mini-dots span{width:8px;height:8px;border-radius:50%;background:var(--border-strong);}
+.garden-mini-dots span.done{background:var(--tcf-aqua);}
+
+.garden-hero{background:linear-gradient(135deg,var(--tcf-primary),var(--tcf-mid-green));border-radius:var(--radius-lg);padding:20px;color:#fff;margin-bottom:16px;box-shadow:var(--shadow-sm);}
+.garden-hero .gh-eyebrow{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;opacity:.75;}
+.garden-hero .gh-count{font-size:20px;font-weight:700;margin-top:4px;font-family:var(--font-head);}
+.garden-progress-track{background:rgba(255,255,255,.2);height:8px;border-radius:6px;margin-top:12px;overflow:hidden;}
+.garden-progress-fill{height:100%;background:var(--tcf-orange);border-radius:6px;transition:width .4s ease;}
+
+.garden-nudge{display:flex;gap:12px;align-items:center;background:#FDF5EE;border:1px solid #F3DCC4;border-radius:14px;padding:14px 16px;margin-bottom:18px;}
+.garden-nudge .gn-icon{font-size:22px;flex-shrink:0;}
+.garden-nudge .gn-text{font-size:13px;color:var(--ink-soft);line-height:1.45;}
+.garden-nudge .gn-text b{color:var(--tcf-primary);}
+
+.badge-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:10px;}
+.badge-card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:12px 8px 14px;text-align:center;cursor:pointer;transition:transform .12s;}
+.badge-card:active{transform:scale(.96);}
+.badge-card .mosaic{width:56px;height:56px;margin:0 auto 8px;border-radius:12px;display:grid;grid-template-columns:repeat(6,1fr);grid-template-rows:repeat(6,1fr);overflow:hidden;box-shadow:inset 0 0 0 1px rgba(0,0,0,.04);}
+.badge-card .mosaic.locked{background:#EDEAE0;}
+.badge-card .mosaic.locked .cell{background:transparent !important;}
+.badge-card .badge-desc{font-size:9.5px;font-weight:800;letter-spacing:.03em;text-transform:uppercase;color:var(--tcf-orange);line-height:1.25;}
+.badge-card.locked .badge-desc{color:var(--ink-faint);}
+.badge-card .badge-name{font-size:12px;font-weight:700;color:var(--tcf-primary);margin-top:2px;line-height:1.2;}
+.badge-card .badge-state{font-size:9.5px;color:var(--ink-faint);margin-top:4px;font-weight:600;}
+.badge-card.unlocked .badge-state{color:var(--tcf-mid-green);}
+.mosaic .cell, .gm-mosaic .cell{width:100%;height:100%;}
+
+.gm-top{display:flex;gap:14px;align-items:center;margin-bottom:4px;}
+.gm-mosaic{width:64px;height:64px;border-radius:14px;display:grid;grid-template-columns:repeat(6,1fr);grid-template-rows:repeat(6,1fr);overflow:hidden;flex-shrink:0;box-shadow:0 4px 12px rgba(0,0,0,.12);}
+.gm-status{display:inline-block;font-size:10px;font-weight:800;letter-spacing:.04em;padding:3px 9px;border-radius:20px;margin-top:5px;}
+.gm-status.locked{background:var(--surface-2);color:var(--ink-faint);}
+.gm-status.unlocked{background:#E0F3EE;color:var(--tcf-mid-green);}
+.gm-section{margin-top:16px;}
+.gm-section .gm-label{font-size:10px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:6px;}
+.gm-howto-box{background:var(--surface-2);border-radius:12px;padding:14px;font-size:13.5px;color:var(--ink-soft);line-height:1.5;}
+.gm-story-box{background:#FDF5EE;border:1px solid #F3DCC4;border-radius:12px;padding:14px;font-size:13.5px;color:var(--ink-soft);line-height:1.55;}
+.gm-story-box .gm-label{color:var(--tcf-orange);}
+.gm-verify-tag{display:flex;align-items:center;gap:5px;font-size:11px;font-weight:700;color:var(--ink-faint);margin-top:10px;}
+.gm-input{width:100%;border:1px solid var(--border);border-radius:10px;padding:11px 12px;font-size:13.5px;font-family:inherit;margin-top:10px;background:var(--surface);color:var(--ink);}
+.gm-done{margin-top:12px;background:#E0F3EE;color:var(--tcf-mid-green);border-radius:10px;padding:10px 12px;font-size:12.5px;font-weight:700;}
+
+/* ============================================================
+   LOCAL LEGENDS
+   ============================================================ */
+.lgd-hero{border-radius:var(--radius-lg);padding:30px 24px;color:#fff;position:relative;overflow:hidden;margin-bottom:14px;box-shadow:var(--shadow-sm);}
+.lgd-hero-top{display:flex;align-items:center;gap:14px;margin-bottom:16px;}
+.lgd-avatar{width:58px;height:58px;border-radius:50%;background:rgba(255,255,255,.18);border:2px solid rgba(255,255,255,.5);display:flex;align-items:center;justify-content:center;font-family:var(--font-head);font-weight:800;font-size:19px;color:#fff;flex-shrink:0;}
+.lgd-tag{font-size:11.5px;font-weight:700;background:rgba(255,255,255,.18);display:inline-block;padding:3px 11px;border-radius:999px;margin-bottom:5px;}
+.lgd-years{font-size:12.5px;color:rgba(255,255,255,.85);}
+.lgd-hero h2{color:#fff;font-size:24px;margin-bottom:12px;}
+.lgd-quote{font-size:15px;font-style:italic;line-height:1.5;border-left:3px solid rgba(255,255,255,.55);padding-left:14px;}
+.lgd-legacy{margin-top:14px;padding-top:14px;border-top:1px solid var(--border);font-size:13.5px;color:var(--ink-soft);font-style:italic;}
+.lgd-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:6px;}
+.lgd-callout{display:flex;gap:12px;align-items:center;background:#FDF5EE;border:1px solid #F3DCC4;border-radius:14px;padding:14px 16px;margin-bottom:14px;}
+.lgd-callout .lc-icon{font-size:20px;flex-shrink:0;}
+.lgd-callout .lc-text{font-size:13px;color:var(--ink-soft);line-height:1.45;}
+.lgd-callout .lc-text b{color:var(--tcf-primary);}
+.lgd-browse-head{display:flex;align-items:center;justify-content:space-between;margin:20px 0 12px;}
+.lgd-browse-head h4{font-size:15px;color:var(--tcf-primary);}
+.lgd-toggle{background:none;border:none;font-size:13px;color:var(--tcf-mid-green);font-weight:700;}
+.lgd-chip-grid{display:none;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:9px;}
+.lgd-chip-grid.open{display:grid;}
+.lgd-chip{background:var(--surface);border:1px solid var(--border);border-radius:11px;padding:10px 12px;display:flex;align-items:center;gap:9px;text-align:left;font-size:12.5px;cursor:pointer;}
+.lgd-chip:hover{border-color:var(--tcf-primary);}
+.lgd-chip-dot{width:24px;height:24px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-family:var(--font-head);font-weight:700;font-size:9px;color:#fff;}
+.lgd-chip-name{font-weight:700;color:var(--ink);display:block;}
+.lgd-chip-cat{color:var(--ink-faint);font-size:10.5px;}
+.alert-toggle{display:inline-flex;align-items:center;gap:8px;background:var(--surface-2);border:1px solid var(--border);border-radius:999px;padding:8px 14px;font-size:12.5px;font-weight:700;color:var(--ink-soft);cursor:pointer;margin-top:14px;}
+.alert-toggle.on{background:#E0F3EE;border-color:#BFE3D9;color:var(--tcf-mid-green);}
+
+/* ============================================================
+   THIS WEEK IN CLEVELAND HISTORY
+   ============================================================ */
+.hw-hero{background:linear-gradient(135deg,#7A3520,#3F1B0F);border-radius:var(--radius-lg);color:#fff;padding:24px;margin-bottom:14px;box-shadow:var(--shadow-sm);}
+.hw-week-label{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;opacity:.75;}
+.hw-week-range{font-size:21px;font-weight:800;font-family:var(--font-head);margin-top:4px;color:#fff;}
+.hw-week-count{font-size:12.5px;opacity:.85;margin-top:4px;}
+.hw-nav{display:flex;gap:10px;margin-top:16px;}
+.hw-nav button{flex:1;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.28);color:#fff;border-radius:10px;padding:9px;font-weight:700;font-size:12.5px;}
+.hw-event-card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:20px;margin-bottom:12px;}
+.hw-event-year{font-size:12px;font-weight:800;color:var(--tcf-orange);letter-spacing:.03em;margin-bottom:4px;}
+.hw-event-cat{display:inline-block;font-size:9.5px;font-weight:800;text-transform:uppercase;letter-spacing:.04em;background:var(--surface-2);color:var(--ink-faint);padding:2px 8px;border-radius:20px;margin-bottom:8px;margin-left:8px;}
+.hw-event-title{font-size:16.5px;font-weight:800;color:var(--tcf-primary);margin-bottom:6px;}
+.hw-event-desc{font-size:13.5px;color:var(--ink-soft);line-height:1.55;}
+.hw-event-src{font-size:11px;color:var(--ink-faint);margin-top:8px;}
+.hw-quiet{background:var(--surface-2);border-radius:14px;padding:18px;text-align:center;font-size:13.5px;color:var(--ink-soft);margin-bottom:14px;}
+
+/* ============================================================
+   NEWS FEED
+   ============================================================ */
+.nf-composer{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:14px 16px;margin-bottom:16px;cursor:pointer;display:flex;align-items:center;gap:10px;}
+.nf-composer .nf-comp-icon{width:34px;height:34px;border-radius:50%;background:var(--tcf-orange);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;flex-shrink:0;}
+.nf-composer .nf-comp-text{font-size:13.5px;color:var(--ink-faint);}
+.nf-post{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:16px;margin-bottom:12px;}
+.nf-post-top{display:flex;align-items:center;gap:10px;margin-bottom:10px;}
+.nf-avatar{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px;color:#fff;flex-shrink:0;}
+.nf-post-name{font-weight:700;color:var(--tcf-primary);font-size:13.5px;}
+.nf-post-meta{font-size:11px;color:var(--ink-faint);}
+.nf-post-badge{margin-left:auto;font-size:9.5px;font-weight:800;letter-spacing:.03em;text-transform:uppercase;background:#E0F3EE;color:var(--tcf-mid-green);padding:3px 9px;border-radius:20px;}
+.nf-post-badge.news{background:#FDF5EE;color:var(--tcf-orange);}
+.nf-post-body{font-size:14px;color:var(--ink);line-height:1.55;}
+.nf-post-actions{display:flex;gap:16px;margin-top:12px;padding-top:10px;border-top:1px solid var(--border);}
+.nf-post-actions button{background:none;border:none;font-size:12.5px;font-weight:700;color:var(--ink-faint);display:flex;align-items:center;gap:5px;}
+.nf-post-actions button.liked{color:var(--tcf-orange);}
+.nf-post-actions button.connected{color:var(--tcf-mid-green);}
+.nf-you-post{border:1.5px solid #BFE3D9;background:#F3FBF9;}
+.fund-option-row{display:flex;align-items:center;justify-content:space-between;border:1.5px solid var(--border);border-radius:12px;padding:13px 15px;margin-bottom:9px;font-size:14px;font-weight:600;color:var(--ink);}
 </style>
 </head>
 <body>
@@ -467,6 +585,15 @@ body.pins-hidden .ipin{display:none!important;}
     <button class="drawer-item active" data-view="home" onclick="navigate('home')">
       <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9,22 9,12 15,12 15,22"/></svg>Home
     </button>
+    <button class="drawer-item" data-view="legends" onclick="navigate('legends')">
+      <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l2.9 6.3L21 9l-4.9 4.4L17.4 20 12 16.7 6.6 20l1.3-6.6L3 9l6.1-.7z"/></svg>Local Legends
+    </button>
+    <button class="drawer-item" data-view="history" onclick="navigate('history')">
+      <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M3 9h18"/><path d="M8 2v4M16 2v4"/></svg>This Week in Cleveland History
+    </button>
+    <button class="drawer-item" data-view="newsfeed" onclick="navigate('newsfeed')">
+      <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 11a9 9 0 019 9M4 4a16 16 0 0116 16"/><circle cx="5" cy="19" r="1.5" fill="currentColor" stroke="none"/></svg>News Feed
+    </button>
     <button class="drawer-item" data-view="learning" onclick="navigate('learning')">
       <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>Learning Tracks
     </button>
@@ -479,8 +606,8 @@ body.pins-hidden .ipin{display:none!important;}
     <button class="drawer-item" data-view="impactmap" onclick="navigate('impactmap')">
       <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 20l-6 3V7l6-3m0 16l6 3m-6-3V4m6 16l6-3V4l-6 3m0 13V7m0 0L9 4"/></svg>Impact Map
     </button>
-    <button class="drawer-item" data-view="vision" onclick="navigate('vision')">
-      <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 010 20"/></svg>Visioning Exercise
+    <button class="drawer-item" data-view="garden" onclick="navigate('garden')">
+      <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22V12"/><path d="M12 12C12 7 8 6 5 6c0 4 2 7 7 7z"/><path d="M12 12c0-5 4-6 7-6 0 4-2 7-7 7z"/></svg>Your Cleveland Garden
     </button>
     <div class="drawer-label" id="drawerJourneyLabel">Your Journey</div>
     <button class="drawer-item" data-view="openfund" onclick="navigate('openfund')" id="drawerOpenDAF">
@@ -537,21 +664,39 @@ body.pins-hidden .ipin{display:none!important;}
 
     <!-- 2×2 tile grid — PROSPECT state -->
     <div class="home-grid" id="prospectTiles">
+      <button class="home-tile tile-legends" onclick="navigate('legends',false)">
+        <div class="tile-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2"><path d="M12 2l2.9 6.3L21 9l-4.9 4.4L17.4 20 12 16.7 6.6 20l1.3-6.6L3 9l6.1-.7z"/></svg>
+        </div>
+        <div class="tile-label">Local Legends</div>
+        <div class="tile-sub">Learn about the people who shaped our city</div>
+        <div class="tile-glow"></div>
+      </button>
+
+      <button class="home-tile tile-history" onclick="navigate('history',false)">
+        <div class="tile-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M3 9h18"/><path d="M8 2v4M16 2v4"/></svg>
+        </div>
+        <div class="tile-label">This Week in Cleveland History</div>
+        <div class="tile-sub">Explore the stories that built our region</div>
+        <div class="tile-glow"></div>
+      </button>
+
+      <button class="home-tile tile-foryou" onclick="navigate('newsfeed',false)">
+        <div class="tile-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--tcf-orange)" stroke-width="2.2"><path d="M4 11a9 9 0 019 9M4 4a16 16 0 0116 16"/><circle cx="5" cy="19" r="1.5" fill="var(--tcf-orange)" stroke="none"/></svg>
+        </div>
+        <div class="tile-label">News Feed</div>
+        <div class="tile-sub">See personalized stories from others making an impact</div>
+      </button>
+
       <button class="home-tile tile-learn" onclick="navigate('learning',false)">
         <div class="tile-icon">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#19B9A9" stroke-width="2.2"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>
         </div>
         <div class="tile-label">Learn</div>
-        <div class="tile-sub">4 tracks · start here</div>
+        <div class="tile-sub">Grow in your understanding of the region and your role in it</div>
         <div class="tile-glow"></div>
-      </button>
-
-      <button class="home-tile tile-foryou" onclick="navigate('impact',false)">
-        <div class="tile-icon">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--tcf-orange)" stroke-width="2.2"><path d="M12 21s-7-4.5-7-10a7 7 0 0114 0c0 5.5-7 10-7 10z"/><circle cx="12" cy="11" r="2"/></svg>
-        </div>
-        <div class="tile-label">For You</div>
-        <div class="tile-sub">Curated stories</div>
       </button>
 
       <button class="home-tile tile-calc" onclick="navigate('calculator',false)">
@@ -559,7 +704,7 @@ body.pins-hidden .ipin{display:none!important;}
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2"><polyline points="22,12 18,12 15,21 9,3 6,12 2,12"/></svg>
         </div>
         <div class="tile-label">Impact Calculator</div>
-        <div class="tile-sub">See your gift grow</div>
+        <div class="tile-sub">Model how your gift can make more of a difference over time</div>
         <div class="tile-glow"></div>
       </button>
 
@@ -568,7 +713,7 @@ body.pins-hidden .ipin{display:none!important;}
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2"><path d="M9 20l-6 3V7l6-3m0 16l6 3m-6-3V4m6 16l6-3V4l-6 3m0 13V7m0 0L9 4"/></svg>
         </div>
         <div class="tile-label">Impact Map</div>
-        <div class="tile-sub">See 2025 grants near you</div>
+        <div class="tile-sub">See how the issues you care about are being resourced across the city</div>
         <div class="tile-glow"></div>
       </button>
     </div>
@@ -613,17 +758,6 @@ body.pins-hidden .ipin{display:none!important;}
 
     <!-- Below-fold modules -->
     <div class="below-fold">
-      <div class="module-row" id="openDafModule" onclick="navigate('openfund')">
-        <div class="module-icon" style="background:linear-gradient(135deg,var(--tcf-primary),var(--tcf-mid-green));">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
-        </div>
-        <div class="module-text">
-          <div class="mt-label">Open a Donor Advised Fund</div>
-          <div class="mt-sub">Invest in your community. Starts at $10,000.</div>
-        </div>
-        <svg class="module-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg>
-      </div>
-
       <div class="module-row" onclick="navigate('contributions')">
         <div class="module-icon" style="background:linear-gradient(135deg,#8a4210,var(--tcf-orange));">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M20 12v10H4V12"/><path d="M22 7H2v5h20V7z"/><path d="M12 22V7"/><path d="M12 7H7.5a2.5 2.5 0 010-5C11 2 12 7 12 7z"/><path d="M12 7h4.5a2.5 2.5 0 000-5C13 2 12 7 12 7z"/></svg>
@@ -635,13 +769,25 @@ body.pins-hidden .ipin{display:none!important;}
         <svg class="module-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg>
       </div>
 
-      <div class="module-row" onclick="navigate('vision')">
-        <div class="module-icon" style="background:linear-gradient(135deg,#4a0a30,var(--tcf-pink));">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 010 20"/></svg>
+      <div class="module-row" onclick="navigate('garden')">
+        <div class="module-icon" style="background:linear-gradient(135deg,var(--tcf-mid-green),var(--tcf-aqua));">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M12 22V12"/><path d="M12 12C12 7 8 6 5 6c0 4 2 7 7 7z"/><path d="M12 12c0-5 4-6 7-6 0 4-2 7-7 7z"/></svg>
         </div>
         <div class="module-text">
-          <div class="mt-label">Visioning Exercise</div>
-          <div class="mt-sub">Discover your Cleveland 2040 philanthropic profile.</div>
+          <div class="mt-label">Your Cleveland Garden <span class="garden-new-tag">NEW</span></div>
+          <div class="mt-sub" id="gardenModuleSub">Earn a gift as you grow our region by showing up for your community.</div>
+          <div class="garden-mini-dots" id="gardenMiniDots"></div>
+        </div>
+        <svg class="module-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg>
+      </div>
+
+      <div class="module-row" onclick="navigate('givinghistory')">
+        <div class="module-icon" style="background:linear-gradient(135deg,#1A8DA9,var(--tcf-aqua));">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M3 3v18h18"/><path d="M7 14l4-4 3 3 5-6"/></svg>
+        </div>
+        <div class="module-text">
+          <div class="mt-label">Your Giving History</div>
+          <div class="mt-sub">See every gift and recurring donation on your account.</div>
         </div>
         <svg class="module-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg>
       </div>
@@ -653,6 +799,17 @@ body.pins-hidden .ipin{display:none!important;}
         <div class="module-text">
           <div class="mt-label">Plan Your Legacy &amp; Talk to an Advisor</div>
           <div class="mt-sub">Explore estate gifts, life insurance, and more — with a TCF advisor.</div>
+        </div>
+        <svg class="module-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg>
+      </div>
+
+      <div class="module-row" id="openDafModule" onclick="navigate('openfund')">
+        <div class="module-icon" style="background:linear-gradient(135deg,var(--tcf-primary),var(--tcf-mid-green));">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
+        </div>
+        <div class="module-text">
+          <div class="mt-label">Open a Donor Advised Fund</div>
+          <div class="mt-sub">Invest in your community. Starts at $10,000.</div>
         </div>
         <svg class="module-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg>
       </div>
@@ -1122,6 +1279,26 @@ body.pins-hidden .ipin{display:none!important;}
   </div>
 </section>
 
+<!-- =================== YOUR GIVING HISTORY =================== -->
+<section class="view" id="view-givinghistory">
+  <div class="page">
+    <div class="page-head"><div class="eyebrow">Your Account</div><h1>Your Giving History</h1><p class="lede">Every gift and recurring donation made through your account, in one place.</p></div>
+
+    <div class="card" style="padding:16px 18px;margin-bottom:16px;">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:4px;text-align:center;">
+        <div><div class="stat-value" style="font-size:22px;" id="ghLifetimeTotal">$0</div><div class="stat-label" style="font-size:9.5px;">Lifetime giving</div></div>
+        <div><div class="stat-value" style="font-size:22px;" id="ghGiftCount">0</div><div class="stat-label" style="font-size:9.5px;">Gifts given</div></div>
+      </div>
+    </div>
+
+    <h3 style="font-size:15px;margin-bottom:10px;">Recurring Donations</h3>
+    <div class="row-list" id="ghRecurringList" style="margin-bottom:20px;"></div>
+
+    <h3 style="font-size:15px;margin-bottom:10px;">Gift History</h3>
+    <div class="row-list" id="ghGiftList"></div>
+  </div>
+</section>
+
 <!-- =================== LEARNING TRACKS =================== -->
 <section class="view" id="view-learning">
   <div class="page">
@@ -1291,6 +1468,147 @@ body.pins-hidden .ipin{display:none!important;}
   </div>
 </section>
 
+<!-- =================== YOUR CLEVELAND GARDEN =================== -->
+<section class="view" id="view-garden">
+  <div class="page">
+    <div class="page-head">
+      <div class="eyebrow">Land Florals Challenge</div>
+      <h1>Your Cleveland Garden</h1>
+      <p class="lede">Every time you show up for the city, plant a flower. Collect all six Land Florals and watch your garden grow.</p>
+    </div>
+
+    <div class="garden-hero">
+      <div class="gh-eyebrow">Your Garden</div>
+      <div class="gh-count" id="gardenHeroCount">0 of 6 planted</div>
+      <div class="garden-progress-track"><div class="garden-progress-fill" id="gardenHeroBar" style="width:0%"></div></div>
+    </div>
+
+    <div class="garden-nudge">
+      <div class="gn-icon">🎁</div>
+      <div class="gn-text"><b>Unlock all 6</b> to receive an exclusive gift from the Cleveland Foundation.</div>
+    </div>
+
+    <div class="badge-grid" id="gardenBadgeGrid"></div>
+  </div>
+</section>
+
+<!-- =================== LOCAL LEGENDS =================== -->
+<section class="view" id="view-legends">
+  <div class="page">
+    <div class="page-head">
+      <div class="eyebrow">A Weekly Feature</div>
+      <h1>Local Legends</h1>
+      <p class="lede">Every week, we tell the story of someone whose generosity, courage, or vision left Greater Cleveland better than they found it.</p>
+    </div>
+
+    <div class="lgd-hero" id="lgdHero">
+      <div class="lgd-hero-top">
+        <div class="lgd-avatar" id="lgdAvatar">FG</div>
+        <div>
+          <div class="lgd-tag" id="lgdTag">Category</div>
+          <div class="lgd-years" id="lgdYears">Years</div>
+        </div>
+      </div>
+      <h2 id="lgdName">Name</h2>
+      <div class="lgd-quote" id="lgdQuote">&ldquo;Quote&rdquo;</div>
+    </div>
+
+    <div class="card">
+      <div style="font-size:11px;font-weight:700;color:var(--tcf-orange);letter-spacing:.06em;text-transform:uppercase;margin-bottom:8px;">Their Story</div>
+      <p style="font-size:14.5px;line-height:1.6;color:var(--ink);" id="lgdStory">Story text.</p>
+      <div class="lgd-legacy" id="lgdLegacy">Legacy line.</div>
+    </div>
+
+    <div class="lgd-callout">
+      <div class="lc-icon">✨</div>
+      <div class="lc-text">Everyday Clevelanders have done amazing things across history. <b>Begin your own local legacy today.</b></div>
+    </div>
+
+    <div class="lgd-actions">
+      <button class="btn btn-accent" onclick="openGiveModal()">Give to a Fund</button>
+      <button class="btn btn-ghost" onclick="openShareModal({subject:'A Local Legend worth knowing', text:'Read about this week\u2019s Local Legend on the Cleveland Foundation Giving Portal:'})">Share This Story</button>
+    </div>
+    <button class="alert-toggle" id="lgdAlertBtn" onclick="toggleAlert('legends', this)">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 8a6 6 0 1112 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 003.4 0"/></svg>
+      <span id="lgdAlertLabel">Get notified of new Legends</span>
+    </button>
+
+    <div class="lgd-browse-head">
+      <h4>Meet more Local Legends</h4>
+      <button class="lgd-toggle" id="lgdBrowseToggle" onclick="toggleLgdBrowse()">Browse all 52 &darr;</button>
+    </div>
+    <div class="lgd-chip-grid" id="lgdChipGrid"></div>
+  </div>
+</section>
+
+<!-- ================= GIVE MODAL (Local Legends) ================= -->
+<div class="modal-backdrop" id="give-modal">
+  <div class="modal">
+    <button class="modal-close" onclick="closeGiveModal()" aria-label="Close">&times;</button>
+    <div id="modal-body-select">
+      <h3 style="font-size:20px;margin-bottom:6px;color:var(--tcf-primary);">Start Your Fund</h3>
+      <p style="font-size:13.5px;color:var(--ink-soft);margin-bottom:16px;line-height:1.5;">Choose where your gift goes today. You can open a fund in your own name any time.</p>
+      <div class="fund-option-row"><span>Greatest Needs Fund</span><button class="btn btn-accent" style="padding:8px 16px;font-size:13px;" onclick="confirmGive()">Give</button></div>
+      <div class="fund-option-row"><span>Arts &amp; Culture Fund</span><button class="btn btn-accent" style="padding:8px 16px;font-size:13px;" onclick="confirmGive()">Give</button></div>
+      <div class="fund-option-row"><span>Youth &amp; Education Fund</span><button class="btn btn-accent" style="padding:8px 16px;font-size:13px;" onclick="confirmGive()">Give</button></div>
+      <div style="margin-top:14px;font-size:12px;color:var(--ink-soft);background:var(--surface-2);border-radius:10px;padding:10px 12px;line-height:1.5;">Prototype note: this demo does not process real payments. In production, this hands off to the Cleveland Foundation's secure giving checkout.</div>
+    </div>
+    <div class="modal-confirm" id="modal-confirm" style="display:none;text-align:center;padding:10px 0 4px;">
+      <div style="width:52px;height:52px;border-radius:50%;background:var(--tcf-aqua);color:#fff;display:flex;align-items:center;justify-content:center;font-size:24px;margin:0 auto 14px;">&#10003;</div>
+      <h3 style="font-size:20px;margin-bottom:8px;color:var(--tcf-primary);">Thank you</h3>
+      <p style="font-size:13.5px;color:var(--ink-soft);line-height:1.5;">Your generosity is already writing the next Local Legend story.</p>
+    </div>
+  </div>
+</div>
+
+<!-- =================== THIS WEEK IN CLEVELAND HISTORY =================== -->
+<section class="view" id="view-history">
+  <div class="page">
+    <div class="page-head">
+      <div class="eyebrow">A Weekly Feature</div>
+      <h1>This Week in Cleveland History</h1>
+      <p class="lede">Explore the stories that built our region, one week of the calendar at a time.</p>
+    </div>
+
+    <div class="hw-hero">
+      <div class="hw-week-label">Week Of</div>
+      <div class="hw-week-range" id="hwRange">Loading&hellip;</div>
+      <div class="hw-week-count" id="hwCount"></div>
+      <div class="hw-nav">
+        <button onclick="hwStep(-1)">&larr; Previous week</button>
+        <button onclick="hwSurprise()">Surprise me</button>
+        <button onclick="hwStep(1)">Next week &rarr;</button>
+      </div>
+    </div>
+
+    <div id="hwCardsWrap"></div>
+
+    <button class="btn btn-ghost btn-block" onclick="openShareModal({subject:'A piece of Cleveland history', text:'Check out this week in Cleveland history on the Giving Portal:'})">Share This Week's Story</button>
+    <button class="alert-toggle" id="hwAlertBtn" onclick="toggleAlert('history', this)">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 8a6 6 0 1112 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 003.4 0"/></svg>
+      <span id="hwAlertLabel">Get notified each week</span>
+    </button>
+  </div>
+</section>
+
+<!-- =================== NEWS FEED =================== -->
+<section class="view" id="view-newsfeed">
+  <div class="page">
+    <div class="page-head">
+      <div class="eyebrow">For You</div>
+      <h1>News Feed</h1>
+      <p class="lede">Personalized stories from others making an impact — plus the Whys people are sharing in Your Cleveland Garden.</p>
+    </div>
+
+    <div class="nf-composer" onclick="navigate('garden');showToast('Share your \u201cwhy\u201d from the Foxglove badge in Your Cleveland Garden.')">
+      <div class="nf-comp-icon">+</div>
+      <div class="nf-comp-text">Share your own "why" in Your Cleveland Garden&hellip;</div>
+    </div>
+
+    <div id="nfFeed"></div>
+  </div>
+</section>
+
 <!-- =================== ADVISOR =================== -->
 <!-- =================== IMPACT MAP (merged sub-app) =================== -->
 <section class="view" id="view-impactmap">
@@ -1457,10 +1775,6 @@ body.pins-hidden .ipin{display:none!important;}
 
 <!-- BOTTOM NAV -->
 <nav class="bottomnav">
-  <button class="bnav-item active" data-view="home" onclick="navigate('home',false)">
-    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12l9-9 9 9M5 10v10h14V10"/></svg>
-    Home
-  </button>
   <button class="bnav-item" data-view="impact" onclick="navigate('impact',false)">
     <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-4.5-7-10a7 7 0 0114 0c0 5.5-7 10-7 10z"/><circle cx="12" cy="11" r="2"/></svg>
     Stories
@@ -1473,9 +1787,13 @@ body.pins-hidden .ipin{display:none!important;}
     <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h4l3-8 4 16 3-8h4"/></svg>
     Give
   </button>
-  <button class="bnav-item" data-view="openfund" onclick="navigate('openfund',false)" id="bnavOpenFund">
-    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
-    Open DAF
+  <button class="bnav-item" id="bnavShare" onclick="openShareModal()">
+    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.6" y1="10.6" x2="15.4" y2="6.4"/><line x1="8.6" y1="13.4" x2="15.4" y2="17.6"/></svg>
+    Share
+  </button>
+  <button class="bnav-item active" data-view="home" onclick="navigate('home',false)">
+    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12l9-9 9 9M5 10v10h14V10"/></svg>
+    Home
   </button>
 </nav>
 
@@ -1536,6 +1854,46 @@ body.pins-hidden .ipin{display:none!important;}
       <button class="modal-close" onclick="closePin()">×</button>
     </div>
     <div class="modal-body" id="pinBody"></div>
+  </div>
+</div>
+
+<!-- GARDEN BADGE MODAL -->
+<div class="modal-backdrop" id="gardenModal">
+  <div class="modal">
+    <div class="modal-handle"></div>
+    <div class="modal-head">
+      <div class="kind">Land Florals Challenge</div>
+      <h3 id="gmTitle">&nbsp;</h3>
+      <button class="modal-close" onclick="closeGardenModal()">×</button>
+    </div>
+    <div class="modal-body" id="gmBody"></div>
+  </div>
+</div>
+
+<!-- SHARE MODAL -->
+<div class="modal-backdrop" id="shareModal">
+  <div class="modal">
+    <div class="modal-handle"></div>
+    <div class="modal-head">
+      <div class="kind">Invite a Friend</div>
+      <h3>Share the Giving Portal</h3>
+      <button class="modal-close" onclick="closeShareModal()">×</button>
+    </div>
+    <div class="modal-body">
+      <p style="font-size:13.5px;color:var(--ink-soft);line-height:1.5;margin-bottom:16px;">Send a friend a link to the Cleveland Foundation Giving Portal.</p>
+      <div class="legacy-option" onclick="shareVia('text')">
+        <div class="legacy-icon" style="background:rgba(25,185,169,.12);"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--tcf-aqua)" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div>
+        <div><div style="font-weight:700;color:var(--tcf-primary);font-size:15px;margin-bottom:3px;">Text a Friend</div><div style="font-size:13px;color:var(--ink-soft);">Opens a text message with the portal link.</div></div>
+      </div>
+      <div class="legacy-option" onclick="shareVia('email')">
+        <div class="legacy-icon" style="background:rgba(238,115,49,.12);"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--tcf-orange)" stroke-width="2"><path d="M4 4h16v16H4z"/><path d="M22 6l-10 7L2 6"/></svg></div>
+        <div><div style="font-weight:700;color:var(--tcf-primary);font-size:15px;margin-bottom:3px;">Email a Friend</div><div style="font-size:13px;color:var(--ink-soft);">Opens an email with the portal link.</div></div>
+      </div>
+      <div class="legacy-option" onclick="shareVia('copy')">
+        <div class="legacy-icon" style="background:rgba(8,108,67,.12);"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--tcf-mid-green)" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg></div>
+        <div><div style="font-weight:700;color:var(--tcf-primary);font-size:15px;margin-bottom:3px;">Copy Link</div><div style="font-size:13px;color:var(--ink-soft);">Copy the portal URL to paste anywhere.</div></div>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -1982,6 +2340,11 @@ function navigate(view, closeDrawerAfter) {
   if (view === 'calculator' && !_inited.calculator) { _inited.calculator = true; setTimeout(calcRender, 60); }
   if (view === 'calculator' && _inited.calculator) { setTimeout(calcRender, 60); }
   if (view === 'vision' && !_inited.vision) { _inited.vision = true; setTimeout(vRenderCard, 60); }
+  if (view === 'garden') { setTimeout(renderGardenView, 30); }
+  if (view === 'legends') { setTimeout(initLegendsView, 30); }
+  if (view === 'history') { setTimeout(initHistoryView, 30); }
+  if (view === 'newsfeed') { setTimeout(renderNewsFeed, 30); }
+  if (view === 'givinghistory') { setTimeout(initGivingHistoryView, 30); }
   if (view === 'impactmap' && !_inited.impactmap) { _inited.impactmap = true; setTimeout(function() { if (window.__impactMapInit) window.__impactMapInit(); }, 60); }
   if (view === 'performance' && appState.isDonor) { setTimeout(function() { drawPerfChart(null,'YTD'); }, 60); }
   if (view === 'learning') {
@@ -2022,6 +2385,770 @@ function showToast(msg) {
   t.textContent = msg; t.classList.add('show');
   clearTimeout(toastTimer);
   toastTimer = setTimeout(function() { t.classList.remove('show'); }, 3500);
+}
+
+/* ============================================================
+   YOUR CLEVELAND GARDEN — Land Florals badge system
+   Swap the "story" copy below for the real Land Floral narratives
+   before this ships — these are placeholder pairings.
+   ============================================================ */
+var GARDEN_BADGES = [
+  {
+    id:'volunteer', plant:'Black-Eyed Susan', desc:'Volunteer Locally',
+    colors:['var(--tcf-aqua)','var(--tcf-orange)','var(--tcf-primary)'],
+    verify:'selfreport',
+    howto:'Spend time volunteering at any organization in the city this month, then tell us where. This one\u2019s on the honor system \u2014 no proof needed.',
+    fieldLabel:'Organization name', placeholder:'e.g. Ohio City Farm, Boys & Girls Club\u2026',
+    story:'Black-Eyed Susans are one of the first wildflowers to take root in overlooked, disturbed ground \u2014 vacant lots, roadsides, the corners of the city everyone else drives past. We paired it with volunteering because showing up for the parts of Cleveland that need it most is exactly what this flower already does on its own. [Swap in the real Land Floral story for Black-Eyed Susan.]'
+  },
+  {
+    id:'event', plant:'Elm', desc:'Attend an Event',
+    colors:['var(--tcf-blue)','var(--tcf-primary)','var(--tcf-aqua)'],
+    verify:'selfreport',
+    howto:'Go to a festival, open house, town hall, block party, or school board meeting \u2014 anything where the community gathers. Tell us what you attended.',
+    fieldLabel:'Event name', placeholder:'e.g. West Side Market Block Party\u2026',
+    story:'American elms once arched over Cleveland\u2019s main streets and town squares \u2014 the shade neighbors gathered under. It\u2019s a natural match for showing up wherever the community comes together. [Swap in the real Land Floral story for Elm.]'
+  },
+  {
+    id:'gift', plant:'Oak', desc:'Make a Gift',
+    colors:['var(--tcf-orange)','var(--tcf-mid-green)','var(--tcf-orange)'],
+    verify:'auto',
+    howto:'Make a gift of any amount, anywhere on the platform. This badge unlocks automatically \u2014 nothing else to do.',
+    story:'Mighty oaks grow from little acorns. A gift of any size, given time, becomes something lasting \u2014 the same idea behind every fund at the Cleveland Foundation. [Swap in the real Land Floral story for Oak.]'
+  },
+  {
+    id:'why', plant:'Foxglove', desc:'Share Your Why',
+    colors:['var(--tcf-orange)','var(--tcf-pink)','var(--tcf-primary)'],
+    verify:'post',
+    howto:'Post a short reflection on what moved you to get involved in your community. It\u2019ll appear on the Stories &amp; Impact feed.',
+    fieldLabel:'Your why', placeholder:'Share a short reflection\u2026',
+    story:'Foxglove has long been tied to matters of the heart. We paired it with sharing your \u201cwhy\u201d because that\u2019s the most personal, heart-driven check-in of the six. [Swap in the real Land Floral story for Foxglove.]'
+  },
+  {
+    id:'refer', plant:'Milkweed', desc:'Refer a Friend',
+    colors:['var(--tcf-orange)','var(--tcf-aqua)','var(--tcf-primary)'],
+    verify:'share',
+    howto:'Use the share button below to invite a friend. We\u2019ll unlock this as soon as the share sheet opens.',
+    story:'Milkweed is the one plant monarch butterflies depend on at every stop of their migration \u2014 without it, the journey can\u2019t continue. Referring a friend makes you that same kind of waypoint for someone else\u2019s giving journey. [Swap in the real Land Floral story for Milkweed.]'
+  },
+  {
+    id:'localbiz', plant:'Walnut', desc:'Support Local Business',
+    colors:['var(--tcf-aqua)','var(--tcf-primary)','var(--tcf-orange)'],
+    verify:'selfreport',
+    howto:'Shop or grab a bite at a locally owned business in the city this month, then tell us where.',
+    fieldLabel:'Business name', placeholder:'e.g. Rising Star Coffee, East 66th\u2026',
+    story:'Walnut trees quietly shape everything that grows around them, and their wood has always been prized in local craft \u2014 it felt right for supporting the small businesses that anchor Cleveland\u2019s neighborhoods. [Swap in the real Land Floral story for Walnut.]'
+  }
+];
+
+var gardenState = {};
+
+function gmMosaic(colors, size) {
+  var n = 6, seed = 0, joined = colors.join(''), i;
+  for (i = 0; i < joined.length; i++) seed += joined.charCodeAt(i);
+  var cells = '';
+  for (i = 0; i < n * n; i++) {
+    seed = (seed * 9301 + 49297) % 233280;
+    var idx = Math.floor((seed / 233280) * colors.length);
+    var round = (seed % 5 === 0);
+    cells += '<div class="cell" style="background:' + colors[idx] + ';border-radius:' + (round ? '50%' : '2px') + '"></div>';
+  }
+  return '<div class="' + (size >= 64 ? 'gm-mosaic' : 'mosaic') + '">' + cells + '</div>';
+}
+
+function gardenUnlockedCount() {
+  return GARDEN_BADGES.filter(function(b) { return gardenState[b.id] && gardenState[b.id].unlocked; }).length;
+}
+
+function updateGardenModuleUI() {
+  var count = gardenUnlockedCount();
+  var sub = document.getElementById('gardenModuleSub');
+  if (sub) sub.textContent = count === 0 ? 'Collect Land Florals as you show up for the city.' : (count + ' of 6 collected \u2014 keep going.');
+  var dots = document.getElementById('gardenMiniDots');
+  if (dots) dots.innerHTML = GARDEN_BADGES.map(function(b) {
+    return '<span class="' + ((gardenState[b.id] && gardenState[b.id].unlocked) ? 'done' : '') + '"></span>';
+  }).join('');
+}
+
+function renderGardenView() {
+  var count = gardenUnlockedCount();
+  document.getElementById('gardenHeroCount').textContent = count + ' of 6 planted';
+  document.getElementById('gardenHeroBar').style.width = (count / 6 * 100) + '%';
+  var grid = document.getElementById('gardenBadgeGrid');
+  grid.innerHTML = GARDEN_BADGES.map(function(b) {
+    var unlocked = gardenState[b.id] && gardenState[b.id].unlocked;
+    var mosaic = unlocked ? gmMosaic(b.colors, 56) : ('<div class="mosaic locked">' + ('<div class="cell"></div>').repeat(36) + '</div>');
+    return '<div class="badge-card ' + (unlocked ? 'unlocked' : 'locked') + '" onclick="openGardenModal(\'' + b.id + '\')">' + mosaic +
+      '<div class="badge-desc">' + b.desc + '</div>' +
+      '<div class="badge-name">' + b.plant + '</div>' +
+      '<div class="badge-state">' + (unlocked ? 'Collected' : '\uD83D\uDD12 Locked') + '</div></div>';
+  }).join('');
+  updateGardenModuleUI();
+}
+
+function openGardenModal(id) {
+  var b = GARDEN_BADGES.filter(function(x) { return x.id === id; })[0];
+  var unlocked = gardenState[b.id] && gardenState[b.id].unlocked;
+  document.getElementById('gmTitle').textContent = b.plant;
+
+  var actionHTML = '';
+  if (!unlocked) {
+    if (b.verify === 'selfreport' || b.verify === 'post') {
+      actionHTML =
+        '<div class="gm-section"><div class="gm-label">How to Unlock</div><div class="gm-howto-box">' + b.howto + '</div></div>' +
+        '<input type="text" class="gm-input" id="gmInput" placeholder="' + b.placeholder + '">' +
+        '<button class="btn btn-primary btn-block" style="margin-top:12px;" onclick="submitGardenSelfReport(\'' + b.id + '\')">' + (b.verify === 'post' ? 'Post &amp; Collect' : 'Tell Us &amp; Collect') + '</button>' +
+        '<div class="gm-verify-tag">\u2713 Self-reported \u2014 trust based, no proof required.</div>';
+    } else if (b.verify === 'auto') {
+      actionHTML =
+        '<div class="gm-section"><div class="gm-label">How to Unlock</div><div class="gm-howto-box">' + b.howto + '</div></div>' +
+        '<button class="btn btn-ghost btn-block" style="margin-top:12px;" onclick="closeGardenModal();navigate(\'contributions\')">Go Make a Gift</button>' +
+        '<div class="gm-verify-tag">\u2713 Auto-detected from your giving history.</div>' +
+        '<button class="btn btn-accent btn-block" style="margin-top:8px;" onclick="gardenUnlock(\'' + b.id + '\')">Demo: simulate a gift</button>';
+    } else if (b.verify === 'share') {
+      actionHTML =
+        '<div class="gm-section"><div class="gm-label">How to Unlock</div><div class="gm-howto-box">' + b.howto + '</div></div>' +
+        '<button class="btn btn-accent btn-block" style="margin-top:12px;" onclick="submitGardenShare(\'' + b.id + '\')">Share the App</button>' +
+        '<div class="gm-verify-tag">\u2713 Confirmed when you use the share button.</div>';
+    }
+  } else {
+    var detail = gardenState[b.id].detail;
+    actionHTML = '<div class="gm-done">\u2713 Collected' + (detail ? ' \u2014 \u201c' + detail + '\u201d' : '') + '</div>';
+  }
+
+  document.getElementById('gmBody').innerHTML =
+    '<div class="gm-top">' + gmMosaic(b.colors, 64) +
+    '<div><span class="gm-status ' + (unlocked ? 'unlocked' : 'locked') + '">' + (unlocked ? 'COLLECTED' : 'NOT YET COLLECTED') + '</span></div></div>' +
+    actionHTML +
+    '<div class="gm-section"><div class="gm-label" style="color:var(--tcf-orange);">Why This Pairing</div><div class="gm-story-box">' + b.story + '</div></div>';
+
+  document.getElementById('gardenModal').classList.add('open');
+}
+function closeGardenModal() { document.getElementById('gardenModal').classList.remove('open'); }
+
+var pendingShare = null;
+function openShareModal(ctx) { pendingShare = ctx || null; document.getElementById('shareModal').classList.add('open'); }
+function closeShareModal() { document.getElementById('shareModal').classList.remove('open'); }
+function shareVia(method) {
+  var url = window.location.href;
+  var subject = (pendingShare && pendingShare.subject) || 'Check out the Cleveland Foundation Giving Portal';
+  var text = (pendingShare && pendingShare.text) || 'Check out the Cleveland Foundation Giving Portal:';
+  var body = text + ' ' + url;
+  if (method === 'text') {
+    window.location.href = 'sms:?body=' + encodeURIComponent(body);
+  } else if (method === 'email') {
+    window.location.href = 'mailto:?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+  } else if (method === 'copy') {
+    if (navigator.clipboard) navigator.clipboard.writeText(url);
+    showToast('Link copied to clipboard.');
+  }
+  closeShareModal();
+}
+
+function gardenUnlock(id, detail) {
+  gardenState[id] = { unlocked: true, detail: detail || null };
+  renderGardenView();
+  closeGardenModal();
+  if (gardenUnlockedCount() === 6) {
+    setTimeout(function() { showToast('\uD83C\uDF33 Your garden has bloomed \u2014 your Cleveland Foundation gift is on its way!'); }, 300);
+  } else {
+    showToast('Collected! ' + gardenUnlockedCount() + ' of 6 Land Florals planted.');
+  }
+}
+function submitGardenSelfReport(id) {
+  var input = document.getElementById('gmInput');
+  var val = input.value.trim();
+  if (!val) { input.style.borderColor = 'var(--tcf-red)'; return; }
+  gardenUnlock(id, val);
+}
+function submitGardenShare(id) {
+  var shareData = { title: 'Cleveland Foundation Giving Portal', text: 'I\u2019m growing my Cleveland Garden \u2014 come check out the Giving Portal.', url: window.location.href };
+  if (navigator.share) {
+    navigator.share(shareData).then(function() { gardenUnlock(id); }).catch(function() {});
+  } else {
+    if (navigator.clipboard) navigator.clipboard.writeText(shareData.url);
+    showToast('Link copied \u2014 in production this opens the native share sheet.');
+    gardenUnlock(id);
+  }
+}
+
+/* ============================================================
+   LOCAL LEGENDS
+   ============================================================ */
+const LEGENDS = [
+  {id:1, name:"Frederick Harris Goff", years:"1858–1923", cat:"Business & Philanthropy", color:"green",
+    quote:"Why not pool the good will of an entire city into one enduring trust?",
+    story:"In 1914, banker and lawyer Frederick Goff had a radical idea: instead of letting charitable dollars sit locked in outdated wills, why not pool them into one flexible, permanent trust guided by the living community? That idea became the Cleveland Foundation — the world's first community foundation — a model now used by more than 1,700 community foundations across the globe.",
+    legacy:"Every gift to the Cleveland Foundation today carries forward the trust Fred Goff built more than a century ago."},
+  {id:2, name:"John D. Rockefeller", years:"1839–1937", cat:"Business & Philanthropy", color:"green",
+    quote:"Cleveland made me. Standard Oil made Cleveland.",
+    story:"Rockefeller built Standard Oil on Cleveland's docks and rail lines starting in 1870, turning a modest lake port into an industrial powerhouse that employed generations of families. The fortune he built here also seeded a lifelong practice of large-scale philanthropy that became a model for American giving.",
+    legacy:"His giving helped establish the idea that great wealth carries a great responsibility to the community that made it possible."},
+  {id:3, name:"Amasa Stone", years:"1818–1883", cat:"Business & Philanthropy", color:"green",
+    quote:"A railroad man who built more than bridges.",
+    story:"A railroad and bridge-building magnate, Amasa Stone's fortune funded the move of Case School of Applied Science and Western Reserve's Adelbert College to Cleveland — planting the seeds of what is now University Circle, still the city's hub of education, medicine, and culture.",
+    legacy:"One gift, made a century and a half ago, is still educating Clevelanders today."},
+  {id:4, name:"Charles F. Brush", years:"1849–1929", cat:"Business & Science", color:"aqua",
+    quote:"Lighting a city, one arc lamp at a time.",
+    story:"In 1879, Brush lit Cleveland's Public Square with his own arc-light invention, making it one of the first electrically lit cities in the world. His engineering company later became part of General Electric, and his estate helped fund scientific research in Cleveland for decades.",
+    legacy:"A single invention changed how an entire city lived after dark — and his estate kept giving long after."},
+  {id:5, name:"Garrett A. Morgan", years:"1877–1963", cat:"Business & Invention", color:"orange",
+    quote:"An inventor who also built a community.",
+    story:"A Black inventor and entrepreneur, Morgan patented the three-position traffic signal and a safety hood that became a forerunner of the modern gas mask — using it himself to help rescue trapped workers after a 1916 tunnel explosion. He built a successful business while becoming an early leader of Cleveland's Black community.",
+    legacy:"His inventions still shape every intersection you drive through today."},
+  {id:6, name:"Cyrus Eaton", years:"1883–1979", cat:"Business & Philanthropy", color:"green",
+    quote:"A Cleveland fortune, spent on world peace.",
+    story:"A self-made Cleveland financier, Eaton used his industrial fortune to fund the Pugwash Conferences, bringing scientists together across Cold War lines to push for nuclear disarmament — proof that a Cleveland businessman's generosity could shape world peace.",
+    legacy:"His giving reached far beyond Cleveland, all the way to the world stage."},
+  {id:7, name:"Peter B. Lewis", years:"1933–2013", cat:"Business & Philanthropy", color:"green",
+    quote:"Betting big on his hometown's culture.",
+    story:"Lewis built Progressive Insurance into a national leader, then became one of Cleveland's boldest philanthropists — reshaping the Cleveland Museum of Art and betting big on the city's cultural future with transformative gifts most donors wouldn't dare make.",
+    legacy:"His gifts prove that ambitious giving can change a skyline, not just a balance sheet."},
+  {id:8, name:"Morton L. Mandel", years:"1921–2019", cat:"Business & Philanthropy", color:"green",
+    quote:"Three brothers, one lasting commitment.",
+    story:"With brothers Jack and Joseph, Mandel built Premier Industrial into a national company — then poured that success into the Mandel Foundation, becoming one of the most consistent and far-reaching philanthropic forces in Cleveland's history.",
+    legacy:"A family business became a family legacy of giving that still shapes Cleveland today."},
+  {id:9, name:"Jeptha H. Wade", years:"1811–1890", cat:"Business & Philanthropy", color:"green",
+    quote:"One gift of land, enjoyed by generations.",
+    story:"A founder of Western Union, Wade's gift of land created Wade Park — today home to the Cleveland Museum of Art and Cleveland Botanical Garden — turning one family's generosity into a permanent gift for every Clevelander.",
+    legacy:"Millions of visits later, his single gift is still giving."},
+  {id:10, name:"Dan Gilbert", years:"b. 1962", cat:"Business & Philanthropy", color:"orange",
+    quote:"Betting his fortune on downtown's comeback.",
+    story:"The founder of Rocket Companies poured hundreds of millions of dollars into rebuilding downtown Cleveland block by block, while co-owning the Cavaliers through their historic 2016 championship — betting his fortune on his hometown's comeback.",
+    legacy:"A downtown skyline, rebuilt one investment at a time."},
+  {id:11, name:"Carl B. Stokes", years:"1927–1996", cat:"Civil Rights & Politics", color:"pink",
+    quote:"A seat at the head of the table.",
+    story:"In 1967, Carl Stokes was elected the first Black mayor of a major American city — a milestone that reshaped what was possible in urban politics nationwide, and gave Cleveland's Black community a seat at the head of the table.",
+    legacy:"A city hall door, opened for the first time, that has stayed open ever since."},
+  {id:12, name:"Louis Stokes", years:"1925–2015", cat:"Civil Rights & Politics", color:"pink",
+    quote:"Fifteen terms, one relentless purpose.",
+    story:"Ohio's first Black member of Congress, Louis Stokes spent 15 terms fighting for civil rights, healthcare access, and fair representation — carrying his brother Carl's legacy of public service to Washington for nearly three decades.",
+    legacy:"Decades of service, still felt in the policies that protect Clevelanders today."},
+  {id:13, name:"Jane Edna Hunter", years:"1882–1971", cat:"Civil Rights & Social Work", color:"pink",
+    quote:"A safe place to land, and a chance to rise.",
+    story:"Arriving in Cleveland with almost nothing, Hunter founded the Phillis Wheatley Association to give Black women migrating north safe housing, job training, and a community — a lifeline that helped shape generations of Cleveland families.",
+    legacy:"An institution built from nothing, still lifting people up today."},
+  {id:14, name:"Charles W. Chesnutt", years:"1858–1932", cat:"Civil Rights & Literature", color:"pink",
+    quote:"A lawyer by day, a truth-teller by night.",
+    story:"A Cleveland lawyer by day, Chesnutt became one of the first commercially successful African American novelists, using fiction to confront America's racial injustices at a time when few publishers would take the risk.",
+    legacy:"Stories that took a real risk to tell — and are still read for their honesty today."},
+  {id:15, name:"John Malvin", years:"1795–1880", cat:"Civil Rights", color:"pink",
+    quote:"Fighting for freedoms decades before they were won.",
+    story:"An early Cleveland abolitionist, Malvin organized against slavery and fought for Black Ohioans' right to education and citizenship decades before the Civil War — laying groundwork for the civil rights movement that would follow a century later.",
+    legacy:"A fight for justice that started generations before it was won."},
+  {id:16, name:"Lucy Stanton Day Sessions", years:"1831–1910", cat:"Civil Rights & Education", color:"pink",
+    quote:"Education and activism, hand in hand.",
+    story:"Believed to be the first Black woman to complete a four-year college course, Stanton returned to Cleveland to teach, organize, and advocate — proving that education and activism could go hand in hand.",
+    legacy:"A first that opened the door for every student who followed."},
+  {id:17, name:"William O. Walker", years:"1896–1981", cat:"Civil Rights & Journalism", color:"pink",
+    quote:"A press that gave a community its voice.",
+    story:"As editor of the Call & Post for decades, Walker used the press to build Black political power in Cleveland, holding leaders accountable and giving voice to a community too often overlooked by the city's other papers.",
+    legacy:"Decades of reporting that made sure Cleveland's Black community was heard."},
+  {id:18, name:"Eliza Bryant", years:"1827–1907", cat:"Civil Rights & Social Work", color:"pink",
+    quote:"Dignity, for those the city too often forgot.",
+    story:"Bryant founded what became the Eliza Bryant Center, one of the nation's oldest homes for elderly African Americans — ensuring that Cleveland's Black elders would be cared for with dignity when few institutions would take them in.",
+    legacy:"A home she built is still caring for Cleveland's elders today."},
+  {id:19, name:"Fannie Lewis", years:"1926–2008", cat:"Civil Rights & Politics", color:"pink",
+    quote:"Rebuilding a neighborhood, block by block.",
+    story:"Cleveland's longest-serving female City Council member, Lewis fought fiercely for the Hough neighborhood's revival after decades of disinvestment, proving that one determined advocate could rebuild a community block by block.",
+    legacy:"Proof that showing up, decade after decade, changes a neighborhood for good."},
+  {id:20, name:"Stephanie Tubbs Jones", years:"1949–2008", cat:"Civil Rights & Politics", color:"pink",
+    quote:"A relentless focus on the people she served.",
+    story:"The first Black woman elected to Congress from Ohio, Tubbs Jones represented Cleveland with a relentless focus on healthcare, education, and civil rights until her sudden passing in office.",
+    legacy:"A first that reshaped who gets to represent Cleveland in Washington."},
+  {id:21, name:"Tom L. Johnson", years:"1854–1911", cat:"Politics", color:"blue",
+    quote:"The best-governed city in America.",
+    story:"As mayor from 1901 to 1909, Johnson took on Cleveland's streetcar monopolies and pushed for fair taxation and public ownership of utilities — reforms so effective that muckraker Lincoln Steffens called him \"the best mayor of the best-governed city in America.\"",
+    legacy:"Reforms from a century ago that still shape how Cleveland runs its own utilities."},
+  {id:22, name:"Newton D. Baker", years:"1871–1937", cat:"Politics", color:"blue",
+    quote:"A reformer's spirit, carried to Washington.",
+    story:"A reform-minded Cleveland mayor, Baker went on to serve as U.S. Secretary of War during World War I, carrying the city's progressive spirit onto the national stage during one of the country's most consequential moments.",
+    legacy:"A hometown reformer who helped lead the country through a world war."},
+  {id:23, name:"James A. Garfield", years:"1831–1881", cat:"Politics", color:"blue",
+    quote:"From a canal-boat driver to the presidency.",
+    story:"Raised and educated in the Western Reserve, Garfield rose from a canal-boat driver to the 20th President of the United States — a Northeast Ohio story of ambition and public service cut short by an assassin's bullet.",
+    legacy:"A reminder that this region has always produced people who reach for more."},
+  {id:24, name:"George V. Voinovich", years:"1936–2016", cat:"Politics", color:"blue",
+    quote:"Restoring a city's credit — and its confidence.",
+    story:"Elected mayor as Cleveland teetered near a second financial default, Voinovich helped restore the city's credit and confidence — a turnaround that launched him to the governorship and U.S. Senate.",
+    legacy:"A financial comeback that gave Cleveland its footing back."},
+  {id:25, name:"Dennis Kucinich", years:"b. 1946", cat:"Politics", color:"blue",
+    quote:"Refusing to sell what belonged to the people.",
+    story:"At 31, Kucinich became Cleveland's youngest big-city mayor, famously refusing to sell the city's public power system even at great political cost — a decision now credited with saving Clevelanders money for generations.",
+    legacy:"A stand that still saves Cleveland households money on their electric bill."},
+  {id:26, name:"Michael R. White", years:"b. 1951", cat:"Politics", color:"blue",
+    quote:"Twelve years, one rebuilt downtown.",
+    story:"Over twelve years as mayor, White drove a wave of downtown redevelopment — including the Gateway sports and entertainment district — reshaping Cleveland's skyline and its sense of possibility.",
+    legacy:"A downtown many Clevelanders now take for granted, built on his watch."},
+  {id:27, name:"Florence Ellinwood Allen", years:"1884–1966", cat:"Civil Rights & Law", color:"pink",
+    quote:"Breaking a barrier that had stood for the nation's entire history.",
+    story:"A leading voice for women's suffrage, Allen went on to become the first woman to serve as chief judge of a U.S. federal appeals court — breaking barriers in law that had stood for the nation's entire history.",
+    legacy:"A first on the bench that opened the door for every woman judge who followed."},
+  {id:28, name:"Frank Lausche", years:"1895–1990", cat:"Politics", color:"blue",
+    quote:"Decades of trust, earned one term at a time.",
+    story:"Rising from Cleveland mayor to Ohio governor and U.S. senator, Lausche's decades of public trust made him one of the most enduring political figures Ohio has ever produced.",
+    legacy:"Trust built over decades, from City Hall to the U.S. Senate."},
+  {id:29, name:"George Washington Crile", years:"1864–1943", cat:"Medicine", color:"aqua",
+    quote:"A transfusion that changed what surgery could survive.",
+    story:"A co-founder of the Cleveland Clinic, Crile performed one of the world's first successful direct blood transfusions and pioneered treatments for surgical shock — discoveries that would go on to save countless lives far beyond Cleveland.",
+    legacy:"A discovery made in Cleveland that still saves lives in operating rooms everywhere."},
+  {id:30, name:"Harvey Cushing", years:"1869–1939", cat:"Medicine", color:"aqua",
+    quote:"The father of modern neurosurgery.",
+    story:"Born and trained in Cleveland, Cushing is widely regarded as the father of modern neurosurgery, developing techniques still used in operating rooms around the world today.",
+    legacy:"Surgical techniques from a Cleveland-trained mind, still used worldwide."},
+  {id:31, name:"Donald A. Glaser", years:"1926–2013", cat:"Science", color:"aqua",
+    quote:"A tool that let scientists see the invisible.",
+    story:"A Cleveland-born physicist, Glaser won the Nobel Prize for inventing the bubble chamber — a tool that let scientists literally see subatomic particles for the first time, unlocking decades of physics discovery.",
+    legacy:"A Cleveland idea that helped physicists see the building blocks of everything."},
+  {id:32, name:"Frederick C. Robbins", years:"1916–2003", cat:"Medicine", color:"aqua",
+    quote:"A breakthrough that helped end a disease families feared.",
+    story:"Working at Case Western Reserve, Robbins helped grow poliovirus in tissue culture — a Nobel Prize-winning breakthrough that made the polio vaccine possible and helped end a disease that once terrified American families.",
+    legacy:"Research done here helped free a generation of children from fear."},
+  {id:33, name:"Jim Lovell", years:"b. 1928", cat:"Science & Exploration", color:"aqua",
+    quote:"A safe return that became a legend.",
+    story:"Born in Cleveland, Lovell commanded NASA's Apollo 13 mission, whose crew's safe return from a near-catastrophic accident became one of the most celebrated feats in the history of American spaceflight.",
+    legacy:"A Cleveland-born commander who brought his crew home against the odds."},
+  {id:34, name:"Albert A. Michelson & Edward W. Morley", years:"1852–1931 / 1838–1923", cat:"Science", color:"aqua",
+    quote:"An experiment that pointed toward relativity.",
+    story:"In 1887, working at what's now Case Western Reserve, these two scientists ran the famous Michelson-Morley experiment — a result so unexpected it helped point the way toward Einstein's theory of relativity.",
+    legacy:"A surprising result from a Cleveland lab that helped rewrite modern physics."},
+  {id:35, name:"Langston Hughes", years:"1901–1967", cat:"Literature", color:"orange",
+    quote:"A voice found in a Cleveland classroom.",
+    story:"Hughes found his voice as a writer while attending Cleveland's Central High School, going on to become one of the defining poets of the Harlem Renaissance and American literature.",
+    legacy:"A poet's voice, first found here, that still speaks to readers everywhere."},
+  {id:36, name:"Harvey Pekar", years:"1939–2010", cat:"Literature & Comics", color:"orange",
+    quote:"The everyday, made extraordinary.",
+    story:"A Cleveland file clerk with no artistic training, Pekar turned the everyday grit of working-class life into \"American Splendor,\" one of the most acclaimed and honest comic series ever created.",
+    legacy:"Proof that Cleveland's ordinary streets held extraordinary stories worth telling."},
+  {id:37, name:"Jerry Siegel & Joe Shuster", years:"1914–1996 / 1914–1992", cat:"Comics & Culture", color:"orange",
+    quote:"A hero dreamed up in a Glenville bedroom.",
+    story:"Two Glenville High School classmates dreamed up a hero who could leap tall buildings — and gave the world Superman, launching an entire genre of American storytelling from a bedroom in Cleveland.",
+    legacy:"An entire genre of American storytelling, born from two Cleveland teenagers."},
+  {id:38, name:"Dorothy Fuldheim", years:"1893–1989", cat:"Journalism", color:"orange",
+    quote:"Nearly five decades of hard-hitting truth.",
+    story:"Fuldheim became one of the first women in America to anchor a daily televised newscast, delivering hard-hitting commentary from Cleveland for nearly five decades and paving the way for women in broadcast journalism.",
+    legacy:"A door she opened on-air that every woman in broadcast news walked through next."},
+  {id:39, name:"Adella Prentiss Hughes", years:"1869–1950", cat:"Arts & Music", color:"orange",
+    quote:"A city that decided it deserved a great orchestra.",
+    story:"Hughes organized the concerts that grew into the Cleveland Orchestra in 1918, founding one of the world's great symphony orchestras and establishing Cleveland as a serious cultural capital.",
+    legacy:"A concert series that grew into a world-class orchestra Clevelanders still fill seats for."},
+  {id:40, name:"George Szell", years:"1897–1970", cat:"Music", color:"orange",
+    quote:"Twenty-four years of exacting brilliance.",
+    story:"Over 24 exacting years as music director, Szell built the Cleveland Orchestra's sound and reputation into one of the finest in the world — a legacy still heard in Severance Hall today.",
+    legacy:"A sound he shaped decades ago, still filling Severance Hall today."},
+  {id:41, name:"Toni Morrison", years:"1931–2019", cat:"Literature", color:"orange",
+    quote:"A Nobel voice, shaped by this region.",
+    story:"Raised in nearby Lorain and shaped by the Greater Cleveland region, Morrison became the first African American woman to win the Nobel Prize in Literature, writing novels that changed how America understood its own history.",
+    legacy:"A regional upbringing that produced one of literature's most essential voices."},
+  {id:42, name:"Bill Watterson", years:"b. 1958", cat:"Comics & Culture", color:"orange",
+    quote:"Walking away rather than compromise the work.",
+    story:"Raised in Chagrin Falls, Watterson created \"Calvin and Hobbes\" — then famously walked away at the height of its fame rather than compromise it, leaving behind one of the most beloved comic strips in American history.",
+    legacy:"A body of work protected on principle, still beloved decades later."},
+  {id:43, name:"Alan Freed", years:"1921–1965", cat:"Music & Media", color:"orange",
+    quote:"The night rock and roll got its name.",
+    story:"A Cleveland radio DJ, Freed popularized the phrase \"rock and roll\" and hosted the Moondog Coronation Ball in 1952 — widely considered the first rock concert ever — a legacy that helped bring the Rock &amp; Roll Hall of Fame to Cleveland's shores.",
+    legacy:"A radio show that helped earn Cleveland its place as the home of rock and roll."},
+  {id:44, name:"Bob Hope", years:"1903–2003", cat:"Entertainment", color:"orange",
+    quote:"A Cleveland kid who spent his career giving back.",
+    story:"Raised in Cleveland, Hope became one of the 20th century's most beloved entertainers, spending decades of his career performing for American troops around the world.",
+    legacy:"A career spent making people laugh, especially the ones far from home."},
+  {id:45, name:"Halle Berry", years:"b. 1966", cat:"Entertainment", color:"orange",
+    quote:"A door in Hollywood, opened for the first time.",
+    story:"Raised in Cleveland, Berry became the first woman of color to win the Academy Award for Best Actress, opening doors in Hollywood that had stayed closed for generations.",
+    legacy:"A first that changed who gets to stand on that stage."},
+  {id:46, name:"Paul Newman", years:"1925–2008", cat:"Entertainment & Philanthropy", color:"orange",
+    quote:"Giving away every dollar of profit, on principle.",
+    story:"Born in Shaker Heights, Newman parlayed his Hollywood career into Newman's Own, a food company that gives away 100% of its profits to charity, and co-founded camps that let seriously ill children just be kids.",
+    legacy:"A grocery-aisle idea that has quietly funded charity for decades."},
+  {id:47, name:"Bone Thugs-n-Harmony", years:"formed 1990s", cat:"Music", color:"orange",
+    quote:"Putting Cleveland's sound on the map.",
+    story:"This Cleveland hip-hop group pioneered a fast, melodic rap style in the 1990s that influenced a generation of artists — putting the city's sound on the national map.",
+    legacy:"A distinct Cleveland sound that still echoes through hip-hop today."},
+  {id:48, name:"Jesse Owens", years:"1913–1980", cat:"Sports", color:"blue",
+    quote:"Four gold medals, one defiant answer.",
+    story:"Training at Cleveland's East Technical High School, Owens went on to win four gold medals at the 1936 Berlin Olympics — a defiant answer to Nazi ideology delivered on the world's biggest stage.",
+    legacy:"A performance on the world's biggest stage that started on a Cleveland track."},
+  {id:49, name:"Jim Brown", years:"1936–2023", cat:"Sports & Civil Rights", color:"blue",
+    quote:"Using his platform for more than the game.",
+    story:"Widely considered the greatest running back in NFL history, Brown used his platform as a Cleveland Browns star to become one of the era's most outspoken civil rights and social activists.",
+    legacy:"A legend on the field who used his voice off it, too."},
+  {id:50, name:"Larry Doby", years:"1923–2003", cat:"Sports & Civil Rights", color:"blue",
+    quote:"Breaking a barrier with far less recognition.",
+    story:"In 1947, Doby broke the American League's color barrier with the Cleveland Indians, facing down the same hostility Jackie Robinson endured — with far less recognition — to open the game to Black players.",
+    legacy:"A barrier broken in Cleveland that opened the door for every Black player who followed."},
+  {id:51, name:"LeBron James", years:"b. 1984", cat:"Sports & Philanthropy", color:"blue",
+    quote:"A championship, then a school.",
+    story:"The Akron-born superstar delivered Cleveland its first major sports championship in 52 years in 2016, then poured his resources into founding the I Promise School, giving struggling Akron-area kids a shot at a better future.",
+    legacy:"A title that ended a 52-year drought — and a school still changing kids' futures."},
+  {id:52, name:"Jim Thome", years:"b. 1970", cat:"Sports", color:"blue",
+    quote:"A franchise icon, remembered for his humility.",
+    story:"A Hall of Fame slugger for the Cleveland Indians, Thome became a beloved franchise icon known as much for his humility and community ties as for his towering home runs.",
+    legacy:"A hometown hero whose reputation off the field matched his power on it."}
+];
+
+const LGD_COLORS = { green:"#164430", orange:"#EE7331", aqua:"#19B9A9", blue:"#1A8DA9", pink:"#C0629A" };
+var currentLegendId = null;
+
+function lgdInitials(name){
+  return name.split(/[\s&]+/).filter(function(w){ return w.length>0 && w[0]===w[0].toUpperCase(); })
+    .slice(0,2).map(function(w){ return w[0]; }).join('').slice(0,2).toUpperCase();
+}
+function lgdIsoWeek(date){
+  var d = new Date(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()));
+  var dayNum = (d.getUTCDay() + 6) % 7;
+  d.setUTCDate(d.getUTCDate() - dayNum + 3);
+  var firstThursday = new Date(Date.UTC(d.getUTCFullYear(),0,4));
+  var diff = d - firstThursday;
+  return 1 + Math.round(diff / (7*24*60*60*1000));
+}
+function lgdWeeklyIndex(){
+  return lgdIsoWeek(new Date()) % LEGENDS.length;
+}
+function renderLegendCard(id){
+  var l = LEGENDS.filter(function(x){ return x.id === id; })[0];
+  if (!l) return;
+  currentLegendId = id;
+  document.getElementById('lgdHero').style.background = 'linear-gradient(135deg,' + LGD_COLORS[l.color] + ',#0F3323)';
+  document.getElementById('lgdAvatar').textContent = lgdInitials(l.name);
+  document.getElementById('lgdTag').textContent = l.cat;
+  document.getElementById('lgdYears').textContent = l.years;
+  document.getElementById('lgdName').textContent = l.name;
+  document.getElementById('lgdQuote').innerHTML = '\u201C' + l.quote + '\u201D';
+  document.getElementById('lgdStory').textContent = l.story;
+  document.getElementById('lgdLegacy').textContent = l.legacy;
+}
+function renderLgdChipGrid(){
+  var grid = document.getElementById('lgdChipGrid');
+  grid.innerHTML = LEGENDS.map(function(l){
+    return '<button class="lgd-chip" onclick="renderLegendCard(' + l.id + ');closeLgdBrowse();window.scrollTo({top:0,behavior:\'smooth\'});">' +
+      '<span class="lgd-chip-dot" style="background:' + LGD_COLORS[l.color] + '">' + lgdInitials(l.name) + '</span>' +
+      '<span><span class="lgd-chip-name">' + l.name + '</span><span class="lgd-chip-cat">' + l.cat + '</span></span>' +
+    '</button>';
+  }).join('');
+}
+function toggleLgdBrowse(){
+  var grid = document.getElementById('lgdChipGrid');
+  var btn = document.getElementById('lgdBrowseToggle');
+  var open = grid.classList.toggle('open');
+  btn.textContent = open ? 'Hide legends \u2191' : 'Browse all 52 \u2193';
+}
+function closeLgdBrowse(){
+  document.getElementById('lgdChipGrid').classList.remove('open');
+  document.getElementById('lgdBrowseToggle').textContent = 'Browse all 52 \u2193';
+}
+function initLegendsView(){
+  renderLegendCard(LEGENDS[lgdWeeklyIndex()].id);
+  renderLgdChipGrid();
+}
+function openGiveModal(){
+  document.getElementById('give-modal').classList.add('open');
+  document.getElementById('modal-body-select').style.display = 'block';
+  document.getElementById('modal-confirm').style.display = 'none';
+}
+function closeGiveModal(){ document.getElementById('give-modal').classList.remove('open'); }
+function confirmGive(){
+  document.getElementById('modal-body-select').style.display = 'none';
+  document.getElementById('modal-confirm').style.display = 'block';
+}
+
+/* ============================================================
+   THIS WEEK IN CLEVELAND HISTORY
+   ============================================================ */
+const HW_EVENTS = {
+"01-02": [{y:1914,cat:"foundation",t:"A Community's Savings Account Is Born",d:"Cleveland Trust Company's directors approved the Resolution and Declaration of Trust that created the Cleveland Foundation — the world's first community foundation.",src:"Cleveland Foundation Centennial Timeline"}],
+"01-06": [{y:1831,cat:"founding",t:"Cleveland Drops an \u2018a\u2019",d:"The Cleveland Advertiser trimmed \u201cCleaveland\u201d down to \u201cCleveland\u201d so the city's name would fit neatly on the newspaper's masthead \u2014 and the shorter spelling stuck for good.",src:"Teaching Cleveland Digital"}],
+"01-07": [{y:1842,cat:"culture",t:"The Plain Dealer Begins",d:"Cleveland's long-running daily newspaper published its very first edition.",src:"Teaching Cleveland Digital"}],
+"01-10": [{y:1870,cat:"industry",t:"Standard Oil Is Founded",d:"John D. Rockefeller and his partners incorporated the Standard Oil Company in Cleveland, launching what would become one of the most powerful companies in American history.",src:"Teaching Cleveland Digital"}],
+"01-23": [{y:1960,cat:"culture",t:"The Cleveland News Prints Its Last Edition",d:"After decades of afternoon headlines, the Cleveland News published its final issue.",src:"Teaching Cleveland Digital"}],
+"01-24": [{y:1954,cat:"industry",t:"The Last Streetcar Runs",d:"Cleveland's streetcars made their final run through downtown, closing out an era of rail travel on the city's streets.",src:"Teaching Cleveland Digital"}],
+"01-29": [{y:1914,cat:"foundation",t:"The Foundation's First Bequest",d:"Mary Coit Sanford signed a will establishing five charitable funds at the month-old Cleveland Foundation, becoming its very first bequest donor.",src:"Cleveland Foundation Centennial Timeline"}],
+"01-31": [{y:1891,cat:"culture",t:"Cleveland's Oldest Labor Paper",d:"The Cleveland Citizen, billed for generations as the nation's oldest labor newspaper, published its first issue.",src:"Encyclopedia of Cleveland History"}],
+"02-03": [{y:1870,cat:"industry",t:"Sherwin-Williams Is Chartered",d:"The Sherwin-Williams Company was created in Cleveland, eventually growing into a worldwide paint and coatings giant headquartered downtown to this day.",src:"Teaching Cleveland Digital"}],
+"02-04": [{y:1973,cat:"sports",t:"The Barons Play Their Last Game at the Arena",d:"Cleveland's Barons hockey club skated its final game at the old Cleveland Arena.",src:"Teaching Cleveland Digital"}],
+"02-05": [{y:1921,cat:"industry",t:"Cleveland Clinic Is Chartered",d:"The Cleveland Clinic Foundation was registered, planting the seed for what would grow into one of the world's leading medical centers.",src:"Cleveland Clinic"}],
+"02-06": [{y:1886,cat:"culture",t:"Cleveland Athletic Club Forms",d:"A group of Clevelanders founded the Cleveland Athletic Club, a fixture of downtown social and sporting life for generations.",src:"Teaching Cleveland Digital"}],
+"02-07": [{y:1965,cat:"culture",t:"WVIZ Signs On",d:"Cleveland's educational public television station began broadcasting.",src:"Teaching Cleveland Digital"}],
+"02-15": [{y:1861,cat:"civic",t:"Lincoln Comes Through Cleveland",d:"President-elect Abraham Lincoln visited Cleveland on his roundabout train journey to his own inauguration in Washington.",src:"Encyclopedia of Cleveland History"}],
+"03-04": [{y:1908,cat:"disaster",t:"The Collinwood School Fire",d:"A fire swept through Lake View School in the Collinwood neighborhood, killing 172 children and two teachers \u2014 a tragedy that reshaped school building and fire-safety codes nationwide.",src:"Encyclopedia of Cleveland History"}],
+"03-16": [{y:1854,cat:"culture",t:"The Cleveland Leader Launches",d:"A new daily newspaper, the Cleveland Leader, began publishing in the young, fast-growing city.",src:"Encyclopedia of Cleveland History"}],
+"03-29": [{y:1990,cat:"landmark",t:"Tower City Center Opens",d:"The Avenue at Tower City Center formally opened at Public Square, reviving the old Union Terminal complex as a downtown shopping and transit hub.",src:"Teaching Cleveland Digital"}],
+"04-18": [{y:1938,cat:"culture",t:"Superman Goes on Sale",d:"Action Comics No. 1 hit newsstands, introducing Superman \u2014 dreamed up by two Glenville High School students, Jerry Siegel and Joe Shuster \u2014 and launching the entire superhero genre.",src:"Wikipedia"}],
+"04-28": [{y:1942,cat:"industry",t:"Cleveland Takes Over Its Own Transit",d:"The city began municipal operation of the Cleveland Transit System, taking public transit under city ownership.",src:"Teaching Cleveland Digital"}],
+"04-29": [{y:1879,cat:"industry",t:"Public Square Lights Up",d:"Inventor Charles F. Brush installed an early arc light on Public Square, a forerunner of the modern electric streetlight.",src:"Teaching Cleveland Digital"}],
+"05-01": [{y:1891,cat:"sports",t:"League Park Opens",d:"League Park, home field for generations of Cleveland's early professional baseball teams, opened its gates for the first time.",src:"Teaching Cleveland Digital"}],
+"05-02": [{y:1797,cat:"founding",t:"Cleveland's First Permanent Settler Arrives",d:"Lorenzo Carter reached the original townsite and built a log cabin on the east bank of the Cuyahoga River that doubled as the settlement's jail and inn.",src:"Teaching Cleveland Digital"}],
+"05-15": [{y:1929,cat:"disaster",t:"The Cleveland Clinic Fire",d:"A fire and toxic gas release swept through the Cleveland Clinic, killing scores of patients and staff in one of the deadliest disasters in the city's history.",src:"Encyclopedia of Cleveland History"}],
+"05-23": [{y:1820,cat:"culture",t:"Cleveland's First Play",d:"The young community's very first theatrical performance was staged.",src:"Encyclopedia of Cleveland History"}],
+"06-05": [{y:1854,cat:"founding",t:"Cleveland and Ohio City Merge",d:"Longtime rivals Cleveland and Ohio City, separated by the Cuyahoga River and a literal \u2018Bridge War,\u2019 formally merged into one city.",src:"Encyclopedia of Cleveland History"}],
+"06-07": [{y:1885,cat:"landmark",t:"The Hollenden Hotel Opens",d:"Downtown Cleveland's grand Hollenden Hotel opened its doors, soon becoming the city's premier gathering place for decades of politicians and celebrities.",src:"Encyclopedia of Cleveland History"}],
+"06-08": [{y:1898,cat:"landmark",t:"University Club Opens",d:"Cleveland's University Club opened, joining the city's growing roster of private social clubs.",src:"Encyclopedia of Cleveland History"}],
+"06-17": [{y:1982,cat:"culture",t:"The Cleveland Press Prints Its Last Edition",d:"After more than a century, the afternoon Cleveland Press published its final issue.",src:"Encyclopedia of Cleveland History"}],
+"06-19": [{y:2016,cat:"sports",t:"The Cavaliers Win It All",d:"Down 3\u20131 in the series, LeBron James and the Cavaliers stunned the record-setting Golden State Warriors in Game 7 to bring Cleveland its first major sports championship since 1964.",src:"Wikipedia / AP"}],
+"06-22": [{y:1969,cat:"civic",t:"The Cuyahoga River Catches Fire",d:"A burning oil slick on the industrial Cuyahoga River drew national attention to water pollution and helped spur the modern environmental movement and the Clean Water Act.",src:"Encyclopedia of Cleveland History"}],
+"06-23": [{y:1890,cat:"landmark",t:"Society for Savings Building Opens",d:"The Society for Savings Building, one of Cleveland's earliest skyscrapers, opened on Public Square.",src:"Encyclopedia of Cleveland History"}],
+"06-26": [{y:2003,cat:"sports",t:"The Cavaliers Draft LeBron James",d:"With the very first pick of the NBA draft, the hometown Cavaliers selected Akron's own LeBron James, setting up two decades of history between the King and his home state.",src:"Wikipedia"}],
+"07-01": [{y:1863,cat:"industry",t:"Mail Comes to the Door",d:"Cleveland began the first home delivery of mail in the community's history.",src:"Encyclopedia of Cleveland History"}],
+"07-04": [{y:1827,cat:"industry",t:"The Canal Reaches Cleveland",d:"The Ohio and Erie Canal opened between Akron and Cleveland, linking the young lakefront town to national trade routes and setting off decades of growth.",src:"Encyclopedia of Cleveland History"}],
+"07-05": [{y:1889,cat:"culture",t:"Hebrew Observer's First Edition",d:"The Hebrew Observer newspaper published its first issue in Cleveland.",src:"Encyclopedia of Cleveland History"}],
+"07-18": [
+  {y:1966,cat:"civic",t:"The Hough Riots Begin",d:"Unrest broke out in the Hough neighborhood and continued for six days, becoming one of the defining events of Cleveland's civil-rights era and a catalyst for the city's community-development movement.",src:"Encyclopedia of Cleveland History"},
+  {y:2016,cat:"civic",t:"The Republican National Convention Opens",d:"Cleveland hosted the Republican National Convention at Quicken Loans Arena, a four-day gathering that put the city's downtown and hospitality workers in the national spotlight.",src:"Ballotpedia / Wikipedia"}
+],
+"07-20": [{y:1969,cat:"culture",t:"Playhouse Square's Last Movie House Closes",d:"The Palace Theatre, the last operating movie house on Playhouse Square, shut its doors \u2014 years before the district's celebrated rebirth as a theater destination.",src:"Encyclopedia of Cleveland History"}],
+"07-22": [{y:1796,cat:"founding",t:"Cleveland Is Founded",d:"General Moses Cleaveland and a survey party from the Connecticut Land Company arrived at the mouth of the Cuyahoga River, founding the settlement that would grow into Cleveland.",src:"Wikipedia / Encyclopedia of Cleveland History"}],
+"07-23": [
+  {y:1968,cat:"civic",t:"The Glenville Shootout",d:"A gun battle between police and members of a Black nationalist group erupted in the Glenville neighborhood, touching off days of unrest.",src:"Encyclopedia of Cleveland History"},
+  {y:2021,cat:"sports",t:"Indians Announce a New Name: Guardians",d:"The Cleveland Indians announced they would become the Cleveland Guardians beginning in 2022, naming themselves after the \u2018Guardians of Traffic\u2019 statues on the Hope Memorial Bridge.",src:"MLB.com / ESPN"}
+],
+"07-25": [{y:1854,cat:"culture",t:"Cleveland's First Opera",d:"Clevelanders heard their first formal opera performance, Lucia di Lammermoor.",src:"Encyclopedia of Cleveland History"}],
+"07-26": [{y:1884,cat:"industry",t:"The First Electric Streetcar",d:"Cleveland's first electric streetcar made its inaugural run through the city.",src:"Encyclopedia of Cleveland History"}],
+"07-31": [{y:1818,cat:"culture",t:"Cleveland's First Newspaper",d:"The Cleaveland Gazette and Commercial Register, the settlement's first newspaper, was published.",src:"Encyclopedia of Cleveland History"}],
+"08-03": [{y:1936,cat:"sports",t:"Jesse Owens Strikes Gold in Berlin",d:"East Tech and Ohio State standout Jesse Owens won the first of four gold medals at the Berlin Olympics, undercutting Nazi racial propaganda on the world's biggest stage.",src:"Olympic history"}],
+"08-21": [{y:1999,cat:"sports",t:"The Browns Come Home",d:"A rebuilt Cleveland Browns Stadium opened its gates as the expansion Browns returned to the NFL after a three-year absence.",src:"Teaching Cleveland Digital"}],
+"08-29": [{y:1889,cat:"culture",t:"The Cleveland World Debuts",d:"A new daily newspaper, the Cleveland World, began publication.",src:"Encyclopedia of Cleveland History"}],
+"09-01": [
+  {y:1919,cat:"foundation",t:"The Foundation's First Full-Time Director",d:"Raymond Moley \u2014 later a member of FDR's \u2018Brain Trust\u2019 \u2014 became the Cleveland Foundation's first full-time director.",src:"Cleveland Foundation Centennial Timeline"},
+  {y:1995,cat:"culture",t:"The Rock Hall's Grand Opening",d:"The Rock and Roll Hall of Fame and Museum held its ribbon-cutting on Cleveland's lakefront, with a marathon all-star concert the next night at Municipal Stadium.",src:"Rock & Roll Hall of Fame"}
+],
+"09-06": [
+  {y:1868,cat:"industry",t:"Cleveland's First Bessemer Steel",d:"The Cleveland Rolling Mills produced the city's first \u2018blow\u2019 of Bessemer steel, a milestone in the region's rise as an industrial power.",src:"Encyclopedia of Cleveland History"},
+  {y:1886,cat:"culture",t:"St. Ignatius College Opens",d:"St. Ignatius College, the Jesuit school that would grow alongside John Carroll University, opened its doors on the near West Side.",src:"Encyclopedia of Cleveland History"}
+],
+"09-10": [{y:1860,cat:"landmark",t:"The Perry Monument Is Dedicated",d:"A monument honoring Commodore Oliver Hazard Perry, hero of the Battle of Lake Erie, was dedicated on Public Square.",src:"Encyclopedia of Cleveland History"}],
+"09-24": [{y:1907,cat:"landmark",t:"Trinity Cathedral Is Consecrated",d:"Trinity Episcopal Cathedral was formally consecrated in Cleveland.",src:"Encyclopedia of Cleveland History"}],
+"09-27": [{y:1986,cat:"culture",t:"Balloonfest '86",d:"The United Way of Cleveland released nearly 1.5 million balloons over Public Square in a record-setting publicity stunt that turned into a legendary \u2014 and costly \u2014 cautionary tale.",src:"Wikipedia / Encyclopedia of Cleveland History"}],
+"09-28": [{y:1969,cat:"culture",t:"Euclid Beach Park Closes",d:"The beloved lakefront amusement park shut its gates for good after decades of thrill rides and summer memories.",src:"Encyclopedia of Cleveland History"}],
+"10-03": [{y:1993,cat:"sports",t:"Farewell to Municipal Stadium",d:"The Cleveland Indians played their final game at the cavernous old Municipal Stadium on the lakefront.",src:"Teaching Cleveland Digital"}],
+"10-05": [{y:1957,cat:"foundation",t:"Leonard Hanna's Legacy",d:"Industrialist Leonard C. Hanna Jr. died, leaving his attorney Harold Clark more than $40 million to distribute \u2014 a fortune that helped reinvigorate Cleveland's philanthropic community in the following decade.",src:"Cleveland Foundation Centennial Timeline"}],
+"10-06": [{y:1939,cat:"landmark",t:"Main Avenue Bridge Opens",d:"The Main Avenue Bridge opened over the Cuyahoga Valley, easing traffic between downtown and the near West Side.",src:"Encyclopedia of Cleveland History"}],
+"10-11": [{y:1948,cat:"sports",t:"The Indians Win It All",d:"Cleveland beat the Boston Braves to capture the World Series \u2014 a title the franchise wouldn't match again for the rest of the century.",src:"SABR / Wikipedia"}],
+"10-15": [{y:1871,cat:"culture",t:"Cleveland's First Sunday Paper",d:"The Cleveland Sunday Times, the city's first successful Sunday newspaper, was published.",src:"Encyclopedia of Cleveland History"}],
+"10-19": [{y:1819,cat:"culture",t:"The Cleveland Herald Launches",d:"The Cleveland Herald and Gazette published its first issue.",src:"Encyclopedia of Cleveland History"}],
+"10-20": [{y:1944,cat:"disaster",t:"The East Ohio Gas Explosion",d:"A liquefied natural gas tank failure triggered explosions and fires on the East Side, killing 130 people in one of Cleveland's worst disasters.",src:"Encyclopedia of Cleveland History"}],
+"10-28": [{y:1980,cat:"civic",t:"Carter and Reagan Debate in Cleveland",d:"The only presidential debate of the 1980 campaign, between incumbent Jimmy Carter and challenger Ronald Reagan, was held in Cleveland.",src:"Teaching Cleveland Digital"}],
+"10-31": [{y:1912,cat:"landmark",t:"West Side Market's Grand Dedication",d:"Cleveland's ornate West Side Market held its official dedication ceremony in Ohio City, its clock tower already a neighborhood landmark.",src:"West Side Market"}],
+"11-02": [
+  {y:1878,cat:"culture",t:"The Penny Press Debuts",d:"A scrappy new two-cent paper, forerunner of the Cleveland Press, began publication.",src:"Encyclopedia of Cleveland History"},
+  {y:1912,cat:"landmark",t:"West Side Market Opens to Shoppers",d:"Cleveland's oldest continuously operating public market welcomed its first customers in Ohio City.",src:"West Side Market"},
+  {y:1940,cat:"civic",t:"FDR Campaigns in Cleveland",d:"President Franklin D. Roosevelt campaigned in Cleveland in the final days of the 1940 election.",src:"Encyclopedia of Cleveland History"},
+  {y:1942,cat:"industry",t:"The Bomber Plant Opens",d:"A giant wartime aircraft plant \u2014 later reborn as the I-X Center \u2014 opened at Cleveland Municipal Airport.",src:"Encyclopedia of Cleveland History"}
+],
+"11-06": [{y:1922,cat:"culture",t:"The Palace Theatre Opens",d:"The ornate Palace Theatre opened on Playhouse Square, part of the district's original run of grand movie palaces.",src:"Encyclopedia of Cleveland History"}],
+"11-07": [{y:1967,cat:"civic",t:"Carl Stokes Makes History",d:"Carl B. Stokes was elected mayor of Cleveland, becoming the first African American to lead a major American city.",src:"Teaching Cleveland Digital"}],
+"11-13": [{y:1882,cat:"culture",t:"Cleveland School of Art Founded",d:"The Cleveland School of Art \u2014 later the Cleveland Institute of Art \u2014 was established.",src:"Encyclopedia of Cleveland History"}],
+"11-19": [
+  {y:1879,cat:"civic",t:"Early Settlers Association Forms",d:"Cleveland's Early Settlers Association organized to preserve the memory of the city's pioneer generation.",src:"Encyclopedia of Cleveland History"},
+  {y:2021,cat:"sports",t:"The Guardians Era Begins",d:"The Cleveland Guardians officially launched at Progressive Field, closing the book on the Indians name after 106 years.",src:"MLB.com"}
+],
+"11-22": [{y:1960,cat:"civic",t:"Erieview Unveiled",d:"City leaders unveiled the ambitious Erieview urban-renewal plan for downtown Cleveland.",src:"Encyclopedia of Cleveland History"}],
+"12-01": [{y:1906,cat:"civic",t:"Cleveland Renumbers Itself",d:"The city standardized its street names and house numbers onto a single grid, replacing a confusing patchwork system left over from its village days.",src:"Encyclopedia of Cleveland History"}],
+"12-11": [{y:1918,cat:"culture",t:"The Cleveland Orchestra's First Note",d:"The Cleveland Orchestra performed its very first concert, launching what would become one of the world's most acclaimed ensembles.",src:"Encyclopedia of Cleveland History"}],
+"12-15": [{y:1978,cat:"civic",t:"Cleveland Defaults",d:"Cleveland became the first major American city to default on its financial obligations since the Great Depression, a low point the city would spend the next decade climbing out of.",src:"Encyclopedia of Cleveland History"}],
+"12-18": [{y:1964,cat:"culture",t:"Cleveland State University Is Established",d:"Cleveland State University was founded, expanding the city's roster of higher-education institutions.",src:"Encyclopedia of Cleveland History"}],
+"12-23": [{y:1814,cat:"founding",t:"Cleveland Becomes a Village",d:"The young settlement received its official charter as a village.",src:"Teaching Cleveland Digital"}],
+"12-27": [{y:1964,cat:"sports",t:"The Browns Are NFL Champions",d:"Cleveland routed the Baltimore Colts 27\u20130 to win the NFL Championship \u2014 still the city's most recent NFL title, decades later.",src:"Wikipedia"}],
+"12-28": [{y:1878,cat:"landmark",t:"Superior Viaduct Opens",d:"The Superior Street Viaduct, an engineering marvel linking Cleveland's east and west sides across the Cuyahoga Valley, opened to traffic.",src:"Encyclopedia of Cleveland History"}],
+"12-30": [{y:1974,cat:"civic",t:"Greater Cleveland RTA Is Created",d:"The Greater Cleveland Regional Transit Authority was established, unifying the region's bus and rail systems under one roof.",src:"Encyclopedia of Cleveland History"}],
+"12-31": [{y:1967,cat:"foundation",t:"Dorothy Ruth Retires",d:"After 40 years and service under four Cleveland Foundation directors, longtime staff aide Dorothy Ruth retired at age 73, having personally double-checked that hundreds of scholarship students received their checks.",src:"Cleveland Foundation Centennial Timeline"}]
+};
+
+const HW_CAT_LABEL = { founding:"Founding", industry:"Industry", culture:"Culture", sports:"Sports", civic:"Civic Life", disaster:"Turning Point", landmark:"Landmark", foundation:"TCF Files" };
+const HW_MONTHS = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+const HW_MONTH_LEN = [31,28,31,30,31,30,31,31,30,31,30,31];
+const HW_TOTAL_WEEKS = 52;
+var currentHwWeek = null;
+
+function hwDoyFromMonthDay(m0,d){ var n=d; for (var i=0;i<m0;i++) n+=HW_MONTH_LEN[i]; return n; }
+function hwMonthDayFromDoy(doy){ var remaining=doy; for (var i=0;i<12;i++){ if (remaining<=HW_MONTH_LEN[i]) return [i,remaining]; remaining-=HW_MONTH_LEN[i]; } return [11,31]; }
+function hwWeekIndexFromDoy(doy){ return Math.min(Math.floor((doy-1)/7), HW_TOTAL_WEEKS-1); }
+function hwWeekRange(weekIndex){ var start=weekIndex*7+1; var end=(weekIndex===HW_TOTAL_WEEKS-1)?365:start+6; return [start,end]; }
+function hwWeekIndexFromDate(date){ var m0=date.getMonth(), d=date.getDate(); if (m0===1 && d===29) d=28; return hwWeekIndexFromDoy(hwDoyFromMonthDay(m0,d)); }
+
+var HW_WEEK_MAP = {};
+Object.keys(HW_EVENTS).forEach(function(key){
+  var parts = key.split('-').map(Number);
+  var m0 = parts[0]-1, d = parts[1];
+  var doy = hwDoyFromMonthDay(m0,d);
+  var wi = hwWeekIndexFromDoy(doy);
+  if (!HW_WEEK_MAP[wi]) HW_WEEK_MAP[wi] = [];
+  HW_EVENTS[key].forEach(function(e){
+    var merged = {};
+    for (var k in e) merged[k] = e[k];
+    merged.m0 = m0; merged.day = d; merged.doy = doy;
+    HW_WEEK_MAP[wi].push(merged);
+  });
+});
+var HW_WEEKS_WITH_CONTENT = Object.keys(HW_WEEK_MAP).map(Number).sort(function(a,b){ return a-b; });
+
+function hwRangeLabel(weekIndex){
+  var r = hwWeekRange(weekIndex);
+  var md1 = hwMonthDayFromDoy(r[0]), md2 = hwMonthDayFromDoy(r[1]);
+  return { m1:md1[0], d1:md1[1], m2:md2[0], d2:md2[1], sameMonth: md1[0]===md2[0] };
+}
+function renderHistoryWeek(weekIndex){
+  currentHwWeek = weekIndex;
+  var lbl = hwRangeLabel(weekIndex);
+  var titleStr = lbl.sameMonth
+    ? HW_MONTHS[lbl.m1] + ' ' + lbl.d1 + '\u2013' + lbl.d2
+    : HW_MONTHS[lbl.m1] + ' ' + lbl.d1 + ' \u2013 ' + HW_MONTHS[lbl.m2] + ' ' + lbl.d2;
+  document.getElementById('hwRange').textContent = titleStr;
+
+  var entries = (HW_WEEK_MAP[weekIndex] || []).slice().sort(function(a,b){ return (a.doy-b.doy) || (a.y-b.y); });
+  var wrap = document.getElementById('hwCardsWrap');
+
+  if (entries.length){
+    document.getElementById('hwCount').textContent = entries.length===1 ? 'One story from the archive this week.' : entries.length + ' stories from the archive this week.';
+    wrap.innerHTML = entries.map(function(e){
+      var catLabel = HW_CAT_LABEL[e.cat] || 'Cleveland';
+      return '<div class="hw-event-card">' +
+        '<span class="hw-event-year">' + e.y + '</span><span class="hw-event-cat">' + catLabel + '</span>' +
+        '<div class="hw-event-title">' + e.t + '</div>' +
+        '<div class="hw-event-desc">' + e.d + '</div>' +
+        '<div class="hw-event-src">Source: ' + e.src + '</div>' +
+      '</div>';
+    }).join('');
+  } else {
+    document.getElementById('hwCount').textContent = 'Still filling in this chapter of the calendar.';
+    wrap.innerHTML = '<div class="hw-quiet">We haven\u2019t logged a dated story for ' + titleStr + ' yet \u2014 try Previous week, Next week, or Surprise me.</div>';
+  }
+}
+function hwStep(dir){
+  if (currentHwWeek === null) return;
+  var idx = HW_WEEKS_WITH_CONTENT.indexOf(currentHwWeek);
+  if (idx === -1){
+    var candidates = HW_WEEKS_WITH_CONTENT.filter(function(wi){ return dir>0 ? wi>currentHwWeek : wi<currentHwWeek; });
+    if (!candidates.length) candidates = HW_WEEKS_WITH_CONTENT;
+    renderHistoryWeek(dir>0 ? candidates[0] : candidates[candidates.length-1]);
+    return;
+  }
+  var next = idx + dir;
+  if (next < 0) next = HW_WEEKS_WITH_CONTENT.length - 1;
+  if (next >= HW_WEEKS_WITH_CONTENT.length) next = 0;
+  renderHistoryWeek(HW_WEEKS_WITH_CONTENT[next]);
+}
+function hwSurprise(){
+  renderHistoryWeek(HW_WEEKS_WITH_CONTENT[Math.floor(Math.random()*HW_WEEKS_WITH_CONTENT.length)]);
+}
+function initHistoryView(){
+  if (currentHwWeek !== null) { renderHistoryWeek(currentHwWeek); return; }
+  var wi = hwWeekIndexFromDate(new Date());
+  if (HW_WEEK_MAP[wi] && HW_WEEK_MAP[wi].length) { renderHistoryWeek(wi); return; }
+  var nearest = HW_WEEKS_WITH_CONTENT.slice().sort(function(a,b){ return Math.abs(a-wi)-Math.abs(b-wi); })[0];
+  renderHistoryWeek(nearest);
+}
+
+/* ============================================================
+   NEWS FEED — pairs with the Garden's "Share Your Why" badge
+   ============================================================ */
+const NF_POSTS = [
+  { id:1, name:'Maria S.', initials:'MS', color:'var(--tcf-aqua)', type:'why', time:'2h ago', likes:14,
+    body:'My grandmother came to Cleveland with nothing and this city gave her a chance. Giving back through my fund is how I say thank you.' },
+  { id:2, name:'Cleveland Foundation', initials:'CF', color:'var(--tcf-primary)', type:'news', time:'Yesterday', likes:32,
+    body:'This week\u2019s Local Legend: Frederick Goff, the banker who founded the world\u2019s first community foundation right here in Cleveland in 1914.',
+    action:function(){ navigate('legends'); } },
+  { id:3, name:'James T.', initials:'JT', color:'var(--tcf-blue)', type:'why', time:'3d ago', likes:9,
+    body:'I volunteer at the West Side Market food drive every month. Watching neighbors help neighbors is why I keep showing up.' },
+  { id:4, name:'Cleveland Foundation', initials:'CF', color:'var(--tcf-primary)', type:'news', time:'This week', likes:21,
+    body:'This week in Cleveland history: the Cuyahoga River fire in 1969 helped spark the modern environmental movement.',
+    action:function(){ navigate('history'); } },
+  { id:5, name:'Priya K.', initials:'PK', color:'var(--tcf-pink)', type:'why', time:'5d ago', likes:18,
+    body:'Cleveland gave my parents a home when they had nowhere else to go. Every gift I make is a small way of returning the favor.' }
+];
+var nfLiked = {};
+var nfConnected = {};
+
+function renderNewsFeed(){
+  var wrap = document.getElementById('nfFeed');
+  var html = '';
+
+  if (gardenState.why && gardenState.why.unlocked && gardenState.why.detail){
+    var youInitials = appState.donorName ? appState.donorName.split(' ').map(function(p){ return p[0]; }).join('').slice(0,2).toUpperCase() : 'YOU';
+    html += '<div class="nf-post nf-you-post">' +
+      '<div class="nf-post-top">' +
+        '<div class="nf-avatar" style="background:var(--tcf-orange);">' + youInitials + '</div>' +
+        '<div><div class="nf-post-name">You</div><div class="nf-post-meta">Shared from Your Cleveland Garden</div></div>' +
+        '<div class="nf-post-badge">Your Why</div>' +
+      '</div>' +
+      '<div class="nf-post-body">\u201C' + gardenState.why.detail + '\u201D</div>' +
+    '</div>';
+  }
+
+  html += NF_POSTS.map(function(p){
+    var liked = nfLiked[p.id];
+    var connected = nfConnected[p.id];
+    var badge = p.type === 'news' ? '<div class="nf-post-badge news">Cleveland Foundation</div>' : '<div class="nf-post-badge">Why I Give</div>';
+    var connectBtn = p.type === 'news' ? '' : '<button class="' + (connected?'connected':'') + '" onclick="nfConnect(' + p.id + ')">' + (connected?'\u2713 Connected':'Connect') + '</button>';
+    var readMoreBtn = p.action ? '<button onclick="nfOpen(' + p.id + ')">Read more \u2192</button>' : '';
+    return '<div class="nf-post">' +
+      '<div class="nf-post-top">' +
+        '<div class="nf-avatar" style="background:' + p.color + ';">' + p.initials + '</div>' +
+        '<div><div class="nf-post-name">' + p.name + '</div><div class="nf-post-meta">' + p.time + '</div></div>' +
+        badge +
+      '</div>' +
+      '<div class="nf-post-body">' + p.body + '</div>' +
+      '<div class="nf-post-actions">' +
+        '<button class="' + (liked?'liked':'') + '" onclick="nfLike(' + p.id + ')">\u2665 ' + (p.likes + (liked?1:0)) + '</button>' +
+        connectBtn + readMoreBtn +
+      '</div>' +
+    '</div>';
+  }).join('');
+
+  wrap.innerHTML = html;
+}
+function nfLike(id){ nfLiked[id] = !nfLiked[id]; renderNewsFeed(); }
+function nfConnect(id){
+  nfConnected[id] = !nfConnected[id];
+  var post = NF_POSTS.filter(function(p){ return p.id === id; })[0];
+  if (nfConnected[id] && post) showToast('Connection request sent to ' + post.name + '.');
+  renderNewsFeed();
+}
+function nfOpen(id){
+  var post = NF_POSTS.filter(function(p){ return p.id === id; })[0];
+  if (post && post.action) post.action();
+}
+
+/* ============================================================
+   FEATURE ALERTS — prototype toggle; in production this would
+   read/write a real preference in Account Settings.
+   ============================================================ */
+var featureAlerts = {};
+function toggleAlert(feature, btn){
+  featureAlerts[feature] = !featureAlerts[feature];
+  var on = featureAlerts[feature];
+  btn.classList.toggle('on', on);
+  var labelId = feature === 'legends' ? 'lgdAlertLabel' : 'hwAlertLabel';
+  var defaultLabel = feature === 'legends' ? 'Get notified of new Legends' : 'Get notified each week';
+  var label = document.getElementById(labelId);
+  if (label) label.textContent = on ? 'You\u2019ll be notified \u2014 manage in Account Settings' : defaultLabel;
+  showToast(on ? 'Alerts turned on.' : 'Alerts turned off.');
+}
+
+/* ============================================================
+   YOUR GIVING HISTORY
+   ============================================================ */
+const GH_RECURRING = [
+  { name:'$500 / month', meta:'Next charge: Jul 1, 2026', mark:'alt-4' }
+];
+const GH_GIFTS = [
+  { fund:'Greatest Needs Fund', amount:500, date:'Jun 1, 2026', method:'Recurring \u2014 Chase Bank \u2022\u2022\u2022\u2022 4471', mark:'alt-4' },
+  { fund:'Arts & Culture Fund', amount:1000, date:'May 12, 2026', method:'One-time \u2014 Visa \u2022\u2022\u2022\u2022 8821', mark:'alt-2' },
+  { fund:'Greatest Needs Fund', amount:500, date:'May 1, 2026', method:'Recurring \u2014 Chase Bank \u2022\u2022\u2022\u2022 4471', mark:'alt-4' },
+  { fund:'Youth & Education Fund', amount:250, date:'Mar 22, 2026', method:'One-time \u2014 Chase Bank \u2022\u2022\u2022\u2022 4471', mark:'alt-3' },
+  { fund:'Greatest Needs Fund', amount:500, date:'Apr 1, 2026', method:'Recurring \u2014 Chase Bank \u2022\u2022\u2022\u2022 4471', mark:'alt-4' },
+  { fund:'Local Legends \u2014 Fund a Legacy', amount:100, date:'Feb 9, 2026', method:'One-time \u2014 Visa \u2022\u2022\u2022\u2022 8821', mark:'alt-1' }
+];
+function ghFmt(n){ return '$' + n.toLocaleString('en-US'); }
+function initGivingHistoryView(){
+  document.getElementById('ghLifetimeTotal').textContent = ghFmt(GH_GIFTS.reduce(function(sum,g){ return sum + g.amount; }, 0));
+  document.getElementById('ghGiftCount').textContent = GH_GIFTS.length;
+
+  document.getElementById('ghRecurringList').innerHTML = GH_RECURRING.length ? GH_RECURRING.map(function(r){
+    return '<div class="row"><div class="org-mark ' + r.mark + '">$</div><div class="info"><div class="name">' + r.name + '</div><div class="meta">' + r.meta + '</div></div><button class="btn btn-ghost btn-sm" onclick="navigate(\'contributions\')">Manage</button></div>';
+  }).join('') : '<div class="row"><div class="info"><div class="meta">No recurring donations on your account.</div></div></div>';
+
+  document.getElementById('ghGiftList').innerHTML = GH_GIFTS.map(function(g){
+    return '<div class="row"><div class="org-mark ' + g.mark + '">$</div><div class="info"><div class="name">' + g.fund + ' \u2014 ' + ghFmt(g.amount) + '</div><div class="meta">' + g.date + ' \u00b7 ' + g.method + '</div></div></div>';
+  }).join('');
 }
 
 /* ============================================================
@@ -2135,16 +3262,6 @@ function activateDonorPortal() {
 
   // Update topbar subtitle
   document.getElementById('topbarSub').textContent = 'Donor Portal';
-
-  // Update bottom nav last item
-  var bnavLast = document.getElementById('bnavOpenFund');
-  if (bnavLast) {
-    bnavLast.setAttribute('onclick', "navigate('grants',false)");
-    bnavLast.setAttribute('data-view', 'grants');
-    bnavLast.querySelector('svg').innerHTML = '<path d="M12 5v14M5 12h14"/>';
-    bnavLast.querySelector('svg').setAttribute('viewBox','0 0 24 24');
-    bnavLast.lastChild.textContent = 'Grants';
-  }
 
   navigate('home');
   showToast('🎉 Welcome, ' + appState.donorName.split(' ')[0] + '! Your ' + appState.fundName + ' is active.');
@@ -2537,6 +3654,7 @@ function closeCourse() {
    INIT
    ============================================================ */
 renderCart();
+updateGardenModuleUI();
 </script>
 </body>
 </html>
