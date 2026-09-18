@@ -531,12 +531,15 @@ body.pins-hidden .ipin{display:none!important;}
 .alert-toggle.on{background:#E0F3EE;border-color:#BFE3D9;color:var(--tcf-mid-green);}
 
 /* ============================================================
-   THIS WEEK IN CLEVELAND HISTORY
+   THIS WEEK IN CLEVELAND QUIZ
    ============================================================ */
 .hw-hero{background:linear-gradient(135deg,#7A3520,#3F1B0F);border-radius:var(--radius-lg);color:#fff;padding:24px;margin-bottom:14px;box-shadow:var(--shadow-sm);}
 .hw-week-label{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;opacity:.75;}
 .hw-week-range{font-size:21px;font-weight:800;font-family:var(--font-head);margin-top:4px;color:#fff;}
 .hw-week-count{font-size:12.5px;opacity:.85;margin-top:4px;}
+.hw-score-row{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap;}
+.hw-score-pill{background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.28);border-radius:999px;padding:5px 12px;font-size:11.5px;font-weight:800;letter-spacing:.02em;}
+.hw-score-pill-ghost{opacity:.85;font-weight:700;}
 .hw-nav{display:flex;gap:10px;margin-top:16px;}
 .hw-nav button{flex:1;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.28);color:#fff;border-radius:10px;padding:9px;font-weight:700;font-size:12.5px;}
 .hw-event-card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:20px;margin-bottom:12px;}
@@ -546,6 +549,21 @@ body.pins-hidden .ipin{display:none!important;}
 .hw-event-desc{font-size:13.5px;color:var(--ink-soft);line-height:1.55;}
 .hw-event-src{font-size:11px;color:var(--ink-faint);margin-top:8px;}
 .hw-quiet{background:var(--surface-2);border-radius:14px;padding:18px;text-align:center;font-size:13.5px;color:var(--ink-soft);margin-bottom:14px;}
+
+.hw-quiz-catbadge{margin-left:0;}
+.hw-quiz-prompt{font-size:16.5px;font-weight:800;color:var(--tcf-primary);margin-top:8px;margin-bottom:8px;}
+.hw-quiz-clue{font-size:13.5px;color:var(--ink-soft);line-height:1.55;margin-bottom:16px;}
+.hw-opts{display:flex;flex-direction:column;gap:8px;}
+.hw-opt{display:block;width:100%;text-align:left;background:var(--surface-2);border:1px solid var(--border);border-radius:12px;padding:12px 14px;font-size:13.5px;font-weight:600;color:var(--ink);cursor:pointer;}
+.hw-opt:hover:not(:disabled){border-color:var(--tcf-primary);}
+.hw-opt:disabled{cursor:default;}
+.hw-opt-correct{background:#E0F3EE;border-color:var(--tcf-mid-green);color:var(--tcf-mid-green);font-weight:800;}
+.hw-opt-incorrect{background:#FBE6E6;border-color:#D9736B;color:#B3392F;font-weight:800;}
+.hw-opt-disabled{opacity:.55;}
+.hw-reveal{margin-top:16px;padding-top:16px;border-top:1px solid var(--border);}
+.hw-reveal-verdict{font-size:13px;font-weight:800;margin-bottom:8px;}
+.hw-reveal-verdict.is-correct{color:var(--tcf-mid-green);}
+.hw-reveal-verdict.is-incorrect{color:#B3392F;}
 
 /* ============================================================
    NEWS FEED
@@ -1721,7 +1739,7 @@ body.hero-view:not(.scrolled) .tb-cta .garden-mini-dots span.done{background:var
     <button class="dr-item active" data-view="home" onclick="navigate('home')"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9,22 9,12 15,12 15,22"/></svg>Home</button>
     <button class="dr-item" data-view="newsfeed" onclick="navigate('newsfeed')"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 11a9 9 0 019 9M4 4a16 16 0 0116 16"/><circle cx="5" cy="19" r="1.5" fill="currentColor" stroke="none"/></svg>News Feed</button>
     <button class="dr-item" data-view="legends" onclick="navigate('legends')"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l2.9 6.3L21 9l-4.9 4.4L17.4 20 12 16.7 6.6 20l1.3-6.6L3 9l6.1-.7z"/></svg>Local Legends</button>
-    <button class="dr-item" data-view="history" onclick="navigate('history')"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M3 9h18"/><path d="M8 2v4M16 2v4"/></svg>This Week in Cleveland History</button>
+    <button class="dr-item" data-view="history" onclick="navigate('history')"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M3 9h18"/><path d="M8 2v4M16 2v4"/></svg>This Week in Cleveland Quiz</button>
     <button class="dr-item" data-view="learning" onclick="navigate('learning')"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>Learning Tracks</button>
     <button class="dr-item" data-view="impact" onclick="navigate('impact')"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-4.5-7-10a7 7 0 0114 0c0 5.5-7 10-7 10z"/><circle cx="12" cy="11" r="2"/></svg>Stories &amp; Impact</button>
     <button class="dr-item" data-view="calculator" onclick="navigate('calculator')"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22,12 18,12 15,21 9,3 6,12 2,12"/></svg>Impact Calculator</button>
@@ -1809,9 +1827,9 @@ body.hero-view:not(.scrolled) .tb-cta .garden-mini-dots span.done{background:var
     <button class="panel" onclick="navigate('history',false)">
       <div class="t-icon" style="background:linear-gradient(140deg,#7A3520,#C0693E);"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M3 9h18"/><path d="M8 2v4M16 2v4"/></svg></div>
       <svg class="p-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 17L17 7M8 7h9v9"/></svg>
-      <div class="p-label">This Week in History</div>
-      <div class="p-sub">The moments that built our region, week by week.</div>
-      <div class="p-count">Since 1796</div>
+      <div class="p-label">This Week in Cleveland Quiz</div>
+      <div class="p-sub">A new trivia question every week, since 1796.</div>
+      <div class="p-count">52 weeks a year</div>
     </button>
 
     <button class="panel" onclick="navigate('learning',false)">
@@ -2801,19 +2819,23 @@ body.hero-view:not(.scrolled) .tb-cta .garden-mini-dots span.done{background:var
   </div>
 </div>
 
-<!-- =================== THIS WEEK IN CLEVELAND HISTORY =================== -->
+<!-- =================== THIS WEEK IN CLEVELAND QUIZ =================== -->
 <section class="view" id="view-history">
   <div class="page">
     <div class="page-head">
-      <div class="eyebrow">A Weekly Feature</div>
-      <h1>This Week in Cleveland History</h1>
-      <p class="lede">Explore the stories that built our region, one week of the calendar at a time.</p>
+      <div class="eyebrow">A Weekly Quiz</div>
+      <h1>This Week in Cleveland Quiz</h1>
+      <p class="lede">One question a week, all year long. Guess what happened, then see how your score stacks up.</p>
     </div>
 
     <div class="hw-hero">
       <div class="hw-week-label">Week Of</div>
       <div class="hw-week-range" id="hwRange">Loading&hellip;</div>
       <div class="hw-week-count" id="hwCount"></div>
+      <div class="hw-score-row">
+        <div class="hw-score-pill"><span id="hwScoreCorrect">0</span>/<span id="hwScoreTotal">52</span> correct</div>
+        <div class="hw-score-pill hw-score-pill-ghost"><span id="hwScoreAnswered">0</span> of 52 played</div>
+      </div>
       <div class="hw-nav">
         <button onclick="hwStep(-1)">&larr; Previous week</button>
         <button onclick="hwSurprise()">Surprise me</button>
@@ -2823,7 +2845,7 @@ body.hero-view:not(.scrolled) .tb-cta .garden-mini-dots span.done{background:var
 
     <div id="hwCardsWrap"></div>
 
-    <button class="btn btn-ghost btn-block" onclick="openShareModal({subject:'A piece of Cleveland history', text:'Check out this week in Cleveland history on the Giving Portal:'})">Share This Week's Story</button>
+    <button class="btn btn-ghost btn-block" onclick="openShareModal({subject:'This Week in Cleveland Quiz', text:'Think you know Cleveland history? Take this week\\'s quiz question on the Giving Portal:'})">Share This Week's Quiz</button>
     <button class="alert-toggle" id="hwAlertBtn" onclick="toggleAlert('history', this)">
       <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 8a6 6 0 1112 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 003.4 0"/></svg>
       <span id="hwAlertLabel">Get notified each week</span>
@@ -4080,189 +4102,204 @@ function confirmGive(){
 }
 
 /* ============================================================
-   THIS WEEK IN CLEVELAND HISTORY
+   THIS WEEK IN CLEVELAND QUIZ
    ============================================================ */
-const HW_EVENTS = {
-"01-02": [{y:1914,cat:"foundation",t:"A Community's Savings Account Is Born",d:"Cleveland Trust Company's directors approved the Resolution and Declaration of Trust that created the Cleveland Foundation — the world's first community foundation.",src:"Cleveland Foundation Centennial Timeline"}],
-"01-06": [{y:1831,cat:"founding",t:"Cleveland Drops an \u2018a\u2019",d:"The Cleveland Advertiser trimmed \u201cCleaveland\u201d down to \u201cCleveland\u201d so the city's name would fit neatly on the newspaper's masthead \u2014 and the shorter spelling stuck for good.",src:"Teaching Cleveland Digital"}],
-"01-07": [{y:1842,cat:"culture",t:"The Plain Dealer Begins",d:"Cleveland's long-running daily newspaper published its very first edition.",src:"Teaching Cleveland Digital"}],
-"01-10": [{y:1870,cat:"industry",t:"Standard Oil Is Founded",d:"John D. Rockefeller and his partners incorporated the Standard Oil Company in Cleveland, launching what would become one of the most powerful companies in American history.",src:"Teaching Cleveland Digital"}],
-"01-23": [{y:1960,cat:"culture",t:"The Cleveland News Prints Its Last Edition",d:"After decades of afternoon headlines, the Cleveland News published its final issue.",src:"Teaching Cleveland Digital"}],
-"01-24": [{y:1954,cat:"industry",t:"The Last Streetcar Runs",d:"Cleveland's streetcars made their final run through downtown, closing out an era of rail travel on the city's streets.",src:"Teaching Cleveland Digital"}],
-"01-29": [{y:1914,cat:"foundation",t:"The Foundation's First Bequest",d:"Mary Coit Sanford signed a will establishing five charitable funds at the month-old Cleveland Foundation, becoming its very first bequest donor.",src:"Cleveland Foundation Centennial Timeline"}],
-"01-31": [{y:1891,cat:"culture",t:"Cleveland's Oldest Labor Paper",d:"The Cleveland Citizen, billed for generations as the nation's oldest labor newspaper, published its first issue.",src:"Encyclopedia of Cleveland History"}],
-"02-03": [{y:1870,cat:"industry",t:"Sherwin-Williams Is Chartered",d:"The Sherwin-Williams Company was created in Cleveland, eventually growing into a worldwide paint and coatings giant headquartered downtown to this day.",src:"Teaching Cleveland Digital"}],
-"02-04": [{y:1973,cat:"sports",t:"The Barons Play Their Last Game at the Arena",d:"Cleveland's Barons hockey club skated its final game at the old Cleveland Arena.",src:"Teaching Cleveland Digital"}],
-"02-05": [{y:1921,cat:"industry",t:"Cleveland Clinic Is Chartered",d:"The Cleveland Clinic Foundation was registered, planting the seed for what would grow into one of the world's leading medical centers.",src:"Cleveland Clinic"}],
-"02-06": [{y:1886,cat:"culture",t:"Cleveland Athletic Club Forms",d:"A group of Clevelanders founded the Cleveland Athletic Club, a fixture of downtown social and sporting life for generations.",src:"Teaching Cleveland Digital"}],
-"02-07": [{y:1965,cat:"culture",t:"WVIZ Signs On",d:"Cleveland's educational public television station began broadcasting.",src:"Teaching Cleveland Digital"}],
-"02-15": [{y:1861,cat:"civic",t:"Lincoln Comes Through Cleveland",d:"President-elect Abraham Lincoln visited Cleveland on his roundabout train journey to his own inauguration in Washington.",src:"Encyclopedia of Cleveland History"}],
-"03-04": [{y:1908,cat:"disaster",t:"The Collinwood School Fire",d:"A fire swept through Lake View School in the Collinwood neighborhood, killing 172 children and two teachers \u2014 a tragedy that reshaped school building and fire-safety codes nationwide.",src:"Encyclopedia of Cleveland History"}],
-"03-16": [{y:1854,cat:"culture",t:"The Cleveland Leader Launches",d:"A new daily newspaper, the Cleveland Leader, began publishing in the young, fast-growing city.",src:"Encyclopedia of Cleveland History"}],
-"03-29": [{y:1990,cat:"landmark",t:"Tower City Center Opens",d:"The Avenue at Tower City Center formally opened at Public Square, reviving the old Union Terminal complex as a downtown shopping and transit hub.",src:"Teaching Cleveland Digital"}],
-"04-18": [{y:1938,cat:"culture",t:"Superman Goes on Sale",d:"Action Comics No. 1 hit newsstands, introducing Superman \u2014 dreamed up by two Glenville High School students, Jerry Siegel and Joe Shuster \u2014 and launching the entire superhero genre.",src:"Wikipedia"}],
-"04-28": [{y:1942,cat:"industry",t:"Cleveland Takes Over Its Own Transit",d:"The city began municipal operation of the Cleveland Transit System, taking public transit under city ownership.",src:"Teaching Cleveland Digital"}],
-"04-29": [{y:1879,cat:"industry",t:"Public Square Lights Up",d:"Inventor Charles F. Brush installed an early arc light on Public Square, a forerunner of the modern electric streetlight.",src:"Teaching Cleveland Digital"}],
-"05-01": [{y:1891,cat:"sports",t:"League Park Opens",d:"League Park, home field for generations of Cleveland's early professional baseball teams, opened its gates for the first time.",src:"Teaching Cleveland Digital"}],
-"05-02": [{y:1797,cat:"founding",t:"Cleveland's First Permanent Settler Arrives",d:"Lorenzo Carter reached the original townsite and built a log cabin on the east bank of the Cuyahoga River that doubled as the settlement's jail and inn.",src:"Teaching Cleveland Digital"}],
-"05-15": [{y:1929,cat:"disaster",t:"The Cleveland Clinic Fire",d:"A fire and toxic gas release swept through the Cleveland Clinic, killing scores of patients and staff in one of the deadliest disasters in the city's history.",src:"Encyclopedia of Cleveland History"}],
-"05-23": [{y:1820,cat:"culture",t:"Cleveland's First Play",d:"The young community's very first theatrical performance was staged.",src:"Encyclopedia of Cleveland History"}],
-"06-05": [{y:1854,cat:"founding",t:"Cleveland and Ohio City Merge",d:"Longtime rivals Cleveland and Ohio City, separated by the Cuyahoga River and a literal \u2018Bridge War,\u2019 formally merged into one city.",src:"Encyclopedia of Cleveland History"}],
-"06-07": [{y:1885,cat:"landmark",t:"The Hollenden Hotel Opens",d:"Downtown Cleveland's grand Hollenden Hotel opened its doors, soon becoming the city's premier gathering place for decades of politicians and celebrities.",src:"Encyclopedia of Cleveland History"}],
-"06-08": [{y:1898,cat:"landmark",t:"University Club Opens",d:"Cleveland's University Club opened, joining the city's growing roster of private social clubs.",src:"Encyclopedia of Cleveland History"}],
-"06-17": [{y:1982,cat:"culture",t:"The Cleveland Press Prints Its Last Edition",d:"After more than a century, the afternoon Cleveland Press published its final issue.",src:"Encyclopedia of Cleveland History"}],
-"06-19": [{y:2016,cat:"sports",t:"The Cavaliers Win It All",d:"Down 3\u20131 in the series, LeBron James and the Cavaliers stunned the record-setting Golden State Warriors in Game 7 to bring Cleveland its first major sports championship since 1964.",src:"Wikipedia / AP"}],
-"06-22": [{y:1969,cat:"civic",t:"The Cuyahoga River Catches Fire",d:"A burning oil slick on the industrial Cuyahoga River drew national attention to water pollution and helped spur the modern environmental movement and the Clean Water Act.",src:"Encyclopedia of Cleveland History"}],
-"06-23": [{y:1890,cat:"landmark",t:"Society for Savings Building Opens",d:"The Society for Savings Building, one of Cleveland's earliest skyscrapers, opened on Public Square.",src:"Encyclopedia of Cleveland History"}],
-"06-26": [{y:2003,cat:"sports",t:"The Cavaliers Draft LeBron James",d:"With the very first pick of the NBA draft, the hometown Cavaliers selected Akron's own LeBron James, setting up two decades of history between the King and his home state.",src:"Wikipedia"}],
-"07-01": [{y:1863,cat:"industry",t:"Mail Comes to the Door",d:"Cleveland began the first home delivery of mail in the community's history.",src:"Encyclopedia of Cleveland History"}],
-"07-04": [{y:1827,cat:"industry",t:"The Canal Reaches Cleveland",d:"The Ohio and Erie Canal opened between Akron and Cleveland, linking the young lakefront town to national trade routes and setting off decades of growth.",src:"Encyclopedia of Cleveland History"}],
-"07-05": [{y:1889,cat:"culture",t:"Hebrew Observer's First Edition",d:"The Hebrew Observer newspaper published its first issue in Cleveland.",src:"Encyclopedia of Cleveland History"}],
-"07-18": [
-  {y:1966,cat:"civic",t:"The Hough Riots Begin",d:"Unrest broke out in the Hough neighborhood and continued for six days, becoming one of the defining events of Cleveland's civil-rights era and a catalyst for the city's community-development movement.",src:"Encyclopedia of Cleveland History"},
-  {y:2016,cat:"civic",t:"The Republican National Convention Opens",d:"Cleveland hosted the Republican National Convention at Quicken Loans Arena, a four-day gathering that put the city's downtown and hospitality workers in the national spotlight.",src:"Ballotpedia / Wikipedia"}
-],
-"07-20": [{y:1969,cat:"culture",t:"Playhouse Square's Last Movie House Closes",d:"The Palace Theatre, the last operating movie house on Playhouse Square, shut its doors \u2014 years before the district's celebrated rebirth as a theater destination.",src:"Encyclopedia of Cleveland History"}],
-"07-22": [{y:1796,cat:"founding",t:"Cleveland Is Founded",d:"General Moses Cleaveland and a survey party from the Connecticut Land Company arrived at the mouth of the Cuyahoga River, founding the settlement that would grow into Cleveland.",src:"Wikipedia / Encyclopedia of Cleveland History"}],
-"07-23": [
-  {y:1968,cat:"civic",t:"The Glenville Shootout",d:"A gun battle between police and members of a Black nationalist group erupted in the Glenville neighborhood, touching off days of unrest.",src:"Encyclopedia of Cleveland History"},
-  {y:2021,cat:"sports",t:"Indians Announce a New Name: Guardians",d:"The Cleveland Indians announced they would become the Cleveland Guardians beginning in 2022, naming themselves after the \u2018Guardians of Traffic\u2019 statues on the Hope Memorial Bridge.",src:"MLB.com / ESPN"}
-],
-"07-25": [{y:1854,cat:"culture",t:"Cleveland's First Opera",d:"Clevelanders heard their first formal opera performance, Lucia di Lammermoor.",src:"Encyclopedia of Cleveland History"}],
-"07-26": [{y:1884,cat:"industry",t:"The First Electric Streetcar",d:"Cleveland's first electric streetcar made its inaugural run through the city.",src:"Encyclopedia of Cleveland History"}],
-"07-31": [{y:1818,cat:"culture",t:"Cleveland's First Newspaper",d:"The Cleaveland Gazette and Commercial Register, the settlement's first newspaper, was published.",src:"Encyclopedia of Cleveland History"}],
-"08-03": [{y:1936,cat:"sports",t:"Jesse Owens Strikes Gold in Berlin",d:"East Tech and Ohio State standout Jesse Owens won the first of four gold medals at the Berlin Olympics, undercutting Nazi racial propaganda on the world's biggest stage.",src:"Olympic history"}],
-"08-21": [{y:1999,cat:"sports",t:"The Browns Come Home",d:"A rebuilt Cleveland Browns Stadium opened its gates as the expansion Browns returned to the NFL after a three-year absence.",src:"Teaching Cleveland Digital"}],
-"08-29": [{y:1889,cat:"culture",t:"The Cleveland World Debuts",d:"A new daily newspaper, the Cleveland World, began publication.",src:"Encyclopedia of Cleveland History"}],
-"09-01": [
-  {y:1919,cat:"foundation",t:"The Foundation's First Full-Time Director",d:"Raymond Moley \u2014 later a member of FDR's \u2018Brain Trust\u2019 \u2014 became the Cleveland Foundation's first full-time director.",src:"Cleveland Foundation Centennial Timeline"},
-  {y:1995,cat:"culture",t:"The Rock Hall's Grand Opening",d:"The Rock and Roll Hall of Fame and Museum held its ribbon-cutting on Cleveland's lakefront, with a marathon all-star concert the next night at Municipal Stadium.",src:"Rock & Roll Hall of Fame"}
-],
-"09-06": [
-  {y:1868,cat:"industry",t:"Cleveland's First Bessemer Steel",d:"The Cleveland Rolling Mills produced the city's first \u2018blow\u2019 of Bessemer steel, a milestone in the region's rise as an industrial power.",src:"Encyclopedia of Cleveland History"},
-  {y:1886,cat:"culture",t:"St. Ignatius College Opens",d:"St. Ignatius College, the Jesuit school that would grow alongside John Carroll University, opened its doors on the near West Side.",src:"Encyclopedia of Cleveland History"}
-],
-"09-10": [{y:1860,cat:"landmark",t:"The Perry Monument Is Dedicated",d:"A monument honoring Commodore Oliver Hazard Perry, hero of the Battle of Lake Erie, was dedicated on Public Square.",src:"Encyclopedia of Cleveland History"}],
-"09-24": [{y:1907,cat:"landmark",t:"Trinity Cathedral Is Consecrated",d:"Trinity Episcopal Cathedral was formally consecrated in Cleveland.",src:"Encyclopedia of Cleveland History"}],
-"09-27": [{y:1986,cat:"culture",t:"Balloonfest '86",d:"The United Way of Cleveland released nearly 1.5 million balloons over Public Square in a record-setting publicity stunt that turned into a legendary \u2014 and costly \u2014 cautionary tale.",src:"Wikipedia / Encyclopedia of Cleveland History"}],
-"09-28": [{y:1969,cat:"culture",t:"Euclid Beach Park Closes",d:"The beloved lakefront amusement park shut its gates for good after decades of thrill rides and summer memories.",src:"Encyclopedia of Cleveland History"}],
-"10-03": [{y:1993,cat:"sports",t:"Farewell to Municipal Stadium",d:"The Cleveland Indians played their final game at the cavernous old Municipal Stadium on the lakefront.",src:"Teaching Cleveland Digital"}],
-"10-05": [{y:1957,cat:"foundation",t:"Leonard Hanna's Legacy",d:"Industrialist Leonard C. Hanna Jr. died, leaving his attorney Harold Clark more than $40 million to distribute \u2014 a fortune that helped reinvigorate Cleveland's philanthropic community in the following decade.",src:"Cleveland Foundation Centennial Timeline"}],
-"10-06": [{y:1939,cat:"landmark",t:"Main Avenue Bridge Opens",d:"The Main Avenue Bridge opened over the Cuyahoga Valley, easing traffic between downtown and the near West Side.",src:"Encyclopedia of Cleveland History"}],
-"10-11": [{y:1948,cat:"sports",t:"The Indians Win It All",d:"Cleveland beat the Boston Braves to capture the World Series \u2014 a title the franchise wouldn't match again for the rest of the century.",src:"SABR / Wikipedia"}],
-"10-15": [{y:1871,cat:"culture",t:"Cleveland's First Sunday Paper",d:"The Cleveland Sunday Times, the city's first successful Sunday newspaper, was published.",src:"Encyclopedia of Cleveland History"}],
-"10-19": [{y:1819,cat:"culture",t:"The Cleveland Herald Launches",d:"The Cleveland Herald and Gazette published its first issue.",src:"Encyclopedia of Cleveland History"}],
-"10-20": [{y:1944,cat:"disaster",t:"The East Ohio Gas Explosion",d:"A liquefied natural gas tank failure triggered explosions and fires on the East Side, killing 130 people in one of Cleveland's worst disasters.",src:"Encyclopedia of Cleveland History"}],
-"10-28": [{y:1980,cat:"civic",t:"Carter and Reagan Debate in Cleveland",d:"The only presidential debate of the 1980 campaign, between incumbent Jimmy Carter and challenger Ronald Reagan, was held in Cleveland.",src:"Teaching Cleveland Digital"}],
-"10-31": [{y:1912,cat:"landmark",t:"West Side Market's Grand Dedication",d:"Cleveland's ornate West Side Market held its official dedication ceremony in Ohio City, its clock tower already a neighborhood landmark.",src:"West Side Market"}],
-"11-02": [
-  {y:1878,cat:"culture",t:"The Penny Press Debuts",d:"A scrappy new two-cent paper, forerunner of the Cleveland Press, began publication.",src:"Encyclopedia of Cleveland History"},
-  {y:1912,cat:"landmark",t:"West Side Market Opens to Shoppers",d:"Cleveland's oldest continuously operating public market welcomed its first customers in Ohio City.",src:"West Side Market"},
-  {y:1940,cat:"civic",t:"FDR Campaigns in Cleveland",d:"President Franklin D. Roosevelt campaigned in Cleveland in the final days of the 1940 election.",src:"Encyclopedia of Cleveland History"},
-  {y:1942,cat:"industry",t:"The Bomber Plant Opens",d:"A giant wartime aircraft plant \u2014 later reborn as the I-X Center \u2014 opened at Cleveland Municipal Airport.",src:"Encyclopedia of Cleveland History"}
-],
-"11-06": [{y:1922,cat:"culture",t:"The Palace Theatre Opens",d:"The ornate Palace Theatre opened on Playhouse Square, part of the district's original run of grand movie palaces.",src:"Encyclopedia of Cleveland History"}],
-"11-07": [{y:1967,cat:"civic",t:"Carl Stokes Makes History",d:"Carl B. Stokes was elected mayor of Cleveland, becoming the first African American to lead a major American city.",src:"Teaching Cleveland Digital"}],
-"11-13": [{y:1882,cat:"culture",t:"Cleveland School of Art Founded",d:"The Cleveland School of Art \u2014 later the Cleveland Institute of Art \u2014 was established.",src:"Encyclopedia of Cleveland History"}],
-"11-19": [
-  {y:1879,cat:"civic",t:"Early Settlers Association Forms",d:"Cleveland's Early Settlers Association organized to preserve the memory of the city's pioneer generation.",src:"Encyclopedia of Cleveland History"},
-  {y:2021,cat:"sports",t:"The Guardians Era Begins",d:"The Cleveland Guardians officially launched at Progressive Field, closing the book on the Indians name after 106 years.",src:"MLB.com"}
-],
-"11-22": [{y:1960,cat:"civic",t:"Erieview Unveiled",d:"City leaders unveiled the ambitious Erieview urban-renewal plan for downtown Cleveland.",src:"Encyclopedia of Cleveland History"}],
-"12-01": [{y:1906,cat:"civic",t:"Cleveland Renumbers Itself",d:"The city standardized its street names and house numbers onto a single grid, replacing a confusing patchwork system left over from its village days.",src:"Encyclopedia of Cleveland History"}],
-"12-11": [{y:1918,cat:"culture",t:"The Cleveland Orchestra's First Note",d:"The Cleveland Orchestra performed its very first concert, launching what would become one of the world's most acclaimed ensembles.",src:"Encyclopedia of Cleveland History"}],
-"12-15": [{y:1978,cat:"civic",t:"Cleveland Defaults",d:"Cleveland became the first major American city to default on its financial obligations since the Great Depression, a low point the city would spend the next decade climbing out of.",src:"Encyclopedia of Cleveland History"}],
-"12-18": [{y:1964,cat:"culture",t:"Cleveland State University Is Established",d:"Cleveland State University was founded, expanding the city's roster of higher-education institutions.",src:"Encyclopedia of Cleveland History"}],
-"12-23": [{y:1814,cat:"founding",t:"Cleveland Becomes a Village",d:"The young settlement received its official charter as a village.",src:"Teaching Cleveland Digital"}],
-"12-27": [{y:1964,cat:"sports",t:"The Browns Are NFL Champions",d:"Cleveland routed the Baltimore Colts 27\u20130 to win the NFL Championship \u2014 still the city's most recent NFL title, decades later.",src:"Wikipedia"}],
-"12-28": [{y:1878,cat:"landmark",t:"Superior Viaduct Opens",d:"The Superior Street Viaduct, an engineering marvel linking Cleveland's east and west sides across the Cuyahoga Valley, opened to traffic.",src:"Encyclopedia of Cleveland History"}],
-"12-30": [{y:1974,cat:"civic",t:"Greater Cleveland RTA Is Created",d:"The Greater Cleveland Regional Transit Authority was established, unifying the region's bus and rail systems under one roof.",src:"Encyclopedia of Cleveland History"}],
-"12-31": [{y:1967,cat:"foundation",t:"Dorothy Ruth Retires",d:"After 40 years and service under four Cleveland Foundation directors, longtime staff aide Dorothy Ruth retired at age 73, having personally double-checked that hundreds of scholarship students received their checks.",src:"Cleveland Foundation Centennial Timeline"}]
-};
-
+const HW_QUIZ = [
+  {wk:0, y:1914, cat:'foundation', t:'A Community\'s Savings Account Is Born', d:'Cleveland Trust Company\'s directors approved the Resolution and Declaration of Trust that created the Cleveland Foundation — the world\'s first community foundation.', src:'Cleveland Foundation Centennial Timeline', options:['The Cavaliers Draft LeBron James', 'A Community\'s Savings Account Is Born', 'Mail Comes to the Door', 'The Foundation\'s First Bequest'], correct:1},
+  {wk:1, y:1870, cat:'industry', t:'Standard Oil Is Founded', d:'John D. Rockefeller and his partners incorporated the Standard Oil Company in Cleveland, launching what would become one of the most powerful companies in American history.', src:'Teaching Cleveland Digital', options:['Sherwin-Williams Is Chartered', 'Standard Oil Is Founded', 'The Hollenden Hotel Opens', 'The Last Streetcar Runs'], correct:1},
+  {wk:2, y:1842, cat:'culture', t:'The Plain Dealer Begins', d:'Cleveland\'s long-running daily newspaper published its very first edition.', src:'Teaching Cleveland Digital', options:['Cleveland\'s First Play', 'Cleveland Athletic Club Forms', 'The Plain Dealer Begins', 'The Barons Play Their Last Game at the Arena'], correct:2},
+  {wk:3, y:1954, cat:'industry', t:'The Last Streetcar Runs', d:'Cleveland\'s streetcars made their final run through downtown, closing out an era of rail travel on the city\'s streets.', src:'Teaching Cleveland Digital', options:['Carl Stokes Makes History', 'The Last Streetcar Runs', 'Public Square Lights Up', 'The First Electric Streetcar'], correct:1},
+  {wk:4, y:1870, cat:'industry', t:'Sherwin-Williams Is Chartered', d:'The Sherwin-Williams Company was created in Cleveland, eventually growing into a worldwide paint and coatings giant headquartered downtown to this day.', src:'Teaching Cleveland Digital', options:['The Cavaliers Win It All', 'Cleveland Clinic Is Chartered', 'Public Square Lights Up', 'Sherwin-Williams Is Chartered'], correct:3},
+  {wk:5, y:1921, cat:'industry', t:'Cleveland Clinic Is Chartered', d:'The Cleveland Clinic Foundation was registered, planting the seed for what would grow into one of the world\'s leading medical centers.', src:'Cleveland Clinic', options:['Cleveland Clinic Is Chartered', 'Cleveland Is Founded', 'Mail Comes to the Door', 'The Canal Reaches Cleveland'], correct:0},
+  {wk:6, y:1861, cat:'civic', t:'Lincoln Comes Through Cleveland', d:'President-elect Abraham Lincoln visited Cleveland on his roundabout train journey to his own inauguration in Washington.', src:'Encyclopedia of Cleveland History', options:['Carter and Reagan Debate in Cleveland', 'Cleveland Renumbers Itself', 'Lincoln Comes Through Cleveland', 'The First Electric Streetcar'], correct:2},
+  {wk:7, y:1886, cat:'culture', t:'Cleveland Athletic Club Forms', d:'A group of Clevelanders founded the Cleveland Athletic Club, a fixture of downtown social and sporting life for generations.', src:'Teaching Cleveland Digital', options:['Cleveland\'s First Play', 'Cleveland Athletic Club Forms', 'Cleveland\'s Oldest Labor Paper', 'The Collinwood School Fire'], correct:1},
+  {wk:8, y:1908, cat:'disaster', t:'The Collinwood School Fire', d:'A fire swept through Lake View School in the Collinwood neighborhood, killing 172 children and two teachers — a tragedy that reshaped school building and fire-safety codes nationwide.', src:'Encyclopedia of Cleveland History', options:['Cleveland and Ohio City Merge', 'The Cleveland Clinic Fire', 'The Collinwood School Fire', 'The East Ohio Gas Explosion'], correct:2},
+  {wk:9, y:1965, cat:'culture', t:'WVIZ Signs On', d:'Cleveland\'s educational public television station began broadcasting.', src:'Teaching Cleveland Digital', options:['Balloonfest \'86', 'WVIZ Signs On', 'The Cleveland Orchestra\'s First Note', 'The Hollenden Hotel Opens'], correct:1},
+  {wk:10, y:1854, cat:'culture', t:'The Cleveland Leader Launches', d:'A new daily newspaper, the Cleveland Leader, began publishing in the young, fast-growing city.', src:'Encyclopedia of Cleveland History', options:['St. Ignatius College Opens', 'Cleveland School of Art Founded', 'Tower City Center Opens', 'The Cleveland Leader Launches'], correct:3},
+  {wk:11, y:1973, cat:'sports', t:'The Barons Play Their Last Game at the Arena', d:'Cleveland\'s Barons hockey club skated its final game at the old Cleveland Arena.', src:'Teaching Cleveland Digital', options:['League Park Opens', 'The Barons Play Their Last Game at the Arena', 'The Browns Come Home', 'Cleveland Defaults'], correct:1},
+  {wk:12, y:1990, cat:'landmark', t:'Tower City Center Opens', d:'The Avenue at Tower City Center formally opened at Public Square, reviving the old Union Terminal complex as a downtown shopping and transit hub.', src:'Teaching Cleveland Digital', options:['Tower City Center Opens', 'The Rock Hall\'s Grand Opening', 'The Perry Monument Is Dedicated', 'The Hollenden Hotel Opens'], correct:0},
+  {wk:13, y:1891, cat:'culture', t:'Cleveland\'s Oldest Labor Paper', d:'The Cleveland Citizen, billed for generations as the nation\'s oldest labor newspaper, published its first issue.', src:'Encyclopedia of Cleveland History', options:['Cleveland Clinic Is Chartered', 'The Rock Hall\'s Grand Opening', 'Cleveland\'s Oldest Labor Paper', 'The Plain Dealer Begins'], correct:2},
+  {wk:14, y:1914, cat:'foundation', t:'The Foundation\'s First Bequest', d:'Mary Coit Sanford signed a will establishing five charitable funds at the month-old Cleveland Foundation, becoming its very first bequest donor.', src:'Cleveland Foundation Centennial Timeline', options:['The Foundation\'s First Bequest', 'Public Square Lights Up', 'A Community\'s Savings Account Is Born', 'The Last Streetcar Runs'], correct:0},
+  {wk:15, y:1938, cat:'culture', t:'Superman Goes on Sale', d:'Action Comics No. 1 hit newsstands, introducing Superman — dreamed up by two Glenville High School students, Jerry Siegel and Joe Shuster — and launching the entire superhero genre.', src:'Wikipedia', options:['Cleveland Athletic Club Forms', 'The Plain Dealer Begins', 'Superman Goes on Sale', 'Cleveland Is Founded'], correct:2},
+  {wk:16, y:1879, cat:'industry', t:'Public Square Lights Up', d:'Inventor Charles F. Brush installed an early arc light on Public Square, a forerunner of the modern electric streetlight.', src:'Teaching Cleveland Digital', options:['Public Square Lights Up', 'Cleveland Renumbers Itself', 'The First Electric Streetcar', 'The Last Streetcar Runs'], correct:0},
+  {wk:17, y:1797, cat:'founding', t:'Cleveland\'s First Permanent Settler Arrives', d:'Lorenzo Carter reached the original townsite and built a log cabin on the east bank of the Cuyahoga River that doubled as the settlement\'s jail and inn.', src:'Teaching Cleveland Digital', options:['Cleveland and Ohio City Merge', 'Cleveland\'s First Permanent Settler Arrives', 'Cleveland Is Founded', 'The Browns Are NFL Champions'], correct:1},
+  {wk:18, y:1891, cat:'sports', t:'League Park Opens', d:'League Park, home field for generations of Cleveland\'s early professional baseball teams, opened its gates for the first time.', src:'Teaching Cleveland Digital', options:['Farewell to Municipal Stadium', 'Cleveland Is Founded', 'The Browns Come Home', 'League Park Opens'], correct:3},
+  {wk:19, y:1929, cat:'disaster', t:'The Cleveland Clinic Fire', d:'A fire and toxic gas release swept through the Cleveland Clinic, killing scores of patients and staff in one of the deadliest disasters in the city\'s history.', src:'Encyclopedia of Cleveland History', options:['The Cleveland Clinic Fire', 'The Rock Hall\'s Grand Opening', 'The East Ohio Gas Explosion', 'The Collinwood School Fire'], correct:0},
+  {wk:20, y:1820, cat:'culture', t:'Cleveland\'s First Play', d:'The young community\'s very first theatrical performance was staged.', src:'Encyclopedia of Cleveland History', options:['The Plain Dealer Begins', 'Cleveland Athletic Club Forms', 'Cleveland\'s First Play', 'The Collinwood School Fire'], correct:2},
+  {wk:21, y:1885, cat:'landmark', t:'The Hollenden Hotel Opens', d:'Downtown Cleveland\'s grand Hollenden Hotel opened its doors, soon becoming the city\'s premier gathering place for decades of politicians and celebrities.', src:'Encyclopedia of Cleveland History', options:['Farewell to Municipal Stadium', 'West Side Market\'s Grand Dedication', 'Trinity Cathedral Is Consecrated', 'The Hollenden Hotel Opens'], correct:3},
+  {wk:22, y:1854, cat:'founding', t:'Cleveland and Ohio City Merge', d:'Longtime rivals Cleveland and Ohio City, separated by the Cuyahoga River and a literal ‘Bridge War,’ formally merged into one city.', src:'Encyclopedia of Cleveland History', options:['Cleveland and Ohio City Merge', 'Cleveland\'s First Permanent Settler Arrives', 'Cleveland Is Founded', 'Cleveland Athletic Club Forms'], correct:0},
+  {wk:23, y:1982, cat:'culture', t:'The Cleveland Press Prints Its Last Edition', d:'After more than a century, the afternoon Cleveland Press published its final issue.', src:'Encyclopedia of Cleveland History', options:['The Canal Reaches Cleveland', 'Cleveland\'s First Play', 'Balloonfest \'86', 'The Cleveland Press Prints Its Last Edition'], correct:3},
+  {wk:24, y:2016, cat:'sports', t:'The Cavaliers Win It All', d:'Down 3–1 in the series, LeBron James and the Cavaliers stunned the record-setting Golden State Warriors in Game 7 to bring Cleveland its first major sports championship since 1964.', src:'Wikipedia / AP', options:['Jesse Owens Strikes Gold in Berlin', 'The Cavaliers Win It All', 'The Indians Win It All', 'WVIZ Signs On'], correct:1},
+  {wk:25, y:2003, cat:'sports', t:'The Cavaliers Draft LeBron James', d:'With the very first pick of the NBA draft, the hometown Cavaliers selected Akron\'s own LeBron James, setting up two decades of history between the King and his home state.', src:'Wikipedia', options:['The Cavaliers Win It All', 'The Cleveland Leader Launches', 'The Guardians Era Begins', 'The Cavaliers Draft LeBron James'], correct:3},
+  {wk:26, y:1827, cat:'industry', t:'The Canal Reaches Cleveland', d:'The Ohio and Erie Canal opened between Akron and Cleveland, linking the young lakefront town to national trade routes and setting off decades of growth.', src:'Encyclopedia of Cleveland History', options:['A Community\'s Savings Account Is Born', 'The Last Streetcar Runs', 'Mail Comes to the Door', 'The Canal Reaches Cleveland'], correct:3},
+  {wk:27, y:1863, cat:'industry', t:'Mail Comes to the Door', d:'Cleveland began the first home delivery of mail in the community\'s history.', src:'Encyclopedia of Cleveland History', options:['Standard Oil Is Founded', 'Mail Comes to the Door', 'The Canal Reaches Cleveland', 'The Cavaliers Draft LeBron James'], correct:1},
+  {wk:28, y:1796, cat:'founding', t:'Cleveland Is Founded', d:'General Moses Cleaveland and a survey party from the Connecticut Land Company arrived at the mouth of the Cuyahoga River, founding the settlement that would grow into Cleveland.', src:'Wikipedia / Encyclopedia of Cleveland History', options:['Cleveland\'s First Permanent Settler Arrives', 'Cleveland and Ohio City Merge', 'Cleveland Is Founded', 'The Last Streetcar Runs'], correct:2},
+  {wk:29, y:2021, cat:'sports', t:'Indians Announce a New Name: Guardians', d:'The Cleveland Indians announced they would become the Cleveland Guardians beginning in 2022, naming themselves after the ‘Guardians of Traffic’ statues on the Hope Memorial Bridge.', src:'MLB.com / ESPN', options:['Farewell to Municipal Stadium', 'The Cavaliers Win It All', 'Cleveland\'s First Newspaper', 'Indians Announce a New Name: Guardians'], correct:3},
+  {wk:30, y:1936, cat:'sports', t:'Jesse Owens Strikes Gold in Berlin', d:'East Tech and Ohio State standout Jesse Owens won the first of four gold medals at the Berlin Olympics, undercutting Nazi racial propaganda on the world\'s biggest stage.', src:'Olympic history', options:['The Guardians Era Begins', 'The Cleveland Clinic Fire', 'The Barons Play Their Last Game at the Arena', 'Jesse Owens Strikes Gold in Berlin'], correct:3},
+  {wk:31, y:1818, cat:'culture', t:'Cleveland\'s First Newspaper', d:'The Cleaveland Gazette and Commercial Register, the settlement\'s first newspaper, was published.', src:'Encyclopedia of Cleveland History', options:['Cleveland\'s First Play', 'Cleveland\'s First Newspaper', 'The Cleveland Press Prints Its Last Edition', 'Jesse Owens Strikes Gold in Berlin'], correct:1},
+  {wk:32, y:1884, cat:'industry', t:'The First Electric Streetcar', d:'Cleveland\'s first electric streetcar made its inaugural run through the city.', src:'Encyclopedia of Cleveland History', options:['The First Electric Streetcar', 'Superman Goes on Sale', 'The Canal Reaches Cleveland', 'The Last Streetcar Runs'], correct:0},
+  {wk:33, y:1999, cat:'sports', t:'The Browns Come Home', d:'A rebuilt Cleveland Browns Stadium opened its gates as the expansion Browns returned to the NFL after a three-year absence.', src:'Teaching Cleveland Digital', options:['Cleveland Clinic Is Chartered', 'The Browns Come Home', 'The Cavaliers Draft LeBron James', 'The Indians Win It All'], correct:1},
+  {wk:34, y:1995, cat:'culture', t:'The Rock Hall\'s Grand Opening', d:'The Rock and Roll Hall of Fame and Museum held its ribbon-cutting on Cleveland\'s lakefront, with a marathon all-star concert the next night at Municipal Stadium.', src:'Rock & Roll Hall of Fame', options:['The Hollenden Hotel Opens', 'Cleveland School of Art Founded', 'The Rock Hall\'s Grand Opening', 'Superman Goes on Sale'], correct:2},
+  {wk:35, y:1886, cat:'culture', t:'St. Ignatius College Opens', d:'St. Ignatius College, the Jesuit school that would grow alongside John Carroll University, opened its doors on the near West Side.', src:'Encyclopedia of Cleveland History', options:['Superman Goes on Sale', 'St. Ignatius College Opens', 'Cleveland\'s First Newspaper', 'Sherwin-Williams Is Chartered'], correct:1},
+  {wk:36, y:1860, cat:'landmark', t:'The Perry Monument Is Dedicated', d:'A monument honoring Commodore Oliver Hazard Perry, hero of the Battle of Lake Erie, was dedicated on Public Square.', src:'Encyclopedia of Cleveland History', options:['The Perry Monument Is Dedicated', 'The Hollenden Hotel Opens', 'A Community\'s Savings Account Is Born', 'Tower City Center Opens'], correct:0},
+  {wk:37, y:1907, cat:'landmark', t:'Trinity Cathedral Is Consecrated', d:'Trinity Episcopal Cathedral was formally consecrated in Cleveland.', src:'Encyclopedia of Cleveland History', options:['The Perry Monument Is Dedicated', 'Trinity Cathedral Is Consecrated', 'West Side Market\'s Grand Dedication', 'St. Ignatius College Opens'], correct:1},
+  {wk:38, y:1986, cat:'culture', t:'Balloonfest \'86', d:'The United Way of Cleveland released nearly 1.5 million balloons over Public Square in a record-setting publicity stunt that turned into a legendary — and costly — cautionary tale.', src:'Wikipedia / Encyclopedia of Cleveland History', options:['Cleveland\'s Oldest Labor Paper', 'Carl Stokes Makes History', 'Balloonfest \'86', 'The Cleveland Leader Launches'], correct:2},
+  {wk:39, y:1993, cat:'sports', t:'Farewell to Municipal Stadium', d:'The Cleveland Indians played their final game at the cavernous old Municipal Stadium on the lakefront.', src:'Teaching Cleveland Digital', options:['The Browns Are NFL Champions', 'Farewell to Municipal Stadium', 'The Last Streetcar Runs', 'The Guardians Era Begins'], correct:1},
+  {wk:40, y:1948, cat:'sports', t:'The Indians Win It All', d:'Cleveland beat the Boston Braves to capture the World Series — a title the franchise wouldn\'t match again for the rest of the century.', src:'SABR / Wikipedia', options:['The Cavaliers Draft LeBron James', 'The Browns Are NFL Champions', 'The Indians Win It All', 'Tower City Center Opens'], correct:2},
+  {wk:41, y:1944, cat:'disaster', t:'The East Ohio Gas Explosion', d:'A liquefied natural gas tank failure triggered explosions and fires on the East Side, killing 130 people in one of Cleveland\'s worst disasters.', src:'Encyclopedia of Cleveland History', options:['Cleveland Clinic Is Chartered', 'The Collinwood School Fire', 'The Cleveland Clinic Fire', 'The East Ohio Gas Explosion'], correct:3},
+  {wk:42, y:1980, cat:'civic', t:'Carter and Reagan Debate in Cleveland', d:'The only presidential debate of the 1980 campaign, between incumbent Jimmy Carter and challenger Ronald Reagan, was held in Cleveland.', src:'Teaching Cleveland Digital', options:['Carter and Reagan Debate in Cleveland', 'Carl Stokes Makes History', 'Cleveland Renumbers Itself', 'A Community\'s Savings Account Is Born'], correct:0},
+  {wk:43, y:1912, cat:'landmark', t:'West Side Market\'s Grand Dedication', d:'Cleveland\'s ornate West Side Market held its official dedication ceremony in Ohio City, its clock tower already a neighborhood landmark.', src:'West Side Market', options:['Trinity Cathedral Is Consecrated', 'Tower City Center Opens', 'Cleveland Clinic Is Chartered', 'West Side Market\'s Grand Dedication'], correct:3},
+  {wk:44, y:1967, cat:'civic', t:'Carl Stokes Makes History', d:'Carl B. Stokes was elected mayor of Cleveland, becoming the first African American to lead a major American city.', src:'Teaching Cleveland Digital', options:['Carl Stokes Makes History', 'Lincoln Comes Through Cleveland', 'Cleveland\'s First Permanent Settler Arrives', 'Carter and Reagan Debate in Cleveland'], correct:0},
+  {wk:45, y:1882, cat:'culture', t:'Cleveland School of Art Founded', d:'The Cleveland School of Art — later the Cleveland Institute of Art — was established.', src:'Encyclopedia of Cleveland History', options:['St. Ignatius College Opens', 'Cleveland School of Art Founded', 'Balloonfest \'86', 'The Collinwood School Fire'], correct:1},
+  {wk:46, y:2021, cat:'sports', t:'The Guardians Era Begins', d:'The Cleveland Guardians officially launched at Progressive Field, closing the book on the Indians name after 106 years.', src:'MLB.com', options:['The Guardians Era Begins', 'The Cavaliers Draft LeBron James', 'Indians Announce a New Name: Guardians', 'Trinity Cathedral Is Consecrated'], correct:0},
+  {wk:47, y:1906, cat:'civic', t:'Cleveland Renumbers Itself', d:'The city standardized its street names and house numbers onto a single grid, replacing a confusing patchwork system left over from its village days.', src:'Encyclopedia of Cleveland History', options:['Cleveland Defaults', 'Carl Stokes Makes History', 'Cleveland\'s First Play', 'Cleveland Renumbers Itself'], correct:3},
+  {wk:48, y:1918, cat:'culture', t:'The Cleveland Orchestra\'s First Note', d:'The Cleveland Orchestra performed its very first concert, launching what would become one of the world\'s most acclaimed ensembles.', src:'Encyclopedia of Cleveland History', options:['The East Ohio Gas Explosion', 'Cleveland School of Art Founded', 'The Cleveland Orchestra\'s First Note', 'WVIZ Signs On'], correct:2},
+  {wk:49, y:1978, cat:'civic', t:'Cleveland Defaults', d:'Cleveland became the first major American city to default on its financial obligations since the Great Depression, a low point the city would spend the next decade climbing out of.', src:'Encyclopedia of Cleveland History', options:['Carter and Reagan Debate in Cleveland', 'Cleveland Defaults', 'Lincoln Comes Through Cleveland', 'A Community\'s Savings Account Is Born'], correct:1},
+  {wk:50, y:1964, cat:'culture', t:'Cleveland State University Is Established', d:'Cleveland State University was founded, expanding the city\'s roster of higher-education institutions.', src:'Encyclopedia of Cleveland History', options:['Cleveland Athletic Club Forms', 'Cleveland Is Founded', 'Cleveland State University Is Established', 'Cleveland School of Art Founded'], correct:2},
+  {wk:51, y:1964, cat:'sports', t:'The Browns Are NFL Champions', d:'Cleveland routed the Baltimore Colts 27–0 to win the NFL Championship — still the city\'s most recent NFL title, decades later.', src:'Wikipedia', options:['Jesse Owens Strikes Gold in Berlin', 'Mail Comes to the Door', 'The Browns Are NFL Champions', 'The Browns Come Home'], correct:2},
+];
 const HW_CAT_LABEL = { founding:"Founding", industry:"Industry", culture:"Culture", sports:"Sports", civic:"Civic Life", disaster:"Turning Point", landmark:"Landmark", foundation:"TCF Files" };
 const HW_MONTHS = ["January","February","March","April","May","June","July","August","September","October","November","December"];
 const HW_MONTH_LEN = [31,28,31,30,31,30,31,31,30,31,30,31];
 const HW_TOTAL_WEEKS = 52;
 var currentHwWeek = null;
+var hwAnswerLocked = false;
 
 function hwDoyFromMonthDay(m0,d){ var n=d; for (var i=0;i<m0;i++) n+=HW_MONTH_LEN[i]; return n; }
-function hwMonthDayFromDoy(doy){ var remaining=doy; for (var i=0;i<12;i++){ if (remaining<=HW_MONTH_LEN[i]) return [i,remaining]; remaining-=HW_MONTH_LEN[i]; } return [11,31]; }
 function hwWeekIndexFromDoy(doy){ return Math.min(Math.floor((doy-1)/7), HW_TOTAL_WEEKS-1); }
 function hwWeekRange(weekIndex){ var start=weekIndex*7+1; var end=(weekIndex===HW_TOTAL_WEEKS-1)?365:start+6; return [start,end]; }
 function hwWeekIndexFromDate(date){ var m0=date.getMonth(), d=date.getDate(); if (m0===1 && d===29) d=28; return hwWeekIndexFromDoy(hwDoyFromMonthDay(m0,d)); }
-
-var HW_WEEK_MAP = {};
-Object.keys(HW_EVENTS).forEach(function(key){
-  var parts = key.split('-').map(Number);
-  var m0 = parts[0]-1, d = parts[1];
-  var doy = hwDoyFromMonthDay(m0,d);
-  var wi = hwWeekIndexFromDoy(doy);
-  if (!HW_WEEK_MAP[wi]) HW_WEEK_MAP[wi] = [];
-  HW_EVENTS[key].forEach(function(e){
-    var merged = {};
-    for (var k in e) merged[k] = e[k];
-    merged.m0 = m0; merged.day = d; merged.doy = doy;
-    HW_WEEK_MAP[wi].push(merged);
-  });
-});
-var HW_WEEKS_WITH_CONTENT = Object.keys(HW_WEEK_MAP).map(Number).sort(function(a,b){ return a-b; });
+function hwMonthDayFromDoy(doy){ var remaining=doy; for (var i=0;i<12;i++){ if (remaining<=HW_MONTH_LEN[i]) return [i,remaining]; remaining-=HW_MONTH_LEN[i]; } return [11,31]; }
 
 function hwRangeLabel(weekIndex){
   var r = hwWeekRange(weekIndex);
   var md1 = hwMonthDayFromDoy(r[0]), md2 = hwMonthDayFromDoy(r[1]);
   return { m1:md1[0], d1:md1[1], m2:md2[0], d2:md2[1], sameMonth: md1[0]===md2[0] };
 }
+function hwQuestionForWeek(weekIndex){
+  for (var i=0;i<HW_QUIZ.length;i++){ if (HW_QUIZ[i].wk === weekIndex) return HW_QUIZ[i]; }
+  return null;
+}
+
+/* ---------- Score persistence (localStorage, per calendar year) ---------- */
+function hwStoreKey(){ return 'tcf_hw_quiz_v1'; }
+function hwLoadStore(){
+  var year = new Date().getFullYear();
+  try {
+    var raw = window.localStorage.getItem(hwStoreKey());
+    if (raw){
+      var parsed = JSON.parse(raw);
+      if (parsed && parsed.year === year && parsed.answers) return parsed;
+    }
+  } catch(e){}
+  return { year: year, answers: {} };
+}
+function hwSaveStore(store){
+  try { window.localStorage.setItem(hwStoreKey(), JSON.stringify(store)); } catch(e){}
+}
+var HW_STORE = hwLoadStore();
+
+function hwIsAnswered(weekIndex){ return !!HW_STORE.answers[weekIndex]; }
+function hwRecordAnswer(weekIndex, chosenIndex, wasCorrect){
+  HW_STORE.answers[weekIndex] = { chosen: chosenIndex, correct: wasCorrect };
+  hwSaveStore(HW_STORE);
+  hwUpdateScoreUI();
+}
+function hwUpdateScoreUI(){
+  var answered = Object.keys(HW_STORE.answers).length;
+  var correct = 0;
+  for (var k in HW_STORE.answers){ if (HW_STORE.answers[k].correct) correct++; }
+  var elC = document.getElementById('hwScoreCorrect');
+  var elT = document.getElementById('hwScoreTotal');
+  var elA = document.getElementById('hwScoreAnswered');
+  if (elC) elC.textContent = correct;
+  if (elT) elT.textContent = HW_QUIZ.length;
+  if (elA) elA.textContent = answered;
+}
+
+/* ---------- Rendering ---------- */
 function renderHistoryWeek(weekIndex){
   currentHwWeek = weekIndex;
+  hwAnswerLocked = false;
   var lbl = hwRangeLabel(weekIndex);
   var titleStr = lbl.sameMonth
     ? HW_MONTHS[lbl.m1] + ' ' + lbl.d1 + '\u2013' + lbl.d2
     : HW_MONTHS[lbl.m1] + ' ' + lbl.d1 + ' \u2013 ' + HW_MONTHS[lbl.m2] + ' ' + lbl.d2;
   document.getElementById('hwRange').textContent = titleStr;
 
-  var entries = (HW_WEEK_MAP[weekIndex] || []).slice().sort(function(a,b){ return (a.doy-b.doy) || (a.y-b.y); });
+  var q = hwQuestionForWeek(weekIndex);
   var wrap = document.getElementById('hwCardsWrap');
+  var countEl = document.getElementById('hwCount');
 
-  if (entries.length){
-    document.getElementById('hwCount').textContent = entries.length===1 ? 'One story from the archive this week.' : entries.length + ' stories from the archive this week.';
-    wrap.innerHTML = entries.map(function(e){
-      var catLabel = HW_CAT_LABEL[e.cat] || 'Cleveland';
-      return '<div class="hw-event-card">' +
-        '<span class="hw-event-year">' + e.y + '</span><span class="hw-event-cat">' + catLabel + '</span>' +
-        '<div class="hw-event-title">' + e.t + '</div>' +
-        '<div class="hw-event-desc">' + e.d + '</div>' +
-        '<div class="hw-event-src">Source: ' + e.src + '</div>' +
-      '</div>';
-    }).join('');
-  } else {
-    document.getElementById('hwCount').textContent = 'Still filling in this chapter of the calendar.';
-    wrap.innerHTML = '<div class="hw-quiet">We haven\u2019t logged a dated story for ' + titleStr + ' yet \u2014 try Previous week, Next week, or Surprise me.</div>';
+  if (!q){
+    countEl.textContent = 'No quiz question for this week yet.';
+    wrap.innerHTML = '<div class="hw-quiet">We haven\u2019t written a question for ' + titleStr + ' yet \u2014 try Previous week, Next week, or Surprise me.</div>';
+    return;
   }
+
+  var already = HW_STORE.answers[weekIndex];
+  countEl.textContent = already ? 'You\u2019ve already played this week\u2019s question.' : 'What happened in Cleveland this week?';
+
+  var catLabel = HW_CAT_LABEL[q.cat] || 'Cleveland';
+  var optionsHtml = q.options.map(function(opt, i){
+    var stateClass = '';
+    if (already){
+      if (i === q.correct) stateClass = ' hw-opt-correct';
+      else if (i === already.chosen) stateClass = ' hw-opt-incorrect';
+      else stateClass = ' hw-opt-disabled';
+    }
+    return '<button class="hw-opt' + stateClass + '" ' + (already ? 'disabled' : 'onclick="hwAnswer(' + i + ')"') + '>' +
+      '<span class="hw-opt-text">' + opt + '</span>' +
+    '</button>';
+  }).join('');
+
+  var revealHtml = '';
+  if (already){
+    revealHtml = '<div class="hw-reveal">' +
+      '<div class="hw-reveal-verdict' + (already.correct ? ' is-correct' : ' is-incorrect') + '">' + (already.correct ? '\u2713 You got it!' : '\u2717 Not quite') + '</div>' +
+      '<span class="hw-event-year">' + q.y + '</span><span class="hw-event-cat">' + catLabel + '</span>' +
+      '<div class="hw-event-desc">' + q.d + '</div>' +
+      '<div class="hw-event-src">Source: ' + q.src + '</div>' +
+    '</div>';
+  }
+
+  wrap.innerHTML =
+    '<div class="hw-event-card hw-quiz-card">' +
+      '<span class="hw-event-cat hw-quiz-catbadge">' + catLabel + '</span>' +
+      '<div class="hw-quiz-prompt">This week in Cleveland history\u2026 what happened?</div>' +
+      '<div class="hw-quiz-clue">' + q.d + '</div>' +
+      '<div class="hw-opts">' + optionsHtml + '</div>' +
+      revealHtml +
+    '</div>';
+}
+function hwAnswer(choiceIndex){
+  if (hwAnswerLocked || currentHwWeek === null) return;
+  var q = hwQuestionForWeek(currentHwWeek);
+  if (!q) return;
+  hwAnswerLocked = true;
+  var wasCorrect = (choiceIndex === q.correct);
+  hwRecordAnswer(currentHwWeek, choiceIndex, wasCorrect);
+  renderHistoryWeek(currentHwWeek);
+  showToast(wasCorrect ? 'Correct! Nice work.' : 'Not quite \u2014 see the answer below.');
 }
 function hwStep(dir){
   if (currentHwWeek === null) return;
-  var idx = HW_WEEKS_WITH_CONTENT.indexOf(currentHwWeek);
-  if (idx === -1){
-    var candidates = HW_WEEKS_WITH_CONTENT.filter(function(wi){ return dir>0 ? wi>currentHwWeek : wi<currentHwWeek; });
-    if (!candidates.length) candidates = HW_WEEKS_WITH_CONTENT;
-    renderHistoryWeek(dir>0 ? candidates[0] : candidates[candidates.length-1]);
-    return;
-  }
-  var next = idx + dir;
-  if (next < 0) next = HW_WEEKS_WITH_CONTENT.length - 1;
-  if (next >= HW_WEEKS_WITH_CONTENT.length) next = 0;
-  renderHistoryWeek(HW_WEEKS_WITH_CONTENT[next]);
+  var next = currentHwWeek + dir;
+  if (next < 0) next = HW_TOTAL_WEEKS - 1;
+  if (next >= HW_TOTAL_WEEKS) next = 0;
+  renderHistoryWeek(next);
 }
 function hwSurprise(){
-  renderHistoryWeek(HW_WEEKS_WITH_CONTENT[Math.floor(Math.random()*HW_WEEKS_WITH_CONTENT.length)]);
+  var unanswered = [];
+  for (var i=0;i<HW_QUIZ.length;i++){ if (!hwIsAnswered(HW_QUIZ[i].wk)) unanswered.push(HW_QUIZ[i].wk); }
+  var pool = unanswered.length ? unanswered : HW_QUIZ.map(function(q){ return q.wk; });
+  renderHistoryWeek(pool[Math.floor(Math.random()*pool.length)]);
 }
 function initHistoryView(){
+  hwUpdateScoreUI();
   if (currentHwWeek !== null) { renderHistoryWeek(currentHwWeek); return; }
   var wi = hwWeekIndexFromDate(new Date());
-  if (HW_WEEK_MAP[wi] && HW_WEEK_MAP[wi].length) { renderHistoryWeek(wi); return; }
-  var nearest = HW_WEEKS_WITH_CONTENT.slice().sort(function(a,b){ return Math.abs(a-wi)-Math.abs(b-wi); })[0];
-  renderHistoryWeek(nearest);
+  renderHistoryWeek(wi);
 }
 
 /* ============================================================
@@ -4277,7 +4314,7 @@ const NF_POSTS = [
   { id:3, name:'James T.', initials:'JT', color:'var(--tcf-blue)', type:'why', time:'3d ago', likes:9,
     body:'I volunteer at the West Side Market food drive every month. Watching neighbors help neighbors is why I keep showing up.' },
   { id:4, name:'Cleveland Foundation', initials:'CF', color:'var(--tcf-primary)', type:'news', time:'This week', likes:21,
-    body:'This week in Cleveland history: the Cuyahoga River fire in 1969 helped spark the modern environmental movement.',
+    body:'New quiz question up now on This Week in Cleveland Quiz — test your knowledge of the moments that built our region.',
     action:function(){ navigate('history'); } },
   { id:5, name:'Priya K.', initials:'PK', color:'var(--tcf-pink)', type:'why', time:'5d ago', likes:18,
     body:'Cleveland gave my parents a home when they had nowhere else to go. Every gift I make is a small way of returning the favor.' }
