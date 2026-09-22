@@ -158,7 +158,15 @@ body.pins-hidden .ipin{display:none!important;}
 .home-tile .tile-sub{font-size:12px;line-height:1.4;opacity:.75;}
 .home-tile .tile-glow{position:absolute;right:-30px;bottom:-30px;width:120px;height:120px;border-radius:50%;opacity:.15;}
 
-/* Tile colour schemes */
+/* Tile colour schemes
+   NOTE: this whole block (.tile-learn, .tile-foryou, .tile-calc, .tile-gift,
+   .tile-map, .tile-legends, .tile-history) is not referenced by any element
+   in the current markup — the dashboard tiles these were built for were
+   replaced by the .panel component. Left in place in case a tile-based
+   layout comes back, but treat it as dead code for now; don't assume
+   .tile-calc/.tile-history/.tile-legends are what style the Impact
+   Calculator, Cleveland History Quiz, or Local Legends entry points today
+   (those use .panel + inline t-icon gradients instead). */
 .tile-learn{background:#164430;color:#fff;}
 .tile-learn .tile-icon{background:rgba(25,185,169,.25);}
 .tile-learn .tile-glow{background:var(--tcf-aqua);}
@@ -533,6 +541,19 @@ body.pins-hidden .ipin{display:none!important;}
 /* ============================================================
    IMPACT CALCULATOR
    ============================================================ */
+/* NOTE FOR MAINTAINERS: this stylesheet is merged from several older
+   design-system passes, so base classes like .card, .btn, .badge etc.
+   get redefined more than once further down the file. Because CSS
+   resolves ties in specificity by source order, a plain ".calc-panel"
+   selector combined with class="card calc-panel" in the HTML was
+   getting silently overridden by a later ".card{...}" rule (it rendered
+   as a plain white card instead of the intended dark panel). The fix is
+   to write these as compound selectors — ".card.calc-panel" — so they
+   out-rank ".card" regardless of where ".card" is redefined. If you add
+   a new element that mixes one of your own classes with .card, .btn,
+   .badge, .modal, .toast, .page, .subtab, .ipin*, or .stat-value/-label,
+   use the same "own-class.card-class" compound pattern, or you'll hit
+   this exact bug again. */
 .card.calc-panel{background:linear-gradient(150deg,#0F3226 0%,#0A2419 100%);border:1px solid rgba(8,108,67,.35);border-radius:var(--radius-lg);padding:20px;color:#F3F1EF;margin-bottom:14px;}
 .calc-step-label{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:14px;}
 .calc-mode-toggle{display:flex;gap:8px;margin-bottom:18px;}
@@ -563,7 +584,7 @@ body.pins-hidden .ipin{display:none!important;}
 .calc-area-icon{width:22px;height:22px;margin:0 auto 6px;color:rgba(255,255,255,.55);}
 .calc-area-icon svg{width:100%;height:100%;display:block;}
 .calc-area-name{font-size:11px;font-weight:700;color:rgba(255,255,255,.7);line-height:1.2;}
-.calc-note{background:rgba(238,115,49,.06);border-color:rgba(238,115,49,.2);}
+.card.calc-note{background:rgba(238,115,49,.06);border-color:rgba(238,115,49,.2);}
 .calc-note p{font-size:14px;color:var(--ink-soft);line-height:1.6;}
 .calc-step2-head{margin-top:24px;margin-bottom:14px;}
 .calc-step2-eyebrow{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--tcf-mid-green);margin-bottom:4px;}
@@ -2582,13 +2603,14 @@ body.hero-view:not(.scrolled) .tb-cta .garden-mini-dots span.done{background:var
     <div class="subtabs">
       <button class="subtab active" onclick="switchSubtab(this,'contrib-one')">One-time</button>
       <button class="subtab" onclick="switchSubtab(this,'contrib-recurring')">Recurring</button>
+      <button class="subtab" id="contribRoundupsTabBtn" onclick="switchSubtab(this,'contrib-roundups')">Round-Ups</button>
       <button class="subtab" onclick="switchSubtab(this,'contrib-methods')">Methods</button>
     </div>
     <div class="card" id="contrib-one">
       <h3 style="margin-bottom:16px;">Make a Contribution <span class="ipin ipin-integration" data-pin="psp">PSP</span></h3>
       <div class="form-row"><label>Amount</label><input type="text" value="$1,000.00"/><div class="help-text">Minimum: $250</div></div>
       <div class="form-row"><label>Payment Method</label>
-        <select><option>Chase Bank •••• 4471 (ACH)</option><option>Visa •••• 8821</option><option>Wire Transfer</option><option>Appreciated Securities</option><option>+ Add new method</option></select>
+        <select id="contribPayMethod" onchange="contribHandlePaymentMethodChange(this)"><option>Chase Bank •••• 4471 (ACH)</option><option>Visa •••• 8821</option><option>Wire Transfer</option><option>Appreciated Securities</option><option value="roundups">Round-Ups (spare change)</option><option>+ Add new method</option></select>
       </div>
       <button class="btn btn-accent btn-block" onclick="showToast('Contribution submitted! PSP webhook will confirm and Ren iPhi creates TransactionID.')">Contribute $1,000</button>
       <div style="margin-top:10px;text-align:center;"><span class="ipin ipin-security" data-pin="step-up">Step-up Auth Required</span></div>
@@ -2600,11 +2622,57 @@ body.hero-view:not(.scrolled) .tb-cta .garden-mini-dots span.done{background:var
       </div>
       <button class="btn btn-primary btn-block" style="margin-top:16px;">+ Add Recurring Gift</button>
     </div>
+    <div class="card" id="contrib-roundups" style="display:none;">
+      <h3 style="margin-bottom:6px;">Round-Ups <span class="ipin ipin-integration" data-pin="plaid">Plaid</span></h3>
+      <p style="color:var(--ink-soft);font-size:13.5px;margin-bottom:18px;">Connect a debit or credit card. Every time you spend, we round the purchase up to the nearest dollar and set the spare change aside for your fund — swept over automatically once a week.</p>
+
+      <div style="background:var(--surface-2);border-radius:12px;padding:14px;margin-bottom:18px;">
+        <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--ink-faint);margin-bottom:10px;">How it works</div>
+        <div style="display:flex;justify-content:space-between;font-size:13px;padding:6px 0;border-bottom:1px solid var(--border);"><span>Coffee Shop</span><span>$4.35 &nbsp;<strong style="color:var(--tcf-mid-green);">→ +$0.65</strong></span></div>
+        <div style="display:flex;justify-content:space-between;font-size:13px;padding:6px 0;border-bottom:1px solid var(--border);"><span>Grocery Store</span><span>$62.10 &nbsp;<strong style="color:var(--tcf-mid-green);">→ +$0.90</strong></span></div>
+        <div style="display:flex;justify-content:space-between;font-size:13px;padding:6px 0;"><span>Gas Station</span><span>$38.50 &nbsp;<strong style="color:var(--tcf-mid-green);">→ +$0.50</strong></span></div>
+      </div>
+
+      <!-- Pre-connection state: shown until connectRoundups() simulates a successful Plaid Link session -->
+      <div id="roundupsNotConnected">
+        <div class="form-row">
+          <label>Send Round-Ups To</label>
+          <select id="roundupsFund">
+            <option>Greatest Needs Fund</option>
+            <option>Arts &amp; Culture Fund</option>
+            <option>Youth &amp; Education Fund</option>
+            <option>Sullivan Family Fund</option>
+          </select>
+        </div>
+        <button class="btn btn-accent btn-block" onclick="connectRoundups()">Set Up Round-Ups (Demo)</button>
+        <div class="help-text" style="margin-top:10px;text-align:center;">Prototype only — no real account link happens here. A production build would use Plaid to set this up.</div>
+        <div class="help-text" style="margin-top:4px;text-align:center;">Sample data · no bank connection is made</div>
+      </div>
+
+      <!-- Post-connection state: placeholder for what a live Plaid Transactions integration would populate -->
+      <div id="roundupsConnected" style="display:none;">
+        <div class="row-list" style="margin-bottom:16px;">
+          <div class="row"><div class="org-mark alt-4">•</div><div class="info"><div class="name">Sample Account (Demo)</div><div class="meta">Not a real linked account · Round-ups active</div></div><span class="badge badge-posted">Demo</span></div>
+        </div>
+        <div style="background:var(--surface-2);border-radius:12px;padding:16px;margin-bottom:16px;">
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:4px;text-align:center;">
+            <div><div class="stat-value" style="font-size:20px;">$0.00</div><div class="stat-label" style="font-size:9.5px;">Round-ups this month</div></div>
+            <div><div class="stat-value" style="font-size:15px;" id="roundupsFundDisplay">Greatest Needs Fund</div><div class="stat-label" style="font-size:9.5px;">Destination fund</div></div>
+          </div>
+        </div>
+        <label style="display:flex;align-items:center;justify-content:space-between;gap:12px;cursor:pointer;padding:14px;background:var(--surface-2);border-radius:10px;margin-bottom:12px;">
+          <span style="font-size:14px;font-weight:600;color:var(--ink);">Round-Up Giving</span>
+          <input type="checkbox" id="roundupsToggle" checked style="accent-color:var(--tcf-mid-green);width:20px;height:20px;" onchange="toggleRoundups(this)"/>
+        </label>
+        <div class="help-text" style="text-align:center;">Illustrative only. A production build would sweep spare change to your fund weekly, once transactions settle.</div>
+      </div>
+    </div>
     <div class="card" id="contrib-methods" style="display:none;">
       <h3 style="margin-bottom:14px;">Payment Methods <span class="ipin ipin-integration" data-pin="psp">PSP Vault</span></h3>
       <div class="row-list">
         <div class="row"><div class="org-mark alt-4">B</div><div class="info"><div class="name">Chase Bank ••••4471</div><div class="meta">ACH · Verified</div></div><span class="badge badge-posted">Default</span></div>
         <div class="row"><div class="org-mark alt-2">V</div><div class="info"><div class="name">Visa ••••8821</div><div class="meta">Expires 09/27</div></div><button class="btn btn-ghost btn-sm">Edit</button></div>
+        <div class="row"><div class="org-mark" style="background:var(--tcf-mid-green);">R</div><div class="info"><div class="name">Round-Ups</div><div class="meta" id="roundupsMethodMeta">Not connected</div></div><button class="btn btn-ghost btn-sm" onclick="document.getElementById('contribRoundupsTabBtn').click()">Set Up</button></div>
       </div>
       <button class="btn btn-primary btn-block" style="margin-top:16px;">+ Add Payment Method</button>
       <div class="help-text" style="margin-top:10px;">Cards never touch Foundation infrastructure. PSP hosts the form.</div>
@@ -4215,6 +4283,22 @@ function confirmGive(){
 
 /* ============================================================
    CLEVELAND HISTORY QUIZ
+   ============================================================
+   NOTE FOR MAINTAINERS: this feature started as a week-of-year "This
+   Week in Cleveland History" quiz (hence the "hw" prefix still used on
+   older helper functions/vars: HW_STORE, hwStep, hwAnswer, hwAlertBtn,
+   hwCurrentWeekIndex, etc.). It was later redesigned to ask one question
+   per YEAR (1974–2025) instead — see HIST_QUIZ below, where each item's
+   `wk` field is what maps it onto a calendar week (wk 0 -> the 1st week
+   of the year -> the 1974 question, wk 51 -> the last week -> 2025).
+   Newer code added for that redesign (leaderboard, sharing) uses an
+   "hq" prefix (Historical Quiz) instead — so both prefixes are correct
+   and intentional, not a typo. `idx` and `wk` are always equal today
+   (one question per week, in chronological order), but they're kept as
+   separate fields/lookups (hqQuestionForWeek) in case that 1:1 mapping
+   ever needs to change (e.g. re-ordering weeks without reordering years).
+   localStorage key: tcf_hist_quiz_v1 (answers persist indefinitely,
+   there's no per-year reset — unlike the old weekly-history version).
    ============================================================ */
 const HIST_QUIZ = [
   {idx:0, wk:0, y:1974, cat:'sports', diff:'Easy', q:'On June 4, 1974, a Cleveland Indians promotion at Municipal Stadium got so far out of hand that umpires forfeited the game to the Texas Rangers. What was the promotion?', options:['Free Fireworks Night', 'Ten Cent Beer Night', 'Nickel Hot Dog Night', 'Bat Day'], correct:1, reveal:'Roughly 25,000 people showed up for unlimited 10-cent beers. Fans streamed onto the field in the ninth inning with the game tied, and the Rangers and Indians ended up swinging bats side by side to protect each other. It remains one of the most infamous nights in American sports.'},
@@ -4630,6 +4714,46 @@ function switchSubtab(btn, contentId) {
 }
 
 /* ============================================================
+   ROUND-UPS (spare-change giving)
+   Prototype only: no real Plaid session is opened here. connectRoundups()
+   simulates what a successful Plaid Link callback would do — in production
+   this is where you'd call Plaid Link, then POST the public_token to the
+   BFF to exchange it for an access_token and start listening for
+   /transactions/sync webhooks to compute round-up amounts.
+   ============================================================ */
+var roundupsState = { connected: false, active: true, fund: 'Greatest Needs Fund' };
+
+function contribHandlePaymentMethodChange(sel) {
+  if (sel.value !== 'roundups') return;
+  var tabBtn = document.getElementById('contribRoundupsTabBtn');
+  if (tabBtn) switchSubtab(tabBtn, 'contrib-roundups');
+  sel.selectedIndex = 0; // Round-Ups isn't a "pick and contribute $X now" method, so reset the one-time selector
+}
+
+function connectRoundups() {
+  var fundSel = document.getElementById('roundupsFund');
+  roundupsState.connected = true;
+  roundupsState.active = true;
+  roundupsState.fund = fundSel ? fundSel.value : roundupsState.fund;
+
+  document.getElementById('roundupsNotConnected').style.display = 'none';
+  document.getElementById('roundupsConnected').style.display = 'block';
+  var fundDisplay = document.getElementById('roundupsFundDisplay');
+  if (fundDisplay) fundDisplay.textContent = roundupsState.fund;
+  var methodMeta = document.getElementById('roundupsMethodMeta');
+  if (methodMeta) methodMeta.textContent = 'Demo active · ' + roundupsState.fund;
+
+  showToast('Demo only — no account was connected. In production this step would hand off to Plaid Link.');
+}
+
+function toggleRoundups(checkbox) {
+  roundupsState.active = checkbox.checked;
+  var methodMeta = document.getElementById('roundupsMethodMeta');
+  if (methodMeta) methodMeta.textContent = (checkbox.checked ? 'Demo active · ' : 'Paused · ') + roundupsState.fund;
+  showToast(checkbox.checked ? 'Round-Up Giving turned on.' : 'Round-Up Giving paused.');
+}
+
+/* ============================================================
    DAF FLOW
    ============================================================ */
 var dafData = { fundName:'', donorName:'', signed: false };
@@ -4833,6 +4957,7 @@ function closeLegacyModal() { document.getElementById('legacyModal').classList.r
    ============================================================ */
 var PIN_DETAILS = {
   'psp': { kind:'Integration', title:'Payment Service Provider', body:'<p>Hosted payment form (PSP-SDK). No card data touches Foundation infrastructure — PCI compliance via tokenization. Webhook fires <code>ContributionSettled</code> event → BFF → Ren iPhi mutation creates TransactionID with idempotency key.</p><div class="label">Supported Methods</div><p>ACH, Wire, Card (Visa/MC/Amex), Appreciated Securities (manual), PLAID bank link (Phase 2).</p>' },
+  'plaid': { kind:'Integration (Planned)', title:'Plaid — Round-Ups', body:'<p>Not yet built. This screen is a UI placeholder for the intended flow: Plaid Link opens to authenticate the donor\'s bank, we exchange the public_token for an access_token server-side, then subscribe to <code>/transactions/sync</code> webhooks. Each posted transaction is rounded up to the nearest dollar; round-ups accrue in a ledger and sweep to the PSP as a single ACH contribution on a weekly cron.</p><div class="label">Open questions before build</div><p>Sweep cadence and minimum threshold, how to handle refunds/disputes on already-swept transactions, and whether round-ups count toward the same annual receipt as other contributions.</p>' },
   'ren-iphi-balance': { kind:'Integration', title:'Ren iPhi — Fund Balance', body:'<p>GraphQL query <code>fundBalance(fundId)</code> returns real-time NAV. Cached in Redis (5-min TTL). Circuit breaker fires after 3 failures → stale cache with banner.</p><div class="label">Auth</div><p>Service account JWT, fund-scoped RBAC. Donor can only read their own funds.</p>' },
   'ren-iphi-grants': { kind:'Integration', title:'Ren iPhi — Grant History', body:'<p>GraphQL query <code>grantHistory(fundId, page, limit)</code>. Returns DistributionID, TransactionID, status (Entered/Approved/Posted), grantee EIN, amount, date.</p>' },
   'salesforce-advisor': { kind:'Integration', title:'Salesforce CRM', body:'<p>Advisor assignment read from SF Contact object. Activity log writes: <code>Task</code> record on message send. Opportunity updated on DAF open.</p>' },
