@@ -531,11 +531,50 @@ body.pins-hidden .ipin{display:none!important;}
 .alert-toggle.on{background:#E0F3EE;border-color:#BFE3D9;color:var(--tcf-mid-green);}
 
 /* ============================================================
-   THIS WEEK IN CLEVELAND QUIZ
+   IMPACT CALCULATOR
+   ============================================================ */
+.card.calc-panel{background:linear-gradient(150deg,#0F3226 0%,#0A2419 100%);border:1px solid rgba(8,108,67,.35);border-radius:var(--radius-lg);padding:20px;color:#F3F1EF;margin-bottom:14px;}
+.calc-step-label{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:14px;}
+.calc-mode-toggle{display:flex;gap:8px;margin-bottom:18px;}
+.calc-mode-btn{flex:1;padding:9px;border-radius:9px;font-family:inherit;font-size:13px;font-weight:700;cursor:pointer;border:1.5px solid rgba(255,255,255,.22);background:transparent;color:rgba(255,255,255,.85);}
+.calc-mode-btn.active{background:var(--tcf-mid-green);color:#fff;border-color:transparent;}
+.calc-field{margin-bottom:16px;}
+.calc-field:last-child{margin-bottom:0;}
+.calc-field-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;}
+.calc-field-label{font-size:13px;font-weight:600;color:rgba(255,255,255,.7);}
+.calc-field-value{font-size:16px;font-weight:700;color:var(--tcf-mid-green);}
+.calc-field-range{display:flex;justify-content:space-between;font-size:10px;color:rgba(255,255,255,.3);margin-top:4px;}
+.calc-slider{-webkit-appearance:none;appearance:none;width:100%;height:4px;border-radius:2px;background:rgba(255,255,255,.3);outline:none;cursor:pointer;}
+.calc-slider::-webkit-slider-runnable-track{-webkit-appearance:none;appearance:none;width:100%;height:4px;border-radius:2px;background:rgba(255,255,255,.3);}
+.calc-slider::-moz-range-track{width:100%;height:4px;border-radius:2px;background:rgba(255,255,255,.3);border:none;}
+.calc-slider::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;width:16px;height:16px;border-radius:50%;background:var(--tcf-mid-green);cursor:pointer;box-shadow:0 0 0 3px rgba(8,108,67,.3);margin-top:-6px;}
+.calc-slider::-moz-range-thumb{width:16px;height:16px;border-radius:50%;background:var(--tcf-mid-green);border:none;cursor:pointer;box-shadow:0 0 0 3px rgba(8,108,67,.3);}
+.calc-money-cards{display:flex;flex-direction:column;gap:10px;margin-bottom:14px;}
+.calc-money-card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:16px;display:flex;gap:14px;align-items:center;}
+.calc-money-card.best{background:rgba(8,108,67,.08);border-color:rgba(8,108,67,.35);}
+.cmc-label{font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--ink-faint);margin-bottom:4px;}
+.cmc-amount{font-family:var(--font-head);font-size:22px;font-weight:700;color:var(--tcf-mid-green);}
+.cmc-units-n{font-family:var(--font-head);font-size:28px;font-weight:700;}
+.cmc-units-label{font-size:11px;color:var(--ink-faint);line-height:1.3;}
+.calc-chart-label{font-size:13px;font-weight:700;color:rgba(255,255,255,.8);margin-bottom:14px;}
+.calc-area-label{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.45);margin-bottom:10px;}
+.calc-area-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:7px;}
+.calc-area-btn{background:rgba(255,255,255,.04);border:1.5px solid rgba(255,255,255,.1);border-radius:10px;padding:12px 6px;cursor:pointer;text-align:center;font-family:inherit;}
+.calc-area-icon{width:22px;height:22px;margin:0 auto 6px;color:rgba(255,255,255,.55);}
+.calc-area-icon svg{width:100%;height:100%;display:block;}
+.calc-area-name{font-size:11px;font-weight:700;color:rgba(255,255,255,.7);line-height:1.2;}
+.calc-note{background:rgba(238,115,49,.06);border-color:rgba(238,115,49,.2);}
+.calc-note p{font-size:14px;color:var(--ink-soft);line-height:1.6;}
+.calc-step2-head{margin-top:24px;margin-bottom:14px;}
+.calc-step2-eyebrow{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--tcf-mid-green);margin-bottom:4px;}
+
+/* ============================================================
+   CLEVELAND HISTORY QUIZ
    ============================================================ */
 .hw-hero{background:linear-gradient(135deg,#7A3520,#3F1B0F);border-radius:var(--radius-lg);color:#fff;padding:24px;margin-bottom:14px;box-shadow:var(--shadow-sm);}
 .hw-week-label{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;opacity:.75;}
 .hw-week-range{font-size:21px;font-weight:800;font-family:var(--font-head);margin-top:4px;color:#fff;}
+.hw-week-year{font-size:14px;font-weight:700;margin-top:3px;opacity:.95;}
 .hw-week-count{font-size:12.5px;opacity:.85;margin-top:4px;}
 .hw-score-row{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap;}
 .hw-score-pill{background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.28);border-radius:999px;padding:5px 12px;font-size:11.5px;font-weight:800;letter-spacing:.02em;}
@@ -545,13 +584,14 @@ body.pins-hidden .ipin{display:none!important;}
 .hw-event-card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:20px;margin-bottom:12px;}
 .hw-event-year{font-size:12px;font-weight:800;color:var(--tcf-orange);letter-spacing:.03em;margin-bottom:4px;}
 .hw-event-cat{display:inline-block;font-size:9.5px;font-weight:800;text-transform:uppercase;letter-spacing:.04em;background:var(--surface-2);color:var(--ink-faint);padding:2px 8px;border-radius:20px;margin-bottom:8px;margin-left:8px;}
+.hw-diff-badge{display:inline-block;font-size:9.5px;font-weight:800;text-transform:uppercase;letter-spacing:.04em;background:var(--surface-2);color:var(--ink-faint);padding:2px 8px;border-radius:20px;margin-bottom:8px;margin-left:6px;}
 .hw-event-title{font-size:16.5px;font-weight:800;color:var(--tcf-primary);margin-bottom:6px;}
 .hw-event-desc{font-size:13.5px;color:var(--ink-soft);line-height:1.55;}
 .hw-event-src{font-size:11px;color:var(--ink-faint);margin-top:8px;}
 .hw-quiet{background:var(--surface-2);border-radius:14px;padding:18px;text-align:center;font-size:13.5px;color:var(--ink-soft);margin-bottom:14px;}
 
 .hw-quiz-catbadge{margin-left:0;}
-.hw-quiz-prompt{font-size:16.5px;font-weight:800;color:var(--tcf-primary);margin-top:8px;margin-bottom:8px;}
+.hw-quiz-prompt{font-size:16.5px;font-weight:800;color:var(--tcf-primary);margin-top:8px;margin-bottom:16px;line-height:1.4;}
 .hw-quiz-clue{font-size:13.5px;color:var(--ink-soft);line-height:1.55;margin-bottom:16px;}
 .hw-opts{display:flex;flex-direction:column;gap:8px;}
 .hw-opt{display:block;width:100%;text-align:left;background:var(--surface-2);border:1px solid var(--border);border-radius:12px;padding:12px 14px;font-size:13.5px;font-weight:600;color:var(--ink);cursor:pointer;}
@@ -564,6 +604,33 @@ body.pins-hidden .ipin{display:none!important;}
 .hw-reveal-verdict{font-size:13px;font-weight:800;margin-bottom:8px;}
 .hw-reveal-verdict.is-correct{color:var(--tcf-mid-green);}
 .hw-reveal-verdict.is-incorrect{color:#B3392F;}
+
+.hq-give-banner{background:linear-gradient(135deg,var(--tcf-mid-green),#054A30);border-radius:var(--radius-lg);color:#fff;padding:18px 20px;margin-bottom:14px;display:flex;flex-direction:column;align-items:flex-start;gap:12px;}
+.hq-give-banner p{font-size:13.5px;line-height:1.5;margin:0;color:rgba(255,255,255,.94);}
+
+.hw-share-row{display:flex;gap:8px;margin-top:4px;margin-bottom:18px;}
+.hw-share-row .btn{flex:1;}
+.hw-alert-block{margin-bottom:20px;}
+.hw-alert-sub{font-size:12px;color:var(--ink-faint);line-height:1.5;margin:8px 0 0;}
+
+.hq-leaderboard{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:18px;}
+.hq-lb-head{display:flex;justify-content:space-between;align-items:center;}
+.hq-lb-title{font-family:var(--font-head);font-weight:800;font-size:16px;color:var(--tcf-primary);}
+.hq-lb-sub{font-size:12px;color:var(--ink-faint);margin-bottom:14px;margin-top:2px;}
+.hq-lb-toggle{display:flex;gap:6px;margin-bottom:14px;}
+.hq-lb-toggle button{flex:1;padding:7px;border-radius:8px;border:1px solid var(--border);background:var(--surface-2);font-size:11.5px;font-weight:700;color:var(--ink-soft);cursor:pointer;}
+.hq-lb-toggle button.active{background:var(--tcf-mid-green);border-color:var(--tcf-mid-green);color:#fff;}
+.hq-lb-row{display:flex;align-items:center;gap:10px;padding:9px 0;border-bottom:1px solid var(--border);}
+.hq-lb-row:last-child{border-bottom:none;}
+.hq-lb-rank{width:18px;text-align:center;font-weight:800;font-size:12.5px;color:var(--ink-faint);flex-shrink:0;}
+.hq-lb-row.is-you{background:#F3FBF9;margin:0 -10px;padding:9px 10px;border-radius:10px;border-bottom:1px solid transparent;}
+.hq-lb-row.is-you .hq-lb-rank{color:var(--tcf-mid-green);}
+.hq-lb-name{flex:1;font-size:13px;font-weight:700;color:var(--ink);}
+.hq-lb-name .you-tag{font-size:9.5px;font-weight:800;color:var(--tcf-mid-green);text-transform:uppercase;margin-left:5px;vertical-align:middle;}
+.hq-lb-stat{font-size:13px;font-weight:800;color:var(--tcf-mid-green);text-align:right;}
+.hq-lb-stat-sub{font-size:10.5px;color:var(--ink-faint);font-weight:600;text-align:right;}
+.hq-lb-ellipsis{text-align:center;color:var(--ink-faint);padding:2px 0;font-size:13px;}
+.hq-lb-locked{background:var(--surface-2);border-radius:12px;padding:14px;text-align:center;font-size:12.5px;color:var(--ink-soft);margin-top:10px;}
 
 /* ============================================================
    NEWS FEED
@@ -578,6 +645,7 @@ body.pins-hidden .ipin{display:none!important;}
 .nf-post-meta{font-size:11px;color:var(--ink-faint);}
 .nf-post-badge{margin-left:auto;font-size:9.5px;font-weight:800;letter-spacing:.03em;text-transform:uppercase;background:#E0F3EE;color:var(--tcf-mid-green);padding:3px 9px;border-radius:20px;}
 .nf-post-badge.news{background:#FDF5EE;color:var(--tcf-orange);}
+.nf-post-badge.quiz{background:#E0F3EE;color:var(--tcf-mid-green);}
 .nf-post-body{font-size:14px;color:var(--ink);line-height:1.55;}
 .nf-post-actions{display:flex;gap:16px;margin-top:12px;padding-top:10px;border-top:1px solid var(--border);}
 .nf-post-actions button{background:none;border:none;font-size:12.5px;font-weight:700;color:var(--ink-faint);display:flex;align-items:center;gap:5px;}
@@ -1591,10 +1659,11 @@ body.hero-view:not(.scrolled) .tb-cta .garden-mini-dots span.done{background:var
     <div class="fcontent">
       <div class="kick">Est. 1914 · Cleveland, Ohio</div>
       <div class="line">
-        <span class="w" style="--wd:.4s;">Giving</span>
-        <span class="w" style="--wd:.5s;">was</span>
-        <span class="w w-ember" style="--wd:.6s;">invented</span>
-        <span class="w" style="--wd:.72s;">here.</span>
+        <span class="w" style="--wd:.4s;">We</span>
+        <span class="w" style="--wd:.48s;">help</span>
+        <span class="w" style="--wd:.56s;">Cleveland</span>
+        <span class="w" style="--wd:.64s;">give</span>
+        <span class="w w-ember" style="--wd:.74s;">together.</span>
       </div>
     </div>
   </div>
@@ -1643,9 +1712,11 @@ body.hero-view:not(.scrolled) .tb-cta .garden-mini-dots span.done{background:var
     <div class="fcontent">
       <div class="kick">One hundred and twelve years</div>
       <div class="line">
-        <span class="w" style="--wd:.45s;">Neighbors</span>
-        <span class="w w-ember" style="--wd:.58s;">funding</span>
-        <span class="w" style="--wd:.71s;">neighbors.</span>
+        <span class="w" style="--wd:.4s;">It</span>
+        <span class="w" style="--wd:.48s;">takes</span>
+        <span class="w w-ember" style="--wd:.56s;">all</span>
+        <span class="w" style="--wd:.64s;">of</span>
+        <span class="w" style="--wd:.72s;">us.</span>
       </div>
       <div class="mono-stat">Every gift · Every neighborhood · Every generation</div>
     </div>
@@ -1739,7 +1810,7 @@ body.hero-view:not(.scrolled) .tb-cta .garden-mini-dots span.done{background:var
     <button class="dr-item active" data-view="home" onclick="navigate('home')"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9,22 9,12 15,12 15,22"/></svg>Home</button>
     <button class="dr-item" data-view="newsfeed" onclick="navigate('newsfeed')"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 11a9 9 0 019 9M4 4a16 16 0 0116 16"/><circle cx="5" cy="19" r="1.5" fill="currentColor" stroke="none"/></svg>News Feed</button>
     <button class="dr-item" data-view="legends" onclick="navigate('legends')"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l2.9 6.3L21 9l-4.9 4.4L17.4 20 12 16.7 6.6 20l1.3-6.6L3 9l6.1-.7z"/></svg>Local Legends</button>
-    <button class="dr-item" data-view="history" onclick="navigate('history')"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M3 9h18"/><path d="M8 2v4M16 2v4"/></svg>This Week in Cleveland Quiz</button>
+    <button class="dr-item" data-view="history" onclick="navigate('history')"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M3 9h18"/><path d="M8 2v4M16 2v4"/></svg>Cleveland History Quiz</button>
     <button class="dr-item" data-view="learning" onclick="navigate('learning')"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>Learning Tracks</button>
     <button class="dr-item" data-view="impact" onclick="navigate('impact')"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-4.5-7-10a7 7 0 0114 0c0 5.5-7 10-7 10z"/><circle cx="12" cy="11" r="2"/></svg>Stories &amp; Impact</button>
     <button class="dr-item" data-view="calculator" onclick="navigate('calculator')"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22,12 18,12 15,21 9,3 6,12 2,12"/></svg>Impact Calculator</button>
@@ -1827,9 +1898,9 @@ body.hero-view:not(.scrolled) .tb-cta .garden-mini-dots span.done{background:var
     <button class="panel" onclick="navigate('history',false)">
       <div class="t-icon" style="background:linear-gradient(140deg,#7A3520,#C0693E);"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M3 9h18"/><path d="M8 2v4M16 2v4"/></svg></div>
       <svg class="p-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 17L17 7M8 7h9v9"/></svg>
-      <div class="p-label">This Week in Cleveland Quiz</div>
-      <div class="p-sub">A new trivia question every week, since 1796.</div>
-      <div class="p-count">52 weeks a year</div>
+      <div class="p-label">Cleveland History Quiz</div>
+      <div class="p-sub">Test your knowledge of when major events happened across our city.</div>
+      <div class="p-count">52 years, 1974–2025</div>
     </button>
 
     <button class="panel" onclick="navigate('learning',false)">
@@ -2027,13 +2098,17 @@ body.hero-view:not(.scrolled) .tb-cta .garden-mini-dots span.done{background:var
       <div class="p-count">Card · ACH · Securities</div>
     </button>
 
-    <button class="panel" onclick="navigate('givinghistory')">
-      <div class="t-icon" style="background:linear-gradient(140deg,#1A8DA9,var(--aqua));"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M3 3v18h18"/><path d="M7 14l4-4 3 3 5-6"/></svg></div>
+    <button class="panel" onclick="window.open('https://www.smallchange.co/projects/walbrook-junction','_blank')">
+      <div class="t-icon" style="background:linear-gradient(140deg,var(--forest),var(--moss));"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M3 21h18"/><path d="M5 21V7l5-4 5 4v14"/><path d="M9 9h1M9 13h1M9 17h1"/><path d="M15 21v-8h4v8"/></svg></div>
       <svg class="p-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 17L17 7M8 7h9v9"/></svg>
-      <div class="p-label">Your Giving History</div>
-      <div class="p-sub">Every gift and recurring donation on your account.</div>
-      <div class="p-count">Receipts · Tax summary</div>
+      <div class="p-label">Own Part of the Neighborhood</div>
+      <div class="p-sub">Become a micro-investor in real estate projects around Cleveland and build wealth for your family.</div>
+      <div class="p-count">Via Small Change ↗</div>
     </button>
+  </div>
+
+  <div style="text-align:center;margin-top:-4px;margin-bottom:14px;">
+    <button onclick="navigate('givinghistory')" style="background:none;border:none;padding:6px;font-size:13px;font-weight:700;color:var(--tcf-mid-green);cursor:pointer;text-decoration:underline;">Log in to see your giving history &rarr;</button>
   </div>
 
   <!-- impact stats strip -->
@@ -2659,37 +2734,51 @@ body.hero-view:not(.scrolled) .tb-cta .garden-mini-dots span.done{background:var
 <section class="view" id="view-calculator">
   <div class="page">
     <div class="page-head"><div class="eyebrow">Your Gift, Magnified</div><h1>Impact Calculator</h1></div>
-    <div class="card" style="background:#0b1e14;border-color:rgba(25,185,169,.2);padding:20px;">
-      <div style="color:#F3F1EF;">
-        <div style="display:flex;gap:8px;margin-bottom:18px;">
-          <button id="calcModeOnetime" onclick="calcSetMode('onetime')" style="flex:1;padding:9px;border-radius:9px;font-family:inherit;font-size:13px;font-weight:700;cursor:pointer;border:1.5px solid rgba(255,255,255,.12);background:var(--tcf-mid-green);color:#fff;">One-Time Gift</button>
-          <button id="calcModeMonthly" onclick="calcSetMode('monthly')" style="flex:1;padding:9px;border-radius:9px;font-family:inherit;font-size:13px;font-weight:700;cursor:pointer;border:1.5px solid rgba(255,255,255,.12);background:transparent;color:rgba(255,255,255,.5);">Monthly Gift</button>
-        </div>
-        <div style="margin-bottom:18px;">
-          <div style="font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.45);margin-bottom:10px;">Impact Area</div>
-          <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:7px;" id="calcAreaGrid"></div>
-        </div>
-        <div style="margin-bottom:16px;">
-          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;"><span style="font-size:13px;font-weight:600;color:rgba(255,255,255,.7);" id="calcGiftLabel">Gift Amount</span><span style="font-size:16px;font-weight:700;color:#19B9A9;" id="calcGiftDisplay">$500</span></div>
-          <input type="range" id="calcGiftSlider" min="25" max="10000" step="25" value="500" oninput="calcOnGift(this.value)" style="-webkit-appearance:none;appearance:none;width:100%;height:4px;border-radius:2px;background:rgba(255,255,255,.15);outline:none;cursor:pointer;">
-          <div style="display:flex;justify-content:space-between;font-size:10px;color:rgba(255,255,255,.3);margin-top:4px;"><span>$25</span><span>$10,000</span></div>
-        </div>
-        <div style="margin-bottom:16px;">
-          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;"><span style="font-size:13px;font-weight:600;color:rgba(255,255,255,.7);">Years of Growth</span><span style="font-size:16px;font-weight:700;color:#19B9A9;" id="calcYearsDisplay">10 years</span></div>
-          <input type="range" id="calcYearsSlider" min="1" max="25" step="1" value="10" oninput="calcOnYears(this.value)" style="-webkit-appearance:none;appearance:none;width:100%;height:4px;border-radius:2px;background:rgba(255,255,255,.15);outline:none;cursor:pointer;">
-        </div>
-        <div style="margin-bottom:6px;">
-          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;"><span style="font-size:13px;font-weight:600;color:rgba(255,255,255,.7);">Annual Growth Rate</span><span style="font-size:16px;font-weight:700;color:#19B9A9;" id="calcRateDisplay">6%</span></div>
-          <input type="range" id="calcRateSlider" min="1" max="12" step="0.5" value="6" oninput="calcOnRate(this.value)" style="-webkit-appearance:none;appearance:none;width:100%;height:4px;border-radius:2px;background:rgba(255,255,255,.15);outline:none;cursor:pointer;">
-        </div>
+
+    <!-- STEP 1: Grow your gift -->
+    <div class="card calc-panel">
+      <div class="calc-step-label">Step 1 · Grow Your Gift</div>
+      <div class="calc-mode-toggle">
+        <button id="calcModeOnetime" class="calc-mode-btn active" onclick="calcSetMode('onetime')">One-Time Gift</button>
+        <button id="calcModeMonthly" class="calc-mode-btn" onclick="calcSetMode('monthly')">Monthly Gift</button>
+      </div>
+      <div class="calc-field">
+        <div class="calc-field-head"><span class="calc-field-label" id="calcGiftLabel">Gift Amount</span><span class="calc-field-value" id="calcGiftDisplay">$500</span></div>
+        <input type="range" class="calc-slider" id="calcGiftSlider" min="25" max="10000" step="25" value="500" oninput="calcOnGift(this.value)">
+        <div class="calc-field-range"><span>$25</span><span>$10,000</span></div>
+      </div>
+      <div class="calc-field">
+        <div class="calc-field-head"><span class="calc-field-label">Years of Growth</span><span class="calc-field-value" id="calcYearsDisplay">10 years</span></div>
+        <input type="range" class="calc-slider" id="calcYearsSlider" min="1" max="25" step="1" value="10" oninput="calcOnYears(this.value)">
+      </div>
+      <div class="calc-field">
+        <div class="calc-field-head"><span class="calc-field-label">Annual Growth Rate</span><span class="calc-field-value" id="calcRateDisplay">6%</span></div>
+        <input type="range" class="calc-slider" id="calcRateSlider" min="1" max="12" step="0.5" value="6" oninput="calcOnRate(this.value)">
       </div>
     </div>
-    <div id="calcResultCards" style="display:flex;flex-direction:column;gap:10px;margin-bottom:14px;"></div>
-    <div class="card" style="background:#0b1e14;border-color:rgba(25,185,169,.2);padding:20px;">
-      <div style="font-size:13px;font-weight:700;color:rgba(255,255,255,.8);margin-bottom:14px;">Impact Growth Over Time</div>
+
+    <div id="calcMoneyCards" class="calc-money-cards"></div>
+
+    <div class="card calc-panel">
+      <div class="calc-chart-label">Your Gift's Growth Over Time</div>
       <div style="position:relative;height:160px;"><canvas id="mobileCalcChart" style="display:block;width:100%;height:160px;"></canvas></div>
     </div>
-    <div class="card" style="background:rgba(238,115,49,.06);border-color:rgba(238,115,49,.2);"><p style="font-size:14px;color:var(--ink-soft);line-height:1.6;" id="calcExplanation"></p></div>
+
+    <!-- STEP 2: Choose your impact area -->
+    <div class="calc-step2-head">
+      <div class="calc-step2-eyebrow">Step 2</div>
+      <h2 style="font-size:19px;margin:0 0 4px;">Choose Your Impact Area</h2>
+      <p class="lede" style="margin:0;">See what this gift could fund in Cleveland, today and over time.</p>
+    </div>
+
+    <div class="card calc-panel">
+      <div class="calc-area-label">Impact Area</div>
+      <div class="calc-area-grid" id="calcAreaGrid"></div>
+    </div>
+
+    <div id="calcImpactCards" class="calc-money-cards"></div>
+
+    <div class="card calc-note"><p id="calcExplanation"></p></div>
     <button class="btn btn-accent btn-block" onclick="navigate('openfund')" style="margin-top:4px;">Open a Fund to Make It Real →</button>
   </div>
 </section>
@@ -2819,37 +2908,60 @@ body.hero-view:not(.scrolled) .tb-cta .garden-mini-dots span.done{background:var
   </div>
 </div>
 
-<!-- =================== THIS WEEK IN CLEVELAND QUIZ =================== -->
+<!-- =================== CLEVELAND HISTORY QUIZ =================== -->
 <section class="view" id="view-history">
   <div class="page">
     <div class="page-head">
-      <div class="eyebrow">A Weekly Quiz</div>
-      <h1>This Week in Cleveland Quiz</h1>
-      <p class="lede">One question a week, all year long. Guess what happened, then see how your score stacks up.</p>
+      <div class="eyebrow">A Cleveland Trivia Challenge</div>
+      <h1>Cleveland History Quiz</h1>
+      <p class="lede">Test your knowledge of when major events happened across our city — one year at a time, 1974 to today.</p>
+    </div>
+
+    <div class="hq-give-banner">
+      <p>We&rsquo;ve helped build Cleveland for over the last 100 years. You can be part of building it for the next 100 &mdash; give today.</p>
+      <button class="btn btn-accent" onclick="navigate('openfund')">Give Today</button>
     </div>
 
     <div class="hw-hero">
       <div class="hw-week-label">Week Of</div>
       <div class="hw-week-range" id="hwRange">Loading&hellip;</div>
+      <div class="hw-week-year" id="hwYearLine"></div>
       <div class="hw-week-count" id="hwCount"></div>
       <div class="hw-score-row">
         <div class="hw-score-pill"><span id="hwScoreCorrect">0</span>/<span id="hwScoreTotal">52</span> correct</div>
         <div class="hw-score-pill hw-score-pill-ghost"><span id="hwScoreAnswered">0</span> of 52 played</div>
       </div>
       <div class="hw-nav">
-        <button onclick="hwStep(-1)">&larr; Previous week</button>
+        <button onclick="hwStep(-1)">&larr; Previous year</button>
         <button onclick="hwSurprise()">Surprise me</button>
-        <button onclick="hwStep(1)">Next week &rarr;</button>
+        <button onclick="hwStep(1)">Next year &rarr;</button>
       </div>
     </div>
 
     <div id="hwCardsWrap"></div>
 
-    <button class="btn btn-ghost btn-block" onclick="openShareModal({subject:'This Week in Cleveland Quiz', text:'Think you know Cleveland history? Take this week\\'s quiz question on the Giving Portal:'})">Share This Week's Quiz</button>
-    <button class="alert-toggle" id="hwAlertBtn" onclick="toggleAlert('history', this)">
-      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 8a6 6 0 1112 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 003.4 0"/></svg>
-      <span id="hwAlertLabel">Get notified each week</span>
-    </button>
+    <div class="hw-share-row">
+      <button class="btn btn-primary" onclick="hqShareScore()">Share My Score</button>
+      <button class="btn btn-ghost" onclick="hqShareQuiz()">Share This Quiz</button>
+    </div>
+
+    <div class="hw-alert-block">
+      <button class="alert-toggle" id="hwAlertBtn" onclick="toggleAlert('history', this)">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 8a6 6 0 1112 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 003.4 0"/></svg>
+        <span id="hwAlertLabel">Get weekly quiz alerts</span>
+      </button>
+      <p class="hw-alert-sub">Receive weekly notifications of new questions to test and compare your city knowledge.</p>
+    </div>
+
+    <div class="hq-leaderboard">
+      <div class="hq-lb-head"><div class="hq-lb-title">Leaderboard</div></div>
+      <div class="hq-lb-sub">Ranked among players who&rsquo;ve answered at least 5 questions.</div>
+      <div class="hq-lb-toggle">
+        <button id="hqLbSortAccuracy" class="active" onclick="hqSetLeaderboardSort('accuracy')">Highest Accuracy</button>
+        <button id="hqLbSortScore" onclick="hqSetLeaderboardSort('score')">Most Correct</button>
+      </div>
+      <div id="hqLeaderboardList"></div>
+    </div>
   </div>
 </section>
 
@@ -4102,145 +4214,146 @@ function confirmGive(){
 }
 
 /* ============================================================
-   THIS WEEK IN CLEVELAND QUIZ
+   CLEVELAND HISTORY QUIZ
    ============================================================ */
-const HW_QUIZ = [
-  {wk:0, y:1914, cat:'foundation', t:'A Community\'s Savings Account Is Born', d:'Cleveland Trust Company\'s directors approved the Resolution and Declaration of Trust that created the Cleveland Foundation — the world\'s first community foundation.', src:'Cleveland Foundation Centennial Timeline', options:['The Cavaliers Draft LeBron James', 'A Community\'s Savings Account Is Born', 'Mail Comes to the Door', 'The Foundation\'s First Bequest'], correct:1},
-  {wk:1, y:1870, cat:'industry', t:'Standard Oil Is Founded', d:'John D. Rockefeller and his partners incorporated the Standard Oil Company in Cleveland, launching what would become one of the most powerful companies in American history.', src:'Teaching Cleveland Digital', options:['Sherwin-Williams Is Chartered', 'Standard Oil Is Founded', 'The Hollenden Hotel Opens', 'The Last Streetcar Runs'], correct:1},
-  {wk:2, y:1842, cat:'culture', t:'The Plain Dealer Begins', d:'Cleveland\'s long-running daily newspaper published its very first edition.', src:'Teaching Cleveland Digital', options:['Cleveland\'s First Play', 'Cleveland Athletic Club Forms', 'The Plain Dealer Begins', 'The Barons Play Their Last Game at the Arena'], correct:2},
-  {wk:3, y:1954, cat:'industry', t:'The Last Streetcar Runs', d:'Cleveland\'s streetcars made their final run through downtown, closing out an era of rail travel on the city\'s streets.', src:'Teaching Cleveland Digital', options:['Carl Stokes Makes History', 'The Last Streetcar Runs', 'Public Square Lights Up', 'The First Electric Streetcar'], correct:1},
-  {wk:4, y:1870, cat:'industry', t:'Sherwin-Williams Is Chartered', d:'The Sherwin-Williams Company was created in Cleveland, eventually growing into a worldwide paint and coatings giant headquartered downtown to this day.', src:'Teaching Cleveland Digital', options:['The Cavaliers Win It All', 'Cleveland Clinic Is Chartered', 'Public Square Lights Up', 'Sherwin-Williams Is Chartered'], correct:3},
-  {wk:5, y:1921, cat:'industry', t:'Cleveland Clinic Is Chartered', d:'The Cleveland Clinic Foundation was registered, planting the seed for what would grow into one of the world\'s leading medical centers.', src:'Cleveland Clinic', options:['Cleveland Clinic Is Chartered', 'Cleveland Is Founded', 'Mail Comes to the Door', 'The Canal Reaches Cleveland'], correct:0},
-  {wk:6, y:1861, cat:'civic', t:'Lincoln Comes Through Cleveland', d:'President-elect Abraham Lincoln visited Cleveland on his roundabout train journey to his own inauguration in Washington.', src:'Encyclopedia of Cleveland History', options:['Carter and Reagan Debate in Cleveland', 'Cleveland Renumbers Itself', 'Lincoln Comes Through Cleveland', 'The First Electric Streetcar'], correct:2},
-  {wk:7, y:1886, cat:'culture', t:'Cleveland Athletic Club Forms', d:'A group of Clevelanders founded the Cleveland Athletic Club, a fixture of downtown social and sporting life for generations.', src:'Teaching Cleveland Digital', options:['Cleveland\'s First Play', 'Cleveland Athletic Club Forms', 'Cleveland\'s Oldest Labor Paper', 'The Collinwood School Fire'], correct:1},
-  {wk:8, y:1908, cat:'disaster', t:'The Collinwood School Fire', d:'A fire swept through Lake View School in the Collinwood neighborhood, killing 172 children and two teachers — a tragedy that reshaped school building and fire-safety codes nationwide.', src:'Encyclopedia of Cleveland History', options:['Cleveland and Ohio City Merge', 'The Cleveland Clinic Fire', 'The Collinwood School Fire', 'The East Ohio Gas Explosion'], correct:2},
-  {wk:9, y:1965, cat:'culture', t:'WVIZ Signs On', d:'Cleveland\'s educational public television station began broadcasting.', src:'Teaching Cleveland Digital', options:['Balloonfest \'86', 'WVIZ Signs On', 'The Cleveland Orchestra\'s First Note', 'The Hollenden Hotel Opens'], correct:1},
-  {wk:10, y:1854, cat:'culture', t:'The Cleveland Leader Launches', d:'A new daily newspaper, the Cleveland Leader, began publishing in the young, fast-growing city.', src:'Encyclopedia of Cleveland History', options:['St. Ignatius College Opens', 'Cleveland School of Art Founded', 'Tower City Center Opens', 'The Cleveland Leader Launches'], correct:3},
-  {wk:11, y:1973, cat:'sports', t:'The Barons Play Their Last Game at the Arena', d:'Cleveland\'s Barons hockey club skated its final game at the old Cleveland Arena.', src:'Teaching Cleveland Digital', options:['League Park Opens', 'The Barons Play Their Last Game at the Arena', 'The Browns Come Home', 'Cleveland Defaults'], correct:1},
-  {wk:12, y:1990, cat:'landmark', t:'Tower City Center Opens', d:'The Avenue at Tower City Center formally opened at Public Square, reviving the old Union Terminal complex as a downtown shopping and transit hub.', src:'Teaching Cleveland Digital', options:['Tower City Center Opens', 'The Rock Hall\'s Grand Opening', 'The Perry Monument Is Dedicated', 'The Hollenden Hotel Opens'], correct:0},
-  {wk:13, y:1891, cat:'culture', t:'Cleveland\'s Oldest Labor Paper', d:'The Cleveland Citizen, billed for generations as the nation\'s oldest labor newspaper, published its first issue.', src:'Encyclopedia of Cleveland History', options:['Cleveland Clinic Is Chartered', 'The Rock Hall\'s Grand Opening', 'Cleveland\'s Oldest Labor Paper', 'The Plain Dealer Begins'], correct:2},
-  {wk:14, y:1914, cat:'foundation', t:'The Foundation\'s First Bequest', d:'Mary Coit Sanford signed a will establishing five charitable funds at the month-old Cleveland Foundation, becoming its very first bequest donor.', src:'Cleveland Foundation Centennial Timeline', options:['The Foundation\'s First Bequest', 'Public Square Lights Up', 'A Community\'s Savings Account Is Born', 'The Last Streetcar Runs'], correct:0},
-  {wk:15, y:1938, cat:'culture', t:'Superman Goes on Sale', d:'Action Comics No. 1 hit newsstands, introducing Superman — dreamed up by two Glenville High School students, Jerry Siegel and Joe Shuster — and launching the entire superhero genre.', src:'Wikipedia', options:['Cleveland Athletic Club Forms', 'The Plain Dealer Begins', 'Superman Goes on Sale', 'Cleveland Is Founded'], correct:2},
-  {wk:16, y:1879, cat:'industry', t:'Public Square Lights Up', d:'Inventor Charles F. Brush installed an early arc light on Public Square, a forerunner of the modern electric streetlight.', src:'Teaching Cleveland Digital', options:['Public Square Lights Up', 'Cleveland Renumbers Itself', 'The First Electric Streetcar', 'The Last Streetcar Runs'], correct:0},
-  {wk:17, y:1797, cat:'founding', t:'Cleveland\'s First Permanent Settler Arrives', d:'Lorenzo Carter reached the original townsite and built a log cabin on the east bank of the Cuyahoga River that doubled as the settlement\'s jail and inn.', src:'Teaching Cleveland Digital', options:['Cleveland and Ohio City Merge', 'Cleveland\'s First Permanent Settler Arrives', 'Cleveland Is Founded', 'The Browns Are NFL Champions'], correct:1},
-  {wk:18, y:1891, cat:'sports', t:'League Park Opens', d:'League Park, home field for generations of Cleveland\'s early professional baseball teams, opened its gates for the first time.', src:'Teaching Cleveland Digital', options:['Farewell to Municipal Stadium', 'Cleveland Is Founded', 'The Browns Come Home', 'League Park Opens'], correct:3},
-  {wk:19, y:1929, cat:'disaster', t:'The Cleveland Clinic Fire', d:'A fire and toxic gas release swept through the Cleveland Clinic, killing scores of patients and staff in one of the deadliest disasters in the city\'s history.', src:'Encyclopedia of Cleveland History', options:['The Cleveland Clinic Fire', 'The Rock Hall\'s Grand Opening', 'The East Ohio Gas Explosion', 'The Collinwood School Fire'], correct:0},
-  {wk:20, y:1820, cat:'culture', t:'Cleveland\'s First Play', d:'The young community\'s very first theatrical performance was staged.', src:'Encyclopedia of Cleveland History', options:['The Plain Dealer Begins', 'Cleveland Athletic Club Forms', 'Cleveland\'s First Play', 'The Collinwood School Fire'], correct:2},
-  {wk:21, y:1885, cat:'landmark', t:'The Hollenden Hotel Opens', d:'Downtown Cleveland\'s grand Hollenden Hotel opened its doors, soon becoming the city\'s premier gathering place for decades of politicians and celebrities.', src:'Encyclopedia of Cleveland History', options:['Farewell to Municipal Stadium', 'West Side Market\'s Grand Dedication', 'Trinity Cathedral Is Consecrated', 'The Hollenden Hotel Opens'], correct:3},
-  {wk:22, y:1854, cat:'founding', t:'Cleveland and Ohio City Merge', d:'Longtime rivals Cleveland and Ohio City, separated by the Cuyahoga River and a literal ‘Bridge War,’ formally merged into one city.', src:'Encyclopedia of Cleveland History', options:['Cleveland and Ohio City Merge', 'Cleveland\'s First Permanent Settler Arrives', 'Cleveland Is Founded', 'Cleveland Athletic Club Forms'], correct:0},
-  {wk:23, y:1982, cat:'culture', t:'The Cleveland Press Prints Its Last Edition', d:'After more than a century, the afternoon Cleveland Press published its final issue.', src:'Encyclopedia of Cleveland History', options:['The Canal Reaches Cleveland', 'Cleveland\'s First Play', 'Balloonfest \'86', 'The Cleveland Press Prints Its Last Edition'], correct:3},
-  {wk:24, y:2016, cat:'sports', t:'The Cavaliers Win It All', d:'Down 3–1 in the series, LeBron James and the Cavaliers stunned the record-setting Golden State Warriors in Game 7 to bring Cleveland its first major sports championship since 1964.', src:'Wikipedia / AP', options:['Jesse Owens Strikes Gold in Berlin', 'The Cavaliers Win It All', 'The Indians Win It All', 'WVIZ Signs On'], correct:1},
-  {wk:25, y:2003, cat:'sports', t:'The Cavaliers Draft LeBron James', d:'With the very first pick of the NBA draft, the hometown Cavaliers selected Akron\'s own LeBron James, setting up two decades of history between the King and his home state.', src:'Wikipedia', options:['The Cavaliers Win It All', 'The Cleveland Leader Launches', 'The Guardians Era Begins', 'The Cavaliers Draft LeBron James'], correct:3},
-  {wk:26, y:1827, cat:'industry', t:'The Canal Reaches Cleveland', d:'The Ohio and Erie Canal opened between Akron and Cleveland, linking the young lakefront town to national trade routes and setting off decades of growth.', src:'Encyclopedia of Cleveland History', options:['A Community\'s Savings Account Is Born', 'The Last Streetcar Runs', 'Mail Comes to the Door', 'The Canal Reaches Cleveland'], correct:3},
-  {wk:27, y:1863, cat:'industry', t:'Mail Comes to the Door', d:'Cleveland began the first home delivery of mail in the community\'s history.', src:'Encyclopedia of Cleveland History', options:['Standard Oil Is Founded', 'Mail Comes to the Door', 'The Canal Reaches Cleveland', 'The Cavaliers Draft LeBron James'], correct:1},
-  {wk:28, y:1796, cat:'founding', t:'Cleveland Is Founded', d:'General Moses Cleaveland and a survey party from the Connecticut Land Company arrived at the mouth of the Cuyahoga River, founding the settlement that would grow into Cleveland.', src:'Wikipedia / Encyclopedia of Cleveland History', options:['Cleveland\'s First Permanent Settler Arrives', 'Cleveland and Ohio City Merge', 'Cleveland Is Founded', 'The Last Streetcar Runs'], correct:2},
-  {wk:29, y:2021, cat:'sports', t:'Indians Announce a New Name: Guardians', d:'The Cleveland Indians announced they would become the Cleveland Guardians beginning in 2022, naming themselves after the ‘Guardians of Traffic’ statues on the Hope Memorial Bridge.', src:'MLB.com / ESPN', options:['Farewell to Municipal Stadium', 'The Cavaliers Win It All', 'Cleveland\'s First Newspaper', 'Indians Announce a New Name: Guardians'], correct:3},
-  {wk:30, y:1936, cat:'sports', t:'Jesse Owens Strikes Gold in Berlin', d:'East Tech and Ohio State standout Jesse Owens won the first of four gold medals at the Berlin Olympics, undercutting Nazi racial propaganda on the world\'s biggest stage.', src:'Olympic history', options:['The Guardians Era Begins', 'The Cleveland Clinic Fire', 'The Barons Play Their Last Game at the Arena', 'Jesse Owens Strikes Gold in Berlin'], correct:3},
-  {wk:31, y:1818, cat:'culture', t:'Cleveland\'s First Newspaper', d:'The Cleaveland Gazette and Commercial Register, the settlement\'s first newspaper, was published.', src:'Encyclopedia of Cleveland History', options:['Cleveland\'s First Play', 'Cleveland\'s First Newspaper', 'The Cleveland Press Prints Its Last Edition', 'Jesse Owens Strikes Gold in Berlin'], correct:1},
-  {wk:32, y:1884, cat:'industry', t:'The First Electric Streetcar', d:'Cleveland\'s first electric streetcar made its inaugural run through the city.', src:'Encyclopedia of Cleveland History', options:['The First Electric Streetcar', 'Superman Goes on Sale', 'The Canal Reaches Cleveland', 'The Last Streetcar Runs'], correct:0},
-  {wk:33, y:1999, cat:'sports', t:'The Browns Come Home', d:'A rebuilt Cleveland Browns Stadium opened its gates as the expansion Browns returned to the NFL after a three-year absence.', src:'Teaching Cleveland Digital', options:['Cleveland Clinic Is Chartered', 'The Browns Come Home', 'The Cavaliers Draft LeBron James', 'The Indians Win It All'], correct:1},
-  {wk:34, y:1995, cat:'culture', t:'The Rock Hall\'s Grand Opening', d:'The Rock and Roll Hall of Fame and Museum held its ribbon-cutting on Cleveland\'s lakefront, with a marathon all-star concert the next night at Municipal Stadium.', src:'Rock & Roll Hall of Fame', options:['The Hollenden Hotel Opens', 'Cleveland School of Art Founded', 'The Rock Hall\'s Grand Opening', 'Superman Goes on Sale'], correct:2},
-  {wk:35, y:1886, cat:'culture', t:'St. Ignatius College Opens', d:'St. Ignatius College, the Jesuit school that would grow alongside John Carroll University, opened its doors on the near West Side.', src:'Encyclopedia of Cleveland History', options:['Superman Goes on Sale', 'St. Ignatius College Opens', 'Cleveland\'s First Newspaper', 'Sherwin-Williams Is Chartered'], correct:1},
-  {wk:36, y:1860, cat:'landmark', t:'The Perry Monument Is Dedicated', d:'A monument honoring Commodore Oliver Hazard Perry, hero of the Battle of Lake Erie, was dedicated on Public Square.', src:'Encyclopedia of Cleveland History', options:['The Perry Monument Is Dedicated', 'The Hollenden Hotel Opens', 'A Community\'s Savings Account Is Born', 'Tower City Center Opens'], correct:0},
-  {wk:37, y:1907, cat:'landmark', t:'Trinity Cathedral Is Consecrated', d:'Trinity Episcopal Cathedral was formally consecrated in Cleveland.', src:'Encyclopedia of Cleveland History', options:['The Perry Monument Is Dedicated', 'Trinity Cathedral Is Consecrated', 'West Side Market\'s Grand Dedication', 'St. Ignatius College Opens'], correct:1},
-  {wk:38, y:1986, cat:'culture', t:'Balloonfest \'86', d:'The United Way of Cleveland released nearly 1.5 million balloons over Public Square in a record-setting publicity stunt that turned into a legendary — and costly — cautionary tale.', src:'Wikipedia / Encyclopedia of Cleveland History', options:['Cleveland\'s Oldest Labor Paper', 'Carl Stokes Makes History', 'Balloonfest \'86', 'The Cleveland Leader Launches'], correct:2},
-  {wk:39, y:1993, cat:'sports', t:'Farewell to Municipal Stadium', d:'The Cleveland Indians played their final game at the cavernous old Municipal Stadium on the lakefront.', src:'Teaching Cleveland Digital', options:['The Browns Are NFL Champions', 'Farewell to Municipal Stadium', 'The Last Streetcar Runs', 'The Guardians Era Begins'], correct:1},
-  {wk:40, y:1948, cat:'sports', t:'The Indians Win It All', d:'Cleveland beat the Boston Braves to capture the World Series — a title the franchise wouldn\'t match again for the rest of the century.', src:'SABR / Wikipedia', options:['The Cavaliers Draft LeBron James', 'The Browns Are NFL Champions', 'The Indians Win It All', 'Tower City Center Opens'], correct:2},
-  {wk:41, y:1944, cat:'disaster', t:'The East Ohio Gas Explosion', d:'A liquefied natural gas tank failure triggered explosions and fires on the East Side, killing 130 people in one of Cleveland\'s worst disasters.', src:'Encyclopedia of Cleveland History', options:['Cleveland Clinic Is Chartered', 'The Collinwood School Fire', 'The Cleveland Clinic Fire', 'The East Ohio Gas Explosion'], correct:3},
-  {wk:42, y:1980, cat:'civic', t:'Carter and Reagan Debate in Cleveland', d:'The only presidential debate of the 1980 campaign, between incumbent Jimmy Carter and challenger Ronald Reagan, was held in Cleveland.', src:'Teaching Cleveland Digital', options:['Carter and Reagan Debate in Cleveland', 'Carl Stokes Makes History', 'Cleveland Renumbers Itself', 'A Community\'s Savings Account Is Born'], correct:0},
-  {wk:43, y:1912, cat:'landmark', t:'West Side Market\'s Grand Dedication', d:'Cleveland\'s ornate West Side Market held its official dedication ceremony in Ohio City, its clock tower already a neighborhood landmark.', src:'West Side Market', options:['Trinity Cathedral Is Consecrated', 'Tower City Center Opens', 'Cleveland Clinic Is Chartered', 'West Side Market\'s Grand Dedication'], correct:3},
-  {wk:44, y:1967, cat:'civic', t:'Carl Stokes Makes History', d:'Carl B. Stokes was elected mayor of Cleveland, becoming the first African American to lead a major American city.', src:'Teaching Cleveland Digital', options:['Carl Stokes Makes History', 'Lincoln Comes Through Cleveland', 'Cleveland\'s First Permanent Settler Arrives', 'Carter and Reagan Debate in Cleveland'], correct:0},
-  {wk:45, y:1882, cat:'culture', t:'Cleveland School of Art Founded', d:'The Cleveland School of Art — later the Cleveland Institute of Art — was established.', src:'Encyclopedia of Cleveland History', options:['St. Ignatius College Opens', 'Cleveland School of Art Founded', 'Balloonfest \'86', 'The Collinwood School Fire'], correct:1},
-  {wk:46, y:2021, cat:'sports', t:'The Guardians Era Begins', d:'The Cleveland Guardians officially launched at Progressive Field, closing the book on the Indians name after 106 years.', src:'MLB.com', options:['The Guardians Era Begins', 'The Cavaliers Draft LeBron James', 'Indians Announce a New Name: Guardians', 'Trinity Cathedral Is Consecrated'], correct:0},
-  {wk:47, y:1906, cat:'civic', t:'Cleveland Renumbers Itself', d:'The city standardized its street names and house numbers onto a single grid, replacing a confusing patchwork system left over from its village days.', src:'Encyclopedia of Cleveland History', options:['Cleveland Defaults', 'Carl Stokes Makes History', 'Cleveland\'s First Play', 'Cleveland Renumbers Itself'], correct:3},
-  {wk:48, y:1918, cat:'culture', t:'The Cleveland Orchestra\'s First Note', d:'The Cleveland Orchestra performed its very first concert, launching what would become one of the world\'s most acclaimed ensembles.', src:'Encyclopedia of Cleveland History', options:['The East Ohio Gas Explosion', 'Cleveland School of Art Founded', 'The Cleveland Orchestra\'s First Note', 'WVIZ Signs On'], correct:2},
-  {wk:49, y:1978, cat:'civic', t:'Cleveland Defaults', d:'Cleveland became the first major American city to default on its financial obligations since the Great Depression, a low point the city would spend the next decade climbing out of.', src:'Encyclopedia of Cleveland History', options:['Carter and Reagan Debate in Cleveland', 'Cleveland Defaults', 'Lincoln Comes Through Cleveland', 'A Community\'s Savings Account Is Born'], correct:1},
-  {wk:50, y:1964, cat:'culture', t:'Cleveland State University Is Established', d:'Cleveland State University was founded, expanding the city\'s roster of higher-education institutions.', src:'Encyclopedia of Cleveland History', options:['Cleveland Athletic Club Forms', 'Cleveland Is Founded', 'Cleveland State University Is Established', 'Cleveland School of Art Founded'], correct:2},
-  {wk:51, y:1964, cat:'sports', t:'The Browns Are NFL Champions', d:'Cleveland routed the Baltimore Colts 27–0 to win the NFL Championship — still the city\'s most recent NFL title, decades later.', src:'Wikipedia', options:['Jesse Owens Strikes Gold in Berlin', 'Mail Comes to the Door', 'The Browns Are NFL Champions', 'The Browns Come Home'], correct:2},
+const HIST_QUIZ = [
+  {idx:0, wk:0, y:1974, cat:'sports', diff:'Easy', q:'On June 4, 1974, a Cleveland Indians promotion at Municipal Stadium got so far out of hand that umpires forfeited the game to the Texas Rangers. What was the promotion?', options:['Free Fireworks Night', 'Ten Cent Beer Night', 'Nickel Hot Dog Night', 'Bat Day'], correct:1, reveal:'Roughly 25,000 people showed up for unlimited 10-cent beers. Fans streamed onto the field in the ninth inning with the game tied, and the Rangers and Indians ended up swinging bats side by side to protect each other. It remains one of the most infamous nights in American sports.'},
+  {idx:1, wk:1, y:1975, cat:'equity', diff:'Medium', q:'Frank Robinson made national history with the Cleveland Indians in April 1975. What did he become?', options:['The American League\'s first designated hitter', 'The first player-owner in MLB history', 'The first player to manage from the dugout in uniform', 'Major League Baseball\'s first Black manager'], correct:3, reveal:'Robinson was hired as player-manager and homered in his first at-bat on Opening Day at Municipal Stadium. Cleveland broke a color barrier in the manager\'s office 28 years after Larry Doby broke the American League\'s playing barrier — also in a Cleveland uniform.'},
+  {idx:2, wk:2, y:1976, cat:'sports', diff:'Medium', q:'The Cavaliers\' first playoff run in franchise history, capped by a seven-game series win over the Washington Bullets, is remembered by what nickname?', options:['The Miracle of Richfield', 'Believeland \'76', 'The Coliseum Comeback', 'The Bicentennial Run'], correct:0, reveal:'The Cavs played in Richfield, about 25 miles south of downtown, and fans rushed the floor after the clincher. Center Jim Chones broke his foot before the conference finals, and Cleveland lost to Boston — a “what if” fans argued about for decades.'},
+  {idx:3, wk:3, y:1977, cat:'politics', diff:'Medium', q:'In 1977 Cleveland elected a 31-year-old mayor — the youngest person to lead a major American city at the time — who was nicknamed “the Boy Mayor.” Who was he?', options:['Dennis Kucinich', 'Ralph Perk', 'George Voinovich', 'Michael R. White'], correct:0, reveal:'Kucinich refused to sell the city-owned electric utility, Muny Light, to private interests. That fight helped trigger the events of the following year — and he survived a recall election by fewer than 300 votes.'},
+  {idx:4, wk:4, y:1978, cat:'politics', diff:'Medium', q:'On December 15, 1978, Cleveland became the first major American city since the Great Depression to do what?', options:['File for federal bankruptcy protection', 'Have its budget taken over by the state', 'Dissolve its elected school board', 'Default on its financial obligations'], correct:3, reveal:'Note the wording — Cleveland defaulted, it did not declare bankruptcy. The city could not repay roughly $15 million in short-term notes. It took until 1987 to fully climb out, and the stigma shaped how outsiders talked about Cleveland for a generation.'},
+  {idx:5, wk:5, y:1979, cat:'equity', diff:'Medium', q:'On September 10, 1979, Cleveland public schools began what, under an order from U.S. District Judge Frank J. Battisti?', options:['Court-ordered crosstown busing to desegregate the schools', 'Year-round school calendars', 'Open enrollment across district lines', 'Mandatory school uniforms'], correct:0, reveal:'Battisti ruled in 1976 that the district had maintained unconstitutional segregation. Cleveland\'s first day of busing was tense but peaceful, partly because of a multi-year public education campaign funded by more than $1 million from the Cleveland Foundation, plus grassroots groups like WELCOME.'},
+  {idx:6, wk:6, y:1980, cat:'politics', diff:'Medium', q:'Cleveland hosted the only presidential debate of the 1980 campaign, held October 28 at Public Hall. Which two candidates faced off?', options:['Jimmy Carter and Ronald Reagan', 'Gerald Ford and Jimmy Carter', 'Ronald Reagan and Walter Mondale', 'George H.W. Bush and Michael Dukakis'], correct:0, reveal:'This is the debate where Reagan asked the country, “Are you better off than you were four years ago?” He won the election a week later. Cleveland\'s 1980 census also landed that year: the city had fallen to 573,822 people, down from a peak of nearly 915,000 in 1950.'},
+  {idx:7, wk:7, y:1981, cat:'sports', diff:'Medium', q:'On May 15, 1981, Indians pitcher Len Barker did something against the Toronto Blue Jays that has happened fewer than 25 times in MLB history. What was it?', options:['Threw a perfect game', 'Recorded an unassisted triple play', 'Hit for the cycle as a pitcher', 'Struck out 20 batters'], correct:0, reveal:'It was a cold, drizzly Friday night and only a few thousand fans were in the stands at Municipal Stadium to see 27 up, 27 down. Cleveland City Council also shrank from 33 members to 21 that year.'},
+  {idx:8, wk:8, y:1982, cat:'arts', diff:'Hard', q:'On June 17, 1982, what Cleveland institution published its final edition, leaving the Plain Dealer as the city\'s only major daily newspaper?', options:['The Cleveland Leader', 'The Cleveland Press', 'The Cleveland News', 'The Call & Post'], correct:1, reveal:'The Press had been a dominant civic voice since 1878, and under longtime editor Louis Seltzer it could make or break a politician. That same year the Cleveland Foundation made the country\'s first community-foundation program-related investment, buying the Bulkley complex to keep the Playhouse Square restoration alive.'},
+  {idx:9, wk:9, y:1983, cat:'sports', diff:'Hard', q:'Ted Stepien\'s three chaotic years owning the Cavaliers ended when brothers George and Gordon Gund bought the team in April 1983. Stepien\'s front-office decisions were so damaging that the NBA created a rule still named for him. What does the “Stepien Rule” prohibit?', options:['Signing players who have not finished high school', 'Relocating a franchise without league approval', 'Trading away first-round draft picks in consecutive years', 'Owners serving as their own head coach'], correct:2, reveal:'Stepien burned through six coaches, lost roughly $15 million, floated renaming the team the “Ohio Cavaliers,” and traded away future picks. The Gunds paid $20 million and kept the team in Northeast Ohio.'},
+  {idx:10, wk:10, y:1984, cat:'equity', diff:'Medium', q:'In 1984 Steven A. Minter became chief executive of the Cleveland Foundation. What made his appointment a national first?', options:['He was the first African American to lead a major community foundation in the United States', 'He was the first leader recruited from outside Ohio', 'He was the first former mayor to lead a foundation', 'He was the youngest person ever to lead a major foundation'], correct:0, reveal:'Minter, a Cleveland-area native, had served as the number-two official at the U.S. Department of Education under President Carter. He led the foundation until 2003, through the era that produced Gateway, the Rock Hall, and the neighborhood development system the city still relies on.'},
+  {idx:11, wk:11, y:1985, cat:'sports', diff:'Medium', q:'Quarterback Bernie Kosar, who grew up in Boardman rooting for the Browns, engineered an unusual path to Cleveland in 1985. How did he get there?', options:['He was acquired in a trade for two first-round picks', 'He graduated early and entered the NFL supplemental draft, where the Browns held the top pick', 'He refused to report to the team that drafted him', 'He signed with the Browns as an undrafted free agent'], correct:1, reveal:'Kosar took 18 credit hours in one spring semester at Miami specifically so he could graduate and enter the supplemental draft. The Browns traded up to the number one spot to take him.'},
+  {idx:12, wk:12, y:1986, cat:'arts', diff:'Easy', q:'On September 27, 1986, Cleveland set a world record with a United Way fundraiser that went spectacularly sideways. What was released over Public Square?', options:['About 1.5 million balloons', '50,000 paper lanterns', 'A million rose petals', '10,000 doves'], correct:0, reveal:'Balloonfest \'86 looked glorious for about 30 seconds. Then weather pushed the balloons back down over the city and Lake Erie — grounding a runway at Burke Lakefront Airport and hampering a Coast Guard search for two missing boaters. 1986 was also the year Cleveland was chosen as the site of the Rock and Roll Hall of Fame.'},
+  {idx:13, wk:13, y:1987, cat:'sports', diff:'Easy', q:'In the January 1987 AFC Championship Game at Municipal Stadium, which quarterback led a 98-yard march in the closing minutes to tie the game and send it to overtime — a sequence Clevelanders simply call “The Drive”?', options:['Jim Kelly', 'John Elway', 'Boomer Esiason', 'Dan Marino'], correct:1, reveal:'Denver won in overtime and went to the Super Bowl. The next January, Earnest Byner fumbled at the Denver goal line in another AFC title game — “The Fumble.” On a brighter note, 1987 was also the year Cleveland finally emerged from default.'},
+  {idx:14, wk:14, y:1988, cat:'arts', diff:'Medium', q:'Which now-legendary band was formed in Cleveland in 1988 by a studio assistant and janitor who recorded his first demos for free during off-hours?', options:['The Black Keys', 'Nine Inch Nails', 'Devo', 'Filter'], correct:1, reveal:'Trent Reznor was working at Right Track Studio when owner Bart Koster let him use the room between bookings. Reznor played nearly everything himself. *Pretty Hate Machine* followed in 1989, and NIN became one of the most influential acts of the era.'},
+  {idx:15, wk:15, y:1989, cat:'politics', diff:'Medium', q:'In 1989, Cleveland voters elected Michael R. White in a bruising race against City Council President George Forbes. What was significant about White\'s tenure?', options:['He became Cleveland\'s second African American mayor and served three terms, the longest run to that point', 'He was the first mayor to be recalled', 'He was the first mayor who had never held elected office', 'He was the first Republican elected mayor since 1941'], correct:0, reveal:'White was a state senator from Glenville when he won. Over 1990–2002 he presided over Gateway, the Rock Hall, the Browns\' departure and replacement, and a downtown building boom. Carl Stokes, elected in 1967, had been the first.'},
+  {idx:16, wk:16, y:1990, cat:'citybuilding', diff:'Medium', q:'What downtown project formally opened on March 29, 1990, converting the old rail concourse beneath Terminal Tower into a shopping and entertainment center?', options:['The Flats East Bank', 'Tower City Center', 'The Galleria at Erieview', 'The Avenue at Playhouse Square'], correct:1, reveal:'Tower City reopened Public Square as a destination and gave the Rapid a genuine downtown hub. Also in 1990, Cuyahoga County voters approved a “sin tax” on cigarettes and alcohol to finance the Gateway complex.'},
+  {idx:17, wk:17, y:1991, cat:'citybuilding', diff:'Medium', q:'In 1991 a new skyscraper topped off at roughly 948 feet, becoming the tallest building in Ohio — a title it still holds. What is it?', options:['Terminal Tower', 'The Sherwin-Williams headquarters tower', '200 Public Square (the BP Building)', 'Key Tower'], correct:3, reveal:'Designed by César Pelli and originally called Society Center, it was briefly the tallest building between New York and Chicago. Terminal Tower had held the Ohio crown since 1930.'},
+  {idx:18, wk:18, y:1992, cat:'arts', diff:'Hard', q:'In 1992 the Cleveland Orchestra achieved a first for any American orchestra. What was it?', options:['It became the first American orchestra to establish a residency at Austria\'s Salzburg Festival', 'It was the first to tour China', 'It was the first to broadcast a full season live on television', 'It was the first to record a complete Beethoven cycle digitally'], correct:0, reveal:'Under music director Christoph von Dohányi, the orchestra performed regularly at Salzburg from 1990 to 1996 — evidence for the claim that the city punches far above its weight culturally. (The Mark Price–Brad Daugherty–Larry Nance Cavs also won 57 games and reached the Eastern Conference Finals that year.)'},
+  {idx:19, wk:19, y:1993, cat:'sports', diff:'Easy', q:'On October 3, 1993, the Indians played their final game in what ballpark?', options:['League Park', 'Jacobs Field', 'Cleveland Municipal Stadium', 'Gund Arena'], correct:2, reveal:'The cavernous lakefront stadium, nicknamed “the Mistake by the Lake,” had hosted the Indians since the 1930s and could seat more than 70,000. The Browns played there six more seasons. 1993 also brought tragedy: pitchers Steve Olin and Tim Crews died in a spring training boating accident.'},
+  {idx:20, wk:20, y:1994, cat:'sports', diff:'Medium', q:'What opened on April 4, 1994, as the first half of the Gateway complex funded by that countywide sin tax?', options:['The Rock and Roll Hall of Fame', 'The Great Lakes Science Center', 'Jacobs Field', 'Gund Arena'], correct:2, reveal:'President Bill Clinton threw out the first pitch. The ballpark — now Progressive Field — triggered a sellout streak of 455 straight games. Gund Arena, now Rocket Arena, opened that October and brought the Cavs back downtown from Richfield.'},
+  {idx:21, wk:21, y:1995, cat:'arts', diff:'Medium', q:'The Rock and Roll Hall of Fame and Museum opened on Cleveland\'s lakefront in September 1995. Who designed its glass-pyramid building?', options:['Frank Gehry', 'Zaha Hadid', 'I.M. Pei', 'Philip Johnson'], correct:2, reveal:'Cleveland beat out Memphis, New York, and others for the Hall, leaning on DJ Alan Freed\'s role in popularizing the phrase “rock and roll” and a national call-in poll. 1995 was double-edged: the Indians reached their first World Series since 1954, and in November Art Modell announced he was moving the Browns to Baltimore.'},
+  {idx:22, wk:22, y:1996, cat:'arts', diff:'Medium', q:'Cleveland rap group Bone Thugs-n-Harmony won a Grammy in 1996 for which song?', options:['“1st of tha Month”', '“Thuggish Ruggish Bone”', '“Tha Crossroads”', '“Notorious Thugs”'], correct:2, reveal:'The tribute to Eazy-E spent eight weeks at number one on the Billboard Hot 100. The group came out of Cleveland\'s East Side. 1996 was also Cleveland\'s bicentennial — and the year the NFL deal was struck that let Cleveland keep the Browns name, colors, and records.'},
+  {idx:23, wk:23, y:1997, cat:'sports', diff:'Medium', q:'The Indians won the American League pennant in 1997 but lost Game 7 of the World Series in extra innings. To whom?', options:['Florida Marlins', 'Arizona Diamondbacks', 'Atlanta Braves', 'New York Yankees'], correct:0, reveal:'Cleveland was three outs from a title in the ninth inning of Game 7 in Miami. The Marlins tied it, then won in the 11th. It is still, for a lot of Clevelanders, the one that hurts most.'},
+  {idx:24, wk:24, y:1998, cat:'equity', diff:'Medium', q:'In 1998, Stephanie Tubbs Jones won election to Congress from Ohio\'s 11th District, succeeding the retiring Louis Stokes. What first did she achieve?', options:['First sitting judge elected to Congress from Ohio', 'First Cleveland native elected to Congress', 'First woman to represent Cuyahoga County', 'First African American woman elected to Congress from Ohio'], correct:3, reveal:'A Glenville native and Collinwood High and Case Western Reserve graduate, Tubbs Jones had already been the first African American to serve as Cuyahoga County Prosecutor. She served in Congress until her death in 2008.'},
+  {idx:25, wk:25, y:1999, cat:'sports', diff:'Easy', q:'The expansion Browns returned to the field in September 1999. Where had the original franchise relocated after the 1995 season?', options:['Indianapolis', 'Houston', 'St. Louis', 'Baltimore'], correct:3, reveal:'The 1996 settlement was unprecedented: the players and owner went to Baltimore as the Ravens, but the Browns name, colors, and record book legally stayed in Cleveland, held in trust until a new team took the field. The return opener was a 43–0 loss to the Steelers.'},
+  {idx:26, wk:26, y:2000, cat:'arts', diff:'Medium', q:'In January 2000, what Cleveland landmark reopened after a two-year, $36 million restoration and expansion?', options:['The Palace Theatre', 'The Cleveland Museum of Art', 'The main branch of Cleveland Public Library', 'Severance Hall'], correct:3, reveal:'Severance, home of the Cleveland Orchestra since 1931, got its Art Deco detailing restored, a new stage shell, and modernized backstage space. Critics promptly re-crowned it one of the most beautiful concert halls in America.'},
+  {idx:27, wk:27, y:2001, cat:'politics', diff:'Medium', q:'Cleveland voters elected Jane Campbell in 2001. What was her distinction?', options:['First mayor to serve only one term', 'First mayor from the West Side in a century', 'First mayor previously elected to county office', 'First woman elected mayor of Cleveland'], correct:3, reveal:'Campbell had been a state representative and a Cuyahoga County commissioner. She took office in January 2002 and served one term before losing to Frank Jackson in 2005.'},
+  {idx:28, wk:28, y:2002, cat:'sports', diff:'Medium', q:'The 2002 Browns made the playoffs for the first time since the franchise returned in 1999, then lost a wild card game in which they blew a big second-half lead. To whom did they lose?', options:['Cincinnati Bengals', 'Pittsburgh Steelers', 'Tennessee Titans', 'Baltimore Ravens'], correct:1, reveal:'Cleveland led comfortably deep into the game before Pittsburgh rallied to win 36–33. The Browns would not reach the playoffs again until the 2020 season — an 18-year wait.'},
+  {idx:29, wk:29, y:2003, cat:'sports', diff:'Easy', q:'With the number one pick in the 2003 NBA Draft, the Cavaliers selected LeBron James out of which high school?', options:['Shaker Heights', 'Cleveland Glenville', 'Garfield Heights', 'Akron St. Vincent–St. Mary'], correct:3, reveal:'The Cavs had won the lottery with the worst record in the league, and the hometown kid landed in their lap. That August, Cleveland also went dark in the Northeast blackout, one of the largest power failures in North American history.'},
+  {idx:30, wk:30, y:2004, cat:'politics', diff:'Medium', q:'What national political event did Case Western Reserve University host in October 2004?', options:['A presidential debate', 'The vice-presidential debate between Dick Cheney and John Edwards', 'The Democratic National Convention', 'A Supreme Court confirmation hearing'], correct:1, reveal:'Ohio was the decisive state in the 2004 election, and Cuyahoga County was the state\'s biggest Democratic vote bank. Campaigns treated Cleveland as a must-visit stop — a pattern that has repeated in nearly every presidential cycle since.'},
+  {idx:31, wk:31, y:2005, cat:'politics', diff:'Medium', q:'Frank G. Jackson was elected mayor in 2005. What record did he eventually set?', options:['Youngest mayor since Dennis Kucinich', 'First mayor to serve five terms', 'Longest-serving mayor in Cleveland history, at four terms', 'First sitting mayor to be elected governor'], correct:2, reveal:'Jackson, a Central neighborhood native and City Council president, served from 2006 to 2021 — 16 years. He was the first sitting council member elected mayor since 1867.'},
+  {idx:32, wk:32, y:2006, cat:'politics', diff:'Hard', q:'A 2006 Ohio law barred cities like Cleveland from requiring what of their municipal employees?', options:['Holding an Ohio driver\'s license', 'Submitting to random drug testing', 'Living inside the city limits', 'Membership in a union'], correct:2, reveal:'Residency requirements had kept thousands of police officers, firefighters, and city workers — and their property taxes and school enrollments — inside Cleveland. The Ohio Supreme Court upheld the law in 2009. Its effect on the city\'s population is still argued about today.'},
+  {idx:33, wk:33, y:2007, cat:'sports', diff:'Medium', q:'The Cavaliers reached their first NBA Finals in 2007. Who swept them?', options:['Boston Celtics', 'Detroit Pistons', 'Los Angeles Lakers', 'San Antonio Spurs'], correct:3, reveal:'LeBron James got them there by scoring 48 points, including 29 of Cleveland\'s last 30, in a double-overtime Game 5 at Detroit. That fall, the Indians blew a 3–1 lead to Boston in the ALCS.'},
+  {idx:34, wk:34, y:2008, cat:'citybuilding', diff:'Medium', q:'In October 2008, RTA opened the HealthLine, a bus rapid transit route running along which street?', options:['Detroit Avenue', 'Euclid Avenue', 'Carnegie Avenue', 'Superior Avenue'], correct:1, reveal:'The roughly $200 million project rebuilt Euclid Avenue from Public Square to University Circle with dedicated bus lanes and new streetscape. It became a national model for BRT and helped unlock a wave of MidTown and Health-Tech Corridor investment. That summer, the FBI raided county offices, opening the Cuyahoga County corruption scandal.'},
+  {idx:35, wk:35, y:2009, cat:'politics', diff:'Hard', q:'In November 2009, after a sweeping federal corruption investigation, Cuyahoga County voters approved a new charter. What did it replace the three county commissioners with?', options:['A state-appointed county manager', 'An elected county executive and an 11-member county council', 'A merged city-county government', 'A regional authority covering five counties'], correct:1, reveal:'Issue 6 was the biggest overhaul of county government in more than 150 years, passed while officials including commissioner Jimmy Dimora and auditor Frank Russo were under federal investigation. The new structure took effect in January 2011.'},
+  {idx:36, wk:36, y:2010, cat:'sports', diff:'Easy', q:'In July 2010, LeBron James announced on a live ESPN special — “The Decision” — that he was signing with which team?', options:['Chicago Bulls', 'Los Angeles Clippers', 'New York Knicks', 'Miami Heat'], correct:3, reveal:'Jerseys burned on Cleveland streets, and Cavs owner Dan Gilbert published an all-caps open letter in Comic Sans. The Cavs then lost 26 straight games that season, an NBA record at the time.'},
+  {idx:37, wk:37, y:2011, cat:'sports', diff:'Medium', q:'Holding the number one pick in the 2011 NBA Draft, the Cavaliers selected which point guard?', options:['Brandon Knight', 'Kemba Walker', 'Kyrie Irving', 'Tristan Thompson'], correct:2, reveal:'The top pick came via the Los Angeles Clippers, acquired in the trade that also took on Baron Davis\'s contract. Cleveland took Tristan Thompson fourth in the same draft. Both were starters five years later when the Cavs won it all.'},
+  {idx:38, wk:38, y:2012, cat:'citybuilding', diff:'Medium', q:'In May 2012, Ohio\'s first casino opened in downtown Cleveland inside which landmark building?', options:['Terminal Tower', 'The Higbee Building on Public Square', 'The Arcade', 'Public Auditorium'], correct:1, reveal:'The old Higbee\'s department store — the one from *A Christmas Story* — became the Horseshoe Casino, now JACK Cleveland Casino. It was the first of four casinos authorized by Ohio voters in 2009.'},
+  {idx:39, wk:39, y:2013, cat:'citybuilding', diff:'Medium', q:'In June 2013, who took over day-to-day management of Cleveland\'s lakefront parks, including Edgewater, Euclid Beach, Villa Angela, and Gordon Park?', options:['The Cleveland-Cuyahoga County Port Authority', 'The City of Cleveland\'s parks department', 'Cleveland Metroparks', 'The Ohio Department of Natural Resources'], correct:2, reveal:'The state had run them since 1978 and had deferred millions in maintenance. Cleveland kept ownership; the Metroparks took a 99-year lease at a dollar a year. Within a few years Edgewater had a new beach house, a playground, and a summer concert series.'},
+  {idx:40, wk:40, y:2014, cat:'sports', diff:'Medium', q:'In July 2014, LeBron James announced his return to Cleveland in a first-person essay published where?', options:['The Players\' Tribune', 'Sports Illustrated', 'On his own Instagram account', 'The Plain Dealer'], correct:1, reveal:'The essay, titled “I\'m Coming Home,” framed the return as a commitment to Northeast Ohio. 2014 was a heavy year for the city: Cleveland hosted Gay Games 9 in August, and in November a Cleveland police officer shot and killed 12-year-old Tamir Rice at Cudell Recreation Center.'},
+  {idx:41, wk:41, y:2015, cat:'equity', diff:'Medium', q:'In 2015 the City of Cleveland entered a federal consent decree with the U.S. Department of Justice. What did it cover?', options:['Airport contracting practices', 'The school district', 'Reform of the Cleveland Division of Police', 'Sewer overflows into Lake Erie'], correct:2, reveal:'The Justice Department had found a pattern and practice of excessive force. The decree mandated new use-of-force policies, crisis intervention training, and civilian oversight, following years of organizing after the killing of Tamir Rice in 2014.'},
+  {idx:42, wk:42, y:2016, cat:'sports', diff:'Easy', q:'The Cavaliers won the 2016 NBA Finals after trailing the Golden State Warriors 3–1. Whose chase-down rejection in Game 7 is known in Cleveland simply as “The Block”?', options:['LeBron James', 'Tristan Thompson', 'Kevin Love', 'Iman Shumpert'], correct:0, reveal:'Golden State had won an NBA-record 73 games. No team had ever come back from 3–1 in the Finals. The win ended a 52-year championship drought for Cleveland\'s major pro teams, and an estimated 1.3 million people turned out for the parade.'},
+  {idx:43, wk:43, y:2017, cat:'sports', diff:'Medium', q:'In late summer 2017 the Indians set an American League record with how many consecutive wins?', options:['18', '26', '20', '22'], correct:3, reveal:'The streak ran from late August into mid-September and captured national attention. Cleveland won the AL Central by a wide margin — then lost the division series to the Yankees after going up 2–0.'},
+  {idx:44, wk:44, y:2018, cat:'sports', diff:'Medium', q:'On September 20, 2018, the Browns beat the New York Jets for their first win in 635 days. Which rookie quarterback came off the bench to spark the comeback?', options:['Baker Mayfield', 'DeShone Kizer', 'Johnny Manziel', 'Tyrod Taylor'], correct:0, reveal:'The Browns had gone 0–16 in 2017, and fans held a “Perfect Season Parade” around the stadium that January. Mayfield, the number one overall pick, replaced an injured Tyrod Taylor and led four scoring drives.'},
+  {idx:45, wk:45, y:2019, cat:'sports', diff:'Medium', q:'What major event did Progressive Field host in July 2019?', options:['The MLB Winter Meetings', 'The World Series', 'The NFL Draft', 'The MLB All-Star Game'], correct:3, reveal:'It was Cleveland\'s first All-Star Game since 1997 and brought a week of events downtown. That same year, the Cuyahoga River — 50 years after it caught fire — was named River of the Year by the conservation group American Rivers.'},
+  {idx:46, wk:46, y:2020, cat:'politics', diff:'Medium', q:'In September 2020, Cleveland hosted the first presidential debate between Donald Trump and Joe Biden. At what venue?', options:['The Health Education Campus shared by Case Western Reserve University and the Cleveland Clinic', 'Cleveland State University\'s Wolstein Center', 'John Carroll University', 'Public Auditorium'], correct:0, reveal:'The debate moved to Cleveland on short notice after Notre Dame withdrew, and it was held under heavy pandemic protocols. 2020 was also the year Ohio\'s first COVID-19 cases were confirmed in Cuyahoga County, and the year George Floyd protests filled downtown streets.'},
+  {idx:47, wk:47, y:2021, cat:'sports', diff:'Medium', q:'When the Indians announced their new name in 2021, what Cleveland landmark inspired “Guardians”?', options:['Terminal Tower', 'The Free Stamp sculpture', 'The Guardians of Traffic statues on the Hope Memorial Bridge', 'The Soldiers\' and Sailors\' Monument'], correct:2, reveal:'Eight Art Deco sandstone figures, carved in 1932, flank the bridge just outside the ballpark. The change followed years of pressure from Native American groups over the old name and the Chief Wahoo logo, and took effect for the 2022 season.'},
+  {idx:48, wk:48, y:2022, cat:'politics', diff:'Medium', q:'Justin Bibb took the oath of office in January 2022. What was notable about him?', options:['He was the first mayor born outside Cleveland', 'He had previously served as county executive', 'At 34 he was the city\'s second-youngest mayor and its first millennial mayor', 'He had spent 20 years on City Council first'], correct:2, reveal:'Bibb grew up in Mount Pleasant on the southeast side and was sworn in just after midnight at the East 131st Street library branch he used as a kid. He is Cleveland\'s fourth African American mayor.'},
+  {idx:49, wk:49, y:2023, cat:'citybuilding', diff:'Medium', q:'In 2023, the Cleveland Foundation — the world\'s first community foundation — moved its headquarters out of Playhouse Square. Which neighborhood did it move to?', options:['University Circle', 'Tremont', 'MidTown', 'Ohio City'], correct:2, reveal:'The new building sits at East 66th and Euclid, deliberately placed as an anchor investment in MidTown and Hough rather than downtown. It was the foundation\'s first move out of the central business district in more than a century. Lillian Kuri was also named president and CEO that year.'},
+  {idx:50, wk:50, y:2024, cat:'other', diff:'Easy', q:'On April 8, 2024, Cleveland sat squarely in the path of totality for what?', options:['A visible aurora borealis', 'A lunar eclipse', 'A meteor shower', 'A total solar eclipse'], correct:3, reveal:'Cleveland got nearly four minutes of darkness in the middle of the afternoon, and hundreds of thousands of visitors came for it — the first total solar eclipse visible from the city in more than 200 years. Cleveland also hosted the NCAA Women\'s Final Four that April.'},
+  {idx:51, wk:51, y:2025, cat:'equity', diff:'Medium', q:'CentroVilla25 opened on West 25th Street in the Clark-Fulton neighborhood in spring 2025. What is it?', options:['A soccer stadium', 'A Latino marketplace, food hall, and small-business incubator', 'A performing arts venue', 'A regional transit center'], correct:1, reveal:'The roughly $12 million adaptive reuse of a vacant warehouse was led by the Northeast Ohio Hispanic Center for Economic Development and was decades in the making. It gives Cleveland\'s fastest-growing community a permanent commercial and cultural anchor.'},
 ];
-const HW_CAT_LABEL = { founding:"Founding", industry:"Industry", culture:"Culture", sports:"Sports", civic:"Civic Life", disaster:"Turning Point", landmark:"Landmark", foundation:"TCF Files" };
+const HIST_CAT_LABEL = { sports:"Sports", politics:"Civic Life", equity:"Equity & Community", arts:"Arts & Culture", citybuilding:"City Building", other:"Cleveland" };
+var currentHistIdx = null;
+var hwAnswerLocked = false;
+
+function hqCatLabel(cat){ return HIST_CAT_LABEL[cat] || 'Cleveland'; }
+
+/* ---------- Weekly cadence: each quiz item (wk 0\u201351) maps 1:1 onto a week of the calendar year, so week 1 of the year surfaces 1974, week 2 surfaces 1975, ... week 52 surfaces 2025. This lets us default to "this week's" question and notify people weekly. ---------- */
 const HW_MONTHS = ["January","February","March","April","May","June","July","August","September","October","November","December"];
 const HW_MONTH_LEN = [31,28,31,30,31,30,31,31,30,31,30,31];
 const HW_TOTAL_WEEKS = 52;
-var currentHwWeek = null;
-var hwAnswerLocked = false;
-
 function hwDoyFromMonthDay(m0,d){ var n=d; for (var i=0;i<m0;i++) n+=HW_MONTH_LEN[i]; return n; }
-function hwWeekIndexFromDoy(doy){ return Math.min(Math.floor((doy-1)/7), HW_TOTAL_WEEKS-1); }
-function hwWeekRange(weekIndex){ var start=weekIndex*7+1; var end=(weekIndex===HW_TOTAL_WEEKS-1)?365:start+6; return [start,end]; }
-function hwWeekIndexFromDate(date){ var m0=date.getMonth(), d=date.getDate(); if (m0===1 && d===29) d=28; return hwWeekIndexFromDoy(hwDoyFromMonthDay(m0,d)); }
 function hwMonthDayFromDoy(doy){ var remaining=doy; for (var i=0;i<12;i++){ if (remaining<=HW_MONTH_LEN[i]) return [i,remaining]; remaining-=HW_MONTH_LEN[i]; } return [11,31]; }
-
-function hwRangeLabel(weekIndex){
-  var r = hwWeekRange(weekIndex);
+function hwWeekIndexFromDoy(doy){ return Math.min(Math.floor((doy-1)/7), HW_TOTAL_WEEKS-1); }
+function hwWeekRangeDoy(weekIndex){ var start=weekIndex*7+1; var end=(weekIndex===HW_TOTAL_WEEKS-1)?365:start+6; return [start,end]; }
+function hwWeekIndexFromDate(date){ var m0=date.getMonth(), d=date.getDate(); if (m0===1 && d===29) d=28; return hwWeekIndexFromDoy(hwDoyFromMonthDay(m0,d)); }
+function hwCurrentWeekIndex(){ return hwWeekIndexFromDate(new Date()); }
+function hwWeekDateLabel(weekIndex){
+  var r = hwWeekRangeDoy(weekIndex);
   var md1 = hwMonthDayFromDoy(r[0]), md2 = hwMonthDayFromDoy(r[1]);
-  return { m1:md1[0], d1:md1[1], m2:md2[0], d2:md2[1], sameMonth: md1[0]===md2[0] };
+  return md1[0]===md2[0]
+    ? HW_MONTHS[md1[0]] + ' ' + md1[1] + '\u2013' + md2[1]
+    : HW_MONTHS[md1[0]] + ' ' + md1[1] + ' \u2013 ' + HW_MONTHS[md2[0]] + ' ' + md2[1];
 }
-function hwQuestionForWeek(weekIndex){
-  for (var i=0;i<HW_QUIZ.length;i++){ if (HW_QUIZ[i].wk === weekIndex) return HW_QUIZ[i]; }
+function hqQuestionForWeek(weekIndex){
+  for (var i=0;i<HIST_QUIZ.length;i++){ if (HIST_QUIZ[i].wk === weekIndex) return HIST_QUIZ[i]; }
   return null;
 }
 
-/* ---------- Score persistence (localStorage, per calendar year) ---------- */
-function hwStoreKey(){ return 'tcf_hw_quiz_v1'; }
+/* ---------- Score persistence (localStorage) ---------- */
+function hwStoreKey(){ return 'tcf_hist_quiz_v1'; }
 function hwLoadStore(){
-  var year = new Date().getFullYear();
   try {
     var raw = window.localStorage.getItem(hwStoreKey());
     if (raw){
       var parsed = JSON.parse(raw);
-      if (parsed && parsed.year === year && parsed.answers) return parsed;
+      if (parsed && parsed.answers) return parsed;
     }
   } catch(e){}
-  return { year: year, answers: {} };
+  return { answers: {} };
 }
 function hwSaveStore(store){
   try { window.localStorage.setItem(hwStoreKey(), JSON.stringify(store)); } catch(e){}
 }
 var HW_STORE = hwLoadStore();
 
-function hwIsAnswered(weekIndex){ return !!HW_STORE.answers[weekIndex]; }
-function hwRecordAnswer(weekIndex, chosenIndex, wasCorrect){
-  HW_STORE.answers[weekIndex] = { chosen: chosenIndex, correct: wasCorrect };
+function hqIsAnswered(idx){ return !!HW_STORE.answers[idx]; }
+function hqRecordAnswer(idx, chosenIndex, wasCorrect){
+  HW_STORE.answers[idx] = { chosen: chosenIndex, correct: wasCorrect };
   hwSaveStore(HW_STORE);
-  hwUpdateScoreUI();
+  hqUpdateScoreUI();
+  hqRenderLeaderboard();
 }
-function hwUpdateScoreUI(){
+function hqScoreStats(){
   var answered = Object.keys(HW_STORE.answers).length;
   var correct = 0;
   for (var k in HW_STORE.answers){ if (HW_STORE.answers[k].correct) correct++; }
+  var pct = answered ? Math.round((correct/answered)*100) : 0;
+  return { answered: answered, correct: correct, pct: pct };
+}
+function hqUpdateScoreUI(){
+  var s = hqScoreStats();
   var elC = document.getElementById('hwScoreCorrect');
   var elT = document.getElementById('hwScoreTotal');
   var elA = document.getElementById('hwScoreAnswered');
-  if (elC) elC.textContent = correct;
-  if (elT) elT.textContent = HW_QUIZ.length;
-  if (elA) elA.textContent = answered;
+  if (elC) elC.textContent = s.correct;
+  if (elT) elT.textContent = HIST_QUIZ.length;
+  if (elA) elA.textContent = s.answered;
 }
 
 /* ---------- Rendering ---------- */
-function renderHistoryWeek(weekIndex){
-  currentHwWeek = weekIndex;
+function renderHistYear(idx){
+  currentHistIdx = idx;
   hwAnswerLocked = false;
-  var lbl = hwRangeLabel(weekIndex);
-  var titleStr = lbl.sameMonth
-    ? HW_MONTHS[lbl.m1] + ' ' + lbl.d1 + '\u2013' + lbl.d2
-    : HW_MONTHS[lbl.m1] + ' ' + lbl.d1 + ' \u2013 ' + HW_MONTHS[lbl.m2] + ' ' + lbl.d2;
-  document.getElementById('hwRange').textContent = titleStr;
+  var q = HIST_QUIZ[idx];
+  if (!q) return;
+  document.getElementById('hwRange').textContent = hwWeekDateLabel(q.wk);
+  document.getElementById('hwYearLine').textContent = 'This week: Cleveland, ' + q.y;
 
-  var q = hwQuestionForWeek(weekIndex);
   var wrap = document.getElementById('hwCardsWrap');
   var countEl = document.getElementById('hwCount');
+  var already = HW_STORE.answers[idx];
+  countEl.textContent = already ? 'You\u2019ve already answered this week\u2019s question.' : 'What happened in Cleveland this year?';
 
-  if (!q){
-    countEl.textContent = 'No quiz question for this week yet.';
-    wrap.innerHTML = '<div class="hw-quiet">We haven\u2019t written a question for ' + titleStr + ' yet \u2014 try Previous week, Next week, or Surprise me.</div>';
-    return;
-  }
-
-  var already = HW_STORE.answers[weekIndex];
-  countEl.textContent = already ? 'You\u2019ve already played this week\u2019s question.' : 'What happened in Cleveland this week?';
-
-  var catLabel = HW_CAT_LABEL[q.cat] || 'Cleveland';
+  var catLabel = hqCatLabel(q.cat);
   var optionsHtml = q.options.map(function(opt, i){
     var stateClass = '';
     if (already){
@@ -4257,50 +4370,137 @@ function renderHistoryWeek(weekIndex){
   if (already){
     revealHtml = '<div class="hw-reveal">' +
       '<div class="hw-reveal-verdict' + (already.correct ? ' is-correct' : ' is-incorrect') + '">' + (already.correct ? '\u2713 You got it!' : '\u2717 Not quite') + '</div>' +
-      '<span class="hw-event-year">' + q.y + '</span><span class="hw-event-cat">' + catLabel + '</span>' +
-      '<div class="hw-event-desc">' + q.d + '</div>' +
-      '<div class="hw-event-src">Source: ' + q.src + '</div>' +
+      '<div class="hw-event-desc">' + q.reveal + '</div>' +
     '</div>';
   }
 
   wrap.innerHTML =
     '<div class="hw-event-card hw-quiz-card">' +
       '<span class="hw-event-cat hw-quiz-catbadge">' + catLabel + '</span>' +
-      '<div class="hw-quiz-prompt">This week in Cleveland history\u2026 what happened?</div>' +
-      '<div class="hw-quiz-clue">' + q.d + '</div>' +
+      '<span class="hw-diff-badge">' + q.diff + '</span>' +
+      '<div class="hw-quiz-prompt">' + q.q + '</div>' +
       '<div class="hw-opts">' + optionsHtml + '</div>' +
       revealHtml +
     '</div>';
 }
 function hwAnswer(choiceIndex){
-  if (hwAnswerLocked || currentHwWeek === null) return;
-  var q = hwQuestionForWeek(currentHwWeek);
+  if (hwAnswerLocked || currentHistIdx === null) return;
+  var q = HIST_QUIZ[currentHistIdx];
   if (!q) return;
   hwAnswerLocked = true;
   var wasCorrect = (choiceIndex === q.correct);
-  hwRecordAnswer(currentHwWeek, choiceIndex, wasCorrect);
-  renderHistoryWeek(currentHwWeek);
+  hqRecordAnswer(currentHistIdx, choiceIndex, wasCorrect);
+  renderHistYear(currentHistIdx);
   showToast(wasCorrect ? 'Correct! Nice work.' : 'Not quite \u2014 see the answer below.');
 }
 function hwStep(dir){
-  if (currentHwWeek === null) return;
-  var next = currentHwWeek + dir;
-  if (next < 0) next = HW_TOTAL_WEEKS - 1;
-  if (next >= HW_TOTAL_WEEKS) next = 0;
-  renderHistoryWeek(next);
+  if (currentHistIdx === null) return;
+  var next = currentHistIdx + dir;
+  if (next < 0) next = HIST_QUIZ.length - 1;
+  if (next >= HIST_QUIZ.length) next = 0;
+  renderHistYear(next);
 }
 function hwSurprise(){
   var unanswered = [];
-  for (var i=0;i<HW_QUIZ.length;i++){ if (!hwIsAnswered(HW_QUIZ[i].wk)) unanswered.push(HW_QUIZ[i].wk); }
-  var pool = unanswered.length ? unanswered : HW_QUIZ.map(function(q){ return q.wk; });
-  renderHistoryWeek(pool[Math.floor(Math.random()*pool.length)]);
+  for (var i=0;i<HIST_QUIZ.length;i++){ if (!hqIsAnswered(i)) unanswered.push(i); }
+  var pool = unanswered.length ? unanswered : HIST_QUIZ.map(function(q){ return q.idx; });
+  renderHistYear(pool[Math.floor(Math.random()*pool.length)]);
 }
+
+/* ---------- Leaderboard (mock peers + live "You" row) ---------- */
+const HQ_LB_MOCK = [
+  {name:'Priya K.', initials:'PK', color:'var(--tcf-pink)', answered:52, correct:47},
+  {name:'Sofia G.', initials:'SG', color:'var(--tcf-mid-green)', answered:52, correct:44},
+  {name:'Angela R.', initials:'AR', color:'var(--tcf-blue)', answered:15, correct:14},
+  {name:'Kevin B.', initials:'KB', color:'var(--tcf-aqua)', answered:6, correct:6},
+  {name:'Maria S.', initials:'MS', color:'var(--tcf-orange)', answered:45, correct:39},
+  {name:'Latoya P.', initials:'LP', color:'var(--tcf-pink)', answered:38, correct:29},
+  {name:'James T.', initials:'JT', color:'var(--tcf-blue)', answered:30, correct:24},
+  {name:'DeShawn W.', initials:'DW', color:'var(--tcf-orange)', answered:22, correct:15},
+  {name:'Tom H.', initials:'TH', color:'var(--tcf-aqua)', answered:12, correct:9},
+  {name:'Mike O.', initials:'MO', color:'var(--tcf-mid-green)', answered:8, correct:5}
+];
+var hqLbSort = 'accuracy';
+var HQ_LB_MIN_ANSWERED = 5;
+
+function hqSetLeaderboardSort(mode){
+  hqLbSort = mode;
+  var a = document.getElementById('hqLbSortAccuracy'), s = document.getElementById('hqLbSortScore');
+  if (a) a.classList.toggle('active', mode==='accuracy');
+  if (s) s.classList.toggle('active', mode==='score');
+  hqRenderLeaderboard();
+}
+function hqRenderLeaderboard(){
+  var wrap = document.getElementById('hqLeaderboardList');
+  if (!wrap) return;
+  var stats = hqScoreStats();
+  var rows = HQ_LB_MOCK.map(function(u){
+    return { name:u.name, initials:u.initials, color:u.color, answered:u.answered, correct:u.correct, pct:Math.round((u.correct/u.answered)*100), isYou:false };
+  });
+  var youQualifies = stats.answered >= HQ_LB_MIN_ANSWERED;
+  if (youQualifies){
+    rows.push({ name:'You', initials:'YOU', color:'var(--tcf-primary)', answered:stats.answered, correct:stats.correct, pct:stats.pct, isYou:true });
+  }
+  rows.sort(function(a,b){
+    if (hqLbSort === 'score') return b.correct - a.correct || b.pct - a.pct;
+    return b.pct - a.pct || b.correct - a.correct;
+  });
+
+  var youRank = -1;
+  rows.forEach(function(r,i){ if (r.isYou) youRank = i; });
+
+  function rowHtml(r, rank){
+    var statMain = hqLbSort === 'score' ? (r.correct + ' correct') : (r.pct + '%');
+    var statSub = hqLbSort === 'score' ? (r.pct + '% accuracy') : (r.correct + ' correct');
+    return '<div class="hq-lb-row' + (r.isYou ? ' is-you' : '') + '">' +
+      '<div class="hq-lb-rank">' + rank + '</div>' +
+      '<div class="nf-avatar" style="background:' + r.color + ';width:30px;height:30px;font-size:11px;">' + r.initials + '</div>' +
+      '<div class="hq-lb-name">' + r.name + (r.isYou ? '<span class="you-tag">You</span>' : '') + '</div>' +
+      '<div><div class="hq-lb-stat">' + statMain + '</div><div class="hq-lb-stat-sub">' + statSub + '</div></div>' +
+    '</div>';
+  }
+
+  var TOP_N = 8;
+  var html = rows.slice(0, TOP_N).map(function(r,i){ return rowHtml(r, i+1); }).join('');
+  if (youQualifies && youRank >= TOP_N){
+    html += '<div class="hq-lb-ellipsis">\u22ef</div>' + rowHtml(rows[youRank], youRank+1);
+  }
+  if (!youQualifies){
+    var remaining = HQ_LB_MIN_ANSWERED - stats.answered;
+    html += '<div class="hq-lb-locked">Answer ' + remaining + ' more question' + (remaining===1?'':'s') + ' to join the leaderboard.</div>';
+  }
+  wrap.innerHTML = html;
+}
+
+/* ---------- Sharing ---------- */
+function hqShareScore(){
+  var s = hqScoreStats();
+  if (s.answered < 1){ showToast('Answer a question first, then share your score!'); return; }
+  var body = 'I\u2019ve scored ' + s.correct + '/' + s.answered + ' (' + s.pct + '%) on the Cleveland History Quiz. Think you know Cleveland better? Give it a shot:';
+  if (typeof NF_POSTS !== 'undefined'){
+    var youInitials = (typeof appState !== 'undefined' && appState.donorName) ? appState.donorName.split(' ').map(function(p){ return p[0]; }).join('').slice(0,2).toUpperCase() : 'YOU';
+    NF_POSTS.unshift({
+      id: Date.now(), name:'You', initials: youInitials, color:'var(--tcf-orange)', type:'quiz', time:'Just now', likes:0,
+      body: body,
+      action: function(){ navigate('history'); }
+    });
+    if (typeof renderNewsFeed === 'function') renderNewsFeed();
+  }
+  showToast('Shared to your News Feed!');
+}
+function hqShareQuiz(){
+  openShareModal({ subject:'Cleveland History Quiz', text:'Think you know Cleveland history? Test your knowledge of when major events happened across our city on the Giving Portal:' });
+}
+
 function initHistoryView(){
-  hwUpdateScoreUI();
-  if (currentHwWeek !== null) { renderHistoryWeek(currentHwWeek); return; }
-  var wi = hwWeekIndexFromDate(new Date());
-  renderHistoryWeek(wi);
+  hqUpdateScoreUI();
+  hqRenderLeaderboard();
+  if (currentHistIdx !== null) { renderHistYear(currentHistIdx); return; }
+  var wk = hwCurrentWeekIndex();
+  var q = hqQuestionForWeek(wk);
+  renderHistYear(q ? q.idx : 0);
 }
+
 
 /* ============================================================
    NEWS FEED — pairs with the Garden's "Share Your Why" badge
@@ -4314,7 +4514,7 @@ const NF_POSTS = [
   { id:3, name:'James T.', initials:'JT', color:'var(--tcf-blue)', type:'why', time:'3d ago', likes:9,
     body:'I volunteer at the West Side Market food drive every month. Watching neighbors help neighbors is why I keep showing up.' },
   { id:4, name:'Cleveland Foundation', initials:'CF', color:'var(--tcf-primary)', type:'news', time:'This week', likes:21,
-    body:'New quiz question up now on This Week in Cleveland Quiz — test your knowledge of the moments that built our region.',
+    body:'New year, new question — test your knowledge of when major events happened across our city on the Cleveland History Quiz.',
     action:function(){ navigate('history'); } },
   { id:5, name:'Priya K.', initials:'PK', color:'var(--tcf-pink)', type:'why', time:'5d ago', likes:18,
     body:'Cleveland gave my parents a home when they had nowhere else to go. Every gift I make is a small way of returning the favor.' }
@@ -4341,8 +4541,8 @@ function renderNewsFeed(){
   html += NF_POSTS.map(function(p){
     var liked = nfLiked[p.id];
     var connected = nfConnected[p.id];
-    var badge = p.type === 'news' ? '<div class="nf-post-badge news">Cleveland Foundation</div>' : '<div class="nf-post-badge">Why I Give</div>';
-    var connectBtn = p.type === 'news' ? '' : '<button class="' + (connected?'connected':'') + '" onclick="nfConnect(' + p.id + ')">' + (connected?'\u2713 Connected':'Connect') + '</button>';
+    var badge = p.type === 'news' ? '<div class="nf-post-badge news">Cleveland Foundation</div>' : (p.type === 'quiz' ? '<div class="nf-post-badge quiz">Quiz Score</div>' : '<div class="nf-post-badge">Why I Give</div>');
+    var connectBtn = (p.type === 'news' || p.type === 'quiz') ? '' : '<button class="' + (connected?'connected':'') + '" onclick="nfConnect(' + p.id + ')">' + (connected?'\u2713 Connected':'Connect') + '</button>';
     var readMoreBtn = p.action ? '<button onclick="nfOpen(' + p.id + ')">Read more \u2192</button>' : '';
     return '<div class="nf-post">' +
       '<div class="nf-post-top">' +
@@ -4382,7 +4582,7 @@ function toggleAlert(feature, btn){
   var on = featureAlerts[feature];
   btn.classList.toggle('on', on);
   var labelId = feature === 'legends' ? 'lgdAlertLabel' : 'hwAlertLabel';
-  var defaultLabel = feature === 'legends' ? 'Get notified of new Legends' : 'Get notified each week';
+  var defaultLabel = feature === 'legends' ? 'Get notified of new Legends' : 'Get weekly quiz alerts';
   var label = document.getElementById(labelId);
   if (label) label.textContent = on ? 'You\u2019ll be notified \u2014 manage in Account Settings' : defaultLabel;
   showToast(on ? 'Alerts turned on.' : 'Alerts turned off.');
@@ -4703,15 +4903,24 @@ function drawPerfChart(btn, range) {
 /* ============================================================
    IMPACT CALCULATOR
    ============================================================ */
+var CALC_ICONS = {
+  education:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H12v18H6.5A2.5 2.5 0 0 1 4 18.5v-13Z"/><path d="M20 5.5A2.5 2.5 0 0 0 17.5 3H12v18h5.5a2.5 2.5 0 0 0 2.5-2.5v-13Z"/></svg>',
+  food:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 2v7c0 1.1.9 2 2 2s2-.9 2-2V2"/><path d="M5 11v11"/><path d="M13 2c-2 0-3 3-3 6 0 2 1 3 3 3v11"/></svg>',
+  housing:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/><path d="M9 20v-6h6v6"/></svg>',
+  arts:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a9 9 0 1 0 0 18c1.5 0 2-1 2-2s-.5-1.5-.5-2.3c0-1 .8-1.7 1.8-1.7H17a4 4 0 0 0 4-4c0-4.4-4-8-9-8Z"/><circle cx="7.5" cy="10.5" r="1"/><circle cx="10.5" cy="7.5" r="1"/><circle cx="15" cy="8" r="1"/></svg>',
+  health:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-4.35-9.5-8.5C.7 9 2.2 5.5 5.6 5c2-.3 3.6.8 4.4 2.2C10.8 5.8 12.4 4.7 14.4 5c3.4.5 4.9 4 3.1 7.5C15 16.65 12 21 12 21Z"/></svg>',
+  environment:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 21c8 0 14-6 14-14V4h-3C8 4 3 9 3 16v5h2Z"/><path d="M5 21c3-6 7-10 13-13"/></svg>'
+};
 var CALC_AREAS = [
-  {id:'education',icon:'📚',name:'Education',unitLabel:'Learning Hours',unitCost:12,color:'#1A8DA9',programDesc:'after-school programs'},
-  {id:'food',icon:'🍽️',name:'Food',unitLabel:'Meals',unitCost:0.50,color:'#EE7331',programDesc:'food security programs'},
-  {id:'housing',icon:'🏠',name:'Housing',unitLabel:'Shelter Nights',unitCost:28,color:'#086C43',programDesc:'housing stability'},
-  {id:'arts',icon:'🎨',name:'Arts',unitLabel:'Residencies',unitCost:800,color:'#C0629A',programDesc:'arts programs'},
-  {id:'health',icon:'❤️',name:'Health',unitLabel:'Patient Visits',unitCost:45,color:'#CC1E4B',programDesc:'community health'},
-  {id:'environment',icon:'🌿',name:'Environment',unitLabel:'Acres',unitCost:1200,color:'#19B9A9',programDesc:'conservation'}
+  {id:'education',name:'Education',unitLabel:'Learning Hours',unitCost:12,color:'#1A8DA9',programDesc:'after-school programs'},
+  {id:'food',name:'Food',unitLabel:'Meals',unitCost:0.50,color:'#EE7331',programDesc:'food security programs'},
+  {id:'housing',name:'Housing',unitLabel:'Shelter Nights',unitCost:28,color:'#086C43',programDesc:'housing stability'},
+  {id:'arts',name:'Arts',unitLabel:'Residencies',unitCost:800,color:'#C0629A',programDesc:'arts programs'},
+  {id:'health',name:'Health',unitLabel:'Patient Visits',unitCost:45,color:'#CC1E4B',programDesc:'community health'},
+  {id:'environment',name:'Environment',unitLabel:'Acres',unitCost:1200,color:'#19B9A9',programDesc:'conservation'}
 ];
 var calcState = { areaId:'food', mode:'onetime', gift:500, years:10, rate:6 };
+var CALC_CHART_COLOR = '#086C43';
 
 function calcFvLump(pv,r,y){if(!r||!y)return pv;var rm=r/100/12,n=y*12;return pv*Math.pow(1+rm,n);}
 function calcFvAnnuity(m,r,y){if(!r)return m*y*12;var rm=r/100/12,n=y*12;return m*((Math.pow(1+rm,n)-1)/rm);}
@@ -4720,28 +4929,51 @@ function calcFmtN(n){if(n>=1e6)return(n/1e6).toFixed(1)+'M';if(n>=1000)return(n/
 
 function calcRender() {
   var area = CALC_AREAS.find(function(a){return a.id===calcState.areaId;});
-  var gh = '';
-  CALC_AREAS.forEach(function(a) {
-    gh += '<button onclick="calcSelectArea(\'' + a.id + '\')" style="background:' + (a.id===calcState.areaId?'rgba(25,185,169,.12)':'rgba(255,255,255,.04)') + ';border:1.5px solid ' + (a.id===calcState.areaId?'#19B9A9':'rgba(255,255,255,.1)') + ';border-radius:10px;padding:10px 6px;cursor:pointer;text-align:center;font-family:inherit;"><div style="font-size:20px;margin-bottom:3px;">' + a.icon + '</div><div style="font-size:11px;font-weight:700;color:' + (a.id===calcState.areaId?a.color:'rgba(255,255,255,.7)') + ';line-height:1.2;">' + a.name + '</div></button>';
-  });
-  document.getElementById('calcAreaGrid').innerHTML = gh;
   var g=calcState.gift, y=calcState.years, r=calcState.rate, c=area.unitCost;
   var simple, invested;
   if (calcState.mode==='onetime') { simple=g; invested=calcFvLump(g,r,y); }
   else { simple=g*y*12; invested=calcFvAnnuity(g,r,y); }
   var simpleUnits=Math.floor(simple/c), investedUnits=Math.floor(invested/c);
-  var rc = '';
-  [{label:calcState.mode==='onetime'?'Gift Today':'Total Contributed',amount:simple,units:simpleUnits,best:false},{label:'With '+y+'-Year Growth',amount:invested,units:investedUnits,best:true}].forEach(function(card) {
-    rc += '<div style="background:'+(card.best?'rgba(25,185,169,.08)':'var(--surface)')+';border:1px solid '+(card.best?'rgba(25,185,169,.35)':'var(--border)')+';border-radius:14px;padding:16px;display:flex;gap:14px;align-items:center;"><div style="flex:1;"><div style="font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--ink-faint);margin-bottom:4px;">'+card.label+'</div><div style="font-family:var(--font-head);font-size:22px;font-weight:700;color:var(--tcf-primary);">'+calcFmt$(card.amount)+'</div></div><div style="text-align:center;"><div style="font-family:var(--font-head);font-size:28px;font-weight:700;color:'+area.color+';">'+calcFmtN(card.units)+'</div><div style="font-size:11px;color:var(--ink-faint);line-height:1.3;">'+area.unitLabel+'</div></div></div>';
+
+  /* Step 1: dollar-growth cards (no area dependency) */
+  var mc = '';
+  [
+    {label:calcState.mode==='onetime'?'Gift Today':'Total Contributed', amount:simple, best:false},
+    {label:'With '+y+'-Year Growth', amount:invested, best:true}
+  ].forEach(function(card){
+    mc += '<div class="calc-money-card'+(card.best?' best':'')+'"><div><div class="cmc-label">'+card.label+'</div><div class="cmc-amount">'+calcFmt$(card.amount)+'</div></div></div>';
   });
-  document.getElementById('calcResultCards').innerHTML = rc;
+  document.getElementById('calcMoneyCards').innerHTML = mc;
+  calcDrawChart();
+
+  /* Step 2: impact-area picker */
+  var gh = '';
+  CALC_AREAS.forEach(function(a) {
+    var active = a.id===calcState.areaId;
+    gh += '<button class="calc-area-btn'+(active?' active':'')+'" onclick="calcSelectArea(\'' + a.id + '\')" style="' + (active ? ('border-color:'+a.color+';background:'+a.color+'26;') : '') + '">' +
+      '<div class="calc-area-icon" style="' + (active ? ('color:'+a.color+';') : '') + '">' + (CALC_ICONS[a.id]||'') + '</div>' +
+      '<div class="calc-area-name" style="' + (active ? ('color:'+a.color+';') : '') + '">' + a.name + '</div>' +
+    '</button>';
+  });
+  document.getElementById('calcAreaGrid').innerHTML = gh;
+
+  /* Step 2: impact-unit cards, using the same gift figures from step 1 */
+  var ic = '';
+  [
+    {label:calcState.mode==='onetime'?'Gift Today':'Total Contributed', units:simpleUnits, best:false},
+    {label:'With '+y+'-Year Growth', units:investedUnits, best:true}
+  ].forEach(function(card){
+    ic += '<div class="calc-money-card'+(card.best?' best':'')+'"><div style="flex:1;"><div class="cmc-label">'+card.label+'</div><div class="cmc-units-n" style="color:'+area.color+';">'+calcFmtN(card.units)+'</div><div class="cmc-units-label">'+area.unitLabel+'</div></div></div>';
+  });
+  document.getElementById('calcImpactCards').innerHTML = ic;
+
   var diff=invested-simple, pct=simple>0?Math.round((diff/simple)*100):0;
-  document.getElementById('calcExplanation').innerHTML='Over <strong>'+y+' years</strong>, your '+(calcState.mode==='onetime'?calcFmt$(g)+' gift':calcFmt$(g)+'/mo')+' grows from <strong>'+calcFmt$(simple)+'</strong> to <strong style="color:var(--tcf-mid-green);">'+calcFmt$(invested)+'</strong> — a <strong>+'+pct+'%</strong> increase, funding an additional <strong>'+calcFmtN(Math.max(0,investedUnits-simpleUnits))+' '+area.unitLabel.toLowerCase()+'</strong> in Cleveland\'s '+area.programDesc+'.';
-  calcDrawChart(area.color);
+  document.getElementById('calcExplanation').innerHTML='Over <strong>'+y+' years</strong>, your '+(calcState.mode==='onetime'?calcFmt$(g)+' gift':calcFmt$(g)+'/mo')+' grows from <strong>'+calcFmt$(simple)+'</strong> to <strong style="color:var(--tcf-mid-green);">'+calcFmt$(invested)+'</strong> — a <strong>+'+pct+'%</strong> increase, funding an additional <strong style="color:'+area.color+';">'+calcFmtN(Math.max(0,investedUnits-simpleUnits))+' '+area.unitLabel.toLowerCase()+'</strong> in Cleveland\'s '+area.programDesc+'.';
 }
 
-function calcDrawChart(color) {
+function calcDrawChart() {
   var canvas = document.getElementById('mobileCalcChart'); if(!canvas) return;
+  var color = CALC_CHART_COLOR;
   canvas.width = canvas.parentElement.offsetWidth || 340; canvas.height = 160;
   var ctx = canvas.getContext('2d'); ctx.clearRect(0,0,canvas.width,160);
   var g=calcState.gift, y=calcState.years, r=calcState.rate, pts=[];
@@ -4759,10 +4991,8 @@ function calcDrawChart(color) {
 function calcSelectArea(id){calcState.areaId=id;calcRender();}
 function calcSetMode(mode){
   calcState.mode=mode;
-  document.getElementById('calcModeOnetime').style.background=mode==='onetime'?'var(--tcf-mid-green)':'transparent';
-  document.getElementById('calcModeOnetime').style.color=mode==='onetime'?'#fff':'rgba(255,255,255,.5)';
-  document.getElementById('calcModeMonthly').style.background=mode==='monthly'?'var(--tcf-mid-green)':'transparent';
-  document.getElementById('calcModeMonthly').style.color=mode==='monthly'?'#fff':'rgba(255,255,255,.5)';
+  document.getElementById('calcModeOnetime').classList.toggle('active', mode==='onetime');
+  document.getElementById('calcModeMonthly').classList.toggle('active', mode==='monthly');
   document.getElementById('calcGiftLabel').textContent=mode==='monthly'?'Monthly Gift':'Gift Amount';
   var s=document.getElementById('calcGiftSlider');
   if(mode==='monthly'){s.max=1000;if(calcState.gift>1000){calcState.gift=100;s.value=100;}}else{s.max=10000;}
